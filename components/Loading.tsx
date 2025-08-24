@@ -5,7 +5,10 @@ interface LoadingSpinnerProps {
   className?: string;
 }
 
-export function LoadingSpinner({ size = 'md', className }: LoadingSpinnerProps) {
+export function LoadingSpinner({
+  size = 'md',
+  className,
+}: LoadingSpinnerProps) {
   const sizeClasses = {
     sm: 'w-4 h-4',
     md: 'w-8 h-8',
@@ -13,7 +16,13 @@ export function LoadingSpinner({ size = 'md', className }: LoadingSpinnerProps) 
   };
 
   return (
-    <div className={cn('animate-spin rounded-full border-2 border-primary border-t-transparent', sizeClasses[size], className)} />
+    <div
+      className={cn(
+        'animate-spin rounded-full border-2 border-primary border-t-transparent',
+        sizeClasses[size],
+        className
+      )}
+    />
   );
 }
 
@@ -57,7 +66,10 @@ interface LoadingSkeletonProps {
   lines?: number;
 }
 
-export function LoadingSkeleton({ className, lines = 1 }: LoadingSkeletonProps) {
+export function LoadingSkeleton({
+  className,
+  lines = 1,
+}: LoadingSkeletonProps) {
   return (
     <div className={cn('space-y-2', className)}>
       {Array.from({ length: lines }).map((_, i) => (

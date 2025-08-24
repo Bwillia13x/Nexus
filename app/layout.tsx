@@ -1,21 +1,19 @@
 import '../styles/globals.css';
 import type { ReactNode } from 'react';
 import type { Metadata } from 'next';
-import dynamic from 'next/dynamic';
 import { Nav } from '@/components/Nav';
 import { Footer } from '@/components/Footer';
-import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { Analytics } from '@/components/Analytics';
-
-const ClientToaster = dynamic(() => import('@/components/ToastProvider'), {
-  ssr: false,
-});
+import { ToastProvider } from '@/components/ToastProvider';
+import { PerformanceMonitor } from '@/components/PerformanceMonitor';
 
 export const metadata: Metadata = {
   title: 'Nexus AI — Calgary AI Consulting for SMBs',
   description:
     'Solo AI-integration consultancy helping Calgary SMBs automate workflows, deploy AI assistants, and unlock insights.',
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+  ),
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -26,7 +24,7 @@ export const metadata: Metadata = {
       'Solo AI-integration consultancy helping Calgary SMBs automate workflows, deploy AI assistants, and unlock insights.',
     images: [
       {
-        url: '/og.png',
+        url: '/og.svg',
         width: 1200,
         height: 630,
         alt: 'Nexus AI',
@@ -38,18 +36,14 @@ export const metadata: Metadata = {
     title: 'Nexus AI — Calgary AI Consulting for SMBs',
     description:
       'Solo AI-integration consultancy helping Calgary SMBs automate workflows, deploy AI assistants, and unlock insights.',
-    images: ['/og.png'],
+    images: ['/og.svg'],
   },
   alternates: {
     canonical: '/',
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: ReactNode;
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <head>
@@ -68,15 +62,18 @@ export default function RootLayout({
               address: {
                 '@type': 'PostalAddress',
                 streetAddress: process.env.NEXT_PUBLIC_BUSINESS_STREET,
-                addressLocality: process.env.NEXT_PUBLIC_BUSINESS_LOCALITY || 'Calgary',
+                addressLocality:
+                  process.env.NEXT_PUBLIC_BUSINESS_LOCALITY || 'Calgary',
                 addressRegion: process.env.NEXT_PUBLIC_BUSINESS_REGION || 'AB',
                 postalCode: process.env.NEXT_PUBLIC_BUSINESS_POSTAL,
-                addressCountry: process.env.NEXT_PUBLIC_BUSINESS_COUNTRY || 'CA',
+                addressCountry:
+                  process.env.NEXT_PUBLIC_BUSINESS_COUNTRY || 'CA',
               },
               areaServed: 'Calgary, Alberta, Canada',
               sameAs: [
                 process.env.NEXT_PUBLIC_LINKEDIN_URL,
-                process.env.NEXT_PUBLIC_X_URL || process.env.NEXT_PUBLIC_TWITTER_URL,
+                process.env.NEXT_PUBLIC_X_URL ||
+                  process.env.NEXT_PUBLIC_TWITTER_URL,
                 process.env.NEXT_PUBLIC_GITHUB_URL,
               ].filter(Boolean),
             }),
@@ -84,15 +81,9 @@ export default function RootLayout({
         />
       </head>
       <body className="relative antialiased">
-        <ErrorBoundary>
-          <ClientToaster />
-          <Analytics />
-          <Nav />
-          <main className="pt-24">
-            {children}
-          </main>
-          <Footer />
-        </ErrorBoundary>
+        <Nav />
+        <main className="pt-8">{children}</main>
+        <Footer />
       </body>
     </html>
   );

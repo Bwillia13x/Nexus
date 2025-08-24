@@ -5,7 +5,9 @@ import process from 'node:process';
 const PORT = process.env.PORT || '4000';
 const BASE = `http://localhost:${PORT}`;
 
-function wait(ms) { return new Promise(r => setTimeout(r, ms)); }
+function wait(ms) {
+  return new Promise(r => setTimeout(r, ms));
+}
 
 async function waitUntilReady(timeoutMs = 30000) {
   const start = Date.now();
@@ -27,8 +29,8 @@ async function run() {
     env: { ...process.env, PORT, CONTACT_DISABLE_EMAIL: '1' },
   });
 
-  srv.stdout.on('data', (d) => process.stdout.write(`[next] ${d}`));
-  srv.stderr.on('data', (d) => process.stderr.write(`[next:err] ${d}`));
+  srv.stdout.on('data', d => process.stdout.write(`[next] ${d}`));
+  srv.stderr.on('data', d => process.stderr.write(`[next:err] ${d}`));
 
   let ready = await waitUntilReady();
   if (!ready) {
@@ -49,7 +51,7 @@ async function run() {
     }
   }
 
-  const get200 = async (path) => {
+  const get200 = async path => {
     const res = await fetch(BASE + path, { redirect: 'manual' });
     if (!res.ok) throw new Error(`${path} -> ${res.status}`);
   };
@@ -63,7 +65,7 @@ async function run() {
     const res = await fetch(BASE + '/api/contact', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ hp: 'bot' })
+      body: JSON.stringify({ hp: 'bot' }),
     });
     if (!res.ok) throw new Error(`/api/contact honeypot -> ${res.status}`);
     const json = await res.json();
@@ -78,8 +80,8 @@ async function run() {
         name: 'Smoke Tester',
         email: 'smoke@example.com',
         company: 'Nexus',
-        message: 'This is a smoke test message with sufficient length.'
-      })
+        message: 'This is a smoke test message with sufficient length.',
+      }),
     });
     if (!res.ok) throw new Error(`/api/contact valid -> ${res.status}`);
     const json = await res.json();
@@ -88,7 +90,9 @@ async function run() {
 
   console.log('\n[smoke] Results:');
   for (const r of results) {
-    console.log(` - ${r.ok ? '✅' : '❌'} ${r.name}${r.ok ? '' : ' :: ' + r.error}`);
+    console.log(
+      ` - ${r.ok ? '✅' : '❌'} ${r.name}${r.ok ? '' : ' :: ' + r.error}`
+    );
   }
 
   srv.kill('SIGTERM');
@@ -101,7 +105,7 @@ async function run() {
   console.log('[smoke] All checks passed');
 }
 
-run().catch((e) => {
+run().catch(e => {
   console.error('[smoke] Uncaught error', e);
   process.exit(1);
 });

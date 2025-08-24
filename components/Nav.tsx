@@ -1,12 +1,25 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export function Nav() {
   return (
     <nav className="fixed top-5 left-1/2 -translate-x-1/2 z-50 bg-glass backdrop-blur-xl border border-glass-border rounded-full px-8 py-4 flex gap-8 items-center shadow-xl hover:shadow-2xl transition-all duration-500 group">
       <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-secondary/5 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full" />
-      <span className="font-bold text-xl bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent relative z-10 group-hover:scale-105 transition-transform duration-300">
-        Nexus AI
-      </span>
+
+      <Link
+        href="/"
+        className="relative z-10 group-hover:scale-105 transition-transform duration-300"
+      >
+        <Image
+          src="/images/Nexus_Logo.png"
+          alt="Nexus AI Logo"
+          width={120}
+          height={40}
+          className="h-8 w-auto"
+          priority
+        />
+      </Link>
+
       <ul className="flex gap-8 text-sm relative z-10">
         <li>
           <Link

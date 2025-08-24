@@ -27,16 +27,23 @@ export default function CaseAutomationPilotOps() {
             Ops: Automation Pilot
           </h1>
           <p className="text-lg md:text-xl text-muted max-w-3xl mx-auto">
-            Identified bottlenecks and automated weekly reporting and invoicing across tools. Human approvals kept, with robust monitoring and rollback.
+            Identified bottlenecks and automated weekly reporting and invoicing
+            across tools. Human approvals kept, with robust monitoring and
+            rollback.
           </p>
 
           <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
-            {stats.map((s) => (
-              <div key={s.label} className="p-4 rounded-2xl border border-glass-border bg-glass backdrop-blur-xl">
+            {stats.map(s => (
+              <div
+                key={s.label}
+                className="p-4 rounded-2xl border border-glass-border bg-glass backdrop-blur-xl"
+              >
                 <div className="text-2xl font-semibold bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text text-center">
                   {s.value}
                 </div>
-                <div className="text-xs uppercase tracking-wide text-muted text-center">{s.label}</div>
+                <div className="text-xs uppercase tracking-wide text-muted text-center">
+                  {s.label}
+                </div>
               </div>
             ))}
           </div>

@@ -21,20 +21,18 @@ export function ServicesOverview() {
   ];
   return (
     <section id="services" className="section">
-      <div className="container-wide text-center mb-16">
+      <div className="container-wide text-center mb-12">
         <h2 className="text-4xl font-bold mb-4 gradient-title">
           What I Do for Calgary SMBs
         </h2>
         <p className="max-w-xl mx-auto text-muted">
-          Practical, measurable AI integrations—built around your team and customers
+          Practical, measurable AI integrations—built around your team and
+          customers
         </p>
       </div>
       <div className="container-wide grid gap-8 md:grid-cols-3">
-        {services.map((s) => (
-          <div
-            key={s.title}
-            className="card-glass"
-          >
+        {services.map(s => (
+          <div key={s.title} className="card-glass">
             <div className="w-12 h-12 mb-4 flex items-center justify-center rounded-xl bg-gradient-to-r from-primary to-secondary text-white text-2xl">
               {s.icon}
             </div>

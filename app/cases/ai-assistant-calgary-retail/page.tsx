@@ -27,16 +27,23 @@ export default function CaseAIAssistantCalgaryRetail() {
             Calgary Retail: AI Assistant
           </h1>
           <p className="text-lg md:text-xl text-muted max-w-3xl mx-auto">
-            Deployed a GPT-powered assistant to handle FAQs, sizing, and order lookups across web + SMS. Guardrails, human handoff, and analytics included.
+            Deployed a GPT-powered assistant to handle FAQs, sizing, and order
+            lookups across web + SMS. Guardrails, human handoff, and analytics
+            included.
           </p>
 
           <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
-            {stats.map((s) => (
-              <div key={s.label} className="p-4 rounded-2xl border border-glass-border bg-glass backdrop-blur-xl">
+            {stats.map(s => (
+              <div
+                key={s.label}
+                className="p-4 rounded-2xl border border-glass-border bg-glass backdrop-blur-xl"
+              >
                 <div className="text-2xl font-semibold bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text text-center">
                   {s.value}
                 </div>
-                <div className="text-xs uppercase tracking-wide text-muted text-center">{s.label}</div>
+                <div className="text-xs uppercase tracking-wide text-muted text-center">
+                  {s.label}
+                </div>
               </div>
             ))}
           </div>
@@ -50,18 +57,31 @@ export default function CaseAIAssistantCalgaryRetail() {
             <div className="p-6 rounded-3xl border border-glass-border bg-glass backdrop-blur-xl">
               <h2 className="text-2xl font-bold mb-4">Client Context</h2>
               <ul className="space-y-3 text-muted">
-                <li>• DTC retailer with seasonal spikes and small support team</li>
-                <li>• High volume of repeat questions (shipping, returns, sizing)</li>
-                <li>• Goal: reduce response time and free staff for escalations</li>
+                <li>
+                  • DTC retailer with seasonal spikes and small support team
+                </li>
+                <li>
+                  • High volume of repeat questions (shipping, returns, sizing)
+                </li>
+                <li>
+                  • Goal: reduce response time and free staff for escalations
+                </li>
               </ul>
             </div>
             <div className="p-6 rounded-3xl border border-glass-border bg-glass backdrop-blur-xl">
               <h2 className="text-2xl font-bold mb-4">Solution</h2>
               <ul className="space-y-3 text-muted">
-                <li>• Assistant trained on policies, catalog, and historical tickets</li>
-                <li>• Web chat + SMS channels with guardrails and tone controls</li>
+                <li>
+                  • Assistant trained on policies, catalog, and historical
+                  tickets
+                </li>
+                <li>
+                  • Web chat + SMS channels with guardrails and tone controls
+                </li>
                 <li>• Human-in-the-loop escalation with transcript preview</li>
-                <li>• Outcome analytics: deflection, CSAT proxy, and handoff rate</li>
+                <li>
+                  • Outcome analytics: deflection, CSAT proxy, and handoff rate
+                </li>
               </ul>
             </div>
           </div>

@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { Component, ErrorInfo, ReactNode } from 'react';
 import toast from 'react-hot-toast';
@@ -46,7 +46,8 @@ export class ErrorBoundary extends Component<Props, State> {
               Oops! Something went wrong
             </h1>
             <p className="text-muted mb-6">
-              We encountered an unexpected error. Please refresh the page and try again.
+              We encountered an unexpected error. Please refresh the page and
+              try again.
             </p>
             <button
               onClick={() => window.location.reload()}

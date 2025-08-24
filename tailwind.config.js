@@ -3,7 +3,7 @@ module.exports = {
   content: [
     './app/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
-    './content/**/*.{md,mdx,json}'
+    './content/**/*.{md,mdx,json}',
   ],
   theme: {
     extend: {
@@ -16,13 +16,13 @@ module.exports = {
         'glass-2': 'var(--glass-2)',
         'glass-border': 'var(--glass-border)',
         primary: '#667eea',
-        secondary: '#764ba2'
+        secondary: '#764ba2',
       },
       borderRadius: {
         '3xl': '1.5rem',
-        '4xl': '2rem'
-      }
-    }
+        '4xl': '2rem',
+      },
+    },
   },
   plugins: [],
 };

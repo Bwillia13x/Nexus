@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useState } from 'react';
 import toast from 'react-hot-toast';
@@ -39,7 +39,9 @@ export function ErrorTest() {
   return (
     <div className="fixed bottom-4 right-4 z-50 bg-white/90 backdrop-blur-md border border-red-200 rounded-lg p-4 shadow-lg">
       <div className="flex items-center justify-between mb-3">
-        <h4 className="text-sm font-medium text-red-600">Error Testing Tools</h4>
+        <h4 className="text-sm font-medium text-red-600">
+          Error Testing Tools
+        </h4>
         <button
           onClick={() => setShowError(true)}
           className="text-xs bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"

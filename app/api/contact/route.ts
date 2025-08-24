@@ -76,12 +76,16 @@ export async function POST(req: Request) {
     };
 
     if (disableEmail) {
-      console.warn('Email sending disabled via CONTACT_DISABLE_EMAIL; skipping send.');
+      console.warn(
+        'Email sending disabled via CONTACT_DISABLE_EMAIL; skipping send.'
+      );
       return makeOk({ skipped: 'email' });
     }
 
     if (!resend || !process.env.TO_EMAIL) {
-      console.warn('Email not configured (RESEND_API_KEY or TO_EMAIL missing); skipping email send.');
+      console.warn(
+        'Email not configured (RESEND_API_KEY or TO_EMAIL missing); skipping email send.'
+      );
       return makeOk();
     }
 

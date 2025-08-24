@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -49,36 +49,48 @@ export function ContactForm() {
       const result = await res.json();
 
       if (res.ok && result.ok) {
-        toast.success('Message sent successfully! We\'ll get back to you soon.', {
-          id: loadingToast,
-        });
+        toast.success(
+          "Message sent successfully! We'll get back to you soon.",
+          {
+            id: loadingToast,
+          }
+        );
         reset();
       } else {
-        toast.error(result.error || 'Failed to send message. Please try again.', {
-          id: loadingToast,
-        });
+        toast.error(
+          result.error || 'Failed to send message. Please try again.',
+          {
+            id: loadingToast,
+          }
+        );
       }
     } catch (error) {
       console.error('Contact form error:', error);
-      toast.error('Network error. Please check your connection and try again.', {
-        id: loadingToast,
-      });
+      toast.error(
+        'Network error. Please check your connection and try again.',
+        {
+          id: loadingToast,
+        }
+      );
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const isFormValid = isValid && Object.values(watchedFields).some(value => value && value.trim() !== '');
+  const isFormValid =
+    isValid &&
+    Object.values(watchedFields).some(value => value && value.trim() !== '');
 
   return (
     <section id="contact" className="section">
       <div className="container-wide">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 gradient-title">
             Begin Your AI Transformation
           </h2>
           <p className="text-xl text-muted max-w-2xl mx-auto mb-8">
-            Let’s craft your intelligent future together. Share your vision and we'll help bring it to life with cutting-edge AI solutions.
+            Let’s craft your intelligent future together. Share your vision and
+            we'll help bring it to life with cutting-edge AI solutions.
           </p>
           <div className="flex justify-center gap-4 flex-wrap">
             <div className="chip">
@@ -88,7 +100,9 @@ export function ContactForm() {
               <span className="text-sm font-medium">🎯 Custom Solutions</span>
             </div>
             <div className="chip">
-              <span className="text-sm font-medium">🔒 Enterprise Security</span>
+              <span className="text-sm font-medium">
+                🔒 Enterprise Security
+              </span>
             </div>
           </div>
         </div>
@@ -106,13 +120,23 @@ export function ContactForm() {
             <div className="relative z-10">
               {/* Honeypot field – hidden from users, targeted by bots */}
               <div className="hidden" aria-hidden="true">
-                <label htmlFor="hp" className="sr-only">Leave this field empty</label>
-                <input id="hp" {...register('hp')} tabIndex={-1} autoComplete="off" />
+                <label htmlFor="hp" className="sr-only">
+                  Leave this field empty
+                </label>
+                <input
+                  id="hp"
+                  {...register('hp')}
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
               </div>
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="md:col-span-2">
-                  <label htmlFor="name" className="block text-sm font-medium mb-2 text-ink">
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium mb-2 text-ink"
+                  >
                     Full Name *
                   </label>
                   <input
@@ -121,21 +145,30 @@ export function ContactForm() {
                     type="text"
                     autoComplete="name"
                     className={`w-full px-4 py-4 rounded-xl border bg-white/50 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200 ${
-                      errors.name ? 'border-red-300 focus:ring-red-500 bg-red-50/50' : 'border-glass-border hover:border-primary/30'
+                      errors.name
+                        ? 'border-red-300 focus:ring-red-500 bg-red-50/50'
+                        : 'border-glass-border hover:border-primary/30'
                     }`}
                     placeholder="Enter your full name"
-                    aria-describedby={errors.name ? "name-error" : undefined}
-                    aria-invalid={errors.name ? "true" : "false"}
+                    aria-describedby={errors.name ? 'name-error' : undefined}
+                    aria-invalid={errors.name ? 'true' : 'false'}
                   />
                   {errors.name && (
-                    <p id="name-error" className="mt-2 text-sm text-red-600 flex items-center gap-1" role="alert">
+                    <p
+                      id="name-error"
+                      className="mt-2 text-sm text-red-600 flex items-center gap-1"
+                      role="alert"
+                    >
                       <span className="text-lg">⚠️</span> {errors.name.message}
                     </p>
                   )}
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-2 text-ink">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium mb-2 text-ink"
+                  >
                     Email Address *
                   </label>
                   <input
@@ -144,21 +177,30 @@ export function ContactForm() {
                     type="email"
                     autoComplete="email"
                     className={`w-full px-4 py-4 rounded-xl border bg-white/50 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200 ${
-                      errors.email ? 'border-red-300 focus:ring-red-500 bg-red-50/50' : 'border-glass-border hover:border-primary/30'
+                      errors.email
+                        ? 'border-red-300 focus:ring-red-500 bg-red-50/50'
+                        : 'border-glass-border hover:border-primary/30'
                     }`}
                     placeholder="your.email@company.com"
-                    aria-describedby={errors.email ? "email-error" : undefined}
-                    aria-invalid={errors.email ? "true" : "false"}
+                    aria-describedby={errors.email ? 'email-error' : undefined}
+                    aria-invalid={errors.email ? 'true' : 'false'}
                   />
                   {errors.email && (
-                    <p id="email-error" className="mt-2 text-sm text-red-600 flex items-center gap-1" role="alert">
+                    <p
+                      id="email-error"
+                      className="mt-2 text-sm text-red-600 flex items-center gap-1"
+                      role="alert"
+                    >
                       <span className="text-lg">⚠️</span> {errors.email.message}
                     </p>
                   )}
                 </div>
 
                 <div>
-                  <label htmlFor="company" className="block text-sm font-medium mb-2 text-ink">
+                  <label
+                    htmlFor="company"
+                    className="block text-sm font-medium mb-2 text-ink"
+                  >
                     Company
                   </label>
                   <input
@@ -172,7 +214,10 @@ export function ContactForm() {
                 </div>
 
                 <div className="md:col-span-2">
-                  <label htmlFor="message" className="block text-sm font-medium mb-2 text-ink">
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium mb-2 text-ink"
+                  >
                     Your Vision *
                   </label>
                   <textarea
@@ -180,18 +225,27 @@ export function ContactForm() {
                     id="message"
                     rows={5}
                     className={`w-full px-4 py-4 rounded-xl border bg-white/50 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200 resize-none ${
-                      errors.message ? 'border-red-300 focus:ring-red-500 bg-red-50/50' : 'border-glass-border hover:border-primary/30'
+                      errors.message
+                        ? 'border-red-300 focus:ring-red-500 bg-red-50/50'
+                        : 'border-glass-border hover:border-primary/30'
                     }`}
                     placeholder="Tell us about your project, challenges, or how you'd like AI to transform your business..."
-                    aria-describedby={errors.message ? "message-error" : "message-help"}
-                    aria-invalid={errors.message ? "true" : "false"}
+                    aria-describedby={
+                      errors.message ? 'message-error' : 'message-help'
+                    }
+                    aria-invalid={errors.message ? 'true' : 'false'}
                   />
                   <p id="message-help" className="mt-1 text-xs text-muted">
                     Be as specific as possible about your goals and challenges
                   </p>
                   {errors.message && (
-                    <p id="message-error" className="mt-2 text-sm text-red-600 flex items-center gap-1" role="alert">
-                      <span className="text-lg">⚠️</span> {errors.message.message}
+                    <p
+                      id="message-error"
+                      className="mt-2 text-sm text-red-600 flex items-center gap-1"
+                      role="alert"
+                    >
+                      <span className="text-lg">⚠️</span>{' '}
+                      {errors.message.message}
                     </p>
                   )}
                 </div>
@@ -207,7 +261,8 @@ export function ContactForm() {
                 >
                   {isSubmitting ? (
                     <span className="flex items-center justify-center gap-2">
-                      <span className="animate-spin">⚡</span> Sending Your Message...
+                      <span className="animate-spin">⚡</span> Sending Your
+                      Message...
                     </span>
                   ) : (
                     <span className="flex items-center justify-center gap-2">
@@ -215,7 +270,10 @@ export function ContactForm() {
                     </span>
                   )}
                 </LoadingButton>
-                <p id="submit-button-help" className="mt-2 text-xs text-center text-muted">
+                <p
+                  id="submit-button-help"
+                  className="mt-2 text-xs text-center text-muted"
+                >
                   We'll respond within 2 hours during business days
                 </p>
               </div>
@@ -232,7 +290,9 @@ export function ContactForm() {
               <ul className="space-y-3 text-sm text-muted">
                 <li className="flex items-start gap-3">
                   <span className="text-primary mt-0.5">✓</span>
-                  <span>Custom AI solutions tailored to your business needs</span>
+                  <span>
+                    Custom AI solutions tailored to your business needs
+                  </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-primary mt-0.5">✓</span>
@@ -257,15 +317,21 @@ export function ContactForm() {
               <div className="space-y-3">
                 <div className="flex justify-between items-center p-3 rounded-xl bg-primary/10">
                   <span className="font-medium">Email</span>
-                  <span className="text-sm text-primary font-semibold">2 hours</span>
+                  <span className="text-sm text-primary font-semibold">
+                    2 hours
+                  </span>
                 </div>
                 <div className="flex justify-between items-center p-3 rounded-xl bg-secondary/10">
                   <span className="font-medium">Phone</span>
-                  <span className="text-sm text-secondary font-semibold">Immediate</span>
+                  <span className="text-sm text-secondary font-semibold">
+                    Immediate
+                  </span>
                 </div>
                 <div className="flex justify-between items-center p-3 rounded-xl bg-primary/10">
                   <span className="font-medium">Consultation</span>
-                  <span className="text-sm text-primary font-semibold">24 hours</span>
+                  <span className="text-sm text-primary font-semibold">
+                    24 hours
+                  </span>
                 </div>
               </div>
             </div>
@@ -276,7 +342,9 @@ export function ContactForm() {
                 Your Data is Safe
               </h3>
               <p className="text-sm text-muted leading-relaxed">
-                All communications are encrypted and secure. We comply with GDPR, HIPAA, and other industry standards. Your information is never shared without consent.
+                All communications are encrypted and secure. We comply with
+                GDPR, HIPAA, and other industry standards. Your information is
+                never shared without consent.
               </p>
             </div>
           </div>

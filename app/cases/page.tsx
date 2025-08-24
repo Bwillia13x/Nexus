@@ -39,12 +39,13 @@ export default function CasesIndexPage() {
               Calgary Case Studies
             </h1>
             <p className="max-w-2xl mx-auto text-muted text-lg">
-              Practical outcomes from real SMB integrations — measurable wins within weeks, not months.
+              Practical outcomes from real SMB integrations — measurable wins
+              within weeks, not months.
             </p>
           </div>
 
           <div className="grid gap-8 md:grid-cols-2">
-            {cases.map((c) => (
+            {cases.map(c => (
               <Link
                 key={c.slug}
                 href={`/cases/${c.slug}`}
@@ -55,12 +56,14 @@ export default function CasesIndexPage() {
                   <h3 className="font-semibold text-lg mb-2">{c.title}</h3>
                   <p className="text-muted mb-4">{c.description}</p>
                   <div className="flex gap-6">
-                    {c.stats.map((stat) => (
+                    {c.stats.map(stat => (
                       <div key={stat.label} className="text-center">
                         <div className="text-xl font-semibold bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text">
                           {stat.value}
                         </div>
-                        <div className="text-xs uppercase tracking-wider text-muted">{stat.label}</div>
+                        <div className="text-xs uppercase tracking-wider text-muted">
+                          {stat.label}
+                        </div>
                       </div>
                     ))}
                   </div>

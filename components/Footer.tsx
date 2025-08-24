@@ -1,21 +1,35 @@
+import Image from 'next/image';
+
 export function Footer() {
   const year = new Date().getFullYear();
-  const xUrl = process.env.NEXT_PUBLIC_X_URL || process.env.NEXT_PUBLIC_TWITTER_URL;
+  const xUrl =
+    process.env.NEXT_PUBLIC_X_URL || process.env.NEXT_PUBLIC_TWITTER_URL;
   const linkedinUrl = process.env.NEXT_PUBLIC_LINKEDIN_URL;
   const githubUrl = process.env.NEXT_PUBLIC_GITHUB_URL;
   const locality = process.env.NEXT_PUBLIC_BUSINESS_LOCALITY || 'Calgary';
   const region = process.env.NEXT_PUBLIC_BUSINESS_REGION || 'AB';
   const country = process.env.NEXT_PUBLIC_BUSINESS_COUNTRY || 'Canada';
   const bookingUrl = process.env.NEXT_PUBLIC_BOOKING_URL;
-  const linkProps = (url?: string) => (url ? { href: url, target: '_blank', rel: 'noopener noreferrer' } : { href: '#' });
+  const linkProps = (url?: string) =>
+    url
+      ? { href: url, target: '_blank', rel: 'noopener noreferrer' }
+      : { href: '#' };
+
   return (
     <footer className="py-16 px-4 border-t border-glass-border bg-glass backdrop-blur-xl relative overflow-hidden group">
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       <div className="max-w-4xl mx-auto text-center relative z-10">
         <div className="mb-8">
-          <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">
-            Nexus AI
-          </h3>
+          <div className="flex justify-center mb-4">
+            <Image
+              src="/images/Nexus_Logo.png"
+              alt="Nexus AI Logo"
+              width={160}
+              height={60}
+              className="h-12 w-auto group-hover:scale-105 transition-transform duration-300"
+              priority
+            />
+          </div>
           <p className="text-muted mb-6 max-w-md mx-auto leading-relaxed group-hover:scale-105 transition-transform duration-300 delay-100">
             © {year} Nexus AI. Crafting the future of intelligent solutions.
           </p>
@@ -42,7 +56,9 @@ export function Footer() {
             className="w-12 h-12 rounded-2xl flex items-center justify-center border border-glass-border bg-glass-2 backdrop-blur-xl hover:bg-glass hover:scale-110 hover:shadow-xl hover:-translate-y-1 transition-all duration-500 group/icon relative overflow-hidden"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 opacity-0 group-hover/icon:opacity-100 transition-opacity duration-300" />
-            <span className="text-xl relative z-10 group-hover/icon:scale-110 transition-transform duration-300">𝕏</span>
+            <span className="text-xl relative z-10 group-hover/icon:scale-110 transition-transform duration-300">
+              𝕏
+            </span>
           </a>
           <a
             {...linkProps(linkedinUrl)}
@@ -50,7 +66,9 @@ export function Footer() {
             className="w-12 h-12 rounded-2xl flex items-center justify-center border border-glass-border bg-glass-2 backdrop-blur-xl hover:bg-glass hover:scale-110 hover:shadow-xl hover:-translate-y-1 transition-all duration-500 group/icon relative overflow-hidden"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 opacity-0 group-hover/icon:opacity-100 transition-opacity duration-300" />
-            <span className="text-lg font-bold relative z-10 group-hover/icon:scale-110 transition-transform duration-300">in</span>
+            <span className="text-lg font-bold relative z-10 group-hover/icon:scale-110 transition-transform duration-300">
+              in
+            </span>
           </a>
           <a
             {...linkProps(githubUrl)}
@@ -58,7 +76,9 @@ export function Footer() {
             className="w-12 h-12 rounded-2xl flex items-center justify-center border border-glass-border bg-glass-2 backdrop-blur-xl hover:bg-glass hover:scale-110 hover:shadow-xl hover:-translate-y-1 transition-all duration-500 group/icon relative overflow-hidden"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 opacity-0 group-hover/icon:opacity-100 transition-opacity duration-300" />
-            <span className="text-xl relative z-10 group-hover/icon:scale-110 transition-transform duration-300">◐</span>
+            <span className="text-xl relative z-10 group-hover/icon:scale-110 transition-transform duration-300">
+              ◐
+            </span>
           </a>
         </div>
         <div className="mt-8 pt-8 border-t border-glass-border">

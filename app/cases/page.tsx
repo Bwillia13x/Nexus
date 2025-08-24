@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Breadcrumb } from '@/components/Breadcrumb';
 
 export const metadata = {
   title: 'Case Studies | Calgary AI Results — Nexus AI',
@@ -32,33 +33,44 @@ export default function CasesIndexPage() {
 
   return (
     <div className="min-h-screen">
+      {/* Breadcrumb Navigation */}
+      <Breadcrumb />
+
       <section className="section">
         <div className="container-wide">
           <div className="text-center mb-16">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 gradient-title">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 gradient-title">
               Calgary Case Studies
             </h1>
-            <p className="max-w-2xl mx-auto text-muted text-lg">
+            <p className="max-w-2xl mx-auto text-muted text-lg px-4">
               Practical outcomes from real SMB integrations — measurable wins
               within weeks, not months.
             </p>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-2">
-            {cases.map(c => (
+          <div className="grid gap-6 md:gap-8 md:grid-cols-2 px-4">
+            {cases.map((c, index) => (
               <Link
                 key={c.slug}
                 href={`/cases/${c.slug}`}
-                className="card-glass p-0 block overflow-hidden"
+                className="card-glass p-0 block overflow-hidden group hover:scale-105 transition-transform duration-300"
+                aria-labelledby={`case-${index}-title`}
               >
-                <div className="h-48 bg-gradient-to-br from-primary to-secondary" />
-                <div className="p-8">
-                  <h3 className="font-semibold text-lg mb-2">{c.title}</h3>
-                  <p className="text-muted mb-4">{c.description}</p>
-                  <div className="flex gap-6">
-                    {c.stats.map(stat => (
-                      <div key={stat.label} className="text-center">
-                        <div className="text-xl font-semibold bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text">
+                <div className="h-32 md:h-48 bg-gradient-to-br from-primary to-secondary" />
+                <div className="p-6 md:p-8">
+                  <h3
+                    id={`case-${index}-title`}
+                    className="font-semibold text-lg mb-2 text-ink"
+                  >
+                    {c.title}
+                  </h3>
+                  <p className="text-muted mb-4 leading-relaxed">
+                    {c.description}
+                  </p>
+                  <div className="flex gap-4 md:gap-6">
+                    {c.stats.map((stat, statIndex) => (
+                      <div key={stat.label} className="text-center flex-1">
+                        <div className="text-lg md:text-xl font-semibold bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text">
                           {stat.value}
                         </div>
                         <div className="text-xs uppercase tracking-wider text-muted">
@@ -73,8 +85,12 @@ export default function CasesIndexPage() {
           </div>
 
           <div className="mt-12 text-center">
-            <Link href="/contact" className="btn-primary">
-              Start your project <span>→</span>
+            <Link
+              href="/contact"
+              className="btn-primary min-h-[44px]"
+              aria-label="Start your AI transformation project"
+            >
+              Start your project <span aria-hidden="true">→</span>
             </Link>
           </div>
         </div>

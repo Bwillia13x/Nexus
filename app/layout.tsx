@@ -81,8 +81,18 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         />
       </head>
       <body className="relative antialiased">
+        {/* Skip navigation for accessibility */}
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
+        <a href="#navigation" className="skip-link">
+          Skip to navigation
+        </a>
+
         <Nav />
-        <main className="pt-8">{children}</main>
+        <main id="main-content" className="pt-8">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

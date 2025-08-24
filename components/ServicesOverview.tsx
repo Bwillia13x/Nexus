@@ -20,24 +20,41 @@ export function ServicesOverview() {
     },
   ];
   return (
-    <section id="services" className="section">
+    <section
+      id="services"
+      className="section"
+      aria-labelledby="services-heading"
+    >
       <div className="container-wide text-center mb-12">
-        <h2 className="text-4xl font-bold mb-4 gradient-title">
+        <h2
+          id="services-heading"
+          className="text-3xl md:text-4xl font-bold mb-4 gradient-title"
+        >
           What I Do for Calgary SMBs
         </h2>
-        <p className="max-w-xl mx-auto text-muted">
+        <p className="max-w-xl mx-auto text-muted px-4">
           Practical, measurable AI integrations—built around your team and
           customers
         </p>
       </div>
-      <div className="container-wide grid gap-8 md:grid-cols-3">
-        {services.map(s => (
-          <div key={s.title} className="card-glass">
-            <div className="w-12 h-12 mb-4 flex items-center justify-center rounded-xl bg-gradient-to-r from-primary to-secondary text-white text-2xl">
+      <div className="container-wide grid gap-6 md:gap-8 md:grid-cols-2 lg:grid-cols-3 px-4">
+        {services.map((s, index) => (
+          <div
+            key={s.title}
+            className="card-glass group hover:scale-105 transition-transform duration-300"
+            role="article"
+            aria-labelledby={`service-${index}-title`}
+          >
+            <div className="w-12 h-12 mb-4 flex items-center justify-center rounded-xl bg-gradient-to-r from-primary to-secondary text-white text-2xl group-hover:scale-110 transition-transform duration-300">
               {s.icon}
             </div>
-            <h3 className="font-semibold text-xl mb-3">{s.title}</h3>
-            <p className="text-muted">{s.description}</p>
+            <h3
+              id={`service-${index}-title`}
+              className="font-semibold text-lg md:text-xl mb-3 text-ink"
+            >
+              {s.title}
+            </h3>
+            <p className="text-muted leading-relaxed">{s.description}</p>
           </div>
         ))}
       </div>

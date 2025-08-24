@@ -82,17 +82,20 @@ export function ContactForm() {
     Object.values(watchedFields).some(value => value && value.trim() !== '');
 
   return (
-    <section id="contact" className="section">
+    <section id="contact" className="section" aria-labelledby="contact-heading">
       <div className="container-wide">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 gradient-title">
+          <h2
+            id="contact-heading"
+            className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 gradient-title"
+          >
             Begin Your AI Transformation
           </h2>
-          <p className="text-xl text-muted max-w-2xl mx-auto mb-8">
-            Let’s craft your intelligent future together. Share your vision and
+          <p className="text-lg md:text-xl text-muted max-w-2xl mx-auto mb-8 px-4">
+            Let's craft your intelligent future together. Share your vision and
             we'll help bring it to life with cutting-edge AI solutions.
           </p>
-          <div className="flex justify-center gap-4 flex-wrap">
+          <div className="flex justify-center gap-4 flex-wrap px-4">
             <div className="chip">
               <span className="text-sm font-medium">⚡ Quick Response</span>
             </div>
@@ -137,29 +140,44 @@ export function ContactForm() {
                     htmlFor="name"
                     className="block text-sm font-medium mb-2 text-ink"
                   >
-                    Full Name *
+                    Full Name{' '}
+                    <span className="text-red-500" aria-label="required">
+                      *
+                    </span>
                   </label>
                   <input
                     {...register('name')}
                     id="name"
                     type="text"
                     autoComplete="name"
-                    className={`w-full px-4 py-4 rounded-xl border bg-white/50 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200 ${
+                    className={`w-full px-4 py-4 rounded-xl border bg-white/50 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200 min-h-[44px] ${
                       errors.name
                         ? 'border-red-300 focus:ring-red-500 bg-red-50/50'
                         : 'border-glass-border hover:border-primary/30'
                     }`}
                     placeholder="Enter your full name"
-                    aria-describedby={errors.name ? 'name-error' : undefined}
+                    aria-describedby={errors.name ? 'name-error' : 'name-help'}
                     aria-invalid={errors.name ? 'true' : 'false'}
+                    aria-required="true"
                   />
-                  {errors.name && (
+                  {errors.name ? (
                     <p
                       id="name-error"
                       className="mt-2 text-sm text-red-600 flex items-center gap-1"
                       role="alert"
+                      aria-live="polite"
                     >
-                      <span className="text-lg">⚠️</span> {errors.name.message}
+                      <span className="text-lg" aria-hidden="true">
+                        ⚠️
+                      </span>{' '}
+                      {errors.name.message}
+                    </p>
+                  ) : (
+                    <p
+                      id="name-help"
+                      className="mt-2 text-sm text-muted sr-only"
+                    >
+                      Enter your full name as it appears on official documents
                     </p>
                   )}
                 </div>
@@ -169,29 +187,46 @@ export function ContactForm() {
                     htmlFor="email"
                     className="block text-sm font-medium mb-2 text-ink"
                   >
-                    Email Address *
+                    Email Address{' '}
+                    <span className="text-red-500" aria-label="required">
+                      *
+                    </span>
                   </label>
                   <input
                     {...register('email')}
                     id="email"
                     type="email"
                     autoComplete="email"
-                    className={`w-full px-4 py-4 rounded-xl border bg-white/50 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200 ${
+                    className={`w-full px-4 py-4 rounded-xl border bg-white/50 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200 min-h-[44px] ${
                       errors.email
                         ? 'border-red-300 focus:ring-red-500 bg-red-50/50'
                         : 'border-glass-border hover:border-primary/30'
                     }`}
                     placeholder="your.email@company.com"
-                    aria-describedby={errors.email ? 'email-error' : undefined}
+                    aria-describedby={
+                      errors.email ? 'email-error' : 'email-help'
+                    }
                     aria-invalid={errors.email ? 'true' : 'false'}
+                    aria-required="true"
                   />
-                  {errors.email && (
+                  {errors.email ? (
                     <p
                       id="email-error"
                       className="mt-2 text-sm text-red-600 flex items-center gap-1"
                       role="alert"
+                      aria-live="polite"
                     >
-                      <span className="text-lg">⚠️</span> {errors.email.message}
+                      <span className="text-lg" aria-hidden="true">
+                        ⚠️
+                      </span>{' '}
+                      {errors.email.message}
+                    </p>
+                  ) : (
+                    <p
+                      id="email-help"
+                      className="mt-2 text-sm text-muted sr-only"
+                    >
+                      Enter a valid email address where we can reach you
                     </p>
                   )}
                 </div>
@@ -201,151 +236,132 @@ export function ContactForm() {
                     htmlFor="company"
                     className="block text-sm font-medium mb-2 text-ink"
                   >
-                    Company
+                    Company (Optional)
                   </label>
                   <input
                     {...register('company')}
                     id="company"
                     type="text"
                     autoComplete="organization"
-                    className="w-full px-4 py-4 rounded-xl border border-glass-border bg-white/50 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary hover:border-primary/30 transition-all duration-200"
+                    className="w-full px-4 py-4 rounded-xl border border-glass-border bg-white/50 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200 min-h-[44px] hover:border-primary/30"
                     placeholder="Your company name"
+                    aria-describedby="company-help"
                   />
-                </div>
-
-                <div className="md:col-span-2">
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium mb-2 text-ink"
+                  <p
+                    id="company-help"
+                    className="mt-2 text-sm text-muted sr-only"
                   >
-                    Your Vision *
-                  </label>
-                  <textarea
-                    {...register('message')}
-                    id="message"
-                    rows={5}
-                    className={`w-full px-4 py-4 rounded-xl border bg-white/50 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200 resize-none ${
-                      errors.message
-                        ? 'border-red-300 focus:ring-red-500 bg-red-50/50'
-                        : 'border-glass-border hover:border-primary/30'
-                    }`}
-                    placeholder="Tell us about your project, challenges, or how you'd like AI to transform your business..."
-                    aria-describedby={
-                      errors.message ? 'message-error' : 'message-help'
-                    }
-                    aria-invalid={errors.message ? 'true' : 'false'}
-                  />
-                  <p id="message-help" className="mt-1 text-xs text-muted">
-                    Be as specific as possible about your goals and challenges
+                    Enter your company name if applicable
                   </p>
-                  {errors.message && (
-                    <p
-                      id="message-error"
-                      className="mt-2 text-sm text-red-600 flex items-center gap-1"
-                      role="alert"
-                    >
-                      <span className="text-lg">⚠️</span>{' '}
-                      {errors.message.message}
-                    </p>
-                  )}
                 </div>
               </div>
 
-              <div className="pt-4">
+              <div className="mt-6">
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium mb-2 text-ink"
+                >
+                  Message{' '}
+                  <span className="text-red-500" aria-label="required">
+                    *
+                  </span>
+                </label>
+                <textarea
+                  {...register('message')}
+                  id="message"
+                  rows={6}
+                  className={`w-full px-4 py-4 rounded-xl border bg-white/50 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200 resize-vertical ${
+                    errors.message
+                      ? 'border-red-300 focus:ring-red-500 bg-red-50/50'
+                      : 'border-glass-border hover:border-primary/30'
+                  }`}
+                  placeholder="Tell us about your AI needs and goals..."
+                  aria-describedby={
+                    errors.message ? 'message-error' : 'message-help'
+                  }
+                  aria-invalid={errors.message ? 'true' : 'false'}
+                  aria-required="true"
+                />
+                {errors.message ? (
+                  <p
+                    id="message-error"
+                    className="mt-2 text-sm text-red-600 flex items-center gap-1"
+                    role="alert"
+                    aria-live="polite"
+                  >
+                    <span className="text-lg" aria-hidden="true">
+                      ⚠️
+                    </span>{' '}
+                    {errors.message.message}
+                  </p>
+                ) : (
+                  <p id="message-help" className="mt-2 text-sm text-muted">
+                    Describe your current challenges and what you hope to
+                    achieve with AI
+                  </p>
+                )}
+              </div>
+
+              <div className="mt-8">
                 <LoadingButton
                   type="submit"
                   loading={isSubmitting}
                   disabled={!isFormValid || isSubmitting}
-                  className="btn-primary w-full text-lg font-semibold disabled:hover:translate-y-0 disabled:hover:shadow-lg"
-                  aria-describedby="submit-button-help"
+                  className="w-full md:w-auto min-h-[44px] bg-gradient-to-r from-primary to-secondary text-white font-semibold hover:-translate-y-1 hover:shadow-xl transition-all duration-300 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/50"
+                  aria-describedby="submit-help"
                 >
-                  {isSubmitting ? (
-                    <span className="flex items-center justify-center gap-2">
-                      <span className="animate-spin">⚡</span> Sending Your
-                      Message...
-                    </span>
-                  ) : (
-                    <span className="flex items-center justify-center gap-2">
-                      🚀 Send Message
-                    </span>
-                  )}
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </LoadingButton>
                 <p
-                  id="submit-button-help"
-                  className="mt-2 text-xs text-center text-muted"
+                  id="submit-help"
+                  className="mt-2 text-sm text-muted text-center md:text-left"
                 >
-                  We'll respond within 2 hours during business days
+                  We'll respond within 24 hours during business days
                 </p>
               </div>
             </div>
           </form>
 
-          {/* Contact Info Sidebar */}
-          <div className="lg:col-span-2 space-y-6">
+          {/* Contact Information */}
+          <div className="lg:col-span-2 space-y-8">
             <div className="card-glass">
-              <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-                <span className="text-2xl">💡</span>
-                Why Choose Us?
+              <h3 className="text-xl font-semibold mb-4 text-ink">
+                Why Choose Nexus AI?
               </h3>
-              <ul className="space-y-3 text-sm text-muted">
+              <ul className="space-y-3 text-muted">
                 <li className="flex items-start gap-3">
-                  <span className="text-primary mt-0.5">✓</span>
-                  <span>
-                    Custom AI solutions tailored to your business needs
-                  </span>
+                  <span className="text-primary text-lg mt-0.5">✓</span>
+                  <span>Calgary-based with local business understanding</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-primary mt-0.5">✓</span>
-                  <span>Expert team with 15+ years of AI experience</span>
+                  <span className="text-primary text-lg mt-0.5">✓</span>
+                  <span>Hands-on implementation, not just consulting</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-primary mt-0.5">✓</span>
-                  <span>Enterprise-grade security and compliance</span>
+                  <span className="text-primary text-lg mt-0.5">✓</span>
+                  <span>Measurable ROI within weeks, not months</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-primary mt-0.5">✓</span>
-                  <span>24/7 support and ongoing optimization</span>
+                  <span className="text-primary text-lg mt-0.5">✓</span>
+                  <span>Privacy-first approach with enterprise security</span>
                 </li>
               </ul>
             </div>
 
             <div className="card-glass">
-              <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-                <span className="text-2xl">⏱️</span>
+              <h3 className="text-xl font-semibold mb-4 text-ink">
                 Response Time
               </h3>
-              <div className="space-y-3">
-                <div className="flex justify-between items-center p-3 rounded-xl bg-primary/10">
-                  <span className="font-medium">Email</span>
-                  <span className="text-sm text-primary font-semibold">
-                    2 hours
-                  </span>
-                </div>
-                <div className="flex justify-between items-center p-3 rounded-xl bg-secondary/10">
-                  <span className="font-medium">Phone</span>
-                  <span className="text-sm text-secondary font-semibold">
-                    Immediate
-                  </span>
-                </div>
-                <div className="flex justify-between items-center p-3 rounded-xl bg-primary/10">
-                  <span className="font-medium">Consultation</span>
-                  <span className="text-sm text-primary font-semibold">
-                    24 hours
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div className="card-glass">
-              <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-                <span className="text-2xl">🔐</span>
-                Your Data is Safe
-              </h3>
-              <p className="text-sm text-muted leading-relaxed">
-                All communications are encrypted and secure. We comply with
-                GDPR, HIPAA, and other industry standards. Your information is
-                never shared without consent.
+              <p className="text-muted mb-4">
+                We typically respond to inquiries within 24 hours during
+                business days.
               </p>
+              <div className="bg-gradient-to-r from-primary/10 to-secondary/10 p-4 rounded-xl">
+                <p className="text-sm text-ink font-medium">
+                  💡 Pro tip: Include specific details about your current
+                  processes and goals for faster, more targeted responses.
+                </p>
+              </div>
             </div>
           </div>
         </div>

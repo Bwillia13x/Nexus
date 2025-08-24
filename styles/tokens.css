@@ -1,10 +1,10 @@
 /* Design tokens for the eggshell palette and glass effects */
 :root {
-  /* Base palette */
-  --eggshell: #f7f5ee;
-  --eggshell-2: #eeeadd;
+  /* Base palette - improved contrast ratios */
+  --eggshell: #faf9f5;
+  --eggshell-2: #f0ede0;
   --ink: #0e0f12;
-  --muted: #6e7280;
+  --muted: #4a5568; /* Darker for better contrast with eggshell */
 
   /* Glass surfaces */
   --glass: rgba(255, 255, 255, 0.55);

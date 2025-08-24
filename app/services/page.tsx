@@ -1,5 +1,6 @@
 import services from '@/content/services.json';
 import Link from 'next/link';
+import { Breadcrumb } from '@/components/Breadcrumb';
 
 export const metadata = {
   title: 'AI Services for Calgary SMBs | Nexus AI',
@@ -24,6 +25,9 @@ export default function ServicesPage() {
   const list = services as unknown as Service[];
   return (
     <div className="min-h-screen">
+      {/* Breadcrumb Navigation */}
+      <Breadcrumb />
+
       {/* Hero Section with Background Effects */}
       <section className="relative py-24 px-4 overflow-hidden">
         {/* Background Orbs */}
@@ -33,10 +37,10 @@ export default function ServicesPage() {
         </div>
 
         <div className="text-center mb-20">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-b from-black via-black/70 to-black/50 text-transparent bg-clip-text">
+          <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold mb-6 bg-gradient-to-b from-black via-black/70 to-black/50 text-transparent bg-clip-text">
             Calgary AI Services for SMBs
           </h1>
-          <p className="max-w-3xl mx-auto text-lg md:text-xl text-muted leading-relaxed">
+          <p className="max-w-3xl mx-auto text-lg md:text-xl text-muted leading-relaxed px-4">
             Fast, practical AI integrations for Calgary teams: AI Assistant
             Setup, Automation Audit + Pilot, and Analytics Quickstart.
           </p>
@@ -98,15 +102,10 @@ export default function ServicesPage() {
                       What's Included
                     </h3>
                     <ul className="space-y-3">
-                      {s.bullets.map((b, idx) => (
-                        <li
-                          key={idx}
-                          className="flex items-start gap-3 text-muted"
-                        >
-                          <div className="w-6 h-6 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center mt-0.5">
-                            <span className="text-white text-xs">✓</span>
-                          </div>
-                          <span>{b}</span>
+                      {s.bullets.map((bullet, idx) => (
+                        <li key={idx} className="flex items-start gap-3">
+                          <span className="text-primary text-lg mt-0.5">•</span>
+                          <span className="text-muted">{bullet}</span>
                         </li>
                       ))}
                     </ul>
@@ -117,15 +116,12 @@ export default function ServicesPage() {
                       Deliverables
                     </h3>
                     <ul className="space-y-3">
-                      {s.artifacts.map((a, idx) => (
-                        <li
-                          key={idx}
-                          className="flex items-start gap-3 text-muted"
-                        >
-                          <div className="w-6 h-6 rounded-full bg-gradient-to-r from-secondary to-primary flex items-center justify-center mt-0.5">
-                            <span className="text-white text-xs">📄</span>
-                          </div>
-                          <span>{a}</span>
+                      {s.artifacts.map((artifact, idx) => (
+                        <li key={idx} className="flex items-start gap-3">
+                          <span className="text-secondary text-lg mt-0.5">
+                            ✓
+                          </span>
+                          <span className="text-muted">{artifact}</span>
                         </li>
                       ))}
                     </ul>
@@ -133,41 +129,35 @@ export default function ServicesPage() {
 
                   <div className="space-y-4">
                     <h3 className="text-xl font-semibold mb-4 text-ink">
-                      Project Details
+                      Timeline & Investment
                     </h3>
                     <div className="space-y-4">
                       <div className="p-4 rounded-xl bg-gradient-to-r from-primary/5 to-secondary/5 border border-primary/10">
-                        <div className="flex items-center gap-3 mb-2">
-                          <span className="text-2xl">⏱️</span>
-                          <span className="font-semibold text-ink">
-                            Timeline
-                          </span>
+                        <div className="text-sm text-muted mb-1">Timeline</div>
+                        <div className="text-lg font-semibold text-ink">
+                          {s.timeline}
                         </div>
-                        <p className="text-muted">{s.timeline}</p>
                       </div>
-                      <div className="p-4 rounded-xl bg-gradient-to-r from-primary/5 to-secondary/5 border border-primary/10">
-                        <div className="flex items-center gap-3 mb-2">
-                          <span className="text-2xl">💰</span>
-                          <span className="font-semibold text-ink">
-                            Starting At
-                          </span>
+                      <div className="p-4 rounded-xl bg-gradient-to-r from-secondary/5 to-primary/5 border border-secondary/10">
+                        <div className="text-sm text-muted mb-1">
+                          Investment
                         </div>
-                        <p className="text-2xl font-bold text-ink">
+                        <div className="text-lg font-semibold text-ink">
                           {s.pricing}
-                        </p>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Call to Action */}
-                <div className="text-center">
+                {/* CTA Section */}
+                <div className="text-center pt-8 border-t border-glass-border">
                   <Link
                     href="/contact"
-                    className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                    className="btn-primary min-h-[44px]"
+                    aria-label={`Get started with ${s.title}`}
                   >
-                    <span>Start Your {s.title} Project</span>
-                    <span className="text-xl">→</span>
+                    Start {s.title} <span aria-hidden="true">→</span>
                   </Link>
                 </div>
               </div>

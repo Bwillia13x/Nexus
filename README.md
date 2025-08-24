@@ -42,7 +42,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 Copy `env.example` to `.env.local` and configure:
 
-```bash
+````bash
 # Required for production
 NEXT_PUBLIC_SITE_URL=https://yourdomain.com
 RESEND_API_KEY=your_resend_api_key
@@ -59,11 +59,25 @@ NEXT_PUBLIC_BUSINESS_POSTAL=T2P 1J9
 NEXT_PUBLIC_LINKEDIN_URL=https://linkedin.com/company/nexus-ai
 NEXT_PUBLIC_X_URL=https://x.com/nexus_ai
 NEXT_PUBLIC_GITHUB_URL=https://github.com/nexus-ai
-```
+
+## Analytics & Consent (optional)
+
+If you use analytics, configure one or both and decide if explicit consent is required before loading scripts. The app respects Do Not Track and GPC automatically.
+
+```bash
+# Google Analytics 4 (e.g., G-XXXXXXX)
+NEXT_PUBLIC_GA_ID=
+
+# Plausible (domain only, no protocol; e.g., example.com)
+NEXT_PUBLIC_PLAUSIBLE_DOMAIN=
+
+# Gate analytics behind explicit consent when set to 1/true
+NEXT_PUBLIC_REQUIRE_CONSENT=
+````
 
 ## 🏗️ Project Structure
 
-```
+```text
 Nexus/
 ├── app/                    # Next.js App Router pages
 │   ├── page.tsx           # Homepage
@@ -202,6 +216,25 @@ npm run start
 
 Ensure all required environment variables are set in your deployment platform.
 
+- Required (production):
+  - `NEXT_PUBLIC_SITE_URL` — public site origin (e.g., <https://yourdomain.com>)
+  - `RESEND_API_KEY` — email provider API key
+  - `FROM_EMAIL` — from address for contact emails
+  - `TO_EMAIL` — destination address for contact emails
+- Recommended:
+  - `NEXT_PUBLIC_GA_ID` — GA4 property ID (e.g., G-XXXXXXX)
+  - `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` — Plausible domain (no protocol)
+  - `NEXT_PUBLIC_REQUIRE_CONSENT` — set to `1`/`true` to gate analytics on consent
+  - `NEXT_PUBLIC_BOOKING_URL` — link to your booking tool
+  - Business details for JSON-LD and Contact page:
+    - `NEXT_PUBLIC_BUSINESS_NAME`, `NEXT_PUBLIC_BUSINESS_EMAIL`, `NEXT_PUBLIC_BUSINESS_TELEPHONE`
+    - `NEXT_PUBLIC_BUSINESS_STREET`, `NEXT_PUBLIC_BUSINESS_LOCALITY`, `NEXT_PUBLIC_BUSINESS_REGION`, `NEXT_PUBLIC_BUSINESS_POSTAL`, `NEXT_PUBLIC_BUSINESS_COUNTRY`
+    - `NEXT_PUBLIC_BUSINESS_IMAGE`, `NEXT_PUBLIC_BUSINESS_LOGO`
+  - Social links: `NEXT_PUBLIC_LINKEDIN_URL`, `NEXT_PUBLIC_X_URL` or `NEXT_PUBLIC_TWITTER_URL`, `NEXT_PUBLIC_GITHUB_URL`
+  - UI: `NEXT_PUBLIC_ENABLE_TOASTS`
+  - CI/Smoke tests: `CONTACT_DISABLE_EMAIL=1`
+  - CAPTCHA (optional): `TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY`
+
 ## 🔒 Security Features
 
 - **Honeypot Protection**: Bot detection in contact form
@@ -237,6 +270,4 @@ For support or questions:
 - LinkedIn: [Your LinkedIn]
 - Website: [https://yourdomain.com]
 
----
-
-**Built with ❤️ by Nexus AI Team**
+### Built with ❤️ by Nexus AI Team

@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import './tokens.css';
+
+/* Global resets and defaults */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-eggshell text-ink antialiased overflow-x-hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Basic focus styles */
+*:focus-visible {
+  outline: 2px solid theme('colors.primary');
+  outline-offset: 2px;
+}
+
+/* Utility for subtle separators */
+.hairline {
+  border-top: 1px solid var(--glass-border);
+}
+
+/* Animation keyframes for fade-in */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Reusable component classes */
+@layer components {
+  .section {
+    @apply py-24 px-4;
+  }
+  .container-wide {
+    @apply max-w-6xl mx-auto;
+  }
+  .gradient-title {
+    @apply bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent;
+  }
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-full text-white bg-gradient-to-r from-primary to-secondary shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl font-semibold;
+  }
+  .btn-outline {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-full border border-glass-border backdrop-blur-md bg-glass text-ink transition-all duration-300 hover:bg-glass-2 font-semibold;
+  }
+  .card-glass {
+    @apply p-8 rounded-3xl border border-glass-border bg-glass backdrop-blur-xl shadow-lg transition-all duration-500 hover:shadow-2xl hover:-translate-y-1;
+  }
+  .chip {
+    @apply px-4 py-2 bg-glass rounded-full border border-glass-border backdrop-blur-md text-sm font-medium;
+  }
+}

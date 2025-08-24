@@ -1,0 +1,41 @@
+{
+  "framework": "nextjs",
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "installCommand": "npm install",
+  "devCommand": "npm run dev",
+  "functions": {
+    "app/api/**/*.ts": {
+      "runtime": "@vercel/node"
+    }
+  },
+  "regions": ["iad1"],
+  "env": {
+    "RESEND_API_KEY": "@resend-api-key",
+    "FROM_EMAIL": "@from-email",
+    "TO_EMAIL": "@to-email",
+    "NEXT_PUBLIC_SITE_URL": "@next-public-site-url",
+    "NEXT_PUBLIC_GA_ID": "@next-public-ga-id",
+    "NEXT_PUBLIC_PLAUSIBLE_DOMAIN": "@next-public-plausible-domain"
+  },
+  "build": {
+    "env": {
+      "RESEND_API_KEY": "@resend-api-key",
+      "FROM_EMAIL": "@from-email",
+      "TO_EMAIL": "@to-email",
+      "NEXT_PUBLIC_SITE_URL": "@next-public-site-url",
+      "NEXT_PUBLIC_GA_ID": "@next-public-ga-id",
+      "NEXT_PUBLIC_PLAUSIBLE_DOMAIN": "@next-public-plausible-domain"
+    }
+  },
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Access-Control-Allow-Methods", "value": "GET, POST, OPTIONS" },
+        { "key": "Access-Control-Allow-Headers", "value": "Content-Type" }
+      ]
+    }
+  ]
+}

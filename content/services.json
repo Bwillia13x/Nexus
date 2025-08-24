@@ -1,0 +1,83 @@
+[
+  {
+    "id": "ai-assistant-setup",
+    "icon": "🤖",
+    "title": "AI Assistant Setup",
+    "summary": "Deploy GPT-powered assistants for support, sales, and internal teams. Calgary-ready, privacy-aware, and tailored to your workflows.",
+    "detailedDescription": "We integrate AI assistants into your website, CRM, and internal tools. Expect trained responses on your data, handoffs to humans, and analytics on outcomes. Designed for Calgary SMBs with sensible safeguards and fast iteration.",
+    "benefits": [
+      "Deflect 40–70% of repetitive tickets",
+      "Faster response times across channels (web, SMS, email)",
+      "Private deployments and data controls",
+      "Measurable ROI within weeks"
+    ],
+    "bullets": [
+      "Assistant persona, tone, and boundaries",
+      "Knowledge ingestion from docs and tools",
+      "Escalation rules and human-in-the-loop",
+      "Channel integration (web widget, SMS, email)"
+    ],
+    "artifacts": [
+      "Assistant config + prompts",
+      "Integration docs and API keys",
+      "Analytics dashboard",
+      "Runbook for updates"
+    ],
+    "timeline": "2–4 weeks",
+    "pricing": "From $6k"
+  },
+  {
+    "id": "automation-audit-pilot",
+    "icon": "⚙️",
+    "title": "Automation Audit + Pilot",
+    "summary": "Map bottlenecks across your processes and launch a low‑risk pilot that saves hours per week within 30 days.",
+    "detailedDescription": "I'll audit your tools and workflows (email, spreadsheets, CRM, finance) to identify high‑leverage automation. Then we ship a pilot focused on one measurable result (e.g., weekly reporting, invoicing, or approvals).",
+    "benefits": [
+      "Save 5–20 hours per week",
+      "Reduce manual errors and rework",
+      "Keep humans in control with approvals",
+      "Documented and maintainable automations"
+    ],
+    "bullets": [
+      "Workflow mapping + opportunity scoring",
+      "Pilot automation build with guardrails",
+      "Change management and team training",
+      "Monitoring and fallback procedures"
+    ],
+    "artifacts": [
+      "Automation plan and ROI model",
+      "Pilot implementation",
+      "Training materials",
+      "Ops runbook"
+    ],
+    "timeline": "3–5 weeks",
+    "pricing": "From $8k"
+  },
+  {
+    "id": "analytics-quickstart",
+    "icon": "📊",
+    "title": "Analytics Quickstart",
+    "summary": "Connect your tools and ship dashboards that answer the questions Calgary operators actually ask—fast.",
+    "detailedDescription": "We centralize your data and build dashboards focused on decisions: revenue, pipeline, utilization, and churn risk. Pragmatic setup over heavy platforms—start simple, iterate quickly.",
+    "benefits": [
+      "Visibility into KPIs that matter",
+      "Single source of truth without heavy lift",
+      "Automated refresh and alerting",
+      "Answer ad‑hoc questions with AI"
+    ],
+    "bullets": [
+      "Source connections (SaaS, spreadsheets, DBs)",
+      "Data model + definitions",
+      "KPI dashboards and alerts",
+      "Access controls and governance"
+    ],
+    "artifacts": [
+      "Data model and connectors",
+      "Dashboard pack",
+      "Alerting + SLA docs",
+      "Admin guide"
+    ],
+    "timeline": "2–3 weeks",
+    "pricing": "From $7k"
+  }
+]

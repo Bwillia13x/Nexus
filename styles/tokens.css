@@ -1,0 +1,13 @@
+/* Design tokens for the eggshell palette and glass effects */
+:root {
+  /* Base palette */
+  --eggshell: #F7F5EE;
+  --eggshell-2: #EEEADD;
+  --ink: #0E0F12;
+  --muted: #6E7280;
+
+  /* Glass surfaces */
+  --glass: rgba(255, 255, 255, 0.55);
+  --glass-2: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(10, 10, 10, 0.08);
+}

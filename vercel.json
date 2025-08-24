@@ -10,24 +10,6 @@
     }
   },
   "regions": ["iad1"],
-  "env": {
-    "RESEND_API_KEY": "@resend-api-key",
-    "FROM_EMAIL": "@from-email",
-    "TO_EMAIL": "@to-email",
-    "NEXT_PUBLIC_SITE_URL": "@next-public-site-url",
-    "NEXT_PUBLIC_GA_ID": "@next-public-ga-id",
-    "NEXT_PUBLIC_PLAUSIBLE_DOMAIN": "@next-public-plausible-domain"
-  },
-  "build": {
-    "env": {
-      "RESEND_API_KEY": "@resend-api-key",
-      "FROM_EMAIL": "@from-email",
-      "TO_EMAIL": "@to-email",
-      "NEXT_PUBLIC_SITE_URL": "@next-public-site-url",
-      "NEXT_PUBLIC_GA_ID": "@next-public-ga-id",
-      "NEXT_PUBLIC_PLAUSIBLE_DOMAIN": "@next-public-plausible-domain"
-    }
-  },
   "headers": [
     {
       "source": "/api/(.*)",

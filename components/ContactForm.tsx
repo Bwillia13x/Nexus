@@ -5,17 +5,9 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import toast from 'react-hot-toast';
 import { LoadingButton } from './Loading';
+import { inquirySchema, InquiryPayload } from '@/lib/validation/contact';
 
-const contactSchema = z.object({
-  name: z.string().min(2, 'Name must be at least 2 characters'),
-  email: z.string().email('Please enter a valid email address'),
-  company: z.string().optional(),
-  message: z.string().min(10, 'Message must be at least 10 characters'),
-  // Honeypot field: must be empty if present
-  hp: z.string().optional(),
-});
-
-type ContactFormData = z.infer<typeof contactSchema>;
+type ContactFormData = InquiryPayload;
 
 export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -27,7 +19,7 @@ export function ContactForm() {
     reset,
     watch,
   } = useForm<ContactFormData>({
-    resolver: zodResolver(contactSchema),
+    resolver: zodResolver(inquirySchema),
     mode: 'onChange',
   });
 
@@ -40,22 +32,48 @@ export function ContactForm() {
     const loadingToast = toast.loading('Sending your message...');
 
     try {
+      // Collect additional metadata
+      const urlParams = new URLSearchParams(window.location.search);
+      const enhancedData = {
+        ...data,
+        pilotInterest: urlParams.get('pilot') || undefined,
+        referrerUrl: document.referrer || undefined,
+        utmSource: urlParams.get('utm_source') || undefined,
+        utmCampaign: urlParams.get('utm_campaign') || undefined,
+        utmMedium: urlParams.get('utm_medium') || undefined,
+        pagePath: window.location.pathname,
+      };
+
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: JSON.stringify(enhancedData),
       });
 
       const result = await res.json();
 
       if (res.ok && result.ok) {
-        toast.success(
-          "Message sent successfully! We'll get back to you soon.",
-          {
-            id: loadingToast,
-          }
-        );
+        // Fire analytics event
+        if (typeof window !== 'undefined' && (window as any).dataLayer) {
+          (window as any).dataLayer.push({
+            event: 'lead_submit_success',
+            form_location: window.location.pathname,
+            lead_data: {
+              industry: data.industry,
+              team_size: data.teamSize,
+              budget_range: data.budgetRange,
+              urgency: data.projectUrgency,
+              tool_count: data.currentTools?.length || 0,
+            },
+          });
+        }
+
+        toast.success("Thanks! We'll get back to you the same business day.", {
+          id: loadingToast,
+        });
         reset();
+        // Redirect to thank you page
+        window.location.href = '/thank-you';
       } else {
         toast.error(
           result.error || 'Failed to send message. Please try again.',
@@ -77,9 +95,7 @@ export function ContactForm() {
     }
   };
 
-  const isFormValid =
-    isValid &&
-    Object.values(watchedFields).some(value => value && value.trim() !== '');
+  const isFormValid = isValid;
 
   return (
     <section id="contact" className="section">
@@ -120,12 +136,12 @@ export function ContactForm() {
             <div className="relative z-10">
               {/* Honeypot field – hidden from users, targeted by bots */}
               <div className="hidden" aria-hidden="true">
-                <label htmlFor="hp" className="sr-only">
+                <label htmlFor="honeypot" className="sr-only">
                   Leave this field empty
                 </label>
                 <input
-                  id="hp"
-                  {...register('hp')}
+                  id="honeypot"
+                  {...register('honeypot')}
                   tabIndex={-1}
                   autoComplete="off"
                 />
@@ -134,32 +150,35 @@ export function ContactForm() {
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="md:col-span-2">
                   <label
-                    htmlFor="name"
+                    htmlFor="fullName"
                     className="block text-sm font-medium mb-2 text-ink"
                   >
                     Full Name *
                   </label>
                   <input
-                    {...register('name')}
-                    id="name"
+                    {...register('fullName')}
+                    id="fullName"
                     type="text"
                     autoComplete="name"
                     className={`w-full px-4 py-4 rounded-xl border bg-white/50 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200 ${
-                      errors.name
+                      errors.fullName
                         ? 'border-red-300 focus:ring-red-500 bg-red-50/50'
                         : 'border-glass-border hover:border-primary/30'
                     }`}
                     placeholder="Enter your full name"
-                    aria-describedby={errors.name ? 'name-error' : undefined}
-                    {...(errors.name ? { 'aria-invalid': true } : {})}
+                    aria-describedby={
+                      errors.fullName ? 'fullName-error' : undefined
+                    }
+                    {...(errors.fullName ? { 'aria-invalid': true } : {})}
                   />
-                  {errors.name && (
+                  {errors.fullName && (
                     <p
-                      id="name-error"
+                      id="fullName-error"
                       className="mt-2 text-sm text-red-600 flex items-center gap-1"
                       role="alert"
                     >
-                      <span className="text-lg">⚠️</span> {errors.name.message}
+                      <span className="text-lg">⚠️</span>{' '}
+                      {errors.fullName.message}
                     </p>
                   )}
                 </div>
@@ -213,39 +232,272 @@ export function ContactForm() {
                   />
                 </div>
 
+                <div>
+                  <label
+                    htmlFor="industry"
+                    className="block text-sm font-medium mb-2 text-ink"
+                  >
+                    Industry
+                  </label>
+                  <select
+                    {...register('industry')}
+                    id="industry"
+                    className={`w-full px-4 py-4 rounded-xl border bg-white/50 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary hover:border-primary/30 transition-all duration-200 ${
+                      errors.industry
+                        ? 'border-red-300 focus:ring-red-500 bg-red-50/50'
+                        : 'border-glass-border'
+                    }`}
+                    aria-describedby={
+                      errors.industry ? 'industry-error' : undefined
+                    }
+                    {...(errors.industry ? { 'aria-invalid': true } : {})}
+                  >
+                    <option value="">Select your industry</option>
+                    <option value="Retail">Retail</option>
+                    <option value="Trades/Construction">
+                      Trades/Construction
+                    </option>
+                    <option value="Clinics">Clinics</option>
+                    <option value="Restaurants">Restaurants</option>
+                    <option value="Professional Services">
+                      Professional Services
+                    </option>
+                    <option value="Other">Other</option>
+                  </select>
+                  {errors.industry && (
+                    <p
+                      id="industry-error"
+                      className="mt-2 text-sm text-red-600 flex items-center gap-1"
+                      role="alert"
+                    >
+                      <span className="text-lg">⚠️</span>{' '}
+                      {errors.industry.message}
+                    </p>
+                  )}
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="teamSize"
+                    className="block text-sm font-medium mb-2 text-ink"
+                  >
+                    Team Size
+                  </label>
+                  <select
+                    {...register('teamSize')}
+                    id="teamSize"
+                    className={`w-full px-4 py-4 rounded-xl border bg-white/50 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary hover:border-primary/30 transition-all duration-200 ${
+                      errors.teamSize
+                        ? 'border-red-300 focus:ring-red-500 bg-red-50/50'
+                        : 'border-glass-border'
+                    }`}
+                    aria-describedby={
+                      errors.teamSize ? 'teamSize-error' : undefined
+                    }
+                    {...(errors.teamSize ? { 'aria-invalid': true } : {})}
+                  >
+                    <option value="">Select team size</option>
+                    <option value="1–5">1–5</option>
+                    <option value="6–20">6–20</option>
+                    <option value="21–50">21–50</option>
+                    <option value="51–200">51–200</option>
+                    <option value="200+">200+</option>
+                  </select>
+                  {errors.teamSize && (
+                    <p
+                      id="teamSize-error"
+                      className="mt-2 text-sm text-red-600 flex items-center gap-1"
+                      role="alert"
+                    >
+                      <span className="text-lg">⚠️</span>{' '}
+                      {errors.teamSize.message}
+                    </p>
+                  )}
+                </div>
+
+                <div className="md:col-span-2">
+                  <label className="block text-sm font-medium mb-2 text-ink">
+                    Current Tools (select all that apply)
+                  </label>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                    {[
+                      'Google Workspace',
+                      'Microsoft 365',
+                      'QuickBooks',
+                      'Shopify',
+                      'Stripe',
+                      'Square',
+                      'Slack',
+                      'Teams',
+                      'HubSpot',
+                      'Zapier/Make',
+                    ].map(tool => (
+                      <label
+                        key={tool}
+                        className="flex items-center gap-2 p-3 rounded-lg border border-glass-border bg-white/30 hover:bg-white/50 transition-colors cursor-pointer"
+                      >
+                        <input
+                          type="checkbox"
+                          value={tool}
+                          {...register('currentTools')}
+                          className="w-4 h-4 text-primary border-glass-border rounded focus:ring-primary/50"
+                        />
+                        <span className="text-sm text-ink">{tool}</span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="dataSensitivity"
+                    className="block text-sm font-medium mb-2 text-ink"
+                  >
+                    Data Sensitivity
+                  </label>
+                  <select
+                    {...register('dataSensitivity')}
+                    id="dataSensitivity"
+                    className={`w-full px-4 py-4 rounded-xl border bg-white/50 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary hover:border-primary/30 transition-all duration-200 ${
+                      errors.dataSensitivity
+                        ? 'border-red-300 focus:ring-red-500 bg-red-50/50'
+                        : 'border-glass-border'
+                    }`}
+                    aria-describedby={
+                      errors.dataSensitivity
+                        ? 'dataSensitivity-error'
+                        : undefined
+                    }
+                    {...(errors.dataSensitivity
+                      ? { 'aria-invalid': true }
+                      : {})}
+                  >
+                    <option value="">Select sensitivity level</option>
+                    <option value="Low">Low</option>
+                    <option value="Moderate">Moderate</option>
+                    <option value="High / regulated">High / regulated</option>
+                  </select>
+                  {errors.dataSensitivity && (
+                    <p
+                      id="dataSensitivity-error"
+                      className="mt-2 text-sm text-red-600 flex items-center gap-1"
+                      role="alert"
+                    >
+                      <span className="text-lg">⚠️</span>{' '}
+                      {errors.dataSensitivity.message}
+                    </p>
+                  )}
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="budgetRange"
+                    className="block text-sm font-medium mb-2 text-ink"
+                  >
+                    Budget Range
+                  </label>
+                  <select
+                    {...register('budgetRange')}
+                    id="budgetRange"
+                    className={`w-full px-4 py-4 rounded-xl border bg-white/50 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary hover:border-primary/30 transition-all duration-200 ${
+                      errors.budgetRange
+                        ? 'border-red-300 focus:ring-red-500 bg-red-50/50'
+                        : 'border-glass-border'
+                    }`}
+                    aria-describedby={
+                      errors.budgetRange ? 'budgetRange-error' : undefined
+                    }
+                    {...(errors.budgetRange ? { 'aria-invalid': true } : {})}
+                  >
+                    <option value="">Select budget range</option>
+                    <option value="$3k–$5k">$3k–$5k</option>
+                    <option value="$5k–$9k">$5k–$9k</option>
+                    <option value="$9k–$14k">$9k–$14k</option>
+                    <option value="$14k+">$14k+</option>
+                  </select>
+                  {errors.budgetRange && (
+                    <p
+                      id="budgetRange-error"
+                      className="mt-2 text-sm text-red-600 flex items-center gap-1"
+                      role="alert"
+                    >
+                      <span className="text-lg">⚠️</span>{' '}
+                      {errors.budgetRange.message}
+                    </p>
+                  )}
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="projectUrgency"
+                    className="block text-sm font-medium mb-2 text-ink"
+                  >
+                    Project Urgency
+                  </label>
+                  <select
+                    {...register('projectUrgency')}
+                    id="projectUrgency"
+                    className={`w-full px-4 py-4 rounded-xl border bg-white/50 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary hover:border-primary/30 transition-all duration-200 ${
+                      errors.projectUrgency
+                        ? 'border-red-300 focus:ring-red-500 bg-red-50/50'
+                        : 'border-glass-border'
+                    }`}
+                    aria-describedby={
+                      errors.projectUrgency ? 'projectUrgency-error' : undefined
+                    }
+                    {...(errors.projectUrgency ? { 'aria-invalid': true } : {})}
+                  >
+                    <option value="">Select urgency</option>
+                    <option value="ASAP (<2 wks)">ASAP (&lt;2 wks)</option>
+                    <option value="This Month">This Month</option>
+                    <option value="This Quarter">This Quarter</option>
+                    <option value="Exploring">Exploring</option>
+                  </select>
+                  {errors.projectUrgency && (
+                    <p
+                      id="projectUrgency-error"
+                      className="mt-2 text-sm text-red-600 flex items-center gap-1"
+                      role="alert"
+                    >
+                      <span className="text-lg">⚠️</span>{' '}
+                      {errors.projectUrgency.message}
+                    </p>
+                  )}
+                </div>
+
                 <div className="md:col-span-2">
                   <label
-                    htmlFor="message"
+                    htmlFor="vision"
                     className="block text-sm font-medium mb-2 text-ink"
                   >
                     Your Vision *
                   </label>
                   <textarea
-                    {...register('message')}
-                    id="message"
+                    {...register('vision')}
+                    id="vision"
                     rows={5}
                     className={`w-full px-4 py-4 rounded-xl border bg-white/50 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200 resize-none ${
-                      errors.message
+                      errors.vision
                         ? 'border-red-300 focus:ring-red-500 bg-red-50/50'
                         : 'border-glass-border hover:border-primary/30'
                     }`}
                     placeholder="Tell us about your project, challenges, or how you'd like AI to transform your business..."
                     aria-describedby={
-                      errors.message ? 'message-error' : 'message-help'
+                      errors.vision ? 'vision-error' : 'vision-help'
                     }
-                    {...(errors.message ? { 'aria-invalid': true } : {})}
+                    {...(errors.vision ? { 'aria-invalid': true } : {})}
                   />
-                  <p id="message-help" className="mt-1 text-xs text-muted">
+                  <p id="vision-help" className="mt-1 text-xs text-muted">
                     Be as specific as possible about your goals and challenges
                   </p>
-                  {errors.message && (
+                  {errors.vision && (
                     <p
-                      id="message-error"
+                      id="vision-error"
                       className="mt-2 text-sm text-red-600 flex items-center gap-1"
                       role="alert"
                     >
                       <span className="text-lg">⚠️</span>{' '}
-                      {errors.message.message}
+                      {errors.vision.message}
                     </p>
                   )}
                 </div>
@@ -274,7 +526,7 @@ export function ContactForm() {
                   id="submit-button-help"
                   className="mt-2 text-xs text-center text-muted"
                 >
-                  We'll respond within 2 hours during business days
+                  We'll respond the same business day
                 </p>
               </div>
             </div>
@@ -289,22 +541,22 @@ export function ContactForm() {
               </h3>
               <ul className="space-y-3 text-sm text-muted">
                 <li className="flex items-start gap-3">
-                  <span className="text-primary mt-0.5">✓</span>
+                  <span className="text-primary mt-0.5">✅</span>
+                  <span>Founder-led builds with clear accountability</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-primary mt-0.5">✅</span>
                   <span>
-                    Custom AI solutions tailored to your business needs
+                    Calgary-first, privacy-aware approach (PIPEDA/PIPA)
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-primary mt-0.5">✓</span>
-                  <span>Expert team with 15+ years of AI experience</span>
+                  <span className="text-primary mt-0.5">✅</span>
+                  <span>Fixed-scope pilots with measurable outcomes</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-primary mt-0.5">✓</span>
-                  <span>Enterprise-grade security and compliance</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-primary mt-0.5">✓</span>
-                  <span>24/7 support and ongoing optimization</span>
+                  <span className="text-primary mt-0.5">✅</span>
+                  <span>Plain-English docs and handoff</span>
                 </li>
               </ul>
             </div>
@@ -318,19 +570,19 @@ export function ContactForm() {
                 <div className="flex justify-between items-center p-3 rounded-xl bg-primary/10">
                   <span className="font-medium">Email</span>
                   <span className="text-sm text-primary font-semibold">
-                    2 hours
+                    Same business day
                   </span>
                 </div>
                 <div className="flex justify-between items-center p-3 rounded-xl bg-secondary/10">
                   <span className="font-medium">Phone</span>
                   <span className="text-sm text-secondary font-semibold">
-                    Immediate
+                    By appointment
                   </span>
                 </div>
                 <div className="flex justify-between items-center p-3 rounded-xl bg-primary/10">
                   <span className="font-medium">Consultation</span>
                   <span className="text-sm text-primary font-semibold">
-                    24 hours
+                    Within 48 hours
                   </span>
                 </div>
               </div>
@@ -342,12 +594,20 @@ export function ContactForm() {
                 Your Data is Safe
               </h3>
               <p className="text-sm text-muted leading-relaxed">
-                All communications are encrypted and secure. We comply with
-                GDPR, HIPAA, and other industry standards. Your information is
-                never shared without consent.
+                We design for least-privilege access, keep your private data
+                private, and follow PIPEDA/PIPA norms. NDAs on request. No
+                training on your data.
               </p>
             </div>
           </div>
+        </div>
+
+        {/* Privacy footnote */}
+        <div className="mt-6 text-center">
+          <p className="text-xs text-muted">
+            We follow PIPEDA and Alberta's PIPA norms. NDA on request. We do not
+            train models on your private data.
+          </p>
         </div>
       </div>
     </section>

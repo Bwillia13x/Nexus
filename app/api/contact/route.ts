@@ -1,116 +1,151 @@
 import { NextResponse } from 'next/server';
-import * as z from 'zod';
-import { Resend } from 'resend';
+import { inquirySchema, InquiryPayload } from '@/lib/validation/contact';
+import { env } from '@/lib/env';
+import { rateLimitOk } from '@/lib/rate-limit';
+import { sendLeadEmail } from '@/lib/mail';
+import { postSlack } from '@/lib/slack';
 
 export const runtime = 'nodejs';
 
-const contactSchema = z.object({
-  name: z.string().min(2, 'Name must be at least 2 characters'),
-  email: z.string().email('Please enter a valid email address'),
-  company: z.string().optional(),
-  message: z.string().min(10, 'Message must be at least 10 characters'),
-});
-
 export async function POST(req: Request) {
-  try {
-    const data: any = await req.json();
+  const ip =
+    req.headers.get('x-forwarded-for')?.split(',')[0] ??
+    req.headers.get('x-real-ip') ??
+    '0.0.0.0';
 
-    // Honeypot: if hidden field is filled, pretend success
-    if (typeof data?.hp === 'string' && data.hp.trim()) {
-      return NextResponse.json({ ok: true });
+  try {
+    const body = await req.json().catch(() => null);
+    if (!body) {
+      return NextResponse.json(
+        { error: 'Invalid JSON payload' },
+        { status: 400 }
+      );
     }
 
-    const parsed = contactSchema.parse(data);
-
-    // Basic cookie-based rate limiting (30s window)
-    const cookieHeader = req.headers.get('cookie') || '';
-    const lastMatch = cookieHeader.match(/(?:^|; )contact_last=(\d+)/);
-    const lastTs = lastMatch ? Number(lastMatch[1]) : 0;
-    const now = Date.now();
-    const WINDOW_MS = 30_000;
-    if (lastTs && now - lastTs < WINDOW_MS) {
+    // Rate limiting (5 requests per 10 minutes per IP)
+    if (!(await rateLimitOk(ip, 5, 10 * 60 * 1000))) {
       return NextResponse.json(
-        { ok: false, error: 'Too many requests. Please wait a moment.' },
+        { error: 'Too many requests. Please try again later.' },
         { status: 429 }
       );
     }
 
-    // Allow disabling email sending via env (useful for CI/smoke tests)
-    const disableEmail =
-      process.env.CONTACT_DISABLE_EMAIL === '1' ||
-      process.env.CONTACT_DISABLE_EMAIL === 'true';
+    // Validate payload with enhanced schema
+    const parsed = inquirySchema.safeParse(body);
+    if (!parsed.success) {
+      console.error('Validation failed:', parsed.error.issues);
+      return NextResponse.json(
+        { error: 'Invalid payload. Please check your inputs and try again.' },
+        { status: 400 }
+      );
+    }
 
-    // Initialize Resend client
-    const apiKey = process.env.RESEND_API_KEY;
-    const resend = apiKey ? new Resend(apiKey) : null;
-
-    // Create email content
-    const emailHtml = `
-      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <h2 style="color: #333; border-bottom: 2px solid #007bff; padding-bottom: 10px;">New Contact Form Submission</h2>
-        <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
-          <p style="margin: 10px 0;"><strong>Name:</strong> ${parsed.name}</p>
-          <p style="margin: 10px 0;"><strong>Email:</strong> <a href="mailto:${parsed.email}" style="color: #007bff;">${parsed.email}</a></p>
-          ${parsed.company ? `<p style=\"margin: 10px 0;\"><strong>Company:</strong> ${parsed.company}</p>` : ''}
-          <p style="margin: 10px 0;"><strong>Message:</strong></p>
-          <div style="background-color: white; padding: 15px; border-radius: 5px; border-left: 4px solid #007bff; margin-top: 10px;">
-            ${(parsed.message || '').replace(/\n/g, '<br>')}
-          </div>
-        </div>
-        <p style="color: #666; font-size: 12px; margin-top: 20px;">
-          This email was sent from the contact form on your website.
-        </p>
-      </div>
-    `;
-
-    // Prepare response and set rate-limit cookie
-    const makeOk = (payload?: Record<string, unknown>) => {
-      const res = NextResponse.json({ ok: true, ...(payload || {}) });
-      res.cookies.set('contact_last', String(now), {
-        httpOnly: true,
-        sameSite: 'lax',
-        maxAge: 30,
-        path: '/',
-      });
-      return res;
+    const inquiry: InquiryPayload & {
+      ip: string;
+      ua: string;
+      timestamp: Date;
+      hasRoiParams: boolean;
+      utmCount: number;
+    } = {
+      ...parsed.data,
+      ip,
+      ua: req.headers.get('user-agent') ?? '',
+      timestamp: new Date(),
+      hasRoiParams: !!(
+        parsed.data.roi &&
+        Object.values(parsed.data.roi).some(v => v !== undefined)
+      ),
+      utmCount: parsed.data.utm ? Object.keys(parsed.data.utm).length : 0,
     };
 
-    if (disableEmail) {
-      console.warn(
-        'Email sending disabled via CONTACT_DISABLE_EMAIL; skipping send.'
-      );
-      return makeOk({ skipped: 'email' });
+    // Enhanced anti-spam checks
+    if (inquiry.hp !== undefined && inquiry.hp !== '') {
+      console.log('Honeypot triggered for IP:', ip);
+      return NextResponse.json({ ok: true }, { status: 200 });
     }
 
-    if (!resend || !process.env.TO_EMAIL) {
-      console.warn(
-        'Email not configured (RESEND_API_KEY or TO_EMAIL missing); skipping email send.'
+    if (inquiry.tts < 5) {
+      console.log(
+        'Time-to-submit too quick:',
+        inquiry.tts,
+        'seconds for IP:',
+        ip
       );
-      return makeOk();
-    }
-
-    // Send email via Resend
-    const { data: emailData, error } = await resend.emails.send({
-      from: process.env.FROM_EMAIL || 'noreply@yourdomain.com',
-      to: process.env.TO_EMAIL || 'your-email@yourdomain.com',
-      subject: 'New Contact Form Submission - Nexus AI',
-      html: emailHtml,
-    });
-
-    if (error) {
-      console.error('Email sending failed:', error);
       return NextResponse.json(
-        { ok: false, error: 'Failed to send email' },
-        { status: 500 }
+        {
+          error:
+            'Form submitted too quickly. Please take a moment to complete the form.',
+        },
+        { status: 400 }
       );
     }
 
-    console.log('Contact form email sent successfully:', emailData);
-    return makeOk({ emailId: emailData?.id });
+    // Basic bot detection patterns
+    const suspiciousPatterns = [
+      /bot|crawler|spider|scraper/i,
+      /http[s]?:\/\//i,
+      /<script|javascript:|on\w+=/i,
+    ];
+
+    const textContent = [
+      inquiry.fullName,
+      inquiry.company || '',
+      inquiry.vision,
+    ].join(' ');
+
+    if (suspiciousPatterns.some(pattern => pattern.test(textContent))) {
+      console.log('Suspicious content detected for IP:', ip);
+      return NextResponse.json({ ok: true }, { status: 200 });
+    }
+
+    // Dispatch based on configuration
+    const dispatchPromises = [];
+
+    if (env.RESEND_API_KEY && env.CONTACT_TO_EMAIL) {
+      dispatchPromises.push(
+        sendLeadEmail(inquiry).catch(error => {
+          console.error('Email dispatch failed:', error);
+        })
+      );
+    }
+
+    if (env.SLACK_WEBHOOK_URL) {
+      dispatchPromises.push(
+        postSlack(inquiry).catch(error => {
+          console.error('Slack dispatch failed:', error);
+        })
+      );
+    }
+
+    // If neither is configured, log to console with enhanced details
+    if (!env.RESEND_API_KEY && !env.SLACK_WEBHOOK_URL) {
+      console.log('DEV_STORE_ONLY - New inquiry:', {
+        name: inquiry.fullName,
+        email: inquiry.email,
+        company: inquiry.company,
+        industry: inquiry.industry,
+        teamSize: inquiry.teamSize,
+        tools: inquiry.currentTools?.length || 0,
+        sensitivity: inquiry.dataSensitivity,
+        budget: inquiry.budgetRange,
+        urgency: inquiry.projectUrgency,
+        hasRoiParams: inquiry.hasRoiParams,
+        utmCount: inquiry.utmCount,
+        tts: inquiry.tts,
+        vision: inquiry.vision.substring(0, 150) + '...',
+        ip,
+        ua: inquiry.ua.substring(0, 100) + '...',
+      });
+    }
+
+    // Wait for dispatches to complete (but don't fail the request)
+    await Promise.allSettled(dispatchPromises);
+
+    return NextResponse.json({ ok: true });
   } catch (err) {
     console.error('Contact form error:', err);
     return NextResponse.json(
-      { ok: false, error: 'Internal server error' },
+      { error: 'Internal server error. Please try again later.' },
       { status: 500 }
     );
   }

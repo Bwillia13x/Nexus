@@ -26,6 +26,13 @@ export function Nav() {
         />
       </Link>
 
+      <Link
+        href="/contact"
+        className="btn-primary text-sm font-semibold relative z-10 hover:scale-105 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell"
+      >
+        Book a call
+      </Link>
+
       <ul className="flex gap-6 md:gap-8 text-sm relative z-10">
         <li>
           <Link

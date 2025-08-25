@@ -3,81 +3,120 @@
     "id": "ai-assistant-setup",
     "icon": "🤖",
     "title": "AI Assistant Setup",
-    "summary": "Deploy GPT-powered assistants for support, sales, and internal teams. Calgary-ready, privacy-aware, and tailored to your workflows.",
+    "summary": "Deploy a branded assistant for customers or staff with safe access to your knowledge and tools. Guardrails first; measurable impact next.",
     "detailedDescription": "We integrate AI assistants into your website, CRM, and internal tools. Expect trained responses on your data, handoffs to humans, and analytics on outcomes. Designed for Calgary SMBs with sensible safeguards and fast iteration.",
-    "benefits": [
-      "Deflect 40–70% of repetitive tickets",
-      "Faster response times across channels (web, SMS, email)",
-      "Private deployments and data controls",
-      "Measurable ROI within weeks"
+    "successMetrics": [
+      "Reduce repetitive tickets (baseline: last 4 weeks; track deflection %)",
+      "Faster response times across web/SMS/email (median/95th percentile)",
+      "Satisfaction (CSAT for assistant interactions)"
     ],
     "bullets": [
-      "Assistant persona, tone, and boundaries",
-      "Knowledge ingestion from docs and tools",
-      "Escalation rules and human-in-the-loop",
-      "Channel integration (web widget, SMS, email)"
+      "Assistant persona, tone, and guardrails",
+      "Knowledge ingestion (docs/site/FAQs)",
+      "Escalation rules & human-in-the-loop",
+      "Channel integration (web widget, SMS, optionally email)"
     ],
     "artifacts": [
-      "Assistant config + prompts",
-      "Integration docs and API keys",
-      "Analytics dashboard",
-      "Runbook for updates"
+      "Assistant config & prompts",
+      "Integration docs & API keys",
+      "Analytics dashboard (volume, outcomes)",
+      "Runbook for updates & retraining"
     ],
     "timeline": "2–4 weeks",
-    "pricing": "From $6k"
+    "pricing": "$5k–$9k",
+    "clientInputs": [
+      "Access to knowledge base & brand guidelines",
+      "Sample transcripts/FAQs",
+      "Approval for escalation paths"
+    ],
+    "outOfScope": [
+      "Custom model training from scratch",
+      "Full CRM migration or re-platforming"
+    ],
+    "risksMitigations": [
+      "Data gaps → run 'unknown intent' capture week 1",
+      "Hallucinations → retrieval-first design + fallbacks",
+      "Change adoption → short training video + cheatsheet"
+    ]
   },
   {
     "id": "automation-audit-pilot",
     "icon": "⚙️",
     "title": "Automation Audit + Pilot",
-    "summary": "Map bottlenecks across your processes and launch a low‑risk pilot that saves hours per week within 30 days.",
+    "summary": "Map bottlenecks across your processes and ship a low-risk pilot that saves hours each week—then decide what to scale.",
     "detailedDescription": "I'll audit your tools and workflows (email, spreadsheets, CRM, finance) to identify high‑leverage automation. Then we ship a pilot focused on one measurable result (e.g., weekly reporting, invoicing, or approvals).",
-    "benefits": [
-      "Save 5–20 hours per week",
-      "Reduce manual errors and rework",
-      "Keep humans in control with approvals",
-      "Documented and maintainable automations"
+    "successMetrics": [
+      "Hours saved per week (time study on 2–3 reps)",
+      "Error rate reduction on the targeted workflow",
+      "Cycle time (before/after for one measurable step)"
     ],
     "bullets": [
-      "Workflow mapping + opportunity scoring",
+      "Workflow mapping & opportunity scoring",
       "Pilot automation build with guardrails",
-      "Change management and team training",
+      "Change management & team training",
       "Monitoring and fallback procedures"
     ],
     "artifacts": [
-      "Automation plan and ROI model",
-      "Pilot implementation",
-      "Training materials",
-      "Ops runbook"
+      "Automation plan with ROI model",
+      "Pilot implementation (1 targeted process)",
+      "Training materials (video + quick guide)",
+      "Ops runbook + incident playbook"
     ],
-    "timeline": "3–5 weeks",
-    "pricing": "From $8k"
+    "timeline": "3–6 weeks",
+    "pricing": "$7k–$14k",
+    "clientInputs": [
+      "Tool access (spreadsheets/CRM/finance)",
+      "2–3 SMEs for interviews & testing",
+      "Approval on acceptance criteria"
+    ],
+    "outOfScope": [
+      "Multi-system enterprise re-architecture",
+      "Ongoing ops beyond pilot (unless Care Plan)"
+    ],
+    "risksMitigations": [
+      "Tool limits/API quotas → pre-flight checks week 1",
+      "Hidden dependencies → process dry-runs with SMEs",
+      "Change resistance → involve the process owner early"
+    ]
   },
   {
     "id": "analytics-quickstart",
     "icon": "📊",
     "title": "Analytics Quickstart",
-    "summary": "Connect your tools and ship dashboards that answer the questions Calgary operators actually ask—fast.",
+    "summary": "Connect your data and ship dashboards that answer the questions Calgary operators actually ask—fast.",
     "detailedDescription": "We centralize your data and build dashboards focused on decisions: revenue, pipeline, utilization, and churn risk. Pragmatic setup over heavy platforms—start simple, iterate quickly.",
-    "benefits": [
-      "Visibility into KPIs that matter",
-      "Single source of truth without heavy lift",
-      "Automated refresh and alerting",
-      "Answer ad‑hoc questions with AI"
+    "successMetrics": [
+      "Decision latency (time to answer top 5 questions)",
+      "Adoption (weekly active viewers)",
+      "Data trust (fewer ad-hoc extracts; one source of truth)"
     ],
     "bullets": [
       "Source connections (SaaS, spreadsheets, DBs)",
       "Data model + definitions",
       "KPI dashboards and alerts",
-      "Access controls and governance"
+      "Access controls & governance notes"
     ],
     "artifacts": [
-      "Data model and connectors",
-      "Dashboard pack",
+      "Data model & connectors",
+      "Dashboard pack (6–8 KPIs)",
       "Alerting + SLA docs",
-      "Admin guide"
+      "Admin & usage guide"
     ],
     "timeline": "2–3 weeks",
-    "pricing": "From $7k"
+    "pricing": "$6k–$10k",
+    "clientInputs": [
+      "Read access to systems",
+      "KPI definitions & thresholds",
+      "Champion user for feedback"
+    ],
+    "outOfScope": [
+      "Enterprise data warehouse build",
+      "Company-wide BI governance program"
+    ],
+    "risksMitigations": [
+      "Dirty/fragmented data → light transforms + data dictionary",
+      "Scope creep → cap to 6–8 KPIs in the pilot",
+      "Tool sprawl → prefer existing stack before adding new BI"
+    ]
   }
 ]

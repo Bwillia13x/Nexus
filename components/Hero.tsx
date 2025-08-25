@@ -4,15 +4,9 @@ import Image from 'next/image';
 export function Hero() {
   return (
     <section
-      className="relative flex min-h-[80vh] items-center justify-center section pt-8"
+      className="relative flex min-h-[84vh] items-center justify-center section pt-8"
       id="top"
     >
-      {/* Orbs for subtle floating background */}
-      <div className="absolute inset-0 overflow-hidden -z-10">
-        <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-gradient-to-br from-primary/40 via-secondary/30 to-transparent filter blur-2xl animate-pulse" />
-        <div className="absolute -bottom-20 -right-20 w-80 h-80 rounded-full bg-gradient-to-br from-secondary/40 via-primary/30 to-transparent filter blur-2xl animate-pulse" />
-      </div>
-
       <div className="container-wide max-w-3xl text-center">
         {/* Logo at the top */}
         <div className="flex justify-center mb-6">
@@ -26,7 +20,7 @@ export function Hero() {
           />
         </div>
 
-        <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6 gradient-title">
+        <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6 gradient-title-animated">
           Calgary AI Consulting for SMBs
         </h1>
         <p className="text-lg md:text-xl text-muted mb-8">
@@ -40,6 +34,9 @@ export function Hero() {
           <Link href="#services" className="btn-outline">
             What I do
           </Link>
+        </div>
+        <div className="scroll-cue" aria-hidden="true">
+          <span className="icon text-muted text-sm">Scroll</span>
         </div>
       </div>
     </section>

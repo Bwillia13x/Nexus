@@ -22,7 +22,7 @@ export function ServicesOverview() {
   return (
     <section id="services" className="section">
       <div className="container-wide text-center mb-12">
-        <h2 className="text-4xl font-bold mb-4 gradient-title">
+        <h2 className="text-4xl font-bold mb-4 gradient-title-animated">
           What I Do for Calgary SMBs
         </h2>
         <p className="max-w-xl mx-auto text-muted">

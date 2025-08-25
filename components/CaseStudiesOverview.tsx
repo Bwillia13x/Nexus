@@ -23,7 +23,7 @@ export function CaseStudiesOverview() {
   return (
     <section id="cases" className="section">
       <div className="container-wide text-center mb-12">
-        <h2 className="text-4xl font-bold mb-4 gradient-title">
+        <h2 className="text-4xl font-bold mb-4 gradient-title-animated">
           Calgary Case Studies
         </h2>
         <p className="max-w-xl mx-auto text-muted">

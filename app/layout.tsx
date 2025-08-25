@@ -82,7 +82,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       </head>
       <body className="relative antialiased">
         <Nav />
-        <main className="pt-8">{children}</main>
+        <main className="pt-32">{children}</main>
         <Footer />
       </body>
     </html>

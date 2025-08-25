@@ -23,17 +23,23 @@ interface Service {
 export default function ServicesPage() {
   const list = services as unknown as Service[];
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
+      {/* Unified Background System */}
+      <div className="fixed inset-0 -z-10 overflow-hidden ambient-orbs">
+        {/* Primary background orb - top left */}
+        <div className="ambient-orb absolute -top-40 -left-40 w-[780px] h-[780px] rounded-full bg-gradient-to-br from-primary/25 via-primary/10 to-transparent" />
+
+        {/* Secondary background orb - bottom right */}
+        <div className="ambient-orb ambient-orb--slow absolute -bottom-40 -right-40 w-[620px] h-[620px] rounded-full bg-gradient-to-br from-secondary/25 via-secondary/10 to-transparent" />
+
+        {/* Vignette overlay for contrast */}
+        <div className="ambient-vignette" />
+      </div>
+
       {/* Hero Section with Background Effects */}
       <section className="relative py-24 px-4 overflow-hidden">
-        {/* Background Orbs */}
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute top-20 left-10 w-72 h-72 rounded-full bg-gradient-to-br from-primary/20 via-secondary/10 to-transparent filter blur-3xl animate-pulse" />
-          <div className="absolute bottom-20 right-10 w-96 h-96 rounded-full bg-gradient-to-br from-secondary/20 via-primary/10 to-transparent filter blur-3xl animate-pulse" />
-        </div>
-
         <div className="text-center mb-20">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-b from-black via-black/70 to-black/50 text-transparent bg-clip-text">
+          <h1 className="text-5xl md:text-7xl font-bold mb-10 gradient-title-animated">
             Calgary AI Services for SMBs
           </h1>
           <p className="max-w-3xl mx-auto text-lg md:text-xl text-muted leading-relaxed">

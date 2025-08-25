@@ -85,7 +85,7 @@ export function ContactForm() {
     <section id="contact" className="section">
       <div className="container-wide">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 gradient-title">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 gradient-title-animated">
             Begin Your AI Transformation
           </h2>
           <p className="text-xl text-muted max-w-2xl mx-auto mb-8">
@@ -151,7 +151,7 @@ export function ContactForm() {
                     }`}
                     placeholder="Enter your full name"
                     aria-describedby={errors.name ? 'name-error' : undefined}
-                    aria-invalid={errors.name ? 'true' : 'false'}
+                    {...(errors.name ? { 'aria-invalid': true } : {})}
                   />
                   {errors.name && (
                     <p
@@ -183,7 +183,7 @@ export function ContactForm() {
                     }`}
                     placeholder="your.email@company.com"
                     aria-describedby={errors.email ? 'email-error' : undefined}
-                    aria-invalid={errors.email ? 'true' : 'false'}
+                    {...(errors.email ? { 'aria-invalid': true } : {})}
                   />
                   {errors.email && (
                     <p
@@ -233,7 +233,7 @@ export function ContactForm() {
                     aria-describedby={
                       errors.message ? 'message-error' : 'message-help'
                     }
-                    aria-invalid={errors.message ? 'true' : 'false'}
+                    {...(errors.message ? { 'aria-invalid': true } : {})}
                   />
                   <p id="message-help" className="mt-1 text-xs text-muted">
                     Be as specific as possible about your goals and challenges

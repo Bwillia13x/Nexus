@@ -49,7 +49,7 @@ export const heroContent = {
   },
   secondaryCta: {
     label: 'See 30-day pilot menu',
-    href: '/pilots#menu',
+    href: '/services#services',
   },
 };
 

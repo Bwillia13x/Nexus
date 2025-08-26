@@ -20,7 +20,9 @@ export default function HomeHero() {
       id="top"
     >
       {/* Background gradient */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-brand-500/5 via-transparent to-transparent" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-brand-500/10 via-transparent to-secondary/5" />
+      {/* Mesh overlay for subtle color fields */}
+      <div className="absolute inset-0 -z-10 hero-mesh" />
 
       <div className="mx-auto max-w-container px-4">
         <div className="text-center">
@@ -29,9 +31,9 @@ export default function HomeHero() {
             <Image
               src="/images/Nexus_Logo.png"
               alt="Nexus AI Logo"
-              width={400}
-              height={160}
-              className="h-28 md:h-36 lg:h-40 w-auto"
+              width={720}
+              height={260}
+              className="h-40 md:h-56 lg:h-64 w-auto"
               priority
             />
           </div>
@@ -51,7 +53,7 @@ export default function HomeHero() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
               <Link
                 href={heroContent.primaryCta.href}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-brand-600 text-white font-semibold shadow-elev hover:shadow-elev-lg hover:translate-y-[-1px] transition-all duration-200 min-w-[200px] sm:min-w-[240px] text-base sm:text-lg"
+                className="btn-primary shadow-elev hover:shadow-elev-lg min-w-[200px] sm:min-w-[240px] text-base sm:text-lg"
                 onClick={handlePrimaryCtaClick}
               >
                 {heroContent.primaryCta.label}
@@ -59,7 +61,7 @@ export default function HomeHero() {
               </Link>
               <Link
                 href={heroContent.secondaryCta.href}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-brand-500/30 text-brand-600 bg-white/80 backdrop-blur-sm font-semibold shadow-elev hover:shadow-elev-lg hover:translate-y-[-1px] transition-all duration-200 min-w-[200px] sm:min-w-[240px] text-base sm:text-lg"
+                className="btn-secondary shadow-elev hover:shadow-elev-lg min-w-[200px] sm:min-w-[240px] text-base sm:text-lg"
                 onClick={handleSecondaryCtaClick}
               >
                 See 30-day pilot menu

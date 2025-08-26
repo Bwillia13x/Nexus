@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
+      },
       maxWidth: {
         container: '1120px',
       },
@@ -24,17 +27,24 @@ module.exports = {
       colors: {
         ink: 'var(--ink)',
         muted: 'var(--muted)',
+        'muted-foreground': 'var(--muted)',
+        border: 'var(--border)',
+        surface: 'var(--surface)',
+        canvas: 'var(--canvas)',
         eggshell: 'var(--eggshell)',
         'eggshell-2': 'var(--eggshell-2)',
         glass: 'var(--glass)',
         'glass-2': 'var(--glass-2)',
+        'glass-3': 'var(--glass-3)',
         'glass-border': 'var(--glass-border)',
+        'glass-border-hover': 'var(--glass-border-hover)',
         brand: {
           500: '#6f69f6',
           600: '#5c55f1',
         },
-        primary: '#667eea',
-        secondary: '#764ba2',
+        primary: '#6f69f6',
+        'primary-hover': '#5c55f1',
+        secondary: '#a06ef6',
       },
     },
   },

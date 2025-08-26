@@ -82,7 +82,7 @@ export function Footer() {
                 href={bookingUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center px-6 py-3 rounded-full text-white bg-gradient-to-r from-primary to-secondary shadow-lg hover:-translate-y-1 hover:shadow-xl transition-all duration-300 font-semibold"
+                className="btn-primary"
               >
                 Book a call <span className="ml-2">→</span>
               </a>

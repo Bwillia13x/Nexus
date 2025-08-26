@@ -43,7 +43,7 @@ export const heroContent = {
     'Fast, practical integrations—AI Assistant Setup, Automation Audit + Pilot, and Analytics Quickstart. Fixed-scope, measurable outcomes, Calgary-ready privacy.',
   badges: ['Founder-led', 'PIPEDA/PIPA aligned', 'Fixed-scope pilots'],
   primaryCta: { text: 'Book a call', href: '/contact' },
-  secondaryCta: { text: 'See pilot scope →', href: '/pilots#menu' },
+  secondaryCta: { text: 'See pilot scope →', href: '/services#services' },
 };
 
 // Process steps content

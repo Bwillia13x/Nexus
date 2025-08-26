@@ -22,12 +22,12 @@ function PilotCard({ pilot, index }: PilotCardProps) {
 
   return (
     <article
-      className="rounded-2xl border bg-white shadow-elev hover:shadow-elev-lg hover:ring-2 hover:ring-brand-500/30 transition-all duration-300 focus-within:shadow-elev-lg focus-within:ring-2 focus-within:ring-brand-500/40 overflow-hidden group h-full flex flex-col"
+      className="card-glass glass-liquid overflow-hidden group h-full flex flex-col focus-within:ring-2 focus-within:ring-primary/30"
       role="article"
       aria-labelledby={`pilot-${pilot.id}-title`}
     >
       {/* Header with gradient background and icon */}
-      <div className="h-36 md:h-40 bg-gradient-to-br from-brand-500 to-brand-600 flex items-center justify-center shadow-lg">
+      <div className="h-36 md:h-40 bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-lg">
         <div className="text-5xl md:text-6xl" aria-hidden="true">
           {pilot.id === 'assistant' ? '🤖' : pilot.id === 'ops' ? '⚙️' : '📊'}
         </div>
@@ -118,7 +118,7 @@ function PilotCard({ pilot, index }: PilotCardProps) {
         <div className="mt-auto">
           <Link
             href={pilot.cta.href}
-            className="inline-flex items-center justify-center gap-2 w-full px-6 py-3 rounded-full bg-brand-600 text-white font-semibold shadow-elev hover:shadow-elev-lg hover:translate-y-[-1px] transition-all duration-200 text-center text-base"
+            className="btn-primary w-full text-base"
             onClick={handleCtaClick}
             aria-describedby={`pilot-${pilot.id}-cta-desc`}
           >
@@ -159,10 +159,7 @@ export default function CaseStudiesSection() {
 
         {/* CTA section */}
         <div className="text-center">
-          <Link
-            href="/pilots#menu"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-600 text-white font-semibold shadow-elev hover:shadow-elev-lg hover:translate-y-[-1px] transition-all duration-200 text-lg"
-          >
+          <Link href="/services#services" className="btn-primary text-lg">
             See pilot scope & pricing <span>→</span>
           </Link>
         </div>

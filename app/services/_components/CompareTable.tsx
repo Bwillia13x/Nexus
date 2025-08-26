@@ -12,14 +12,14 @@ export default function CompareTable() {
 
         {/* Desktop table */}
         <div className="hidden md:block overflow-x-auto">
-          <div className="shadow-elev rounded-lg overflow-hidden min-w-full">
+          <div className="rounded-lg overflow-hidden min-w-full border border-glass-border bg-glass-2 backdrop-blur-xl shadow-elev">
             <table className="w-full text-sm">
               <caption className="sr-only">{compareTableData.caption}</caption>
               <thead className="bg-gradient-to-r from-brand-500/10 to-brand-500/0">
                 <tr>
                   <th
                     scope="col"
-                    className="sticky left-0 bg-white/95 backdrop-blur z-10 p-4 text-left font-semibold min-w-[200px]"
+                    className="sticky left-0 bg-glass-3 backdrop-blur z-10 p-4 text-left font-semibold min-w-[200px]"
                   >
                     {/* Empty header for row labels */}
                   </th>
@@ -39,7 +39,7 @@ export default function CompareTable() {
                   <tr key={row.label} className="border-t border-gray-100">
                     <th
                       scope="row"
-                      className="sticky left-0 bg-white/95 backdrop-blur z-10 p-4 text-muted-foreground font-medium text-left"
+                      className="sticky left-0 bg-glass-3 backdrop-blur z-10 p-4 text-muted-foreground font-medium text-left"
                     >
                       {row.label}
                     </th>
@@ -58,10 +58,7 @@ export default function CompareTable() {
         {/* Mobile accordion */}
         <div className="md:hidden space-y-4">
           {compareTableData.columns.map((service, serviceIndex) => (
-            <div
-              key={service}
-              className="rounded-lg border bg-white shadow-elev p-4"
-            >
+            <div key={service} className="card-glass glass-liquid p-4">
               <h3 className="font-semibold mb-4 text-center">{service}</h3>
               <div className="space-y-3">
                 {compareTableData.rows.map((row, rowIndex) => (

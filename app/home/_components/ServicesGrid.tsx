@@ -22,11 +22,11 @@ export default function ServicesGrid() {
           {servicesContent.items.map((service, index) => (
             <article
               key={service.title}
-              className="p-6 rounded-lg border bg-white shadow-elev hover:shadow-elev-lg hover:ring-2 hover:ring-brand-500/30 transition-all duration-300 focus-within:shadow-elev-lg focus-within:ring-2 focus-within:ring-brand-500/40 h-full flex flex-col"
+              className="card-glass glass-liquid h-full flex flex-col focus-within:ring-2 focus-within:ring-primary/30"
               role="listitem"
             >
               {/* Service icon */}
-              <div className="w-14 h-14 mb-6 flex items-center justify-center rounded-2xl bg-gradient-to-r from-brand-500 to-brand-600 text-white text-3xl shadow-lg">
+              <div className="w-14 h-14 mb-6 flex items-center justify-center rounded-2xl bg-gradient-to-r from-primary to-secondary text-white text-3xl shadow-lg">
                 {index === 0 ? '🤖' : index === 1 ? '⚙️' : '📊'}
               </div>
 

@@ -14,10 +14,6 @@ const nextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
   // Remove deprecated swcMinify option
-  // Enable experimental features for better performance
-  experimental: {
-    optimizePackageImports: ['framer-motion'],
-  },
   // Fix lockfile warning
   outputFileTracingRoot: process.cwd(),
 };

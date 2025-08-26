@@ -23,8 +23,8 @@ export type AboutContent = {
   security: { items: string[] };
   faq: { q: string; a: string }[];
   resources: { title: string; href: string; note?: string }[];
-  media: { title: string; note: string }[];
-  speaking: { title: string; venue: string; meta: string[]; copy: string }[];
+  media: { title: string; note: string };
+  speaking: { title: string; venue: string; meta: string[]; copy: string };
 };
 
 // Transform existing content to match new structure

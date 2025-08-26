@@ -148,7 +148,7 @@ export default function ThankYouPage() {
               Questions? Reply to the confirmation email or reach out at{' '}
               <a
                 href="mailto:hello@nexusai.com"
-                className="text-primary hover:underline"
+                className="text-primary underline hover:underline"
               >
                 hello@nexusai.com
               </a>

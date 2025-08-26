@@ -89,7 +89,7 @@ export function SuccessState({ onBookCall, onSeePilots }: SuccessStateProps) {
       <p className="mt-6 text-sm text-muted">
         Or check out our{' '}
         <a
-          href="/pilots"
+          href="/services#services"
           className="font-medium underline underline-offset-2 hover:text-primary transition-colors"
         >
           pilot menu

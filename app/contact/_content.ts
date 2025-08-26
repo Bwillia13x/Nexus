@@ -134,7 +134,7 @@ export const CONTACT_CONTENT = {
       },
       seePilots: {
         text: 'See pilot menu',
-        href: '/pilots#menu',
+        href: '/services#services',
       },
     },
   },

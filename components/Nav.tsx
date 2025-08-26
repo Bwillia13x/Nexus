@@ -2,14 +2,30 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 export function Nav() {
   const pathname = usePathname();
   const isActive = (href: string) =>
     href === '/' ? pathname === '/' : pathname.startsWith(href);
 
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   return (
-    <nav className="fixed top-5 left-1/2 -translate-x-1/2 z-50 bg-glass backdrop-blur-xl border border-glass-border rounded-full px-6 py-3 flex gap-6 md:gap-8 items-center shadow-xl hover:shadow-2xl transition-all duration-500 group">
+    <nav
+      id="navigation"
+      aria-label="Primary"
+      className={`fixed top-5 left-1/2 -translate-x-1/2 z-50 border border-glass-border rounded-full px-6 py-3 flex gap-6 md:gap-8 items-center backdrop-blur-xl transition-all duration-500 group ${
+        scrolled ? 'bg-glass-2 shadow-elev-lg' : 'bg-glass shadow-elev'
+      } hover:shadow-elev-lg`}
+      data-scrolled={scrolled}
+    >
       <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-secondary/5 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full" />
 
       <Link

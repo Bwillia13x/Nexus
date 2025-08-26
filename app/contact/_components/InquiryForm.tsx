@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { useForm, Controller } from 'react-hook-form';
+import { useForm, Controller, type SubmitHandler } from 'react-hook-form';
+import type { Resolver } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { inquirySchema, InquiryPayload } from '@/lib/validation/contact';
 import { CONTACT_CONTENT } from '../_content';
@@ -26,7 +27,7 @@ export function InquiryForm({ onSuccess }: InquiryFormProps) {
   const [hasRoiParams, setHasRoiParams] = useState(false);
 
   const form = useForm<InquiryPayload>({
-    resolver: zodResolver(inquirySchema),
+    resolver: zodResolver(inquirySchema) as unknown as Resolver<InquiryPayload>,
     mode: 'onChange',
     defaultValues: {
       fullName: '',
@@ -131,7 +132,7 @@ export function InquiryForm({ onSuccess }: InquiryFormProps) {
     }
   }, [setValue]);
 
-  const onSubmit = async (data: InquiryPayload) => {
+  const onSubmit: SubmitHandler<InquiryPayload> = async data => {
     if (isSubmitting) return;
 
     setIsSubmitting(true);

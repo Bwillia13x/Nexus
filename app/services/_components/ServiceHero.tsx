@@ -23,10 +23,7 @@ export default function ServiceHero() {
         {/* Badges */}
         <div className="mt-5 flex flex-wrap justify-center gap-2">
           {heroContent.badges.map(badge => (
-            <span
-              key={badge}
-              className="rounded-full border px-3 py-1 text-sm bg-white/80 shadow"
-            >
+            <span key={badge} className="chip">
               {badge}
             </span>
           ))}
@@ -34,16 +31,10 @@ export default function ServiceHero() {
 
         {/* CTA buttons */}
         <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-          <Link
-            href={heroContent.primaryCta.href}
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-brand-600 text-white font-semibold shadow-elev hover:shadow-elev-lg hover:translate-y-[-1px] transition-all duration-200"
-          >
+          <Link href={heroContent.primaryCta.href} className="btn-primary">
             {heroContent.primaryCta.text}
           </Link>
-          <Link
-            href={heroContent.secondaryCta.href}
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-brand-500/30 text-brand-600 bg-white/80 backdrop-blur-sm font-semibold shadow-elev hover:shadow-elev-lg hover:translate-y-[-1px] transition-all duration-200"
-          >
+          <Link href={heroContent.secondaryCta.href} className="btn-outline">
             {heroContent.secondaryCta.text}
           </Link>
         </div>

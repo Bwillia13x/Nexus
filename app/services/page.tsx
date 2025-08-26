@@ -169,7 +169,7 @@ export default function ServicesPage() {
         {/* Privacy & Compliance Section */}
         <section className="py-16 md:py-24">
           <div className="mx-auto max-w-4xl px-4">
-            <div className="rounded-2xl border bg-white shadow-elev-lg p-8">
+            <div className="card-glass glass-liquid p-8">
               <h2 className="text-3xl font-bold mb-8 text-center">
                 Privacy & Data Protection
               </h2>

@@ -19,7 +19,10 @@ export function CaseStudiesOverview() {
         </div>
 
         <div className="mt-16 md:mt-20 text-center">
-          <Link href="/pilots#menu" className="btn-primary text-lg px-8 py-4">
+          <Link
+            href="/services#services"
+            className="btn-primary text-lg px-8 py-4"
+          >
             See pilot scope & pricing <span>→</span>
           </Link>
         </div>

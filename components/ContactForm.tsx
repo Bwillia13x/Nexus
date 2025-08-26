@@ -1,11 +1,13 @@
 'use client';
 import { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, type SubmitHandler } from 'react-hook-form';
+import type { Resolver } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import toast from 'react-hot-toast';
 import { LoadingButton } from './Loading';
 import { inquirySchema, InquiryPayload } from '@/lib/validation/contact';
+import { CONTACT_CONTENT } from '@/app/contact/_content';
 
 type ContactFormData = InquiryPayload;
 
@@ -19,13 +21,15 @@ export function ContactForm() {
     reset,
     watch,
   } = useForm<ContactFormData>({
-    resolver: zodResolver(inquirySchema),
+    resolver: zodResolver(
+      inquirySchema
+    ) as unknown as Resolver<ContactFormData>,
     mode: 'onChange',
   });
 
   const watchedFields = watch();
 
-  const onSubmit = async (data: ContactFormData) => {
+  const onSubmit: SubmitHandler<ContactFormData> = async data => {
     if (isSubmitting) return;
 
     setIsSubmitting(true);
@@ -252,17 +256,14 @@ export function ContactForm() {
                     }
                     {...(errors.industry ? { 'aria-invalid': true } : {})}
                   >
-                    <option value="">Select your industry</option>
-                    <option value="Retail">Retail</option>
-                    <option value="Trades/Construction">
-                      Trades/Construction
+                    <option value="">
+                      {CONTACT_CONTENT.form.industry.placeholder}
                     </option>
-                    <option value="Clinics">Clinics</option>
-                    <option value="Restaurants">Restaurants</option>
-                    <option value="Professional Services">
-                      Professional Services
-                    </option>
-                    <option value="Other">Other</option>
+                    {CONTACT_CONTENT.form.industry.options.map(option => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
                   </select>
                   {errors.industry && (
                     <p
@@ -296,12 +297,14 @@ export function ContactForm() {
                     }
                     {...(errors.teamSize ? { 'aria-invalid': true } : {})}
                   >
-                    <option value="">Select team size</option>
-                    <option value="1–5">1–5</option>
-                    <option value="6–20">6–20</option>
-                    <option value="21–50">21–50</option>
-                    <option value="51–200">51–200</option>
-                    <option value="200+">200+</option>
+                    <option value="">
+                      {CONTACT_CONTENT.form.teamSize.placeholder}
+                    </option>
+                    {CONTACT_CONTENT.form.teamSize.options.map(option => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
                   </select>
                   {errors.teamSize && (
                     <p
@@ -372,10 +375,14 @@ export function ContactForm() {
                       ? { 'aria-invalid': true }
                       : {})}
                   >
-                    <option value="">Select sensitivity level</option>
-                    <option value="Low">Low</option>
-                    <option value="Moderate">Moderate</option>
-                    <option value="High / regulated">High / regulated</option>
+                    <option value="">
+                      {CONTACT_CONTENT.form.sensitivity.placeholder}
+                    </option>
+                    {CONTACT_CONTENT.form.sensitivity.options.map(option => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
                   </select>
                   {errors.dataSensitivity && (
                     <p
@@ -409,11 +416,14 @@ export function ContactForm() {
                     }
                     {...(errors.budgetRange ? { 'aria-invalid': true } : {})}
                   >
-                    <option value="">Select budget range</option>
-                    <option value="$3k–$5k">$3k–$5k</option>
-                    <option value="$5k–$9k">$5k–$9k</option>
-                    <option value="$9k–$14k">$9k–$14k</option>
-                    <option value="$14k+">$14k+</option>
+                    <option value="">
+                      {CONTACT_CONTENT.form.budget.placeholder}
+                    </option>
+                    {CONTACT_CONTENT.form.budget.options.map(option => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
                   </select>
                   {errors.budgetRange && (
                     <p
@@ -447,11 +457,14 @@ export function ContactForm() {
                     }
                     {...(errors.projectUrgency ? { 'aria-invalid': true } : {})}
                   >
-                    <option value="">Select urgency</option>
-                    <option value="ASAP (<2 wks)">ASAP (&lt;2 wks)</option>
-                    <option value="This Month">This Month</option>
-                    <option value="This Quarter">This Quarter</option>
-                    <option value="Exploring">Exploring</option>
+                    <option value="">
+                      {CONTACT_CONTENT.form.urgency.placeholder}
+                    </option>
+                    {CONTACT_CONTENT.form.urgency.options.map(option => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
                   </select>
                   {errors.projectUrgency && (
                     <p

@@ -32,7 +32,7 @@ export default function IntegrationsSection() {
           {tools.map(tool => (
             <div
               key={tool.name}
-              className="p-6 rounded-lg border bg-white shadow-elev hover:shadow-elev-lg hover:ring-2 hover:ring-brand-500/30 hover:scale-105 transition-all duration-300 group cursor-pointer h-full flex flex-col justify-center items-center"
+              className="card-glass glass-liquid hover:scale-105 transition-transform duration-300 group cursor-pointer h-full flex flex-col justify-center items-center"
             >
               <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
                 {tool.icon}

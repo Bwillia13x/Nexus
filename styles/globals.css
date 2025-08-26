@@ -47,7 +47,7 @@ textarea:focus-visible {
   position: absolute;
   top: -40px;
   left: 6px;
-  background: theme('colors.primary');
+  background: var(--primary-text);
   color: white;
   padding: 8px;
   text-decoration: none;
@@ -151,6 +151,12 @@ textarea:focus-visible {
   }
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-white bg-gradient-to-r from-primary to-secondary shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell active:translate-y-0.5 min-h-[48px] text-center relative overflow-hidden;
+    /* Use darker brand tones for accessible contrast with white text */
+    background-image: linear-gradient(
+      to right,
+      var(--primary-text),
+      var(--secondary-text)
+    );
   }
 
   .btn-primary::before {
@@ -187,6 +193,34 @@ textarea:focus-visible {
     @apply p-8 rounded-2xl border border-glass-border bg-glass-2 backdrop-blur-xl shadow-md transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 hover:border-glass-border-hover;
   }
 
+  /* Liquid glass surface with subtle highlight */
+  .glass-liquid {
+    position: relative;
+    background: linear-gradient(135deg, var(--glass-3), var(--glass));
+    border: 1px solid var(--glass-border);
+    -webkit-backdrop-filter: blur(var(--blur-xl)) saturate(1.1);
+    backdrop-filter: blur(var(--blur-xl)) saturate(1.1);
+    box-shadow: var(--shadow);
+  }
+  .glass-liquid::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: radial-gradient(
+      120% 60% at 0% 0%,
+      rgba(255, 255, 255, 0.35),
+      transparent 60%
+    );
+    mix-blend-mode: screen;
+    opacity: 0.6;
+    transition: opacity var(--transition-base);
+  }
+  .glass-liquid:hover::before {
+    opacity: 0.85;
+  }
+
   .chip {
     @apply px-4 py-2 bg-glass rounded-full border border-glass-border backdrop-blur-md text-sm font-medium transition-all duration-200 hover:bg-glass-2;
   }
@@ -204,12 +238,17 @@ textarea:focus-visible {
   }
 
   /* World-class utility classes */
-  .text-balance {
-    text-wrap: balance;
+  /* Progressive enhancement: apply only if supported */
+  @supports (text-wrap: balance) {
+    .text-balance {
+      text-wrap: balance;
+    }
   }
 
-  .text-pretty {
-    text-wrap: pretty;
+  @supports (text-wrap: pretty) {
+    .text-pretty {
+      text-wrap: pretty;
+    }
   }
 
   /* Enhanced accessibility utilities */
@@ -219,6 +258,11 @@ textarea:focus-visible {
 
   .sr-only-focusable {
     @apply sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded-lg focus:shadow-lg;
+  }
+
+  /* Accessible override for focus background color */
+  .sr-only-focusable:focus {
+    background-color: var(--primary-text) !important;
   }
 
   /* Status indicators */
@@ -341,7 +385,12 @@ textarea:focus-visible {
   transform: scaleX(1);
 }
 .nav-link[data-active='true'] {
-  color: theme('colors.primary');
+  color: var(--primary-text);
+}
+
+/* Ensure hover state also uses accessible color */
+.nav-link:hover {
+  color: var(--primary-text);
 }
 
 /* Ambient orbs helpers */
@@ -365,6 +414,27 @@ textarea:focus-visible {
   );
 }
 
+/* Mesh gradient overlay for hero sections */
+.hero-mesh {
+  pointer-events: none;
+  background-image:
+    radial-gradient(
+      800px 400px at 20% 10%,
+      rgba(111, 105, 246, 0.15),
+      transparent 60%
+    ),
+    radial-gradient(
+      600px 300px at 80% 20%,
+      rgba(160, 110, 246, 0.12),
+      transparent 60%
+    ),
+    radial-gradient(
+      1000px 500px at 50% 110%,
+      rgba(111, 105, 246, 0.08),
+      transparent 60%
+    );
+}
+
 /* Scroll cue */
 .scroll-cue {
   position: absolute;
@@ -375,6 +445,51 @@ textarea:focus-visible {
 .scroll-cue .icon {
   display: inline-block;
   animation: cueFloat 2.4s ease-in-out infinite;
+}
+
+/* Hide native scrollbars for horizontal carousels */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+}
+/* Firefox-only support guard to avoid compatibility warnings in other browsers */
+@supports (scrollbar-width: none) {
+  .no-scrollbar {
+    scrollbar-width: none; /* Firefox */
+  }
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Faded edges for horizontal overflow containers */
+.fade-x-edges {
+  position: relative;
+}
+.fade-x-edges::before,
+.fade-x-edges::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 40px;
+  pointer-events: none;
+  z-index: 10;
+}
+.fade-x-edges::before {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    var(--eggshell) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+.fade-x-edges::after {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    var(--eggshell) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
 }
 
 /* Enhanced micro-interactions */
@@ -521,6 +636,9 @@ textarea:focus {
 
 /* Respect reduced motion preferences */
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
   .gradient-title-animated,
   .ambient-orb,
   .scroll-cue .icon,
@@ -537,6 +655,21 @@ textarea:focus {
     animation: none !important;
     transition: none !important;
     transform: none !important;
+  }
+
+  /* Additional calming reductions for reduced motion users */
+  .ambient-orb {
+    filter: none !important; /* cancel large blur */
+    opacity: 0.4 !important; /* soften intensity */
+  }
+
+  .glass-liquid {
+    -webkit-backdrop-filter: blur(8px) saturate(1) !important; /* lower blur */
+    backdrop-filter: blur(8px) saturate(1) !important;
+  }
+
+  .glass-liquid::before {
+    opacity: 0.3 !important; /* reduce highlight glare */
   }
 }
 
@@ -567,4 +700,26 @@ textarea:focus {
     box-shadow: none !important;
     border: 1px solid #ccc !important;
   }
+}
+
+/* Accessible color overrides for brand text utilities */
+/* These come after Tailwind utilities to win in the cascade */
+.text-primary {
+  color: var(--primary-text);
+}
+.hover\:text-primary:hover {
+  color: var(--primary-text);
+}
+.group:hover .group-hover\:text-primary {
+  color: var(--primary-text);
+}
+
+.text-secondary {
+  color: var(--secondary-text);
+}
+.hover\:text-secondary:hover {
+  color: var(--secondary-text);
+}
+.group:hover .group-hover\:text-secondary {
+  color: var(--secondary-text);
 }

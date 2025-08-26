@@ -16,7 +16,7 @@ export default function FAQSection() {
           {faqContent.map((faq, index) => (
             <div
               key={index}
-              className="p-6 rounded-lg border bg-white shadow-elev hover:shadow-elev-lg transition-all duration-300"
+              className="card-glass glass-liquid transition-all duration-300"
             >
               <h3 className="text-xl font-semibold mb-3">{faq.question}</h3>
               <p className="text-muted-foreground leading-relaxed">

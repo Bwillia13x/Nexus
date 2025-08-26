@@ -51,7 +51,7 @@ export default function AboutPage() {
         <AboutHero hero={c.hero} />
 
         {/* Main Content Grid */}
-        <div className="mx-auto max-w-[1120px] px-4 sm:px-6">
+        <div className="container-wide">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr,280px] gap-8">
             <div>
               {/* Overview Section */}

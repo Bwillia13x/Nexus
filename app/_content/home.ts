@@ -7,7 +7,10 @@ export const homeContent = {
       label: 'Book a 30-min discovery call',
       href: '/contact?intent=discovery',
     },
-    secondaryCta: { label: 'See 30-day pilot menu', href: '/pilots#menu' },
+    secondaryCta: {
+      label: 'See 30-day pilot menu',
+      href: '/services#services',
+    },
   },
   services: {
     title: 'What I Do for Calgary SMBs',

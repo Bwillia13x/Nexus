@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useRef, useState } from 'react';
 import { howItWorksContent, ctaContent } from '../_content';
 
 const stepIcons = {
@@ -26,9 +27,55 @@ export default function HowItWorksSection() {
     color: stepColors[step.step as keyof typeof stepColors],
   }));
 
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handleKeyNav = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    const key = e.key;
+    if (
+      key !== 'ArrowRight' &&
+      key !== 'ArrowLeft' &&
+      key !== 'Home' &&
+      key !== 'End'
+    ) {
+      return;
+    }
+    e.preventDefault();
+
+    let next = activeIndex;
+    if (key === 'ArrowRight') {
+      next = Math.min(activeIndex + 1, steps.length - 1);
+    }
+    if (key === 'ArrowLeft') {
+      next = Math.max(activeIndex - 1, 0);
+    }
+    if (key === 'Home') {
+      next = 0;
+    }
+    if (key === 'End') {
+      next = steps.length - 1;
+    }
+
+    if (next !== activeIndex) {
+      setActiveIndex(next);
+      const node = itemRefs.current[next];
+      if (node) {
+        const prefersReduced =
+          typeof window !== 'undefined' &&
+          window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const behavior: ScrollBehavior = prefersReduced ? 'auto' : 'smooth';
+        requestAnimationFrame(() => {
+          node.focus();
+          node.scrollIntoView({ behavior, inline: 'center', block: 'nearest' });
+        });
+      }
+    }
+  };
+
   return (
     <section id="how-it-works" className="py-16 md:py-24">
-      <div className="mx-auto max-w-container px-4">
+      <div className="container-wide">
         {/* Section header */}
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -39,42 +86,68 @@ export default function HowItWorksSection() {
           </p>
         </div>
 
-        {/* Timeline */}
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-8 md:left-1/2 md:transform md:-translate-x-0.5 top-0 bottom-0 w-0.5 bg-gradient-to-b from-brand-500 via-brand-600 to-brand-500 opacity-30" />
-
-          <div className="space-y-16 md:space-y-12">
-            {steps.map((step, index) => (
-              <div
-                key={step.step}
-                className={`relative flex flex-col md:flex-row items-start gap-8 ${
-                  index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                }`}
-              >
-                {/* Timeline dot */}
-                <div className="absolute left-8 md:left-1/2 md:transform md:-translate-x-1/2 w-4 h-4 rounded-full bg-gradient-to-r from-brand-500 to-brand-600 border-4 border-white shadow-lg z-10" />
-
-                {/* Content card */}
-                <div
-                  className={`flex-1 max-w-lg mx-auto md:mx-0 ${
-                    index % 2 === 0 ? 'md:pr-16' : 'md:pl-16'
-                  }`}
+        {/* Horizontal timeline (scroll-snap) */}
+        <div className="relative fade-x-edges">
+          <div
+            ref={scrollRef}
+            className="group/scroll relative -mx-4 px-4 overflow-x-auto no-scrollbar snap-x snap-mandatory scroll-pl-6 md:scroll-pl-8 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:ring-offset-2 focus:ring-offset-eggshell"
+            role="region"
+            aria-roledescription="carousel"
+            aria-label="How it works steps"
+            aria-describedby="hiw-instructions"
+            onKeyDown={handleKeyNav}
+          >
+            <p id="hiw-instructions" className="sr-only">
+              Use Left and Right arrow keys to move between steps. Press Home to
+              jump to the first step and End to jump to the last.
+            </p>
+            <p
+              id="hiw-status"
+              className="sr-only"
+              aria-live="polite"
+              aria-atomic="true"
+            >
+              Step {activeIndex + 1} of {steps.length}:{' '}
+              <span>{steps[activeIndex].title}</span>
+            </p>
+            <div
+              className="flex items-stretch gap-4 sm:gap-6 md:gap-8 w-max py-2"
+              role="list"
+            >
+              {steps.map((step, index) => (
+                <article
+                  key={step.step}
+                  className="snap-center md:snap-start scroll-ml-6 md:scroll-ml-8"
+                  role="listitem"
+                  aria-current={activeIndex === index ? 'step' : undefined}
                 >
-                  <div className="p-6 rounded-lg border bg-white shadow-elev hover:shadow-elev-lg hover:ring-2 hover:ring-brand-500/30 transition-all duration-300 group">
+                  <div
+                    className="card-glass glass-liquid w-[85vw] sm:w-[420px] md:w-[460px] lg:w-[520px] transition-all duration-300 focus-ring"
+                    tabIndex={activeIndex === index ? 0 : -1}
+                    role="group"
+                    aria-labelledby={`hiw-step-${step.step}-title`}
+                    aria-describedby={`hiw-step-${step.step}-desc`}
+                    ref={el => {
+                      itemRefs.current[index] = el;
+                    }}
+                    onFocus={() => setActiveIndex(index)}
+                  >
                     {/* Header with icon and title */}
                     <div className="flex items-center gap-4 mb-6">
                       <div
-                        className={`w-14 h-14 rounded-2xl bg-gradient-to-r ${step.color} flex items-center justify-center text-white text-2xl shadow-lg group-hover:scale-110 transition-transform duration-300`}
+                        className={`w-14 h-14 rounded-2xl bg-gradient-to-r ${step.color} flex items-center justify-center text-white text-2xl shadow-lg group-hover/scroll:scale-110 transition-transform duration-300`}
                       >
                         {step.icon}
                       </div>
                       <div>
                         <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-2">
-                          <span className="text-sm font-bold text-brand-500 bg-brand-500/10 px-3 py-1.5 rounded-full">
+                          <span className="text-sm font-bold text-brand-600 bg-brand-500/10 px-3 py-1.5 rounded-full">
                             Step {step.step}
                           </span>
-                          <span className="text-lg font-semibold text-brand-600">
+                          <span
+                            id={`hiw-step-${step.step}-title`}
+                            className="text-lg font-semibold text-brand-600"
+                          >
                             {step.title}
                           </span>
                         </div>
@@ -85,12 +158,15 @@ export default function HowItWorksSection() {
                     </div>
 
                     {/* Description */}
-                    <p className="text-muted-foreground leading-relaxed text-base mb-6">
+                    <p
+                      id={`hiw-step-${step.step}-desc`}
+                      className="text-muted-foreground leading-relaxed text-base mb-6"
+                    >
                       {step.description}
                     </p>
 
                     {/* Step-specific details */}
-                    <div className="border-t border-gray-100 pt-6">
+                    <div className="border-t border-glass-border pt-6">
                       <ul
                         className="text-sm text-muted-foreground space-y-2"
                         role="list"
@@ -109,28 +185,22 @@ export default function HowItWorksSection() {
                       </ul>
                     </div>
                   </div>
-                </div>
-
-                {/* Spacer for alternating layout */}
-                <div className="hidden md:block w-16 flex-shrink-0" />
-              </div>
-            ))}
+                </article>
+              ))}
+            </div>
           </div>
         </div>
 
         {/* Call to action */}
         <div className="mt-20 md:mt-24 text-center">
-          <div className="max-w-3xl mx-auto p-8 md:p-12 rounded-2xl border bg-white shadow-elev-lg">
+          <div className="max-w-3xl mx-auto card-glass glass-liquid p-8 md:p-12">
             <h3 className="text-2xl md:text-3xl font-bold mb-6">
               {ctaContent.title}
             </h3>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
               {ctaContent.description}
             </p>
-            <Link
-              href={ctaContent.cta.href}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-600 text-white font-semibold shadow-elev hover:shadow-elev-lg hover:translate-y-[-1px] transition-all duration-200 text-lg"
-            >
+            <Link href={ctaContent.cta.href} className="btn-primary text-lg">
               {ctaContent.cta.label} <span>→</span>
             </Link>
           </div>

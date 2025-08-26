@@ -30,30 +30,18 @@ export function AboutHero({ hero }: AboutHeroProps) {
             {/* Badge row */}
             <div className="flex justify-center gap-3 mb-12 flex-wrap">
               {hero.badges.map((badge, index) => (
-                <div
-                  key={index}
-                  className="inline-flex items-center px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-border shadow-sm"
-                >
-                  <span className="text-sm font-medium text-foreground">
-                    {badge}
-                  </span>
+                <div key={index} className="chip">
+                  <span className="text-sm font-medium">{badge}</span>
                 </div>
               ))}
             </div>
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Link
-                href="/contact?intent=discovery"
-                className="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-primary/40"
-              >
-                Book a call
-                <span className="ml-2 text-lg">→</span>
+              <Link href="/contact?intent=discovery" className="btn-primary">
+                Book a call <span className="ml-2">→</span>
               </Link>
-              <Link
-                href="/services"
-                className="inline-flex items-center justify-center px-8 py-4 bg-white/90 backdrop-blur border border-border text-foreground rounded-full font-semibold shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-border"
-              >
+              <Link href="/services" className="btn-outline">
                 See services
               </Link>
             </div>

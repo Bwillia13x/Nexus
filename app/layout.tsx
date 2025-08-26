@@ -1,11 +1,18 @@
 import '../styles/globals.css';
 import type { ReactNode } from 'react';
 import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
 import { Nav } from '@/components/Nav';
 import { Footer } from '@/components/Footer';
 import { Analytics } from '@/components/Analytics';
 import { ToastProvider } from '@/components/ToastProvider';
 import { PerformanceMonitor } from '@/components/PerformanceMonitor';
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-sans',
+});
 
 export const metadata: Metadata = {
   title: 'Nexus AI — Calgary AI Consulting for SMBs',
@@ -45,7 +52,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={inter.variable}>
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <script
@@ -174,7 +181,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           }}
         />
       </head>
-      <body className="relative antialiased">
+      <body className="relative antialiased font-sans">
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
@@ -183,6 +190,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           {children}
         </main>
         <Footer />
+        <Analytics />
+        {process.env.NEXT_PUBLIC_ENABLE_TOASTS === '1' ? (
+          <ToastProvider />
+        ) : null}
+        {process.env.NODE_ENV === 'development' ? <PerformanceMonitor /> : null}
       </body>
     </html>
   );

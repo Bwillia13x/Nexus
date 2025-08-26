@@ -12,7 +12,7 @@ export default function ServicePanel({ service }: ServicePanelProps) {
   return (
     <section id={service.id} className="py-16 md:py-24">
       <div className="mx-auto max-w-container px-4">
-        <div className="rounded-2xl border bg-white shadow-elev-lg p-6 md:p-8">
+        <div className="card-glass glass-liquid p-6 md:p-8">
           {/* Header Section */}
           <header className="max-w-3xl">
             <div className="flex items-center gap-4 mb-4">
@@ -36,7 +36,7 @@ export default function ServicePanel({ service }: ServicePanelProps) {
               {service.metrics.map((metric, idx) => (
                 <li
                   key={idx}
-                  className="rounded-lg border bg-gradient-to-r from-brand-500/6 to-transparent p-4"
+                  className="rounded-lg border border-glass-border bg-glass-2 backdrop-blur p-4"
                 >
                   {metric}
                 </li>
@@ -95,10 +95,7 @@ export default function ServicePanel({ service }: ServicePanelProps) {
 
           {/* CTA Button */}
           <div className="mt-12 text-center">
-            <Link
-              href={service.ctaHref}
-              className="inline-flex items-center gap-2 rounded-full bg-brand-600 text-white px-6 py-3 shadow-elev hover:shadow-elev-lg hover:translate-y-[-1px] transition-all duration-200 font-semibold"
-            >
+            <Link href={service.ctaHref} className="btn-primary">
               Start this project →
             </Link>
           </div>

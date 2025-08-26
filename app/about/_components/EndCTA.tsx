@@ -14,10 +14,16 @@ export function EndCTA() {
             can ship in ~30 days.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8">
-            <Link href="/contact?intent=discovery" className="btn-primary">
+            <Link
+              href="/contact?intent=discovery"
+              className="btn-primary shadow-elev hover:shadow-elev-lg min-w-[200px] sm:min-w-[240px] text-base sm:text-lg"
+            >
               Book discovery call <span className="ml-2">→</span>
             </Link>
-            <Link href="/services" className="btn-outline">
+            <Link
+              href="/services"
+              className="btn-secondary shadow-elev hover:shadow-elev-lg min-w-[200px] sm:min-w-[240px] text-base sm:text-lg"
+            >
               See services
             </Link>
           </div>

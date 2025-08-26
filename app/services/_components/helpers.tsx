@@ -1,5 +1,7 @@
 'use client';
 
+import { MaybeIcon } from '@/components/ui/MaybeIcon';
+
 interface ListProps {
   title: string;
   items: string[];
@@ -14,8 +16,8 @@ export function List({ title, items, icon = '✓', className = '' }: ListProps) 
       <ul className="space-y-3">
         {items.map((item, idx) => (
           <li key={idx} className="flex items-start gap-3 text-muted">
-            <div className="w-6 h-6 rounded-full bg-gradient-to-r from-brand-500 to-brand-600 flex items-center justify-center mt-0.5 flex-shrink-0">
-              <span className="text-white text-xs">{icon}</span>
+            <div className="w-6 h-6 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center mt-0.5 flex-shrink-0">
+              <MaybeIcon emoji={icon} className="text-white text-xs" />
             </div>
             <span className="leading-relaxed">{item}</span>
           </li>
@@ -42,10 +44,10 @@ export function Card({
 }: CardProps) {
   return (
     <div
-      className={`p-4 rounded-lg bg-gradient-to-r from-brand-500/6 to-transparent border border-brand-500/10 ${className}`}
+      className={`p-4 rounded-lg bg-gradient-to-r from-primary/6 to-transparent border border-primary/10 ${className}`}
     >
       <div className="flex items-center gap-3 mb-2">
-        <span className="text-2xl">{icon}</span>
+        <MaybeIcon emoji={icon} className="text-2xl" />
         <span className="font-semibold">{title}</span>
       </div>
       <p className="text-ink font-medium">{value}</p>

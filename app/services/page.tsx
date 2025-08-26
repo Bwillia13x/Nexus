@@ -42,13 +42,13 @@ export default function ServicesPage() {
         {/* Skip Links for Accessibility */}
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-brand-500 focus:text-white focus:rounded-lg focus:shadow-lg"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded-lg focus:shadow-lg"
         >
           Skip to main content
         </a>
         <a
           href="#services"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-32 focus:z-50 focus:px-4 focus:py-2 focus:bg-brand-500 focus:text-white focus:rounded-lg focus:shadow-lg"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-32 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded-lg focus:shadow-lg"
         >
           Skip to services
         </a>
@@ -65,6 +65,7 @@ export default function ServicesPage() {
           <div className="ambient-orb absolute top-1/2 left-1/2 w-[400px] h-[400px] rounded-full bg-gradient-to-br from-primary/10 via-transparent to-secondary/5 blur-2xl opacity-60" />
 
           {/* Vignette overlay for contrast */}
+          <div className="wave-layer" aria-hidden="true" />
           <div className="ambient-vignette" />
         </div>
 

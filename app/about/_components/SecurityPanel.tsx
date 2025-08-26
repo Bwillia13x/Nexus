@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Card } from './Card';
+import { MaybeIcon } from '@/components/ui/MaybeIcon';
 
 interface SecurityPanelProps {
   items: string[];
@@ -19,7 +20,7 @@ export function SecurityPanel({ items }: SecurityPanelProps) {
                 className="w-8 h-8 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center text-white font-bold text-sm"
                 aria-hidden="true"
               >
-                {icons[index] || '🔒'}
+                <MaybeIcon emoji={icons[index] || '🔒'} className="text-base" />
               </div>
               <div className="flex-1">
                 <p className="text-muted-foreground leading-7">{item}</p>

@@ -30,6 +30,8 @@ export default function CasesIndexPage() {
         {/* Tertiary orb for added depth */}
         <div className="ambient-orb absolute top-1/3 right-1/4 w-[300px] h-[300px] rounded-full bg-gradient-to-br from-primary/15 via-transparent to-secondary/8 blur-2xl opacity-60" />
 
+        {/* Wave background overlay */}
+        <div className="wave-layer" aria-hidden="true" />
         {/* Vignette overlay for contrast */}
         <div className="ambient-vignette" />
       </div>

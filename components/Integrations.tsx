@@ -1,3 +1,5 @@
+import { MaybeIcon } from '@/components/ui/MaybeIcon';
+
 export function Integrations() {
   const tools = [
     { name: 'Google Workspace', icon: '📧' },
@@ -30,7 +32,7 @@ export function Integrations() {
             className="card-glass p-6 text-center hover:scale-105 transition-all duration-300 group cursor-pointer h-full"
           >
             <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
-              {tool.icon}
+              <MaybeIcon tool={tool.name} title={tool.name} />
             </div>
             <div className="text-sm md:text-base font-medium text-ink group-hover:text-primary transition-colors leading-tight">
               {tool.name}

@@ -19,6 +19,9 @@ export default function BookPage() {
 
         {/* Secondary background orb - bottom right */}
         <div className="absolute -bottom-32 -right-32 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-secondary/20 via-secondary/15 via-primary/10 to-transparent filter blur-3xl animate-pulse" />
+
+        {/* Wave background overlay */}
+        <div className="wave-layer" aria-hidden="true" />
       </div>
 
       {/* Hero Section */}

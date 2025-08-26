@@ -1,4 +1,5 @@
 import { Card } from './Card';
+import { MaybeIcon } from '@/components/ui/MaybeIcon';
 
 interface Principle {
   icon: string;
@@ -23,8 +24,12 @@ export function PrinciplesGrid({ items }: PrinciplesGridProps) {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {items.map((principle, index) => (
           <Card key={index} className="p-6 text-center" variant="glass">
-            <div className="text-4xl mb-4" aria-hidden="true">
-              {principle.icon}
+            <div className="mb-4">
+              <MaybeIcon
+                emoji={principle.icon}
+                title={principle.title}
+                className="text-4xl"
+              />
             </div>
             <h3 className="text-xl font-bold mb-3">{principle.title}</h3>
             <p className="text-muted-foreground text-sm leading-6">

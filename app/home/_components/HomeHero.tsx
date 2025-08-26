@@ -20,7 +20,7 @@ export default function HomeHero() {
       id="top"
     >
       {/* Background gradient */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-brand-500/10 via-transparent to-secondary/5" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-primary/10 via-transparent to-secondary/5" />
       {/* Mesh overlay for subtle color fields */}
       <div className="absolute inset-0 -z-10 hero-mesh" />
 

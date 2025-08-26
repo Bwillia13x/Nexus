@@ -2,6 +2,7 @@
 
 import { CONTACT_CONTENT } from '../_content';
 import { trackCtaClick } from '@/lib/analytics';
+import { MaybeIcon } from '@/components/ui/MaybeIcon';
 
 export function ContactHero() {
   const handleCtaClick = (ctaId: string) => {
@@ -12,7 +13,7 @@ export function ContactHero() {
     <section className="relative py-20 md:py-24">
       {/* Gradient Background */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-brand-1/10 via-brand-2/5 via-secondary/5 to-transparent" />
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-primary/10 via-secondary/5 to-transparent" />
         <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-gradient-to-br from-primary/20 to-secondary/10 blur-3xl opacity-60" />
         <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-gradient-to-br from-secondary/20 to-primary/10 blur-3xl opacity-50" />
       </div>
@@ -53,8 +54,13 @@ export function ContactHero() {
                 }}
                 aria-label={`Learn more about ${badge.text}`}
               >
-                <span className="text-sm font-medium">
-                  {badge.icon} {badge.text}
+                <span className="text-sm font-medium inline-flex items-center gap-2">
+                  <MaybeIcon
+                    emoji={badge.icon}
+                    className="text-base"
+                    title={badge.text}
+                  />
+                  {badge.text}
                 </span>
               </div>
             ))}
@@ -68,7 +74,12 @@ export function ContactHero() {
               aria-label="Book a discovery call"
             >
               <span className="flex items-center gap-2">
-                📅 Book Discovery Call
+                <MaybeIcon
+                  emoji="📅"
+                  className="text-lg"
+                  title="Book Discovery Call"
+                />
+                Book Discovery Call
                 <span className="group-hover:translate-x-1 transition-transform duration-200">
                   →
                 </span>
@@ -81,7 +92,12 @@ export function ContactHero() {
               aria-label="View pilot menu options"
             >
               <span className="flex items-center gap-2">
-                🎯 View Pilot Menu
+                <MaybeIcon
+                  emoji="🎯"
+                  className="text-lg"
+                  title="View Pilot Menu"
+                />
+                View Pilot Menu
               </span>
             </button>
           </div>

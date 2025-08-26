@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { ServiceData } from '../_content';
 import { List, Card } from './helpers';
+import { MaybeIcon } from '@/components/ui/MaybeIcon';
 
 interface ServicePanelProps {
   service: ServiceData;
@@ -16,8 +17,8 @@ export default function ServicePanel({ service }: ServicePanelProps) {
           {/* Header Section */}
           <header className="max-w-3xl">
             <div className="flex items-center gap-4 mb-4">
-              <div className="w-12 h-12 flex items-center justify-center text-3xl rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 text-white shadow-lg">
-                🤖
+              <div className="w-12 h-12 flex items-center justify-center text-3xl rounded-xl bg-gradient-to-r from-primary to-secondary text-white shadow-lg">
+                <MaybeIcon emoji="🤖" title={service.title} />
               </div>
               <h2 className="text-2xl md:text-3xl font-bold">
                 {service.title}
@@ -86,7 +87,11 @@ export default function ServicePanel({ service }: ServicePanelProps) {
                   key={idx}
                   className="flex items-start gap-3 text-muted text-sm"
                 >
-                  <span className="text-lg mt-0.5">⚠️</span>
+                  <MaybeIcon
+                    emoji="⚠️"
+                    className="text-lg mt-0.5"
+                    title="Risk"
+                  />
                   <span>{risk}</span>
                 </li>
               ))}

@@ -173,8 +173,6 @@ export function EngagementTimeline({ steps }: EngagementTimelineProps) {
                   : 'opacity-0 translate-y-8'
               }`}
               role="listitem"
-              aria-setsize={steps.length}
-              aria-posinset={index + 1}
               aria-current={activeIndex === index ? 'step' : undefined}
               aria-labelledby={`step-${index}-title`}
               aria-describedby={`step-${index}-desc`}
@@ -198,7 +196,7 @@ export function EngagementTimeline({ steps }: EngagementTimelineProps) {
                     >
                       {step.title}
                     </h3>
-                    <span className="text-xs font-bold text-brand-600 bg-brand-500/10 px-2.5 py-1 rounded-full">
+                    <span className="text-xs font-bold text-primary bg-primary/10 px-2.5 py-1 rounded-full">
                       Step {step.step}
                     </span>
                   </div>

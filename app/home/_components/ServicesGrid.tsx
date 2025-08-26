@@ -1,6 +1,7 @@
 'use client';
 
 import { servicesContent } from '../_content';
+import { MaybeIcon } from '@/components/ui/MaybeIcon';
 
 export default function ServicesGrid() {
   return (
@@ -27,7 +28,17 @@ export default function ServicesGrid() {
             >
               {/* Service icon */}
               <div className="w-14 h-14 mb-6 flex items-center justify-center rounded-2xl bg-gradient-to-r from-primary to-secondary text-white text-3xl shadow-lg">
-                {index === 0 ? '🤖' : index === 1 ? '⚙️' : '📊'}
+                <MaybeIcon
+                  canonical={
+                    index === 0
+                      ? 'assistant-bot'
+                      : index === 1
+                        ? 'automation-gearflow'
+                        : 'analytics-bars'
+                  }
+                  title={service.title}
+                  size={28}
+                />
               </div>
 
               {/* Service title */}

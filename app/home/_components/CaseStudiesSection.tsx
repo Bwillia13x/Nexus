@@ -2,6 +2,12 @@
 
 import Link from 'next/link';
 import { pilotsContent, PilotItem } from '../_content';
+import { MaybeIcon } from '@/components/ui/MaybeIcon';
+
+const pilotCanonicalById: Record<string, string> = {
+  assistant: 'voice-spotlight',
+  ops: 'analytics-bars',
+};
 
 interface PilotCardProps {
   pilot: PilotItem;
@@ -28,8 +34,12 @@ function PilotCard({ pilot, index }: PilotCardProps) {
     >
       {/* Header with gradient background and icon */}
       <div className="h-36 md:h-40 bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-lg">
-        <div className="text-5xl md:text-6xl" aria-hidden="true">
-          {pilot.id === 'assistant' ? '🤖' : pilot.id === 'ops' ? '⚙️' : '📊'}
+        <div className="text-5xl md:text-6xl text-white" aria-hidden="true">
+          <MaybeIcon
+            canonical={pilotCanonicalById[pilot.id] ?? 'team-analytics'}
+            size={64}
+            className="text-white"
+          />
         </div>
       </div>
 
@@ -42,7 +52,7 @@ function PilotCard({ pilot, index }: PilotCardProps) {
           >
             {pilot.title}
           </h3>
-          <span className="text-xs px-3 py-1.5 bg-brand-500/10 text-brand-600 rounded-full font-medium whitespace-nowrap">
+          <span className="text-xs px-3 py-1.5 bg-primary/10 text-primary rounded-full font-medium whitespace-nowrap">
             {pilot.id === 'assistant'
               ? 'Web & SMS'
               : pilot.id === 'ops'
@@ -59,7 +69,7 @@ function PilotCard({ pilot, index }: PilotCardProps) {
         {/* Target outcomes */}
         <div className="space-y-4 mb-6 flex-grow">
           <div className="flex items-start gap-3">
-            <span className="text-brand-500 mt-1 text-lg" aria-hidden="true">
+            <span className="text-primary mt-1 text-lg" aria-hidden="true">
               🎯
             </span>
             <div className="flex-grow">
@@ -73,7 +83,7 @@ function PilotCard({ pilot, index }: PilotCardProps) {
                 {pilot.target.map((target, i) => (
                   <li key={i} className="flex items-start gap-2">
                     <span
-                      className="text-brand-500 text-sm mt-1 flex-shrink-0"
+                      className="text-primary text-sm mt-1 flex-shrink-0"
                       aria-hidden="true"
                     >
                       •
@@ -87,7 +97,7 @@ function PilotCard({ pilot, index }: PilotCardProps) {
 
           {/* Scope */}
           <div className="flex items-start gap-3">
-            <span className="text-brand-600 mt-1 text-lg" aria-hidden="true">
+            <span className="text-secondary mt-1 text-lg" aria-hidden="true">
               🔧
             </span>
             <div className="flex-grow">
@@ -101,7 +111,7 @@ function PilotCard({ pilot, index }: PilotCardProps) {
                 {pilot.scope.map((scope, i) => (
                   <li key={i} className="flex items-start gap-2">
                     <span
-                      className="text-brand-600 text-sm mt-1 flex-shrink-0"
+                      className="text-secondary text-sm mt-1 flex-shrink-0"
                       aria-hidden="true"
                     >
                       •

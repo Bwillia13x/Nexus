@@ -66,7 +66,9 @@ async function run() {
         tried.push(`${p}:${res.status}`);
         if (!res.ok) continue;
         const xml = await res.text();
-        const locs = Array.from(xml.matchAll(/<loc>([^<]+)<\/loc>/g)).map(m => m[1]);
+        const locs = Array.from(xml.matchAll(/<loc>([^<]+)<\/loc>/g)).map(
+          m => m[1]
+        );
         const paths = [];
         for (const loc of locs) {
           try {
@@ -182,15 +184,19 @@ async function run() {
         const page = await browser.newPage();
         const clientErrors = [];
         page.on('console', msg => {
-          if (msg.type() === 'error') clientErrors.push(`console: ${msg.text()}`);
+          if (msg.type() === 'error')
+            clientErrors.push(`console: ${msg.text()}`);
         });
         page.on('requestfailed', req => {
           const f = req.failure();
-          clientErrors.push(`requestfailed: ${req.url()} :: ${f?.errorText || 'failed'}`);
+          clientErrors.push(
+            `requestfailed: ${req.url()} :: ${f?.errorText || 'failed'}`
+          );
         });
         page.on('response', res => {
           const status = res.status();
-          if (status >= 400) clientErrors.push(`response: ${res.url()} :: ${status}`);
+          if (status >= 400)
+            clientErrors.push(`response: ${res.url()} :: ${status}`);
         });
         await page.goto(BASE + path, { waitUntil: 'networkidle2' });
         let results;
@@ -274,7 +280,9 @@ async function run() {
 
         // Warn for client-side console errors (non-fatal)
         if (clientErrors.length) {
-          console.warn(`[a11y] ${path} had ${clientErrors.length} client error(s).`);
+          console.warn(
+            `[a11y] ${path} had ${clientErrors.length} client error(s).`
+          );
           console.warn(`       First: ${clientErrors[0]}`);
         }
       } finally {

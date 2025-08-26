@@ -1,7 +1,7 @@
 'use client';
 
 import { sectionContent } from '../_content';
-
+import { MaybeIcon } from '@/components/ui/MaybeIcon';
 const tools = [
   { name: 'Google Workspace', icon: '📧' },
   { name: 'Microsoft 365', icon: '💼' },
@@ -35,9 +35,9 @@ export default function IntegrationsSection() {
               className="card-glass glass-liquid hover:scale-105 transition-transform duration-300 group cursor-pointer h-full flex flex-col justify-center items-center"
             >
               <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                {tool.icon}
+                <MaybeIcon tool={tool.name} size={36} title={tool.name} />
               </div>
-              <div className="text-sm md:text-base font-medium text-ink group-hover:text-brand-500 transition-colors leading-tight text-center">
+              <div className="text-sm md:text-base font-medium text-ink group-hover:text-primary transition-colors leading-tight text-center">
                 {tool.name}
               </div>
             </div>

@@ -1,4 +1,5 @@
 import { homeContent } from '@/app/_content/home';
+import { MaybeIcon } from '@/components/ui/MaybeIcon';
 
 export function FAQ() {
   const faqs = homeContent.faq.items.map((item, index) => ({
@@ -15,7 +16,13 @@ export function FAQ() {
             className="card-glass p-6 md:p-8 hover:scale-105 transition-all duration-300 group"
           >
             <div className="flex items-start gap-4 md:gap-6">
-              <div className="text-3xl flex-shrink-0 mt-1">{faq.icon}</div>
+              <div className="flex-shrink-0 mt-1">
+                <MaybeIcon
+                  emoji={faq.icon}
+                  className="text-3xl"
+                  title={faq.question}
+                />
+              </div>
               <div className="flex-1">
                 <h3 className="font-semibold text-lg md:text-xl mb-4 text-ink group-hover:text-primary transition-colors leading-tight">
                   {faq.question}

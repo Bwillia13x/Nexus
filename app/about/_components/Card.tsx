@@ -25,11 +25,11 @@ export function Card({
   } as const;
 
   const interactionClasses = hover
-    ? 'hover:shadow-lg hover:-translate-y-1 hover:ring-2 hover:ring-brand-500/25'
+    ? 'hover:shadow-lg hover:-translate-y-1 hover:ring-2 hover:ring-primary/25'
     : '';
 
   const focusClasses = focus
-    ? 'focus:outline-none focus:ring-2 focus:ring-brand-500/40'
+    ? 'focus:outline-none focus:ring-2 focus:ring-primary/40'
     : '';
 
   return (

@@ -21,6 +21,8 @@ export default function ThankYouPage() {
         {/* Success orb in center */}
         <div className="ambient-orb absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] rounded-full bg-gradient-to-br from-success/20 via-primary/10 to-secondary/5 blur-2xl opacity-60" />
 
+        {/* Wave background overlay */}
+        <div className="wave-layer" aria-hidden="true" />
         {/* Vignette overlay for contrast */}
         <div className="ambient-vignette" />
       </div>

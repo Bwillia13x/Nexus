@@ -414,6 +414,47 @@ textarea:focus-visible {
   );
 }
 
+/* Subtle wave-like animated background overlay */
+@keyframes waveDrift {
+  0% {
+    background-position:
+      0% 100%,
+      100% 100%,
+      50% 100%;
+  }
+  50% {
+    background-position:
+      50% 100%,
+      0% 100%,
+      60% 100%;
+  }
+  100% {
+    background-position:
+      0% 100%,
+      100% 100%,
+      50% 100%;
+  }
+}
+
+.wave-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  /* Three large radial gradients anchored below the viewport to suggest gentle waves */
+  background-image:
+    radial-gradient(120% 60% at 50% 120%, var(--primary) 0%, transparent 60%),
+    radial-gradient(80% 40% at 100% 115%, var(--secondary) 0%, transparent 60%),
+    radial-gradient(80% 40% at 0% 115%, var(--primary) 0%, transparent 60%);
+  background-repeat: no-repeat;
+  background-size:
+    200% 100%,
+    200% 100%,
+    200% 100%;
+  animation: waveDrift 26s ease-in-out infinite;
+  opacity: 0.18; /* keep very subtle */
+  will-change: background-position;
+}
+
 /* Mesh gradient overlay for hero sections */
 .hero-mesh {
   pointer-events: none;
@@ -655,6 +696,12 @@ textarea:focus {
     animation: none !important;
     transition: none !important;
     transform: none !important;
+  }
+
+  /* Calm the wave overlay for reduced motion users */
+  .wave-layer {
+    animation: none !important;
+    opacity: 0.1 !important;
   }
 
   /* Additional calming reductions for reduced motion users */

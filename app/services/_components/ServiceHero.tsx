@@ -7,7 +7,7 @@ export default function ServiceHero() {
   return (
     <section className="relative py-20 md:py-28">
       {/* Background gradient */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-brand-500/5 via-transparent to-transparent" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
 
       <div className="mx-auto max-w-container px-4 text-center">
         {/* Main heading */}

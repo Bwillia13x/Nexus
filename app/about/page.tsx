@@ -43,6 +43,8 @@ export default function AboutPage() {
           {/* Tertiary orb for added depth */}
           <div className="ambient-orb absolute top-1/2 left-1/2 w-[400px] h-[400px] rounded-full bg-gradient-to-br from-primary/10 via-transparent to-secondary/5 blur-2xl opacity-60" />
 
+          {/* Wave background overlay */}
+          <div className="wave-layer" aria-hidden="true" />
           {/* Vignette overlay for contrast */}
           <div className="ambient-vignette" />
         </div>

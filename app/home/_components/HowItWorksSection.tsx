@@ -31,6 +31,27 @@ export default function HowItWorksSection() {
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [activeIndex, setActiveIndex] = useState(0);
 
+  // Programmatic navigation helpers for click/tap controls
+  const scrollToIndex = (index: number) => {
+    const clamped = Math.max(0, Math.min(index, steps.length - 1));
+    if (clamped === activeIndex) return;
+    setActiveIndex(clamped);
+    const node = itemRefs.current[clamped];
+    if (node) {
+      const prefersReduced =
+        typeof window !== 'undefined' &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const behavior: ScrollBehavior = prefersReduced ? 'auto' : 'smooth';
+      requestAnimationFrame(() => {
+        node.focus();
+        node.scrollIntoView({ behavior, inline: 'center', block: 'nearest' });
+      });
+    }
+  };
+
+  const handlePrev = () => scrollToIndex(activeIndex - 1);
+  const handleNext = () => scrollToIndex(activeIndex + 1);
+
   const handleKeyNav = (e: React.KeyboardEvent<HTMLDivElement>) => {
     const key = e.key;
     if (
@@ -141,12 +162,12 @@ export default function HowItWorksSection() {
                       </div>
                       <div>
                         <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-2">
-                          <span className="text-sm font-bold text-brand-600 bg-brand-500/10 px-3 py-1.5 rounded-full">
+                          <span className="text-sm font-bold text-primary bg-primary/10 px-3 py-1.5 rounded-full">
                             Step {step.step}
                           </span>
                           <span
                             id={`hiw-step-${step.step}-title`}
-                            className="text-lg font-semibold text-brand-600"
+                            className="text-lg font-semibold text-ink"
                           >
                             {step.title}
                           </span>
@@ -174,7 +195,7 @@ export default function HowItWorksSection() {
                         {step.bullets.map((bullet, i) => (
                           <li key={i} className="flex items-start gap-2">
                             <span
-                              className="text-brand-500 mt-1 flex-shrink-0"
+                              className="text-primary mt-1 flex-shrink-0"
                               aria-hidden="true"
                             >
                               ✓
@@ -188,6 +209,30 @@ export default function HowItWorksSection() {
                 </article>
               ))}
             </div>
+          </div>
+
+          {/* Arrow controls */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 right-0 flex items-center justify-between px-2">
+            <button
+              type="button"
+              onClick={handlePrev}
+              aria-label="Previous step"
+              aria-controls="how-it-works"
+              disabled={activeIndex === 0}
+              className="pointer-events-auto inline-flex h-10 w-10 items-center justify-center rounded-full bg-eggshell/90 text-ink shadow-md ring-1 ring-glass-border backdrop-blur focus-ring disabled:opacity-40 disabled:cursor-not-allowed"
+            >
+              <span aria-hidden>←</span>
+            </button>
+            <button
+              type="button"
+              onClick={handleNext}
+              aria-label="Next step"
+              aria-controls="how-it-works"
+              disabled={activeIndex === steps.length - 1}
+              className="pointer-events-auto inline-flex h-10 w-10 items-center justify-center rounded-full bg-eggshell/90 text-ink shadow-md ring-1 ring-glass-border backdrop-blur focus-ring disabled:opacity-40 disabled:cursor-not-allowed"
+            >
+              <span aria-hidden>→</span>
+            </button>
           </div>
         </div>
 

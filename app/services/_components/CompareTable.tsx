@@ -15,7 +15,7 @@ export default function CompareTable() {
           <div className="rounded-lg overflow-hidden min-w-full border border-glass-border bg-glass-2 backdrop-blur-xl shadow-elev">
             <table className="w-full text-sm">
               <caption className="sr-only">{compareTableData.caption}</caption>
-              <thead className="bg-gradient-to-r from-brand-500/10 to-brand-500/0">
+              <thead className="bg-gradient-to-r from-primary/10 to-primary/0">
                 <tr>
                   <th
                     scope="col"

@@ -19,7 +19,7 @@ export function AboutHero({ hero }: AboutHeroProps) {
         <div className="mx-auto max-w-container px-4 sm:px-6">
           <div className="text-center">
             {/* H1 - LCP element */}
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-6 md:mb-8 gradient-title-animated">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-6 md:mb-8 gradient-title">
               {hero.title}
             </h1>
 

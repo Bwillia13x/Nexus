@@ -22,36 +22,36 @@ export interface EngagementStep {
 export const hero = {
   title: 'About Drew — Calgary AI Consultant',
   subtitle:
-    'Solo artificial intelligence (AI) integration consultancy for Calgary small and mid-sized businesses (SMBs). I help teams ship useful assistants, automations, and decision dashboards—fast, safe, and measurable.',
+    'Solo AI integration for Calgary SMBs. I help teams ship assistants, automations, and dashboards—fast, safe, measurable.',
   badges: ['Calgary, AB', 'SMB-focused', 'Founder-led builds'],
 };
 
 // Intro Sections
 export const intro = {
   whoIAm:
-    "I'm Drew—finance-trained, hands-on builder. I help Calgary businesses automate support, streamline operations, and surface the numbers that matter. My bias: small, measurable pilots that your team can own after handoff.",
+    "I'm Drew—finance-trained builder. I help Calgary businesses automate support, streamline operations, and surface the numbers that matter. Bias: small, measurable pilots your team can own after handoff.",
   howIWork:
     'Start small. Define success. Ship a pilot in ~30 days. Measure ticket deflection, time saved, and adoption. Keep humans in the loop with clear safety rules. Document everything so you can run it without me.',
 };
 
 // Background Content
 export const background = {
-  main: 'Calgary-based, solo consultancy focused on high-impact, fixed-scope AI integrations for small and mid-sized businesses (SMBs)—assistants, automations, and analytics. Vendor-neutral, privacy-aware, and optimized for fast time to value and measured outcomes.',
+  main: 'Calgary-based solo consultancy for high-impact, fixed-scope AI integrations—assistants, automations, analytics—for SMBs. Vendor-neutral, privacy-first, optimized for fast time-to-value and measured outcomes.',
   bullets: [
-    'Finance first: quantify return on investment (ROI) — hours saved, error rates, and cycle times.',
-    'Builder mindset: configure, integrate, and ship — not just presentations.',
+    'Finance first: quantify ROI—hours saved, errors, cycle time.',
+    'Builder mindset: configure, integrate, ship—not just presentations.',
     "Plain English docs and an owner's manual at handoff.",
   ],
 };
 
 // Measurement Card
 export const measurementCard = {
-  title: 'What We Measure in Pilots (Targets)',
+  title: 'What We Measure (Targets)',
   items: [
-    'Ticket deflection (percentage)',
-    'Response time: median (P50) and 95th percentile (P95)',
-    'Hours saved per week and error rate (automation)',
-    'Time to answer and adoption (analytics)',
+    'Ticket deflection (%)',
+    'Response time (P50/P95)',
+    'Hours saved/week, error rate (automation)',
+    'Time to answer, adoption (analytics)',
   ],
   footnote:
     'Targets are planning baselines for new pilots—not prior client results.',
@@ -137,12 +137,10 @@ export const engagementSteps: EngagementStep[] = [
 
 // Data & Security
 export const trust = {
-  privacy:
-    'Aligned with Canadian privacy laws (PIPEDA and PIPA). Non-disclosure agreement (NDA) on request.',
+  privacy: 'Aligned with PIPEDA/PIPA. NDA on request.',
   dataUse: 'No training on your private data.',
-  access: 'Least-privilege access, audit logs, and an off-boarding plan.',
-  hosting:
-    'Cloud by default; virtual private cloud (VPC) or on-premises available.',
+  access: 'Least-privilege access, audit logs, off-boarding plan.',
+  hosting: 'Cloud by default; VPC or on-premises available.',
 };
 
 // FAQ
@@ -153,7 +151,7 @@ export const faq: FAQ[] = [
   },
   {
     q: 'What tools/models do you use?',
-    a: 'Chosen per use case with cost and speed trade-offs; documented in the statement of work (SOW).',
+    a: 'Chosen per use case with cost/speed trade-offs; documented in the SOW.',
   },
   {
     q: 'Do you do long-term support?',
@@ -168,7 +166,7 @@ export const faq: FAQ[] = [
 // Bottom CTA
 export const cta = {
   title: 'Calgary SMBs: Ready to Pilot AI?',
-  text: "Book a 30-minute intro. We'll identify a small, high-impact pilot we can ship in ~30 days.",
+  text: "Book a 30-minute intro. We'll pick a small, high-impact pilot to ship in ~30 days.",
   primary: { label: 'Book discovery call', href: '/contact' },
   secondary: { label: 'See services', href: '/services' },
   note: 'Based in Calgary. Remote-friendly.',

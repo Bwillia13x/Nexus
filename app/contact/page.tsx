@@ -10,7 +10,7 @@ import {
 export const metadata = {
   title: 'Contact Drew | Calgary AI Consultant — Nexus AI',
   description:
-    'Book a 30-minute discovery call to identify a focused AI pilot we can ship in ~30 days — assistant, automation, or analytics — with clear guardrails.',
+    'Book a 30-minute discovery call to identify a focused AI pilot we can ship in ~30 days — assistant, automation, or analytics — with clear safety rules.',
   robots: 'index,follow',
   alternates: {
     canonical: 'https://nexus-ai.com/contact',

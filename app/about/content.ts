@@ -22,25 +22,25 @@ export interface EngagementStep {
 export const hero = {
   title: 'About Drew — Calgary AI Consultant',
   subtitle:
-    'Solo AI-integration consultancy for Calgary SMBs. I help teams ship useful assistants, automations, and decision dashboards—fast, safe, and measurable.',
+    'Solo artificial intelligence (AI) integration consultancy for Calgary small and mid-sized businesses (SMBs). I help teams ship useful assistants, automations, and decision dashboards—fast, safe, and measurable.',
   badges: ['Calgary, AB', 'SMB-focused', 'Founder-led builds'],
 };
 
 // Intro Sections
 export const intro = {
   whoIAm:
-    "I'm Drew—finance-trained, hands-on builder. I help Calgary businesses automate support, streamline ops, and surface the numbers that matter. My bias: small, measurable pilots that your team can own after handoff.",
+    "I'm Drew—finance-trained, hands-on builder. I help Calgary businesses automate support, streamline operations, and surface the numbers that matter. My bias: small, measurable pilots that your team can own after handoff.",
   howIWork:
-    'Start small. Define success. Ship a pilot in ~30 days. Measure deflection/time saved/adoption. Keep humans in the loop with clear guardrails. Document everything so you can run it without me.',
+    'Start small. Define success. Ship a pilot in ~30 days. Measure ticket deflection, time saved, and adoption. Keep humans in the loop with clear safety rules. Document everything so you can run it without me.',
 };
 
 // Background Content
 export const background = {
-  main: 'Calgary-based, solo consultancy focused on high-impact, fixed-scope AI integrations for SMBs—assistants, automations, and analytics. Vendor-neutral, privacy-aware, and optimized for time to value and measured outcomes.',
+  main: 'Calgary-based, solo consultancy focused on high-impact, fixed-scope AI integrations for small and mid-sized businesses (SMBs)—assistants, automations, and analytics. Vendor-neutral, privacy-aware, and optimized for fast time to value and measured outcomes.',
   bullets: [
-    'Finance first: quantify ROI (hours saved, error rates, cycle times).',
-    'Builder mindset: configure, integrate, and ship—not slideware.',
-    "Plain-English docs + owner's manual at handoff.",
+    'Finance first: quantify return on investment (ROI) — hours saved, error rates, and cycle times.',
+    'Builder mindset: configure, integrate, and ship — not just presentations.',
+    "Plain English docs and an owner's manual at handoff.",
   ],
 };
 
@@ -48,10 +48,10 @@ export const background = {
 export const measurementCard = {
   title: 'What We Measure in Pilots (Targets)',
   items: [
-    'Ticket deflection % (assistant)',
-    'Median/P95 response time (assistant)',
-    'Hours saved/week & error rate (automation)',
-    'Time-to-answer & adoption (analytics)',
+    'Ticket deflection (percentage)',
+    'Response time: median (P50) and 95th percentile (P95)',
+    'Hours saved per week and error rate (automation)',
+    'Time to answer and adoption (analytics)',
   ],
   footnote:
     'Targets are planning baselines for new pilots—not prior client results.',
@@ -71,7 +71,7 @@ export const principles: Principle[] = [
   },
   {
     title: 'Privacy-First (PIPEDA/PIPA)',
-    text: 'Least-privilege access, NDA on request, no training on your private data.',
+    text: 'Least-privilege access, non-disclosure agreement (NDA) on request, no training on your private data.',
     icon: '🔒',
   },
   {
@@ -81,17 +81,17 @@ export const principles: Principle[] = [
   },
   {
     title: 'Vendor-Neutral',
-    text: 'Choose stack by constraints & cost/latency trade-offs.',
+    text: 'Choose tools based on your constraints and cost and speed trade-offs.',
     icon: '🛡️',
   },
   {
     title: 'Ship Weekly',
-    text: 'Frequent releases de-risk change and build trust.',
+    text: 'Frequent releases reduce risk and build trust.',
     icon: '🎨',
   },
   {
     title: 'Teach Your Team',
-    text: 'Docs & runbooks so you can run it without me.',
+    text: 'Documentation and runbooks so you can run it without me.',
     icon: '🤝',
   },
 ];
@@ -99,8 +99,8 @@ export const principles: Principle[] = [
 // Founder Snapshot
 export const founderSnapshot = [
   'B.Comm (Finance, Distinction; GPA 3.9–4.0 — last 90 units).',
-  'Background in alternatives/PE analysis; rigor around ROI and risk.',
-  'Builds: AI-assisted analytics, ops automations, ROI dashboards.',
+  'Background in alternatives/private equity (PE) analysis; rigor around return on investment (ROI) and risk.',
+  'Builds: AI-assisted analytics, operations automations, return on investment (ROI) dashboards.',
   'Focus: Calgary SMBs; fixed-scope pilots; measurable outcomes.',
 ];
 
@@ -109,36 +109,40 @@ export const engagementSteps: EngagementStep[] = [
   {
     step: 1,
     title: 'Discover',
-    description: 'Free, 30 min → goals, constraints, tools.',
+    description: 'Free, 30 minutes — goals, constraints, tools.',
   },
   {
     step: 2,
     title: 'Scope',
-    description: '2–3 days → SOW with metrics & acceptance criteria.',
+    description:
+      '2–3 days — statement of work (SOW) with metrics and acceptance criteria.',
   },
   {
     step: 3,
     title: 'Build',
-    description: 'Timeboxed, weekly check-ins; sandbox link.',
+    description: 'Fixed time frame, weekly check-ins; sandbox link.',
   },
   {
     step: 4,
     title: 'Pilot & Measure',
-    description: 'Track KPIs; tune guardrails.',
+    description:
+      'Track key performance indicators (KPIs); adjust safety rules.',
   },
   {
     step: 5,
     title: 'Handoff or Care Plan',
-    description: 'Docs, roles, off-boarding.',
+    description: 'Documentation, roles, off-boarding.',
   },
 ];
 
 // Data & Security
 export const trust = {
-  privacy: 'PIPEDA/PIPA aligned. NDA on request.',
+  privacy:
+    'Aligned with Canadian privacy laws (PIPEDA and PIPA). Non-disclosure agreement (NDA) on request.',
   dataUse: 'No training on your private data.',
-  access: 'Least-privilege, auditability, off-boarding plan.',
-  hosting: 'Cloud by default; VPC/on-prem available.',
+  access: 'Least-privilege access, audit logs, and an off-boarding plan.',
+  hosting:
+    'Cloud by default; virtual private cloud (VPC) or on-premises available.',
 };
 
 // FAQ
@@ -149,7 +153,7 @@ export const faq: FAQ[] = [
   },
   {
     q: 'What tools/models do you use?',
-    a: 'Chosen per use case with cost & latency trade-offs; documented in the SOW.',
+    a: 'Chosen per use case with cost and speed trade-offs; documented in the statement of work (SOW).',
   },
   {
     q: 'Do you do long-term support?',

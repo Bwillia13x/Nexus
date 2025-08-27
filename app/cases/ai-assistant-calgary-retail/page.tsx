@@ -3,12 +3,12 @@ import Link from 'next/link';
 export const metadata = {
   title: 'Case Study: Calgary Retail AI Assistant | Nexus AI',
   description:
-    'GPT-powered assistant for a Calgary retail SMB: faster replies, ticket deflection across web + SMS, and measurable ROI.',
+    'Assistant powered by Generative Pretrained Transformer (GPT) for a Calgary retail small business: faster replies, more tickets handled by the assistant, across website and text messaging (SMS), with measurable return on investment (ROI).',
 };
 
 export default function CaseAIAssistantCalgaryRetail() {
   const stats = [
-    { label: 'Faster Replies', value: '−78% RT' },
+    { label: 'Faster Replies', value: '−78% response time' },
     { label: 'Deflected Tickets', value: '62%' },
     { label: 'Time to Value', value: '3 weeks' },
   ];
@@ -24,12 +24,13 @@ export default function CaseAIAssistantCalgaryRetail() {
 
         <div className="max-w-5xl mx-auto text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-b from-black via-black/70 to-black/50 text-transparent bg-clip-text">
-            Calgary Retail: AI Assistant
+            Calgary Retail: Artificial Intelligence (AI) Assistant
           </h1>
           <p className="text-lg md:text-xl text-muted max-w-3xl mx-auto">
-            Deployed a GPT-powered assistant to handle FAQs, sizing, and order
-            lookups across web + SMS. Guardrails, human handoff, and analytics
-            included.
+            Deployed an assistant powered by Generative Pretrained Transformer
+            (GPT) to handle frequently asked questions (FAQs), sizing, and order
+            lookups across the website and text messaging (SMS). Includes safety
+            rules, handoff to a person, and analytics.
           </p>
 
           <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
@@ -58,7 +59,8 @@ export default function CaseAIAssistantCalgaryRetail() {
               <h2 className="text-2xl font-bold mb-4">Client Context</h2>
               <ul className="space-y-3 text-muted">
                 <li>
-                  • DTC retailer with seasonal spikes and small support team
+                  • Direct-to-consumer (DTC) retailer with seasonal spikes and a
+                  small support team
                 </li>
                 <li>
                   • High volume of repeat questions (shipping, returns, sizing)
@@ -72,15 +74,18 @@ export default function CaseAIAssistantCalgaryRetail() {
               <h2 className="text-2xl font-bold mb-4">Solution</h2>
               <ul className="space-y-3 text-muted">
                 <li>
-                  • Assistant trained on policies, catalog, and historical
+                  • Assistant configured with policies, catalog, and past
                   tickets
                 </li>
                 <li>
-                  • Web chat + SMS channels with guardrails and tone controls
+                  • Web chat and text messaging (SMS) with safety rules and tone
+                  controls
                 </li>
-                <li>• Human-in-the-loop escalation with transcript preview</li>
+                <li>• Escalation to a person with a transcript preview</li>
                 <li>
-                  • Outcome analytics: deflection, CSAT proxy, and handoff rate
+                  • Outcome analytics: tickets handled by the assistant
+                  (deflection), customer satisfaction (CSAT) score, and handoff
+                  rate
                 </li>
               </ul>
             </div>
@@ -90,25 +95,27 @@ export default function CaseAIAssistantCalgaryRetail() {
             <div className="p-6 rounded-3xl border border-glass-border bg-glass backdrop-blur-xl">
               <h3 className="font-semibold mb-2">Stack & Integrations</h3>
               <ul className="text-muted space-y-2">
-                <li>• Next.js widget + headless UI</li>
-                <li>• Twilio SMS</li>
-                <li>• OpenAI / Azure OpenAI</li>
-                <li>• Postgres for logs & analytics</li>
+                <li>• Next.js widget and UI components</li>
+                <li>• Twilio for text messaging (SMS)</li>
+                <li>• OpenAI or Azure OpenAI</li>
+                <li>• PostgreSQL for logs and analytics</li>
               </ul>
             </div>
             <div className="p-6 rounded-3xl border border-glass-border bg-glass backdrop-blur-xl">
-              <h3 className="font-semibold mb-2">Governance</h3>
+              <h3 className="font-semibold mb-2">Access and Data Rules</h3>
               <ul className="text-muted space-y-2">
-                <li>• Redaction of PII in logs</li>
-                <li>• Prompt boundaries and refusal rules</li>
-                <li>• Weekly review & model updates</li>
+                <li>
+                  • Redact personally identifiable information (PII) in logs
+                </li>
+                <li>• Clear prompt boundaries and refusal rules</li>
+                <li>• Weekly reviews and model updates</li>
               </ul>
             </div>
             <div className="p-6 rounded-3xl border border-glass-border bg-glass backdrop-blur-xl">
               <h3 className="font-semibold mb-2">Timeline</h3>
               <ul className="text-muted space-y-2">
                 <li>• Week 1: ingest knowledge & prototype</li>
-                <li>• Week 2: channel rollout + guardrails</li>
+                <li>• Week 2: channel rollout and safety rules</li>
                 <li>• Week 3: analytics + tuning</li>
               </ul>
             </div>
@@ -119,7 +126,8 @@ export default function CaseAIAssistantCalgaryRetail() {
               href="/contact"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-white bg-gradient-to-r from-primary to-secondary shadow-lg hover:-translate-y-1 transition"
             >
-              Discuss an AI Assistant for your team <span>→</span>
+              Discuss an Artificial Intelligence (AI) Assistant for your team{' '}
+              <span>→</span>
             </Link>
           </div>
         </div>

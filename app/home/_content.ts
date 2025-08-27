@@ -40,9 +40,10 @@ export interface CTAData {
 
 // Hero content
 export const heroContent = {
-  title: 'Practical AI for Calgary SMBs—Pilot in 30 Days',
+  title:
+    'Practical artificial intelligence (AI) for Calgary small businesses — Pilot in 30 Days',
   subtitle:
-    'Solo AI-integration consultancy helping Calgary businesses automate workflows, deploy assistants, and ship dashboards—safely and measurably.',
+    'I help Calgary small and mid-sized businesses automate work, add helpful assistants, and build clear dashboards — safely and with clear results.',
   primaryCta: {
     label: 'Book a 30-min discovery call',
     href: '/contact?intent=discovery',
@@ -55,21 +56,21 @@ export const heroContent = {
 
 // Services content
 export const servicesContent = {
-  title: 'What I Do for Calgary SMBs',
+  title: 'What I Do for Calgary Businesses',
   subtitle:
-    'Practical, measurable AI integrations—built around your team and customers.',
+    'Practical, measurable AI projects—built around your team and customers.',
   items: [
     {
       title: 'Deploy an Assistant',
-      text: 'Branded assistant with safe access to your knowledge and tools; guardrails first.',
+      text: 'A branded assistant that safely uses your knowledge and tools. Safety rules first.',
     },
     {
       title: 'Automate Reporting',
-      text: 'Identify high-leverage bottlenecks and ship a fixed-scope pilot that saves hours.',
+      text: 'Find the biggest bottlenecks. Set up a small, fixed-scope pilot that saves hours.',
     },
     {
-      title: 'Ship Dashboards',
-      text: "Connect your data and ship a small set of dashboards that answer operators' questions.",
+      title: 'Build Dashboards',
+      text: 'Connect your data and build a small set of dashboards that answer your team’s key questions.',
     },
   ] as ServiceItem[],
 };
@@ -82,17 +83,17 @@ export const pilotsContent = {
   items: [
     {
       id: 'assistant' as const,
-      title: 'Retail FAQ + Order Lookup Assistant',
-      what: 'A branded assistant that answers FAQs, sizing, and basic order lookups using policy-safe snippets and your knowledge base.',
+      title: 'Retail Help + Order Lookup Assistant',
+      what: 'A branded assistant that answers common questions, helps with sizing, and looks up basic orders using approved snippets from your knowledge base.',
       target: [
-        'Faster replies, fewer repetitive tickets',
-        'Measure deflection rate and CSAT',
+        'Faster replies and fewer repeat tickets',
+        'Track deflection rate and customer satisfaction (CSAT)',
       ],
       scope: [
         'Knowledge connection (docs/website)',
-        'Guardrails & escalation',
-        'Web widget, SMS option',
-        'Analytics',
+        'Safety rules and escalation',
+        'Web widget, text messaging (SMS) option',
+        'Analytics on usage and results',
       ],
       cta: {
         label: 'Start Assistant Pilot',
@@ -101,36 +102,36 @@ export const pilotsContent = {
     },
     {
       id: 'ops' as const,
-      title: 'Ops Reporting & Invoicing Automation',
-      what: 'A weekly reporting pipeline that pulls data from your tools and emails a clean PDF/dashboard to stakeholders.',
+      title: 'Operations Reporting and Invoicing Automation',
+      what: 'A weekly reporting setup that pulls data from your tools and emails a clear PDF or dashboard to stakeholders.',
       target: [
-        '8–12 hrs/week saved (time study)',
-        'Lower error rate via validations',
+        'Save about 8–12 hours per week (time study)',
+        'Fewer errors with built-in checks',
       ],
       scope: [
-        'Connectors',
+        'Connections to your tools',
         'Data checks',
         'Scheduled delivery',
         "Owner's manual",
       ],
       cta: {
-        label: 'Start Ops Pilot',
+        label: 'Start Operations Pilot',
         href: '/contact?pilot=ops',
       },
     },
     {
       id: 'analytics' as const,
       title: 'Analytics Quickstart',
-      what: 'A small set of dashboards wired to the data you already have (revenue, orders, tickets).',
+      what: 'A small set of dashboards connected to the data you already have (revenue, orders, tickets).',
       target: [
-        "Answers in <5 minutes for management's questions",
-        'Adoption of a single source of truth',
+        'Answers to common management questions in under 5 minutes',
+        'One trusted source of truth that people actually use',
       ],
       scope: [
         'Data model',
-        '6–8 KPIs',
+        '6–8 key performance indicators (KPIs)',
         'Drill-through views',
-        'Governance notes',
+        'Access and data rules',
       ],
       cta: {
         label: 'Start Analytics Pilot',
@@ -143,25 +144,24 @@ export const pilotsContent = {
 // How It Works content
 export const howItWorksContent = {
   title: 'How It Works',
-  subtitle:
-    'A proven process to get you from idea to measurable AI results in 30 days.',
+  subtitle: 'A simple plan to go from idea to clear results in 30 days.',
   steps: [
     {
       step: 1,
       title: 'Discover',
       subtitle: 'Free, 30 min',
-      description: 'audit goals, systems, constraints.',
+      description: 'We review your goals, tools, and limits.',
       bullets: [
-        'Review current tools & processes',
+        'Review current tools and processes',
         'Identify quick wins',
-        'Assess technical constraints',
+        'Check technical limits',
       ],
     },
     {
       step: 2,
       title: 'Scope',
       subtitle: '2–3 days',
-      description: 'fixed pilot plan with metrics and price.',
+      description: 'A small, fixed plan with metrics and a clear price.',
       bullets: [
         'Detailed plan',
         'Success metrics defined',
@@ -172,7 +172,7 @@ export const howItWorksContent = {
       step: 3,
       title: 'Pilot',
       subtitle: '30 days',
-      description: 'build, test, and ship a small but valuable win.',
+      description: 'We build, test, and launch a small but valuable win.',
       bullets: [
         'Incremental releases',
         'User testing & feedback',
@@ -181,16 +181,22 @@ export const howItWorksContent = {
     },
     {
       step: 4,
-      title: 'Train & Handoff',
+      title: 'Train and Handoff',
       subtitle: '1 week',
-      description: "owner's manual, roles, guardrails.",
-      bullets: ['Docs & training', 'Access & governance', 'Support procedures'],
+      description:
+        'We provide an owner’s guide, responsibilities, and safety rules.',
+      bullets: [
+        'Docs & training',
+        'Access and data rules',
+        'Support procedures',
+      ],
     },
     {
       step: 5,
       title: 'Care Plan',
       subtitle: 'Optional',
-      description: 'updates, monitoring, KPI reviews.',
+      description:
+        'Updates, monitoring, and key performance indicator (KPI) reviews.',
       bullets: [
         'Monthly check-ins',
         'Performance monitoring',
@@ -215,48 +221,52 @@ export const ctaContent: CTAData = {
 export const faqContent: FAQItem[] = [
   {
     question: 'Will my data be used to train AI?',
-    answer: 'No—private data stays private; usage limited to your project.',
+    answer:
+      'No. We do not use your private data to train AI. Your data stays within your project.',
   },
   {
-    question: 'Cloud vs on-prem?',
-    answer: 'Default cloud; on VPC or on-prem by request.',
+    question: 'Cloud or on-premises?',
+    answer:
+      'Cloud by default; virtual private cloud (VPC) or on-premises (your own servers) on request.',
   },
   {
     question: 'Which models/tools do you use?',
     answer:
-      'Per use case (OpenAI/Groq/Anthropic/etc.) with clear cost + latency trade-offs.',
+      'We choose the right model for your case (OpenAI, Groq, Anthropic). We explain costs and speed differences.',
   },
   {
     question: 'How do we measure ROI?',
     answer:
-      'Time saved, error rate, ticket deflection, response time, SLA—agreed up front.',
+      'We agree on measures up front to calculate return on investment (ROI): time saved, error rate, ticket deflection, response time, and service level agreements (SLAs) if needed.',
   },
   {
-    question: 'Security & access?',
+    question: 'Security and access?',
     answer:
-      'Least-privilege, audit trails, secrets management, off-boarding plan.',
+      'Least privilege access, audit logs, secret management, and a clear off-boarding plan.',
   },
   {
     question: 'What happens after the pilot?',
-    answer: 'Handoff or Care Plan; your choice.',
+    answer:
+      'We can hand it off to your team or provide an optional Care Plan. Your choice.',
   },
   {
-    question: 'Contracting?',
-    answer: 'SOW with acceptance criteria; change-orders if scope expands.',
+    question: 'How do contracts work?',
+    answer:
+      'Statement of work (SOW) with acceptance criteria; change orders if scope expands.',
   },
 ];
 
 // Section metadata
 export const sectionContent = {
   roi: {
-    title: 'ROI Calculator',
+    title: 'Return on Investment (ROI) Calculator',
     footnote:
       '*Payback depends on your processes and implementation; this is an estimate, not a promise.*',
   },
   integrations: {
-    title: 'We Speak Your Stack',
+    title: 'Works with Your Tools',
   },
   readiness: {
-    title: 'AI Pilot Readiness Checklist',
+    title: 'Pilot Readiness Checklist',
   },
 };

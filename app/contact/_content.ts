@@ -7,17 +7,17 @@ export const CONTACT_CONTENT = {
     eyebrow: 'Calgary SMB?',
     title: 'Book a 30-minute discovery call',
     subtitle:
-      "We'll identify a focused pilot we can ship in ~30 days — assistant, automation, or analytics — with clear guardrails.",
+      "We'll identify a focused pilot we can ship in about 30 days — assistant, automation, or analytics — with clear safety rules.",
     badges: [
       { icon: '⚡', text: 'Quick Response' },
       { icon: '🎯', text: 'Custom Solutions' },
-      { icon: '🔒', text: 'Enterprise Security' },
+      { icon: '🔒', text: 'Strong Security' },
     ],
   },
   form: {
-    title: 'Begin Your AI Transformation',
+    title: 'Get Started',
     subtitle:
-      "Let's craft your intelligent future together. Share your vision and we'll help bring it to life with cutting-edge AI solutions.",
+      "Tell us what you need. We'll recommend a small, practical AI project we can ship in about 30 days.",
     fields: {
       fullName: {
         label: 'Full Name',
@@ -66,7 +66,7 @@ export const CONTACT_CONTENT = {
         'Slack',
         'Teams',
         'HubSpot',
-        'Zapier/Make',
+        'Make.com',
       ],
       required: false,
     },
@@ -91,7 +91,7 @@ export const CONTACT_CONTENT = {
     vision: {
       label: 'Your Vision',
       placeholder:
-        "Tell us about your project, challenges, or how you'd like AI to transform your business...",
+        "Tell us about your project, challenges, or how you'd like AI to help your business...",
       help: 'Be as specific as possible about your goals and challenges',
       required: true,
     },
@@ -122,7 +122,7 @@ export const CONTACT_CONTENT = {
     security: {
       title: 'Your Data is Safe',
       content:
-        'We design for least-privilege access, keep your private data private, and follow PIPEDA/PIPA norms. NDAs on request. No training on your data.',
+        'We use least-privilege access, keep your private data private, and follow PIPEDA (federal) and PIPA (Alberta). Non-disclosure agreement (NDA) available on request. We do not train on your data.',
     },
   },
   success: {
@@ -143,7 +143,7 @@ export const CONTACT_CONTENT = {
     clear: 'Clear',
   },
   privacy: {
-    note: "We follow PIPEDA and Alberta's PIPA norms. NDA on request. We do not train models on your private data.",
+    note: 'We follow PIPEDA (federal) and PIPA (Alberta). Non-disclosure agreement (NDA) available on request. We do not train models on your private data.',
   },
 } as const;
 

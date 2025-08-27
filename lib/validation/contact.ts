@@ -42,7 +42,7 @@ export const inquirySchema = z.object({
         'Slack',
         'Teams',
         'HubSpot',
-        'Zapier/Make',
+        'Make.com',
       ] as const)
     )
     .optional()

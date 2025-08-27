@@ -133,6 +133,7 @@ const toolAliases: Record<string, string> = {
   // Zapier/Make
   zapier: 'Zapier/Make',
   make: 'Zapier/Make',
+  'make.com': 'Zapier/Make',
   integromat: 'Zapier/Make',
 };
 

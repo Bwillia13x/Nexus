@@ -42,9 +42,9 @@ export interface PillItem {
 
 // Page Hero Content
 export const heroContent = {
-  title: 'Calgary AI Services for SMBs',
+  title: 'Calgary AI Services for small and mid-sized businesses (SMBs)',
   subtitle:
-    'Fast, practical integrations—AI Assistant Setup, Automation Audit + Pilot, and Analytics Quickstart. Fixed-scope, measurable outcomes, Calgary-ready privacy.',
+    "Fast, practical artificial intelligence (AI) integrations—AI Assistant Setup, Automation Audit + Pilot, and Analytics Quickstart. Fixed scope, clear results, and privacy aligned with the Personal Information Protection and Electronic Documents Act (PIPEDA) and Alberta's Personal Information Protection Act (PIPA).",
   pills: [
     { text: 'Founder-led', type: 'primary' as const },
     { text: 'PIPEDA/PIPA aligned', type: 'secondary' as const },
@@ -62,17 +62,18 @@ export const processSteps: ProcessStep[] = [
   {
     step: 2,
     title: 'Scope',
-    description: '2–3 days → SOW with success metrics & acceptance criteria',
+    description:
+      '2–3 days → Statement of Work (SOW) with success metrics and acceptance criteria',
   },
   {
     step: 3,
     title: 'Build',
-    description: 'Timeboxed → weekly check-ins',
+    description: 'Fixed timeline with weekly check-ins',
   },
   {
     step: 4,
     title: 'Pilot & Measurement',
-    description: 'Track KPIs; adjust guardrails',
+    description: 'Track key performance indicators (KPIs); adjust safety rules',
   },
   {
     step: 5,
@@ -88,25 +89,25 @@ export const services: Service[] = [
     icon: '🤖',
     title: 'AI Assistant Setup',
     summary:
-      'Deploy a branded assistant for customers or staff with safe access to your knowledge and tools. Guardrails first; measurable impact next.',
+      'Deploy a branded assistant for customers or staff with safe access to your knowledge and tools. Safety rules first; measurable impact next.',
     detailedDescription:
-      'We integrate AI assistants into your website, CRM, and internal tools. Expect trained responses on your data, handoffs to humans, and analytics on outcomes. Designed for Calgary SMBs with sensible safeguards and fast iteration.',
+      'We integrate AI assistants into your website, customer relationship management (CRM), and internal tools. Expect trained responses on your data, handoffs to humans, and analytics on outcomes. Designed for Calgary SMBs with sensible safeguards and fast iteration.',
     successMetrics: [
-      'Reduce repetitive tickets (baseline: last 4 weeks; track deflection %)',
-      'Faster response times across web/SMS/email (median/95th percentile)',
-      'Satisfaction (CSAT for assistant interactions)',
+      'Reduce repetitive tickets (baseline: last 4 weeks; track deflection rate (%))',
+      'Faster response times across web, text messaging (SMS), and email (typical and 95th percentile)',
+      'Customer satisfaction score (CSAT) for assistant interactions',
     ],
     bullets: [
-      'Assistant persona, tone, and guardrails',
-      'Knowledge ingestion (docs/site/FAQs)',
-      'Escalation rules & human-in-the-loop',
-      'Channel integration (web widget, SMS, optionally email)',
+      'Assistant persona, tone, and safety rules',
+      'Knowledge ingestion (documents, website, Frequently Asked Questions (FAQs))',
+      'Escalation rules with a human review step',
+      'Channel integration (web widget, text messaging (SMS), optionally email)',
     ],
     artifacts: [
       'Assistant config & prompts',
       'Integration docs & API keys',
       'Analytics dashboard (volume, outcomes)',
-      'Runbook for updates & retraining',
+      'Operations runbook for updates & retraining',
     ],
     timeline: '2–4 weeks',
     pricing: '$5k–$9k',
@@ -120,9 +121,9 @@ export const services: Service[] = [
       'Full CRM migration or re-platforming',
     ],
     risksMitigations: [
-      'Data gaps → run "unknown intent" capture week 1',
-      'Hallucinations → retrieval-first design + fallbacks',
-      'Change adoption → short training video + cheatsheet',
+      'Data gaps → capture unknown questions in week 1',
+      'Incorrect model outputs (hallucinations) → retrieval-first design plus fallbacks',
+      'Change adoption → short training video plus quick reference guide',
     ],
   },
   {
@@ -132,15 +133,15 @@ export const services: Service[] = [
     summary:
       'Map bottlenecks across your processes and ship a low-risk pilot that saves hours each week—then decide what to scale.',
     detailedDescription:
-      "We'll audit your tools and workflows (email, spreadsheets, CRM, finance) to identify high‑leverage automation. Then we ship a pilot focused on one measurable result (e.g., weekly reporting, invoicing, or approvals).",
+      "We'll audit your tools and workflows (email, spreadsheets, customer relationship management (CRM), finance) to identify high‑leverage automation. Then we ship a pilot focused on one measurable result (for example, weekly reporting, invoicing, or approvals).",
     successMetrics: [
-      'Hours saved per week (time study on 2–3 reps)',
+      'Hours saved per week (time study on 2–3 team members)',
       'Error rate reduction on the targeted workflow',
       'Cycle time (before/after for one measurable step)',
     ],
     bullets: [
       'Workflow mapping & opportunity scoring',
-      'Pilot automation build with guardrails',
+      'Pilot automation build with safety rules',
       'Change management & team training',
       'Monitoring and fallback procedures',
     ],
@@ -148,13 +149,13 @@ export const services: Service[] = [
       'Automation plan with ROI model',
       'Pilot implementation (1 targeted process)',
       'Training materials (video + quick guide)',
-      'Ops runbook + incident playbook',
+      'Operations runbook + incident playbook',
     ],
     timeline: '3–6 weeks',
     pricing: '$7k–$14k',
     clientInputs: [
       'Tool access (spreadsheets/CRM/finance)',
-      '2–3 SMEs for interviews & testing',
+      '2–3 subject-matter experts (SMEs) for interviews & testing',
       'Approval on acceptance criteria',
     ],
     outOfScope: [
@@ -162,8 +163,8 @@ export const services: Service[] = [
       'Ongoing ops beyond pilot (unless Care Plan)',
     ],
     risksMitigations: [
-      'Tool limits/API quotas → pre-flight checks week 1',
-      'Hidden dependencies → process dry-runs with SMEs',
+      'Tool limits and API quotas → pre-checks in week 1',
+      'Hidden dependencies → process dry-runs with subject-matter experts (SMEs)',
       'Change resistance → involve the process owner early',
     ],
   },
@@ -181,32 +182,32 @@ export const services: Service[] = [
       'Data trust (fewer ad-hoc extracts; one source of truth)',
     ],
     bullets: [
-      'Source connections (SaaS, spreadsheets, DBs)',
+      'Source connections (software-as-a-service (SaaS), spreadsheets, databases (DBs))',
       'Data model + definitions',
-      'KPI dashboards and alerts',
-      'Access controls & governance notes',
+      'Key performance indicator (KPI) dashboards and alerts',
+      'Access and data rules',
     ],
     artifacts: [
       'Data model & connectors',
-      'Dashboard pack (6–8 KPIs)',
-      'Alerting + SLA docs',
+      'Dashboard pack (6–8 key performance indicators (KPIs))',
+      'Alerting plus service level agreement (SLA) docs',
       'Admin & usage guide',
     ],
     timeline: '2–3 weeks',
     pricing: '$6k–$10k',
     clientInputs: [
       'Read access to systems',
-      'KPI definitions & thresholds',
+      'Key performance indicator (KPI) definitions & thresholds',
       'Champion user for feedback',
     ],
     outOfScope: [
       'Enterprise data warehouse build',
-      'Company-wide BI governance program',
+      'Company-wide business intelligence (BI) access and data rules program',
     ],
     risksMitigations: [
       'Dirty/fragmented data → light transforms + data dictionary',
-      'Scope creep → cap to 6–8 KPIs in the pilot',
-      'Tool sprawl → prefer existing stack before adding new BI',
+      'Scope creep → cap to 6–8 key performance indicators (KPIs) in the pilot',
+      'Tool sprawl → prefer existing stack before adding new business intelligence (BI)',
     ],
   },
 ];
@@ -221,9 +222,9 @@ export const serviceComparison: ServiceComparison[] = [
   },
   {
     feature: 'Typical timeline',
-    aiAssistantSetup: '2–4 wks',
-    automationAuditPilot: '3–6 wks',
-    analyticsQuickstart: '2–3 wks',
+    aiAssistantSetup: '2–4 weeks',
+    automationAuditPilot: '3–6 weeks',
+    analyticsQuickstart: '2–3 weeks',
   },
   {
     feature: 'Typical budget',
@@ -234,14 +235,16 @@ export const serviceComparison: ServiceComparison[] = [
   {
     feature: 'Users affected',
     aiAssistantSetup: 'Customers / internal teams',
-    automationAuditPilot: 'Ops / Finance / Admin',
-    analyticsQuickstart: 'Leadership / Ops',
+    automationAuditPilot: 'Operations (Ops) / Finance / Admin',
+    analyticsQuickstart: 'Leadership / Operations (Ops)',
   },
   {
     feature: 'Core deliverables',
     aiAssistantSetup: 'Assistant + analytics + runbook',
-    automationAuditPilot: 'Pilot automation + ROI model + runbook',
-    analyticsQuickstart: 'KPIs + alerts + admin guide',
+    automationAuditPilot:
+      'Pilot automation + return on investment (ROI) model + runbook',
+    analyticsQuickstart:
+      'Key performance indicators (KPIs) + alerts + admin guide',
   },
   {
     feature: 'Good first step if…',
@@ -256,22 +259,22 @@ export const faqs: FAQ[] = [
   {
     question: 'Will my data train AI?',
     answer:
-      "No. We don't train models on your private data. All processing is done with privacy-first guardrails.",
+      "No. We don't train models on your private data. All processing is done with clear privacy rules.",
   },
   {
-    question: 'On-prem/VPC available?',
+    question: 'On-premises or VPC available?',
     answer:
-      'Available on request for enterprise clients. We can work within your security constraints.',
+      'Yes—available on request for enterprise clients. We can work within your security constraints. VPC stands for virtual private cloud.',
   },
   {
-    question: 'Which models/tools do you use?',
+    question: 'Which models and tools do you use?',
     answer:
-      'Chosen per use case with cost/latency trade-offs documented in SOW. We optimize for your specific needs.',
+      'Chosen per use case with costs and speed trade-offs documented in the Statement of Work (SOW). We optimize for your specific needs.',
   },
   {
     question: 'How is ROI measured?',
     answer:
-      'Time saved, error rate reduction, ticket deflection, response times, adoption rates, and user satisfaction.',
+      'Return on investment (ROI) is measured by time saved, error rate reduction, ticket deflection, response times, adoption rates, and user satisfaction.',
   },
   {
     question: 'What happens post-pilot?',
@@ -279,7 +282,7 @@ export const faqs: FAQ[] = [
       "Owner's manual + optional Care Plan for ongoing support, updates, and optimization.",
   },
   {
-    question: 'Security & privacy details?',
+    question: 'Security and privacy details?',
     answer:
       'Least-privilege access, audit logs, secret management, secure data handling, and clean off-boarding procedures.',
   },
@@ -297,7 +300,7 @@ export const integrations = [
   'Teams',
   'HubSpot',
   'Zapier',
-  'Make',
+  'Make.com',
 ];
 
 // Privacy & Compliance Content
@@ -307,12 +310,12 @@ export const privacyContent = {
     {
       title: 'Canada-First Compliance',
       content:
-        "We follow PIPEDA and Alberta's PIPA norms. NDA on request. No training on your private data. Least-privilege access with off-boarding plan.",
+        "We follow the Personal Information Protection and Electronic Documents Act (PIPEDA) and Alberta's Personal Information Protection Act (PIPA). Nondisclosure agreements (NDAs) on request. No training on your private data. Least-privilege access with an off-boarding plan.",
     },
     {
       title: 'Service Area & Contracts',
       content:
-        'Service Area: Calgary • Airdrie • Cochrane • Okotoks (remote available) Contracts: SOW with acceptance criteria; change orders for expanded scope.',
+        'Service Area: Calgary • Airdrie • Cochrane • Okotoks (remote available) Contracts: Statement of Work (SOW) with acceptance criteria; change orders for expanded scope.',
     },
   ],
 };
@@ -324,7 +327,7 @@ export const schemaOrgData = {
     '@type': 'LocalBusiness',
     name: 'Nexus AI',
     description:
-      'Calgary AI services for SMBs including AI Assistant Setup, Automation Audit + Pilot, and Analytics Quickstart.',
+      'Calgary AI services for small and mid-sized businesses (SMBs) including AI Assistant Setup, Automation Audit + Pilot, and Analytics Quickstart.',
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Calgary',
@@ -353,19 +356,19 @@ export const roiCalculatorConfig = {
   inputs: [
     {
       label: 'Hours saved per week',
-      placeholder: 'e.g. 10',
+      placeholder: 'for example, 10',
       min: 1,
       max: 100,
     },
     {
       label: 'Loaded hourly rate ($)',
-      placeholder: 'e.g. 75',
+      placeholder: 'for example, 75',
       min: 25,
       max: 300,
     },
     {
       label: 'Weeks per year',
-      placeholder: 'e.g. 52',
+      placeholder: 'for example, 52',
       min: 1,
       max: 52,
       defaultValue: 52,
@@ -382,7 +385,7 @@ export const roiCalculatorConfig = {
 // Lead Magnet Configuration
 export const leadMagnetConfig = {
   title: 'AI Pilot Readiness Checklist',
-  subtitle: 'Calgary SMBs',
+  subtitle: 'Calgary small and mid-sized businesses (SMBs)',
   description:
     'Get your free 10-point checklist to assess if your business is ready for AI automation.',
   benefits: [
@@ -400,6 +403,6 @@ export const leadMagnetConfig = {
 export const footerContent = {
   serviceArea: 'Calgary • Airdrie • Cochrane • Okotoks (remote available)',
   privacy:
-    "We follow PIPEDA/PIPA norms. NDA on request. We don't train models on your private data.",
+    "We follow the Personal Information Protection and Electronic Documents Act (PIPEDA) and Alberta's Personal Information Protection Act (PIPA). Nondisclosure agreements (NDAs) available. We don't train models on your private data.",
   contracts: 'SOW with acceptance criteria; change orders for expanded scope.',
 };

@@ -19,7 +19,7 @@ export const homeContent = {
     items: [
       {
         title: 'Deploy an Assistant',
-        text: 'Branded assistant with safe access to your knowledge and tools; guardrails first.',
+        text: 'Branded assistant with safe access to your knowledge and tools; safety rules first.',
       },
       {
         title: 'Automate Reporting',
@@ -46,7 +46,7 @@ export const homeContent = {
         ],
         scope: [
           'Knowledge connection (docs/website)',
-          'Guardrails & escalation',
+          'Safety rules & escalation',
           'Web widget, SMS option',
           'Analytics',
         ],
@@ -83,7 +83,7 @@ export const homeContent = {
           'Data model',
           '6–8 KPIs',
           'Drill-through views',
-          'Governance notes',
+          'Access and data rules',
         ],
         cta: {
           label: 'Start Analytics Pilot',
@@ -134,10 +134,10 @@ export const homeContent = {
         step: 4,
         title: 'Train & Handoff',
         subtitle: '1 week',
-        description: "owner's manual, roles, guardrails.",
+        description: "owner's manual, roles, safety rules.",
         bullets: [
           'Docs & training',
-          'Access & governance',
+          'Access & data rules',
           'Support procedures',
         ],
       },

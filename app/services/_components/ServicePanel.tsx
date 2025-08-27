@@ -72,7 +72,7 @@ export default function ServicePanel({ service }: ServicePanelProps) {
               <Card
                 title="Price Range"
                 value={service.price}
-                helper="Price varies by connectors, data cleaning, user count, and governance."
+                helper="Price varies by connectors, data cleaning, user count, and access and data rules."
                 icon="💰"
               />
             </aside>

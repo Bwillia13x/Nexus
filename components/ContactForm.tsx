@@ -333,7 +333,7 @@ export function ContactForm() {
                       'Slack',
                       'Teams',
                       'HubSpot',
-                      'Zapier/Make',
+                      'Make.com',
                     ].map(tool => (
                       <label
                         key={tool}

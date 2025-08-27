@@ -3,12 +3,12 @@ import Link from 'next/link';
 export const metadata = {
   title: 'Case Study: Operations Automation Pilot | Nexus AI',
   description:
-    'Audit + pilot for a Calgary ops team: mapped bottlenecks, automated weekly reporting and invoicing, reduced errors and saved hours.',
+    'Audit and pilot for a Calgary operations team: mapped bottlenecks, automated weekly reporting and invoicing, reduced errors, and saved hours.',
 };
 
 export default function CaseAutomationPilotOps() {
   const stats = [
-    { label: 'Hours Saved', value: '12+/wk' },
+    { label: 'Hours Saved', value: '12+ hours/week' },
     { label: 'Error Rate', value: '−90%' },
     { label: 'Pilot Duration', value: '30 days' },
   ];
@@ -24,12 +24,12 @@ export default function CaseAutomationPilotOps() {
 
         <div className="max-w-5xl mx-auto text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-b from-black via-black/70 to-black/50 text-transparent bg-clip-text">
-            Ops: Automation Pilot
+            Operations: Automation Pilot
           </h1>
           <p className="text-lg md:text-xl text-muted max-w-3xl mx-auto">
             Identified bottlenecks and automated weekly reporting and invoicing
-            across tools. Human approvals kept, with robust monitoring and
-            rollback.
+            across tools. Kept human approvals, with monitoring and a rollback
+            process.
           </p>
 
           <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
@@ -57,17 +57,26 @@ export default function CaseAutomationPilotOps() {
             <div className="p-6 rounded-3xl border border-glass-border bg-glass backdrop-blur-xl">
               <h2 className="text-2xl font-bold mb-4">Audit Findings</h2>
               <ul className="space-y-3 text-muted">
-                <li>• Manual CSV exports for finance and reporting</li>
-                <li>• Duplicated entry in CRM and accounting</li>
-                <li>• Ad-hoc spreadsheets with inconsistent formulas</li>
+                <li>
+                  • Manual comma-separated values (CSV) exports for finance and
+                  reporting
+                </li>
+                <li>
+                  • Duplicate data entry in customer relationship management
+                  (CRM) and accounting systems
+                </li>
+                <li>• Ad hoc spreadsheets with inconsistent formulas</li>
               </ul>
             </div>
             <div className="p-6 rounded-3xl border border-glass-border bg-glass backdrop-blur-xl">
               <h2 className="text-2xl font-bold mb-4">Pilot Scope</h2>
               <ul className="space-y-3 text-muted">
-                <li>• Automated weekly KPI report with anomaly flags</li>
-                <li>• Invoicing pipeline with Slack approvals</li>
-                <li>• Reconciliation checks + error notifications</li>
+                <li>
+                  • Automated weekly key performance indicator (KPI) report with
+                  anomaly flags
+                </li>
+                <li>• Invoicing pipeline with approvals in Slack</li>
+                <li>• Reconciliation checks and error notifications</li>
               </ul>
             </div>
           </div>
@@ -76,26 +85,26 @@ export default function CaseAutomationPilotOps() {
             <div className="p-6 rounded-3xl border border-glass-border bg-glass backdrop-blur-xl">
               <h3 className="font-semibold mb-2">Stack & Integrations</h3>
               <ul className="text-muted space-y-2">
-                <li>• Google Sheets / BigQuery</li>
-                <li>• QuickBooks / Xero</li>
+                <li>• Google Sheets and BigQuery</li>
+                <li>• QuickBooks or Xero</li>
                 <li>• Slack for approvals</li>
-                <li>• Zapier / Make.com orchestrations</li>
+                <li>• Zapier or Make.com automations</li>
               </ul>
             </div>
             <div className="p-6 rounded-3xl border border-glass-border bg-glass backdrop-blur-xl">
-              <h3 className="font-semibold mb-2">Governance</h3>
+              <h3 className="font-semibold mb-2">Access and Data Rules</h3>
               <ul className="text-muted space-y-2">
-                <li>• Idempotent jobs and audit logs</li>
-                <li>• Access controls & least privilege</li>
+                <li>• Repeat-safe jobs and audit logs</li>
+                <li>• Access controls with least-privilege access</li>
                 <li>• Monitoring and fallback procedures</li>
               </ul>
             </div>
             <div className="p-6 rounded-3xl border border-glass-border bg-glass backdrop-blur-xl">
               <h3 className="font-semibold mb-2">Timeline</h3>
               <ul className="text-muted space-y-2">
-                <li>• Week 1: mapping + scoring</li>
-                <li>• Week 2–3: pilot build + approvals</li>
-                <li>• Week 4: monitoring + training</li>
+                <li>• Week 1: mapping and scoring</li>
+                <li>• Week 2–3: pilot build and approvals</li>
+                <li>• Week 4: monitoring and training</li>
               </ul>
             </div>
           </div>
@@ -105,7 +114,7 @@ export default function CaseAutomationPilotOps() {
               href="/contact"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-white bg-gradient-to-r from-primary to-secondary shadow-lg hover:-translate-y-1 transition"
             >
-              Explore an Automation Pilot <span>→</span>
+              Explore an Operations Automation Pilot <span>→</span>
             </Link>
           </div>
         </div>

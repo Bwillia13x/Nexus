@@ -34,7 +34,7 @@ export const generateServiceSchemas = () => [
     '@type': 'Service',
     name: 'AI Assistant Setup',
     description:
-      'Branded assistant with safe access to your knowledge and tools; guardrails first.',
+      'Branded assistant with safe access to your knowledge and tools; safety rules first.',
     provider: {
       '@type': 'LocalBusiness',
       name: 'Nexus AI',

@@ -3,24 +3,24 @@
     "id": "ai-assistant-setup",
     "icon": "🤖",
     "title": "AI Assistant Setup",
-    "summary": "Deploy a branded assistant for customers or staff with safe access to your knowledge and tools. Guardrails first; measurable impact next.",
-    "detailedDescription": "We integrate AI assistants into your website, CRM, and internal tools. Expect trained responses on your data, handoffs to humans, and analytics on outcomes. Designed for Calgary SMBs with sensible safeguards and fast iteration.",
+    "summary": "Deploy a branded assistant for customers or staff with safe access to your knowledge and tools. Safety rules first; measurable impact next.",
+    "detailedDescription": "We integrate AI assistants into your website, customer relationship management (CRM), and internal tools. Expect trained responses on your data, handoffs to humans, and analytics on outcomes. Designed for Calgary small and mid-sized businesses (SMBs) with sensible safeguards and fast iteration.",
     "successMetrics": [
-      "Reduce repetitive tickets (baseline: last 4 weeks; track deflection %)",
-      "Faster response times across web/SMS/email (median/95th percentile)",
-      "Satisfaction (CSAT for assistant interactions)"
+      "Reduce repetitive tickets (baseline: last 4 weeks; track deflection rate (%))",
+      "Faster response times across web, text messaging (SMS), and email (typical and 95th percentile)",
+      "Customer satisfaction score (CSAT) for assistant interactions"
     ],
     "bullets": [
-      "Assistant persona, tone, and guardrails",
-      "Knowledge ingestion (docs/site/FAQs)",
-      "Escalation rules & human-in-the-loop",
-      "Channel integration (web widget, SMS, optionally email)"
+      "Assistant persona, tone, and safety rules",
+      "Knowledge ingestion (documents, website, Frequently Asked Questions (FAQs))",
+      "Escalation rules with a human review step",
+      "Channel integration (web widget, text messaging (SMS), optionally email)"
     ],
     "artifacts": [
       "Assistant config & prompts",
       "Integration docs & API keys",
       "Analytics dashboard (volume, outcomes)",
-      "Runbook for updates & retraining"
+      "Operations runbook for updates & retraining"
     ],
     "timeline": "2–4 weeks",
     "pricing": "$5k–$9k",
@@ -34,9 +34,9 @@
       "Full CRM migration or re-platforming"
     ],
     "risksMitigations": [
-      "Data gaps → run 'unknown intent' capture week 1",
-      "Hallucinations → retrieval-first design + fallbacks",
-      "Change adoption → short training video + cheatsheet"
+      "Data gaps → capture unknown questions in week 1",
+      "Incorrect model outputs (hallucinations) → retrieval-first design plus fallbacks",
+      "Change adoption → short training video plus quick reference guide"
     ]
   },
   {
@@ -44,15 +44,15 @@
     "icon": "⚙️",
     "title": "Automation Audit + Pilot",
     "summary": "Map bottlenecks across your processes and ship a low-risk pilot that saves hours each week—then decide what to scale.",
-    "detailedDescription": "I'll audit your tools and workflows (email, spreadsheets, CRM, finance) to identify high‑leverage automation. Then we ship a pilot focused on one measurable result (e.g., weekly reporting, invoicing, or approvals).",
+    "detailedDescription": "I'll audit your tools and workflows (email, spreadsheets, customer relationship management (CRM), finance) to identify high‑leverage automation. Then we ship a pilot focused on one measurable result (for example, weekly reporting, invoicing, or approvals).",
     "successMetrics": [
-      "Hours saved per week (time study on 2–3 reps)",
+      "Hours saved per week (time study on 2–3 team members)",
       "Error rate reduction on the targeted workflow",
       "Cycle time (before/after for one measurable step)"
     ],
     "bullets": [
       "Workflow mapping & opportunity scoring",
-      "Pilot automation build with guardrails",
+      "Pilot automation build with safety rules",
       "Change management & team training",
       "Monitoring and fallback procedures"
     ],
@@ -60,13 +60,13 @@
       "Automation plan with ROI model",
       "Pilot implementation (1 targeted process)",
       "Training materials (video + quick guide)",
-      "Ops runbook + incident playbook"
+      "Operations runbook + incident playbook"
     ],
     "timeline": "3–6 weeks",
     "pricing": "$7k–$14k",
     "clientInputs": [
       "Tool access (spreadsheets/CRM/finance)",
-      "2–3 SMEs for interviews & testing",
+      "2–3 subject-matter experts (SMEs) for interviews & testing",
       "Approval on acceptance criteria"
     ],
     "outOfScope": [
@@ -74,8 +74,8 @@
       "Ongoing ops beyond pilot (unless Care Plan)"
     ],
     "risksMitigations": [
-      "Tool limits/API quotas → pre-flight checks week 1",
-      "Hidden dependencies → process dry-runs with SMEs",
+      "Tool limits and API quotas → pre-checks in week 1",
+      "Hidden dependencies → process dry-runs with subject-matter experts (SMEs)",
       "Change resistance → involve the process owner early"
     ]
   },
@@ -91,32 +91,32 @@
       "Data trust (fewer ad-hoc extracts; one source of truth)"
     ],
     "bullets": [
-      "Source connections (SaaS, spreadsheets, DBs)",
+      "Source connections (software-as-a-service (SaaS), spreadsheets, databases (DBs))",
       "Data model + definitions",
-      "KPI dashboards and alerts",
-      "Access controls & governance notes"
+      "Key performance indicator (KPI) dashboards and alerts",
+      "Access and data rules"
     ],
     "artifacts": [
       "Data model & connectors",
-      "Dashboard pack (6–8 KPIs)",
-      "Alerting + SLA docs",
+      "Dashboard pack (6–8 key performance indicators (KPIs))",
+      "Alerting plus service level agreement (SLA) docs",
       "Admin & usage guide"
     ],
     "timeline": "2–3 weeks",
     "pricing": "$6k–$10k",
     "clientInputs": [
       "Read access to systems",
-      "KPI definitions & thresholds",
+      "Key performance indicator (KPI) definitions & thresholds",
       "Champion user for feedback"
     ],
     "outOfScope": [
       "Enterprise data warehouse build",
-      "Company-wide BI governance program"
+      "Company-wide business intelligence (BI) access and data rules program"
     ],
     "risksMitigations": [
       "Dirty/fragmented data → light transforms + data dictionary",
-      "Scope creep → cap to 6–8 KPIs in the pilot",
-      "Tool sprawl → prefer existing stack before adding new BI"
+      "Scope creep → cap to 6–8 key performance indicators (KPIs) in the pilot",
+      "Tool sprawl → prefer existing stack before adding new business intelligence (BI)"
     ]
   }
 ]

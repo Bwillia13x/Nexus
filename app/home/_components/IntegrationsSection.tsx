@@ -12,7 +12,7 @@ const tools = [
   { name: 'Slack', icon: '💬' },
   { name: 'Teams', icon: '👥' },
   { name: 'HubSpot', icon: '🎯' },
-  { name: 'Zapier/Make', icon: '🔗' },
+  { name: 'Make.com', icon: '🔗' },
 ];
 
 export default function IntegrationsSection() {

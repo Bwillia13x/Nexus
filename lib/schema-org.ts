@@ -160,7 +160,7 @@ export function generateContactPageSchema() {
     '@type': 'ContactPage',
     name: 'Contact Nexus AI - Calgary AI Consultants',
     description:
-      'Book a 30-minute discovery call to identify a focused AI pilot for your Calgary SMB. AI assistant, automation, or analytics - with clear guardrails.',
+      'Book a 30-minute discovery call to identify a focused AI pilot for your Calgary SMB. AI assistant, automation, or analytics - with clear safety rules.',
     url: 'https://nexus-ai.com/contact',
     isPartOf: {
       '@type': 'WebSite',

@@ -11,7 +11,7 @@ export default function ServiceHero() {
 
       <div className="mx-auto max-w-container px-4 text-center">
         {/* Main heading */}
-        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight">
+        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight gradient-title">
           {heroContent.title}
         </h1>
 

@@ -11,6 +11,8 @@ import FAQSection from './home/_components/FAQSection';
 import IntegrationsSection from './home/_components/IntegrationsSection';
 import LeadMagnetSection from './home/_components/LeadMagnetSection';
 import ContactSection from './home/_components/ContactSection';
+import TrustBar from './home/_components/TrustBar';
+import SecuritySection from './home/_components/SecuritySection';
 
 // Import schema generators
 import {
@@ -85,6 +87,9 @@ export default function HomePage() {
         {/* Home Hero */}
         <HomeHero />
 
+        {/* Trust Bar */}
+        <TrustBar />
+
         {/* Services Grid */}
         <ServicesGrid />
 
@@ -96,6 +101,9 @@ export default function HomePage() {
 
         {/* Early Adopter Banner */}
         <EarlyAdopterSection />
+
+        {/* Security & Data Handling */}
+        <SecuritySection />
 
         {/* FAQ */}
         <FAQSection />

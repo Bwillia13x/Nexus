@@ -270,3 +270,22 @@ export const sectionContent = {
     title: 'Pilot Readiness Checklist',
   },
 };
+
+// Security & Trust content for Home
+export const securityContent = {
+  items: [
+    'Aligned with PIPEDA/PIPA. NDA on request.',
+    'No training on your private data.',
+    'Least-privilege access, audit logs, off-boarding plan.',
+    'Cloud by default; VPC or on-premises available.',
+  ],
+};
+
+export const trustBarContent = {
+  items: [
+    { icon: '🔒', label: 'PIPEDA/PIPA aligned' },
+    { icon: '🛡️', label: 'No data training' },
+    { icon: '✓', label: 'Fixed-scope pilots' },
+    { icon: '👥', label: 'Founder-led builds' },
+  ],
+};

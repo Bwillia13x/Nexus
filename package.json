@@ -14,6 +14,7 @@
     "type-check": "tsc --noEmit",
     "presmoke": "npm run build",
     "smoke": "node scripts/smoke.mjs",
+    "smoke:4002": "PORT=4002 npm run smoke",
     "prepare": "husky install",
     "icons:vectorize": "node scripts/vectorize-icons.mjs",
     "icons:opt": "svgo -f icons/svg",

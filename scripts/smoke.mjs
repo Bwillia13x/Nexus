@@ -1,9 +1,36 @@
 #!/usr/bin/env node
 import { spawn } from 'node:child_process';
 import process from 'node:process';
+import net from 'node:net';
 
-const PORT = process.env.PORT || '4000';
-const BASE = `http://localhost:${PORT}`;
+// Will be set at runtime after selecting a free port
+let PORT = '';
+let BASE = '';
+
+async function findFreePort(start) {
+  return new Promise(resolve => {
+    const tryPort = p => {
+      const server = net.createServer();
+      server.unref();
+      server.on('error', err => {
+        if (err && err.code === 'EADDRINUSE') {
+          server.close();
+          tryPort(p + 1);
+        } else {
+          // On unexpected error, try next port
+          tryPort(p + 1);
+        }
+      });
+      // Use unspecified host to cover both IPv6 '::' and IPv4
+      server.listen(p, () => {
+        const addr = server.address();
+        const found = typeof addr === 'object' && addr ? addr.port : p;
+        server.close(() => resolve(found));
+      });
+    };
+    tryPort(Number(start) || 4000);
+  });
+}
 
 function wait(ms) {
   return new Promise(r => setTimeout(r, ms));
@@ -22,20 +49,49 @@ async function waitUntilReady(timeoutMs = 30000) {
 }
 
 async function run() {
-  console.log(`[smoke] Starting Next.js server on :${PORT} ...`);
+  // Preflight: pick a free port starting at env PORT or 4000
+  let p = await findFreePort(Number(process.env.PORT || '4000'));
+  PORT = String(p);
+  BASE = `http://localhost:${PORT}`;
+
   const nextBin = './node_modules/next/dist/bin/next';
-  const srv = spawn('node', [nextBin, 'start', '-p', PORT], {
-    stdio: ['ignore', 'pipe', 'pipe'],
-    env: { ...process.env, PORT, CONTACT_DISABLE_EMAIL: '1' },
-  });
+  let srv;
+  let started = false;
+  for (let attempt = 0; attempt < 10 && !started; attempt++) {
+    console.log(`[smoke] Starting Next.js server on :${PORT} ...`);
+    srv = spawn('node', [nextBin, 'start', '-p', PORT], {
+      stdio: ['ignore', 'pipe', 'pipe'],
+      env: { ...process.env, PORT, CONTACT_DISABLE_EMAIL: '1' },
+    });
 
-  srv.stdout.on('data', d => process.stdout.write(`[next] ${d}`));
-  srv.stderr.on('data', d => process.stderr.write(`[next:err] ${d}`));
+    let sawInUse = false;
+    srv.stdout.on('data', d => process.stdout.write(`[next] ${d}`));
+    srv.stderr.on('data', d => {
+      const s = String(d);
+      if (s.includes('EADDRINUSE')) sawInUse = true;
+      process.stderr.write(`[next:err] ${d}`);
+    });
 
-  let ready = await waitUntilReady();
-  if (!ready) {
-    console.error('[smoke] Server did not become ready in time');
-    srv.kill('SIGTERM');
+    const ready = await waitUntilReady();
+    if (!ready) {
+      if (sawInUse) {
+        console.warn(`[smoke] Port ${PORT} in use; retrying on :${p + 1}`);
+        srv.kill('SIGTERM');
+        await wait(500);
+        p = p + 1;
+        PORT = String(p);
+        BASE = `http://localhost:${PORT}`;
+        continue;
+      }
+      console.error('[smoke] Server did not become ready in time');
+      srv.kill('SIGTERM');
+      process.exit(1);
+    }
+    started = true;
+  }
+
+  if (!started) {
+    console.error('[smoke] Could not start Next.js server on any port');
     process.exit(1);
   }
 

@@ -8,40 +8,38 @@ import {
 } from '@/lib/schema-org';
 
 export const metadata = {
-  title: 'Contact Drew | Calgary AI Consultant — Nexus AI',
+  title: 'Contact Drew | Calgary AI Consultant — Prairie Signal',
   description:
-    'Book a 30-minute discovery call to identify a focused AI pilot we can ship in ~30 days — assistant, automation, or analytics — with clear safety rules.',
+    'Book a discovery call. Tell us what you want to improve, and we will suggest a simple first step that works with your current tools.',
   robots: 'index,follow',
-  alternates: {
-    canonical: 'https://nexus-ai.com/contact',
-  },
   keywords:
-    'Calgary AI consultant, AI pilot program, AI automation Calgary, AI assistant setup, contact Nexus AI',
+    'Calgary AI consultant, AI advisory, AI readiness audit, no‑code pilots, contact Prairie Signal',
   openGraph: {
-    title: 'Contact Nexus AI - Calgary AI Consultants',
+    title: 'Contact Prairie Signal - Calgary AI Consultants',
     description:
-      'Book a 30-minute discovery call to identify a focused AI pilot for your Calgary SMB.',
-    url: 'https://nexus-ai.com/contact',
-    siteName: 'Nexus AI',
+      'Book a discovery call to talk through a simple, practical first step for your Calgary business.',
+    url:
+      (process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000') +
+      '/contact',
+    siteName: 'Prairie Signal',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Contact Nexus AI - Calgary AI Consultants',
+    title: 'Contact Prairie Signal - Calgary AI Consultants',
     description:
-      'Book a 30-minute discovery call to identify a focused AI pilot for your Calgary SMB.',
+      'Book a discovery call to talk through a simple, practical first step.',
   },
 };
 
 export default function ContactPage() {
   const businessEmail =
-    process.env.NEXT_PUBLIC_BUSINESS_EMAIL || 'hello@nexusai.com';
+    process.env.NEXT_PUBLIC_BUSINESS_EMAIL || 'hello@example.com';
 
   const contactPageSchema = generateContactPageSchema();
 
   return (
     <>
-      <link rel="canonical" href="https://nexus-ai.com/contact" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={generateStructuredDataScript(
@@ -82,10 +80,7 @@ export default function ContactPage() {
           <div className="mx-auto max-w-[1120px] px-4 sm:px-6 text-center text-sm text-muted">
             <p className="mb-2">
               Prefer email? Reach me at{' '}
-              <a
-                href={`mailto:${businessEmail}`}
-                className="font-medium underline underline-offset-2 hover:text-primary transition-colors"
-              >
+              <a href={`mailto:${businessEmail}`} className="link font-medium">
                 {businessEmail}
               </a>
               .

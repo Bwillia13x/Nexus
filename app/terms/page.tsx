@@ -1,6 +1,7 @@
 export const metadata = {
-  title: 'Terms of Service | Nexus AI',
-  description: 'Terms governing the use of Nexus AI services and website.',
+  title: 'Terms of Service | Prairie Signal',
+  description:
+    'Terms governing the use of Prairie Signal services and website.',
 };
 
 export default function TermsPage() {

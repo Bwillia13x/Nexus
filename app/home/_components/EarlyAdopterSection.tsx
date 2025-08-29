@@ -38,7 +38,7 @@ export default function EarlyAdopterSection() {
               </div>
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-primary"></span>
-                <span>30-day results guarantee</span>
+                <span>Use what you already have</span>
               </div>
             </div>
           </div>

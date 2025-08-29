@@ -195,7 +195,7 @@ async function run() {
       body: JSON.stringify({
         name: 'Smoke Tester',
         email: 'smoke@example.com',
-        company: 'Nexus',
+        company: 'PrairieSignal',
         message: 'This is a smoke test message with sufficient length.',
       }),
     });

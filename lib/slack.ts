@@ -19,7 +19,7 @@ export async function postSlack(
       type: 'header',
       text: {
         type: 'plain_text',
-        text: `🚀 New Nexus AI Inquiry: ${inquiry.fullName}`,
+        text: `🚀 New Prairie Signal Inquiry: ${inquiry.fullName}`,
       },
     },
     {

@@ -23,25 +23,26 @@ import {
 } from '@/lib/schema';
 
 export const metadata = {
-  title: 'Nexus AI - Practical AI for Calgary SMBs | Pilot in 30 Days',
+  title:
+    'Prairie Signal — We help you integrate the latest AI to grow your business',
   description:
-    'Solo AI-integration consultancy helping Calgary businesses automate workflows, deploy assistants, and ship dashboards—safely and measurably.',
+    'We set up practical AI tools that work with what you already use—fast, safe, and in plain English. No jargon. No big IT projects.',
   keywords:
-    'AI automation, Calgary AI consultant, AI assistant setup, workflow automation, data analytics, SMB AI solutions',
+    'AI help, Calgary, small business, automate tasks, dashboards, chat assistant',
   openGraph: {
-    title: 'Nexus AI - Practical AI for Calgary SMBs | Pilot in 30 Days',
+    title: 'Prairie Signal — AI that helps your business, without the jargon',
     description:
-      'Solo AI-integration consultancy helping Calgary businesses automate workflows, deploy assistants, and ship dashboards—safely and measurably.',
-    url: 'https://nexus-ai.com',
-    siteName: 'Nexus AI',
+      'Practical AI that works with what you already use. Fast, safe, plain English.',
+    url: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
+    siteName: 'Prairie Signal',
     locale: 'en_CA',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Nexus AI - Practical AI for Calgary SMBs | Pilot in 30 Days',
+    title: 'Prairie Signal — Practical AI for your business',
     description:
-      'Solo AI-integration consultancy helping Calgary businesses automate workflows, deploy assistants, and ship dashboards—safely and measurably.',
+      'We set up simple, useful AI tools that work with your current setup.',
   },
 };
 
@@ -113,11 +114,10 @@ export default function HomePage() {
           <div className="mx-auto max-w-4xl px-4">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                ROI Calculator
+                Savings Calculator
               </h2>
               <p className="text-xs text-muted-foreground italic max-w-2xl mx-auto">
-                *Payback depends on your processes and implementation; this is
-                an estimate, not a promise.*
+                *Estimates only — real results vary.*
               </p>
             </div>
             <Suspense

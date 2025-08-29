@@ -24,7 +24,7 @@ export function MaybeIcon({
   canonical,
   emoji,
   tool,
-  size = 24,
+  size = 28,
   className,
   title,
   ...rest
@@ -50,15 +50,33 @@ export function MaybeIcon({
 
   // Fallback to emoji rendering if provided
   if (emoji) {
+    const hasTextSizeClass =
+      typeof className === 'string' &&
+      /\btext-(\[[^\]]+\]|xs|sm|base|lg|xl|[2-9]xl)\b/.test(className);
+    // Only apply inline fontSize when a Tailwind text-* size isn't already provided
+    const mergedStyle = !hasTextSizeClass
+      ? { ...(rest as any).style, fontSize: size }
+      : (rest as any).style;
     if (title) {
       return (
-        <span role="img" aria-label={title} className={className} {...rest}>
+        <span
+          role="img"
+          aria-label={title}
+          className={className}
+          {...rest}
+          style={mergedStyle}
+        >
           {emoji}
         </span>
       );
     }
     return (
-      <span aria-hidden="true" className={className} {...rest}>
+      <span
+        aria-hidden="true"
+        className={className}
+        {...rest}
+        style={mergedStyle}
+      >
         {emoji}
       </span>
     );

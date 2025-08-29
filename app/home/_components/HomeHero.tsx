@@ -4,14 +4,16 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { heroContent } from '../_content';
 import { trackCtaClick } from '@/lib/analytics';
+import { getBrandName } from '@/lib/brand';
 
 export default function HomeHero() {
+  const brandName = getBrandName();
   const handlePrimaryCtaClick = () => {
     trackCtaClick('hero_primary', heroContent.primaryCta.label, '/');
   };
 
   const handleSecondaryCtaClick = () => {
-    trackCtaClick('hero_secondary', 'See 30-day pilot menu', '/');
+    trackCtaClick('hero_secondary', heroContent.secondaryCta.label, '/');
   };
 
   return (
@@ -26,16 +28,18 @@ export default function HomeHero() {
 
       <div className="mx-auto max-w-container px-4">
         <div className="text-center">
-          {/* Logo */}
+          {/* Logo with text */}
           <div className="flex justify-center mb-8 md:mb-12">
-            <Image
-              src="/images/Nexus_Logo.png"
-              alt="Nexus AI Logo"
-              width={720}
-              height={260}
-              className="h-40 md:h-56 lg:h-64 w-auto"
-              priority
-            />
+            <div className="relative h-48 w-[400px] md:h-64 md:w-[520px] lg:h-80 lg:w-[640px] mx-auto">
+              <Image
+                src="/images/slate_prairiesignal_logo(withtext).png"
+                alt={`${brandName} Logo`}
+                fill
+                className="object-contain"
+                priority
+                sizes="(min-width:1024px) 640px, (min-width:768px) 520px, 400px"
+              />
+            </div>
           </div>
 
           {/* Main headline */}
@@ -64,7 +68,7 @@ export default function HomeHero() {
                 className="btn-secondary shadow-elev hover:shadow-elev-lg min-w-[200px] sm:min-w-[240px] text-base sm:text-lg"
                 onClick={handleSecondaryCtaClick}
               >
-                See 30-day pilot menu
+                {heroContent.secondaryCta.label}
               </Link>
             </div>
           </div>

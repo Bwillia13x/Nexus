@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Case Study: Calgary Retail AI Assistant | Nexus AI',
+  title: 'Case Study: Calgary Retail AI Assistant | Prairie Signal',
   description:
     'Assistant powered by Generative Pretrained Transformer (GPT) for a Calgary retail small business: faster replies, more tickets handled by the assistant, across website and text messaging (SMS), with measurable return on investment (ROI).',
 };
@@ -124,7 +124,7 @@ export default function CaseAIAssistantCalgaryRetail() {
           <div className="text-center">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-white bg-gradient-to-r from-primary to-secondary shadow-lg hover:-translate-y-1 transition"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-white bg-gradient-to-r from-primary to-secondary shadow-lg hover:-translate-y-0.5 transition"
             >
               Discuss an Artificial Intelligence (AI) Assistant for your team{' '}
               <span>→</span>

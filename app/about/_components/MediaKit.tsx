@@ -55,7 +55,7 @@ export function MediaKit({ items }: MediaKitProps) {
       <div className="text-center">
         <Link
           href="/contact?intent=media"
-          className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-primary/40"
+          className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold shadow-lg hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-primary/40"
         >
           <span>Request Media Kit</span>
           <span className="text-xl" aria-hidden="true">

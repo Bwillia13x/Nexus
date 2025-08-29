@@ -25,7 +25,7 @@ export function Card({
   } as const;
 
   const interactionClasses = hover
-    ? 'hover:shadow-lg hover:-translate-y-1 hover:ring-2 hover:ring-primary/25'
+    ? 'hover:shadow-lg hover:-translate-y-0.5 hover:ring-2 hover:ring-primary/25'
     : '';
 
   const focusClasses = focus

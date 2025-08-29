@@ -3,120 +3,117 @@
     "id": "ai-assistant-setup",
     "icon": "🤖",
     "title": "AI Assistant Setup",
-    "summary": "Deploy a branded assistant for customers or staff with safe access to your knowledge and tools. Safety rules first; measurable impact next.",
-    "detailedDescription": "We integrate AI assistants into your website, customer relationship management (CRM), and internal tools. Expect trained responses on your data, handoffs to humans, and analytics on outcomes. Designed for Calgary small and mid-sized businesses (SMBs) with sensible safeguards and fast iteration.",
+    "summary": "Add a helpful chat assistant for customers or staff, with safe access to approved info.",
+    "detailedDescription": "We set up a branded assistant on your website or tools. It answers common questions using approved information and hands off to a person when needed. You get a simple view of how it's used.",
     "successMetrics": [
-      "Reduce repetitive tickets (baseline: last 4 weeks; track deflection rate (%))",
-      "Faster response times across web, text messaging (SMS), and email (typical and 95th percentile)",
-      "Customer satisfaction score (CSAT) for assistant interactions"
+      "Fewer repeat questions",
+      "Faster replies on web and text",
+      "Happier customers"
     ],
     "bullets": [
-      "Assistant persona, tone, and safety rules",
-      "Knowledge ingestion (documents, website, Frequently Asked Questions (FAQs))",
-      "Escalation rules with a human review step",
-      "Channel integration (web widget, text messaging (SMS), optionally email)"
+      "Assistant voice and safety rules",
+      "Use your docs and website for answers",
+      "Easy handoff to a person",
+      "Website chat and optional texting"
     ],
     "artifacts": [
-      "Assistant config & prompts",
-      "Integration docs & API keys",
-      "Analytics dashboard (volume, outcomes)",
-      "Operations runbook for updates & retraining"
+      "Assistant settings",
+      "Connection notes",
+      "Simple usage report",
+      "Short how‑to guide"
     ],
     "timeline": "2–4 weeks",
     "pricing": "$5k–$9k",
     "clientInputs": [
-      "Access to knowledge base & brand guidelines",
-      "Sample transcripts/FAQs",
-      "Approval for escalation paths"
+      "Brand voice and key info",
+      "Common questions",
+      "When to hand off to a person"
     ],
-    "outOfScope": [
-      "Custom model training from scratch",
-      "Full CRM migration or re-platforming"
-    ],
+    "outOfScope": ["Training AI models from scratch", "Rebuilding your CRM"],
     "risksMitigations": [
-      "Data gaps → capture unknown questions in week 1",
-      "Incorrect model outputs (hallucinations) → retrieval-first design plus fallbacks",
-      "Change adoption → short training video plus quick reference guide"
+      "Missing info → collect unknown questions in week 1",
+      "Wrong answers → keep to approved info with simple fallbacks",
+      "Team adoption → short video and quick reference"
     ]
   },
   {
     "id": "automation-audit-pilot",
     "icon": "⚙️",
-    "title": "Automation Audit + Pilot",
-    "summary": "Map bottlenecks across your processes and ship a low-risk pilot that saves hours each week—then decide what to scale.",
-    "detailedDescription": "I'll audit your tools and workflows (email, spreadsheets, customer relationship management (CRM), finance) to identify high‑leverage automation. Then we ship a pilot focused on one measurable result (for example, weekly reporting, invoicing, or approvals).",
+    "title": "Automation Checkup + Pilot",
+    "summary": "Find quick wins in your workflows and set up a small pilot that saves time each week.",
+    "detailedDescription": "We review your day‑to‑day work (email, spreadsheets, CRM, finance) and pick one simple place to automate—like weekly reports, invoices, or approvals.",
     "successMetrics": [
-      "Hours saved per week (time study on 2–3 team members)",
-      "Error rate reduction on the targeted workflow",
-      "Cycle time (before/after for one measurable step)"
+      "Hours saved each week",
+      "Fewer mistakes",
+      "Faster turnaround on the chosen task"
     ],
     "bullets": [
-      "Workflow mapping & opportunity scoring",
-      "Pilot automation build with safety rules",
-      "Change management & team training",
-      "Monitoring and fallback procedures"
+      "Map simple opportunities",
+      "Build a small, safe pilot",
+      "Show the team how it works",
+      "Basic monitoring and fallback"
     ],
     "artifacts": [
-      "Automation plan with ROI model",
-      "Pilot implementation (1 targeted process)",
-      "Training materials (video + quick guide)",
-      "Operations runbook + incident playbook"
+      "Simple plan with expected savings",
+      "Pilot for one process",
+      "Quick training video and steps",
+      "Handoff checklist"
     ],
     "timeline": "3–6 weeks",
     "pricing": "$7k–$14k",
     "clientInputs": [
-      "Tool access (spreadsheets/CRM/finance)",
-      "2–3 subject-matter experts (SMEs) for interviews & testing",
-      "Approval on acceptance criteria"
+      "Access to tools (spreadsheets/CRM/finance)",
+      "2–3 team members for short interviews",
+      "What “done” looks like for you"
     ],
     "outOfScope": [
-      "Multi-system enterprise re-architecture",
-      "Ongoing ops beyond pilot (unless Care Plan)"
+      "Large rebuilds across many systems",
+      "Long‑term operations beyond the pilot (unless you want it)"
     ],
     "risksMitigations": [
-      "Tool limits and API quotas → pre-checks in week 1",
-      "Hidden dependencies → process dry-runs with subject-matter experts (SMEs)",
-      "Change resistance → involve the process owner early"
+      "Tool limits → check limits in week 1",
+      "Hidden steps → dry runs with the process owner",
+      "Change worry → involve the owner early"
     ]
   },
   {
     "id": "analytics-quickstart",
     "icon": "📊",
     "title": "Analytics Quickstart",
-    "summary": "Connect your data and ship dashboards that answer the questions Calgary operators actually ask—fast.",
-    "detailedDescription": "We centralize your data and build dashboards focused on decisions: revenue, pipeline, utilization, and churn risk. Pragmatic setup over heavy platforms—start simple, iterate quickly.",
+    "summary": "Connect the data you already have and show the numbers that matter in simple dashboards.",
+    "detailedDescription": "We build a small set of dashboards for everyday questions (revenue, orders, tickets). We keep it simple and use tools your team can own.",
     "successMetrics": [
-      "Decision latency (time to answer top 5 questions)",
-      "Adoption (weekly active viewers)",
-      "Data trust (fewer ad-hoc extracts; one source of truth)"
+      "Faster answers to everyday questions",
+      "People actually use the dashboards",
+      "One place for numbers people trust"
     ],
     "bullets": [
-      "Source connections (software-as-a-service (SaaS), spreadsheets, databases (DBs))",
-      "Data model + definitions",
-      "Key performance indicator (KPI) dashboards and alerts",
-      "Access and data rules"
+      "Connect your tools and spreadsheets",
+      "Light setup and clear terms",
+      "Starter dashboards and alerts",
+      "Simple access rules"
     ],
     "artifacts": [
-      "Data model & connectors",
-      "Dashboard pack (6–8 key performance indicators (KPIs))",
-      "Alerting plus service level agreement (SLA) docs",
-      "Admin & usage guide"
+      "Connections and basic model",
+      "Starter dashboards",
+      "Optional alerts",
+      "Short how‑to guide"
     ],
     "timeline": "2–3 weeks",
     "pricing": "$6k–$10k",
     "clientInputs": [
-      "Read access to systems",
-      "Key performance indicator (KPI) definitions & thresholds",
-      "Champion user for feedback"
+      "Read access to tools",
+      "What you want to see and track",
+      "A point person for feedback"
     ],
     "outOfScope": [
-      "Enterprise data warehouse build",
-      "Company-wide business intelligence (BI) access and data rules program"
+      "Enterprise data warehouse projects",
+      "Company‑wide BI rollouts"
     ],
     "risksMitigations": [
-      "Dirty/fragmented data → light transforms + data dictionary",
-      "Scope creep → cap to 6–8 key performance indicators (KPIs) in the pilot",
-      "Tool sprawl → prefer existing stack before adding new business intelligence (BI)"
+      "Messy data → simple cleanup and a short glossary",
+      "Too much scope → keep it small and focused",
+      "Too many tools → prefer what you already have"
     ]
   }
 ]

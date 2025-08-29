@@ -1,7 +1,8 @@
 {
-  "name": "nexus-ai",
+  "name": "prairie-signal",
   "version": "0.1.0",
   "private": true,
+  "description": "PrairieSignal website — Next.js 15, App Router, Tailwind, SEO, contact pipeline",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -20,7 +21,8 @@
     "icons:opt": "svgo -f icons/svg",
     "icons:react": "svgr --icon --typescript --no-index --replace-attr-values \"#000=currentColor,#000000=currentColor\" --out-dir components/icons -- icons/svg",
     "icons:index": "node scripts/build-icons-index.mjs",
-    "icons:build": "npm run icons:vectorize && npm run icons:opt && npm run icons:react && npm run icons:index"
+    "icons:build": "npm run icons:vectorize && npm run icons:opt && npm run icons:react && npm run icons:index",
+    "icons:from-logo": "node scripts/build-icons-from-logo.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.1",
@@ -54,6 +56,7 @@
     "potrace": "^2.1.8",
     "prettier": "^3.2.5",
     "puppeteer": "^24.17.0",
+    "png-to-ico": "^2.1.8",
     "sharp": "^0.34.3",
     "svgo": "^4.0.0",
     "tailwindcss": "^3.4.1",

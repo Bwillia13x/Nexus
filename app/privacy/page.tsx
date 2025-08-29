@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'Privacy Policy | Nexus AI',
+  title: 'Privacy Policy | Prairie Signal',
   description:
     'Our privacy commitments: no training on your private data, PIPEDA/PIPA alignment, and consent for analytics.',
 };

@@ -150,7 +150,7 @@ textarea:focus-visible {
     padding-bottom: 0.1em;
   }
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-white bg-gradient-to-r from-primary to-secondary shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell active:translate-y-0.5 min-h-[48px] text-center relative overflow-hidden;
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-white bg-gradient-to-r from-primary to-secondary shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell active:translate-y-0.5 min-h-[48px] text-center relative overflow-hidden;
     /* Use darker brand tones for accessible contrast with white text */
     background-image: linear-gradient(
       to right,
@@ -186,11 +186,11 @@ textarea:focus-visible {
   }
 
   .card-glass {
-    @apply p-8 rounded-3xl border border-glass-border bg-glass backdrop-blur-xl shadow-lg transition-all duration-500 hover:shadow-xl hover:-translate-y-1 hover:border-glass-border-hover;
+    @apply p-6 md:p-8 rounded-3xl border border-glass-border bg-glass backdrop-blur-xl shadow-lg transition-all duration-500 hover:shadow-xl hover:-translate-y-0.5 hover:border-glass-border-hover;
   }
 
   .card-elevated {
-    @apply p-8 rounded-2xl border border-glass-border bg-glass-2 backdrop-blur-xl shadow-md transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 hover:border-glass-border-hover;
+    @apply p-6 md:p-8 rounded-2xl border border-glass-border bg-glass-2 backdrop-blur-xl shadow-md transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 hover:border-glass-border-hover;
   }
 
   /* Liquid glass surface with subtle highlight */
@@ -258,6 +258,31 @@ textarea:focus-visible {
 
   .sr-only-focusable {
     @apply sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded-lg focus:shadow-lg;
+  }
+
+  /* Link utility for consistent inline links */
+  .link {
+    @apply underline underline-offset-2 decoration-primary/40 hover:decoration-primary text-primary transition-colors;
+  }
+
+  /* Reduced motion support: honor user preference */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+    .gradient-title-animated {
+      animation: none !important;
+      background-size: auto !important;
+    }
+    .ambient-orbs .ambient-orb {
+      animation: none !important;
+      transform: none !important;
+    }
   }
 
   /* Accessible override for focus background color */

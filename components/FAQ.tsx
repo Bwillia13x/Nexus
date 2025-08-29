@@ -42,8 +42,8 @@ export function FAQ() {
             Still have questions?
           </h3>
           <p className="text-lg text-muted mb-8 leading-relaxed">
-            Book a free 30-minute discovery call and we'll answer all your
-            questions about how AI can work for your Calgary business.
+            Book a free discovery call and we’ll answer your questions about
+            readiness, tool selection, and safe no‑code pilots.
           </p>
           <a href="/contact" className="btn-primary text-lg px-8 py-4">
             Book Discovery Call <span>→</span>

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Case Study: Operations Automation Pilot | Nexus AI',
+  title: 'Case Study: Operations Automation Pilot | Prairie Signal',
   description:
     'Audit and pilot for a Calgary operations team: mapped bottlenecks, automated weekly reporting and invoicing, reduced errors, and saved hours.',
 };
@@ -112,7 +112,7 @@ export default function CaseAutomationPilotOps() {
           <div className="text-center">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-white bg-gradient-to-r from-primary to-secondary shadow-lg hover:-translate-y-1 transition"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-white bg-gradient-to-r from-primary to-secondary shadow-lg hover:-translate-y-0.5 transition"
             >
               Explore an Operations Automation Pilot <span>→</span>
             </Link>

@@ -8,7 +8,7 @@ export function CaseStudiesOverview() {
     <Section
       id="pilots"
       title={homeContent.pilots.title}
-      subtitle="Fixed-scope pilots that deliver measurable results without months of commitment"
+      subtitle="Example no‑code pilots with clear acceptance criteria"
       footnote={homeContent.pilots.footnote}
     >
       <div className="container-wide">
@@ -19,11 +19,8 @@ export function CaseStudiesOverview() {
         </div>
 
         <div className="mt-16 md:mt-20 text-center">
-          <Link
-            href="/services#services"
-            className="btn-primary text-lg px-8 py-4"
-          >
-            See pilot scope & pricing <span>→</span>
+          <Link href="/playbooks" className="btn-primary text-lg px-8 py-4">
+            Get playbooks & templates <span>→</span>
           </Link>
         </div>
       </div>

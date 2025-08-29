@@ -40,60 +40,54 @@ export interface CTAData {
 
 // Hero content
 export const heroContent = {
-  title:
-    'Practical artificial intelligence (AI) for Calgary small businesses — Pilot in 30 Days',
+  title: 'We help you integrate the latest AI to grow your business',
   subtitle:
-    'I help Calgary small and mid-sized businesses automate work, add helpful assistants, and build clear dashboards — safely and with clear results.',
+    'We set up practical AI tools that work with what you already use—fast, safe, and in plain English. No jargon. No big IT projects.',
   primaryCta: {
-    label: 'Book a 30-min discovery call',
+    label: 'Book a discovery call',
     href: '/contact?intent=discovery',
   },
   secondaryCta: {
-    label: 'See 30-day pilot menu',
-    href: '/services#services',
+    label: 'Get the AI Readiness Checklist',
+    href: '/#readiness',
   },
 };
 
 // Services content
 export const servicesContent = {
-  title: 'What I Do for Calgary Businesses',
-  subtitle:
-    'Practical, measurable AI projects—built around your team and customers.',
+  title: 'What We Do',
+  subtitle: 'Simple, practical AI help—no heavy tech.',
   items: [
     {
-      title: 'Deploy an Assistant',
-      text: 'A branded assistant that safely uses your knowledge and tools. Safety rules first.',
+      title: 'Set Up an AI Helper',
+      text: 'Add a friendly chat assistant for customers or staff.',
     },
     {
-      title: 'Automate Reporting',
-      text: 'Find the biggest bottlenecks. Set up a small, fixed-scope pilot that saves hours.',
+      title: 'Automate Repetitive Work',
+      text: 'Save time on routine tasks like reports, follow‑ups, and data entry.',
     },
     {
-      title: 'Build Dashboards',
-      text: 'Connect your data and build a small set of dashboards that answer your team’s key questions.',
+      title: 'Clear, Simple Dashboards',
+      text: 'See your key numbers in one place so you can act quickly.',
     },
   ] as ServiceItem[],
 };
 
 // Pilots content
 export const pilotsContent = {
-  title: 'Example Pilots You Can Run in 30 Days',
-  footnote:
-    "*Outcomes are targets for pilot planning; we don't claim prior results.*",
+  title: 'Example Projects',
+  footnote: '*Examples of what we can set up.*',
   items: [
     {
       id: 'assistant' as const,
-      title: 'Retail Help + Order Lookup Assistant',
-      what: 'A branded assistant that answers common questions, helps with sizing, and looks up basic orders using approved snippets from your knowledge base.',
-      target: [
-        'Faster replies and fewer repeat tickets',
-        'Track deflection rate and customer satisfaction (CSAT)',
-      ],
+      title: 'Customer Help + Order Lookup',
+      what: 'A helpful chat that answers common questions and looks up basic orders using approved info from your business.',
+      target: ['Faster replies', 'Fewer repeat questions'],
       scope: [
-        'Knowledge connection (docs/website)',
-        'Safety rules and escalation',
-        'Web widget, text messaging (SMS) option',
-        'Analytics on usage and results',
+        'Connect your docs and website',
+        'Simple safety rules and handoff to a person when needed',
+        'Website chat, optional text messaging',
+        'See usage in a simple report',
       ],
       cta: {
         label: 'Start Assistant Pilot',
@@ -102,17 +96,14 @@ export const pilotsContent = {
     },
     {
       id: 'ops' as const,
-      title: 'Operations Reporting and Invoicing Automation',
-      what: 'A weekly reporting setup that pulls data from your tools and emails a clear PDF or dashboard to stakeholders.',
-      target: [
-        'Save about 8–12 hours per week (time study)',
-        'Fewer errors with built-in checks',
-      ],
+      title: 'Weekly Reports and Invoicing',
+      what: 'Send clean, automated reports or invoices using the tools you already have.',
+      target: ['Save a few hours each week', 'Fewer mistakes'],
       scope: [
-        'Connections to your tools',
-        'Data checks',
-        'Scheduled delivery',
-        "Owner's manual",
+        'Connect the tools you already use',
+        'Basic checks for bad data',
+        'Automatic delivery on a schedule',
+        'Short how‑to guide',
       ],
       cta: {
         label: 'Start Operations Pilot',
@@ -121,17 +112,16 @@ export const pilotsContent = {
     },
     {
       id: 'analytics' as const,
-      title: 'Analytics Quickstart',
-      what: 'A small set of dashboards connected to the data you already have (revenue, orders, tickets).',
+      title: 'Simple Dashboards',
+      what: 'Dashboards that show the numbers that matter to you (sales, orders, tickets) with the tools you already use.',
       target: [
-        'Answers to common management questions in under 5 minutes',
-        'One trusted source of truth that people actually use',
+        'Answers to common questions in minutes',
+        'One place people trust',
       ],
       scope: [
-        'Data model',
-        '6–8 key performance indicators (KPIs)',
-        'Drill-through views',
-        'Access and data rules',
+        'Light setup',
+        'Clear terms everyone understands',
+        'Starter dashboards that are easy to edit',
       ],
       cta: {
         label: 'Start Analytics Pilot',
@@ -144,73 +134,56 @@ export const pilotsContent = {
 // How It Works content
 export const howItWorksContent = {
   title: 'How It Works',
-  subtitle: 'A simple plan to go from idea to clear results in 30 days.',
+  subtitle: 'A simple path from idea to results.',
   steps: [
     {
       step: 1,
-      title: 'Discover',
-      subtitle: 'Free, 30 min',
-      description: 'We review your goals, tools, and limits.',
-      bullets: [
-        'Review current tools and processes',
-        'Identify quick wins',
-        'Check technical limits',
-      ],
+      title: 'Quick Chat',
+      subtitle: 'Free, 30 minutes',
+      description:
+        'Tell us what you want to improve. We listen and take notes.',
+      bullets: ['Your tools', 'Your goals', 'Any limits or concerns'],
     },
     {
       step: 2,
-      title: 'Scope',
+      title: 'Simple Plan',
       subtitle: '2–3 days',
-      description: 'A small, fixed plan with metrics and a clear price.',
-      bullets: [
-        'Detailed plan',
-        'Success metrics defined',
-        'Fixed-price proposal',
-      ],
+      description: 'We send a short plan with price and timeline.',
+      bullets: ['What we’ll set up', 'What success looks like', 'Fixed price'],
     },
     {
       step: 3,
-      title: 'Pilot',
-      subtitle: '30 days',
-      description: 'We build, test, and launch a small but valuable win.',
-      bullets: [
-        'Incremental releases',
-        'User testing & feedback',
-        'Production deployment',
-      ],
+      title: 'Set Up',
+      subtitle: 'Fast and safe',
+      description: 'We set up one or two small things that help right away.',
+      bullets: ['Short updates', 'Safe defaults', 'Ready to try'],
     },
     {
       step: 4,
-      title: 'Train and Handoff',
+      title: 'Teach & Handoff',
       subtitle: '1 week',
       description:
-        'We provide an owner’s guide, responsibilities, and safety rules.',
+        'We show your team how it works and leave easy instructions.',
       bullets: [
-        'Docs & training',
-        'Access and data rules',
-        'Support procedures',
+        'Short training',
+        'Plain English how‑to',
+        'Who to call if stuck',
       ],
     },
     {
       step: 5,
-      title: 'Care Plan',
+      title: 'Light Support',
       subtitle: 'Optional',
-      description:
-        'Updates, monitoring, and key performance indicator (KPI) reviews.',
-      bullets: [
-        'Monthly check-ins',
-        'Performance monitoring',
-        'Feature updates',
-      ],
+      description: 'We can check in monthly to keep things running smoothly.',
+      bullets: ['Quick check-ins', 'Small updates', 'No long contracts'],
     },
   ] as HowItWorksStep[],
 };
 
 // CTA content
 export const ctaContent: CTAData = {
-  title: 'Ready to Get Started?',
-  description:
-    "Book your free 30-minute discovery call to map your goals and see if we're a fit.",
+  title: 'Ready to try AI in your business?',
+  description: 'Book a free call. We’ll suggest a simple first step.',
   cta: {
     label: 'Book Discovery Call',
     href: '/contact?intent=discovery',
@@ -220,72 +193,69 @@ export const ctaContent: CTAData = {
 // FAQ content
 export const faqContent: FAQItem[] = [
   {
-    question: 'Will my data be used to train AI?',
-    answer:
-      'No. We do not use your private data to train AI. Your data stays within your project.',
+    question: 'Will you use our data to train AI?',
+    answer: 'No. Your private data stays private.',
   },
   {
-    question: 'Cloud or on-premises?',
-    answer:
-      'Cloud by default; virtual private cloud (VPC) or on-premises (your own servers) on request.',
+    question: 'Can this work with our tools?',
+    answer: 'Yes. We work with what you already use.',
   },
   {
-    question: 'Which models/tools do you use?',
+    question: 'Which tools do you recommend?',
     answer:
-      'We choose the right model for your case (OpenAI, Groq, Anthropic). We explain costs and speed differences.',
+      'We pick tools that fit your needs and budget. We are not tied to any one vendor.',
   },
   {
-    question: 'How do we measure ROI?',
+    question: 'How do we know it’s working?',
     answer:
-      'We agree on measures up front to calculate return on investment (ROI): time saved, error rate, ticket deflection, response time, and service level agreements (SLAs) if needed.',
+      'We agree on simple signs of progress, like time saved and faster replies.',
   },
   {
-    question: 'Security and access?',
+    question: 'Where does it run?',
     answer:
-      'Least privilege access, audit logs, secret management, and a clear off-boarding plan.',
+      'In the cloud by default. Running on your own systems is possible if needed.',
   },
   {
-    question: 'What happens after the pilot?',
+    question: 'What happens after the first setup?',
     answer:
-      'We can hand it off to your team or provide an optional Care Plan. Your choice.',
+      'We hand it off with easy instructions. Light ongoing help is optional.',
   },
   {
-    question: 'How do contracts work?',
+    question: 'What’s included?',
     answer:
-      'Statement of work (SOW) with acceptance criteria; change orders if scope expands.',
+      'We set up and connect existing tools. We avoid long, custom builds unless you ask for them.',
   },
 ];
 
 // Section metadata
 export const sectionContent = {
   roi: {
-    title: 'Return on Investment (ROI) Calculator',
-    footnote:
-      '*Payback depends on your processes and implementation; this is an estimate, not a promise.*',
+    title: 'Savings Calculator',
+    footnote: '*Estimates only — real results vary.*',
   },
   integrations: {
     title: 'Works with Your Tools',
   },
   readiness: {
-    title: 'Pilot Readiness Checklist',
+    title: 'AI Readiness Checklist',
   },
 };
 
 // Security & Trust content for Home
 export const securityContent = {
   items: [
-    'Aligned with PIPEDA/PIPA. NDA on request.',
-    'No training on your private data.',
-    'Least-privilege access, audit logs, off-boarding plan.',
-    'Cloud by default; VPC or on-premises available.',
+    'Your private data stays private.',
+    'We only access what we need.',
+    'Clear off‑boarding and access removal.',
+    'Cloud by default; can run on your systems if needed.',
   ],
 };
 
 export const trustBarContent = {
   items: [
-    { icon: '🔒', label: 'PIPEDA/PIPA aligned' },
-    { icon: '🛡️', label: 'No data training' },
-    { icon: '✓', label: 'Fixed-scope pilots' },
-    { icon: '👥', label: 'Founder-led builds' },
+    { icon: '🔒', label: 'Privacy‑minded' },
+    { icon: '⚡', label: 'Fast setup' },
+    { icon: '✓', label: 'Works with your tools' },
+    { icon: '👥', label: 'Friendly support' },
   ],
 };

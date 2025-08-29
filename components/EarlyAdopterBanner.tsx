@@ -38,7 +38,7 @@ export function EarlyAdopterBanner() {
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-primary"></span>
-                  <span>30-day results guarantee</span>
+                  <span>No‑code first, vendor‑neutral</span>
                 </div>
               </div>
             </div>

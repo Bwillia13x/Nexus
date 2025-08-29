@@ -1,8 +1,8 @@
-# NexusAI Development Roadmap 2025-2026
+# PrairieSignal Development Roadmap 2025-2026
 
 ## Executive Summary
 
-NexusAI has a solid foundation as a Calgary-based AI consulting website with a modern Next.js 15 architecture. This roadmap transforms it from a "good foundation" to a "market-leading AI consulting platform" through three strategic phases focusing on trust-building, lead generation, and market dominance.
+PrairieSignal has a solid foundation as a Calgary-based AI consulting website with a modern Next.js 15 architecture. This roadmap transforms it from a "good foundation" to a "market-leading AI consulting platform" through three strategic phases focusing on trust-building, lead generation, and market dominance.
 
 **Current State**: Professional codebase with core business functionality
 **Target State**: Comprehensive lead generation and conversion optimization platform
@@ -198,7 +198,7 @@ Implement conversion optimization and lead nurturing to increase qualified lead 
 
 ### Business Objective
 
-Establish NexusAI as the go-to AI consulting resource in Calgary through content marketing, partnerships, and advanced features.
+Establish PrairieSignal as the go-to AI consulting resource in Calgary through content marketing, partnerships, and advanced features.
 
 ### Key Initiatives
 
@@ -359,7 +359,7 @@ Establish NexusAI as the go-to AI consulting resource in Calgary through content
 
 ```mermaid
 gantt
-    title NexusAI Development Roadmap
+    title PrairieSignal Development Roadmap
     dateFormat YYYY-MM-DD
     section Phase 1: Foundation
     Legal & Compliance     :done, p1a, 2025-01-01, 14d
@@ -380,4 +380,4 @@ gantt
     AI Analytics          :p3d, after p3b, 42d
 ```
 
-This roadmap provides a clear path to transform NexusAI from a solid foundation into a market-leading AI consulting platform with measurable business impact at each phase.
+This roadmap provides a clear path to transform PrairieSignal from a solid foundation into a market-leading AI consulting platform with measurable business impact at each phase.

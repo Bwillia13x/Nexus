@@ -42,13 +42,13 @@ export interface PillItem {
 
 // Page Hero Content
 export const heroContent = {
-  title: 'Calgary AI Services for small and mid-sized businesses (SMBs)',
+  title: 'AI that helps your business, without the jargon',
   subtitle:
-    "Fast, practical artificial intelligence (AI) integrations—AI Assistant Setup, Automation Audit + Pilot, and Analytics Quickstart. Fixed scope, clear results, and privacy aligned with the Personal Information Protection and Electronic Documents Act (PIPEDA) and Alberta's Personal Information Protection Act (PIPA).",
+    'We help you integrate the latest AI tools with what you already use—fast, safe, and in plain English.',
   pills: [
-    { text: 'Founder-led', type: 'primary' as const },
-    { text: 'PIPEDA/PIPA aligned', type: 'secondary' as const },
-    { text: 'Fixed-scope pilots', type: 'primary' as const },
+    { text: 'Plain English', type: 'primary' as const },
+    { text: 'Use your tools', type: 'secondary' as const },
+    { text: 'Fast setup', type: 'primary' as const },
   ],
 };
 
@@ -56,158 +56,168 @@ export const heroContent = {
 export const processSteps: ProcessStep[] = [
   {
     step: 1,
-    title: 'Discovery',
-    description: 'Free, 30 min → goals, systems, constraints',
+    title: 'Quick Chat',
+    description: 'Free, 30 min → goals, tools, what to improve',
   },
   {
     step: 2,
-    title: 'Scope',
+    title: 'Simple Plan',
     description:
-      '2–3 days → Statement of Work (SOW) with success metrics and acceptance criteria',
+      '2–3 days → short plan with price, timeline, and what “done” means',
   },
   {
     step: 3,
-    title: 'Build',
-    description: 'Fixed timeline with weekly check-ins',
+    title: 'Set Up',
+    description: 'Fixed timeline with quick updates',
   },
   {
     step: 4,
-    title: 'Pilot & Measurement',
-    description: 'Track key performance indicators (KPIs); adjust safety rules',
+    title: 'Make Sure It Works',
+    description: 'Check results and adjust if needed',
   },
   {
     step: 5,
-    title: 'Handoff or Care Plan',
-    description: "Owner's manual + optional Care Plan",
+    title: 'Teach & Handoff',
+    description: 'Easy instructions + optional light support',
   },
 ];
 
 // Services Data
 export const services: Service[] = [
   {
-    id: 'ai-assistant-setup',
-    icon: '🤖',
-    title: 'AI Assistant Setup',
+    id: 'executive-briefing',
+    icon: '🧭',
+    title: 'AI Overview for Leaders (2 hrs)',
     summary:
-      'Deploy a branded assistant for customers or staff with safe access to your knowledge and tools. Safety rules first; measurable impact next.',
+      'Plain‑English overview: what AI can do for your business and the top three ideas to try.',
     detailedDescription:
-      'We integrate AI assistants into your website, customer relationship management (CRM), and internal tools. Expect trained responses on your data, handoffs to humans, and analytics on outcomes. Designed for Calgary SMBs with sensible safeguards and fast iteration.',
+      'Leaders get aligned on where AI can help safely. We cover basics, risks, and agree on simple next steps.',
     successMetrics: [
-      'Reduce repetitive tickets (baseline: last 4 weeks; track deflection rate (%))',
-      'Faster response times across web, text messaging (SMS), and email (typical and 95th percentile)',
-      'Customer satisfaction score (CSAT) for assistant interactions',
+      'Leader identifies top 3 opportunities',
+      'Shared understanding of risks & guardrails',
+      'Agreed next steps and owners',
     ],
     bullets: [
-      'Assistant persona, tone, and safety rules',
-      'Knowledge ingestion (documents, website, Frequently Asked Questions (FAQs))',
-      'Escalation rules with a human review step',
-      'Channel integration (web widget, text messaging (SMS), optionally email)',
+      'Simple slides & examples',
+      'Safety basics',
+      '30‑day action sketch',
     ],
-    artifacts: [
-      'Assistant config & prompts',
-      'Integration docs & API keys',
-      'Analytics dashboard (volume, outcomes)',
-      'Operations runbook for updates & retraining',
-    ],
-    timeline: '2–4 weeks',
-    pricing: '$5k–$9k',
+    artifacts: ['Slides (PDF)', 'One‑page action sketch'],
+    timeline: '2 hours',
+    pricing: 'Fixed fee',
     clientInputs: [
-      'Access to knowledge base & brand guidelines',
-      'Sample transcripts/FAQs',
-      'Approval for escalation paths',
+      'Business goals',
+      'Current tools & constraints',
+      'Roles attending',
     ],
-    outOfScope: [
-      'Custom model training from scratch',
-      'Full CRM migration or re-platforming',
-    ],
+    outOfScope: ['Custom builds', 'Data migration'],
     risksMitigations: [
-      'Data gaps → capture unknown questions in week 1',
-      'Incorrect model outputs (hallucinations) → retrieval-first design plus fallbacks',
-      'Change adoption → short training video plus quick reference guide',
+      'Misaligned expectations → pre‑read & success criteria',
+      'Over‑scoping → prioritize 3 opportunities',
     ],
   },
   {
-    id: 'automation-audit-pilot',
+    id: 'readiness-audit',
+    icon: '🗺️',
+    title: 'AI Readiness Check (1–2 wks)',
+    summary: 'Map your tools and pick quick wins.',
+    detailedDescription:
+      'We interview a few team members and review tools to find small, low‑risk pilots.',
+    successMetrics: [
+      'Feasible pilots ranked by ROI/risk',
+      'Tool fit & constraints documented',
+      'Sponsor review completed',
+    ],
+    bullets: [
+      'Short interviews',
+      'Tools & process map',
+      'Quick‑wins list',
+      'Simple comparison',
+    ],
+    artifacts: [
+      'Audit report (PDF)',
+      'Tool Selection Matrix (CSV/PDF)',
+      'Pilot shortlist with acceptance criteria',
+    ],
+    timeline: '1–2 weeks',
+    pricing: 'Fixed scope',
+    clientInputs: [
+      'Tool access (read‑only)',
+      'Team interviews',
+      'Existing SOPs if any',
+    ],
+    outOfScope: ['Enterprise re‑architecture', 'MLOps/model training'],
+    risksMitigations: [
+      'Hidden dependencies → dry‑run key workflows',
+      'Tool limits → document quotas/limits up front',
+    ],
+  },
+  {
+    id: 'tool-selection',
+    icon: '🧰',
+    title: 'Pick the Right Tools',
+    summary: 'Clear comparison of tools that fit your needs and budget.',
+    detailedDescription:
+      'We compare a few good options side‑by‑side and recommend a shortlist with trade‑offs.',
+    successMetrics: [
+      'Clear shortlist with rationale',
+      'TCO estimated',
+      'Alignment with security & privacy requirements',
+    ],
+    bullets: [
+      'Requirements capture',
+      'Vendor‑neutral matrix (cost/speed/limits)',
+      'Recommendation & rollout sketch',
+    ],
+    artifacts: [
+      'Tool Selection Matrix',
+      'Recommendation memo',
+      'Rollout outline',
+    ],
+    timeline: '3–7 days',
+    pricing: 'Fixed scope',
+    clientInputs: [
+      'Budget & constraints',
+      'Existing stack',
+      'Privacy/security needs',
+    ],
+    outOfScope: ['Procurement & contracting', 'Deep custom integrations'],
+    risksMitigations: [
+      'Vendor lock‑in → prefer existing stack first',
+      'Rapid tool changes → time‑box decisions',
+    ],
+  },
+  {
+    id: 'no-code-pilot',
     icon: '⚙️',
-    title: 'Automation Audit + Pilot',
-    summary:
-      'Map bottlenecks across your processes and ship a low-risk pilot that saves hours each week—then decide what to scale.',
+    title: 'Set Up a Small Pilot (~2 wks)',
+    summary: 'We set up one or two helpful workflows you can own.',
     detailedDescription:
-      "We'll audit your tools and workflows (email, spreadsheets, customer relationship management (CRM), finance) to identify high‑leverage automation. Then we ship a pilot focused on one measurable result (for example, weekly reporting, invoicing, or approvals).",
+      'We configure a safe, small pilot using simple tools and show your team how to run it.',
     successMetrics: [
-      'Hours saved per week (time study on 2–3 team members)',
-      'Error rate reduction on the targeted workflow',
-      'Cycle time (before/after for one measurable step)',
+      'Pre‑agreed metric met (for example, hours saved or response time)',
+      'Owner trained and playbook delivered',
+      'Rollback plan verified',
     ],
     bullets: [
-      'Workflow mapping & opportunity scoring',
-      'Pilot automation build with safety rules',
-      'Change management & team training',
-      'Monitoring and fallback procedures',
+      'Setup',
+      'Safety rules & fallbacks',
+      'Basic tracking',
+      'Short training',
     ],
     artifacts: [
-      'Automation plan with ROI model',
-      'Pilot implementation (1 targeted process)',
-      'Training materials (video + quick guide)',
-      'Operations runbook + incident playbook',
+      'Configured workflow/assistant',
+      'How‑to guide',
+      'Rollback plan',
+      'Handoff checklist',
     ],
-    timeline: '3–6 weeks',
-    pricing: '$7k–$14k',
-    clientInputs: [
-      'Tool access (spreadsheets/CRM/finance)',
-      '2–3 subject-matter experts (SMEs) for interviews & testing',
-      'Approval on acceptance criteria',
-    ],
-    outOfScope: [
-      'Multi-system enterprise re-architecture',
-      'Ongoing ops beyond pilot (unless Care Plan)',
-    ],
+    timeline: '~2 weeks',
+    pricing: 'Fixed scope',
+    clientInputs: ['Tool access', 'Sample data', 'Sponsor for acceptance'],
+    outOfScope: ['Custom builds', 'Deep integrations', 'MLOps/model training'],
     risksMitigations: [
-      'Tool limits and API quotas → pre-checks in week 1',
-      'Hidden dependencies → process dry-runs with subject-matter experts (SMEs)',
-      'Change resistance → involve the process owner early',
-    ],
-  },
-  {
-    id: 'analytics-quickstart',
-    icon: '📊',
-    title: 'Analytics Quickstart',
-    summary:
-      'Connect your data and ship dashboards that answer the questions Calgary operators actually ask—fast.',
-    detailedDescription:
-      'We centralize your data and build dashboards focused on decisions: revenue, pipeline, utilization, and churn risk. Pragmatic setup over heavy platforms—start simple, iterate quickly.',
-    successMetrics: [
-      'Decision latency (time to answer top 5 questions)',
-      'Adoption (weekly active viewers)',
-      'Data trust (fewer ad-hoc extracts; one source of truth)',
-    ],
-    bullets: [
-      'Source connections (software-as-a-service (SaaS), spreadsheets, databases (DBs))',
-      'Data model + definitions',
-      'Key performance indicator (KPI) dashboards and alerts',
-      'Access and data rules',
-    ],
-    artifacts: [
-      'Data model & connectors',
-      'Dashboard pack (6–8 key performance indicators (KPIs))',
-      'Alerting plus service level agreement (SLA) docs',
-      'Admin & usage guide',
-    ],
-    timeline: '2–3 weeks',
-    pricing: '$6k–$10k',
-    clientInputs: [
-      'Read access to systems',
-      'Key performance indicator (KPI) definitions & thresholds',
-      'Champion user for feedback',
-    ],
-    outOfScope: [
-      'Enterprise data warehouse build',
-      'Company-wide business intelligence (BI) access and data rules program',
-    ],
-    risksMitigations: [
-      'Dirty/fragmented data → light transforms + data dictionary',
-      'Scope creep → cap to 6–8 key performance indicators (KPIs) in the pilot',
-      'Tool sprawl → prefer existing stack before adding new business intelligence (BI)',
+      'Adoption risk → training + SOP + rollback',
+      'Tool limits → choose alternatives early',
     ],
   },
 ];
@@ -216,75 +226,64 @@ export const services: Service[] = [
 export const serviceComparison: ServiceComparison[] = [
   {
     feature: 'Primary outcome',
-    aiAssistantSetup: 'Faster replies & fewer repetitive tickets',
-    automationAuditPilot: 'Hours saved + fewer errors in a targeted process',
-    analyticsQuickstart: 'Answers to top operator questions',
+    aiAssistantSetup: 'Leaders aligned on top 3 ideas',
+    automationAuditPilot: 'Quick‑wins + pilot shortlist',
+    analyticsQuickstart: 'Shortlist + recommendation',
   },
   {
     feature: 'Typical timeline',
-    aiAssistantSetup: '2–4 weeks',
-    automationAuditPilot: '3–6 weeks',
-    analyticsQuickstart: '2–3 weeks',
+    aiAssistantSetup: '2 hours',
+    automationAuditPilot: '1–2 weeks',
+    analyticsQuickstart: '3–7 days',
   },
   {
-    feature: 'Typical budget',
-    aiAssistantSetup: '$5k–$9k',
-    automationAuditPilot: '$7k–$14k',
-    analyticsQuickstart: '$6k–$10k',
-  },
-  {
-    feature: 'Users affected',
-    aiAssistantSetup: 'Customers / internal teams',
-    automationAuditPilot: 'Operations (Ops) / Finance / Admin',
-    analyticsQuickstart: 'Leadership / Operations (Ops)',
+    feature: 'Pricing',
+    aiAssistantSetup: 'Fixed fee',
+    automationAuditPilot: 'Fixed scope',
+    analyticsQuickstart: 'Fixed scope',
   },
   {
     feature: 'Core deliverables',
-    aiAssistantSetup: 'Assistant + analytics + runbook',
-    automationAuditPilot:
-      'Pilot automation + return on investment (ROI) model + runbook',
-    analyticsQuickstart:
-      'Key performance indicators (KPIs) + alerts + admin guide',
+    aiAssistantSetup: 'Slides + 30‑day action sketch',
+    automationAuditPilot: 'Short report + comparison',
+    analyticsQuickstart: 'Comparison + recommendation note',
   },
   {
     feature: 'Good first step if…',
-    aiAssistantSetup: 'You field many repeat questions',
-    automationAuditPilot: 'A weekly task is manual & error-prone',
-    analyticsQuickstart: 'You spend time hunting numbers',
+    aiAssistantSetup: 'Leadership alignment needed',
+    automationAuditPilot: 'Unclear pilot options or risks',
+    analyticsQuickstart: 'Choosing tools for your use‑case',
   },
 ];
 
 // FAQ Data
 export const faqs: FAQ[] = [
   {
-    question: 'Will my data train AI?',
-    answer:
-      "No. We don't train models on your private data. All processing is done with clear privacy rules.",
+    question: 'Will you use our data to train AI?',
+    answer: 'No. Your private data stays private.',
   },
   {
-    question: 'On-premises or VPC available?',
-    answer:
-      'Yes—available on request for enterprise clients. We can work within your security constraints. VPC stands for virtual private cloud.',
+    question: 'Can this work with our tools?',
+    answer: 'Yes. We work with what you already use.',
   },
   {
-    question: 'Which models and tools do you use?',
+    question: 'Which tools do you use?',
     answer:
-      'Chosen per use case with costs and speed trade-offs documented in the Statement of Work (SOW). We optimize for your specific needs.',
+      'We choose tools that fit your needs and budget. We are not tied to any one vendor.',
   },
   {
-    question: 'How is ROI measured?',
+    question: 'How do we know it’s working?',
     answer:
-      'Return on investment (ROI) is measured by time saved, error rate reduction, ticket deflection, response times, adoption rates, and user satisfaction.',
+      'We agree on simple signs: time saved, fewer mistakes, faster replies, and adoption.',
   },
   {
-    question: 'What happens post-pilot?',
-    answer:
-      "Owner's manual + optional Care Plan for ongoing support, updates, and optimization.",
+    question: 'What happens after the pilot?',
+    answer: 'Easy instructions for your team + optional light support.',
   },
   {
-    question: 'Security and privacy details?',
+    question: 'What about privacy and security?',
     answer:
-      'Least-privilege access, audit logs, secret management, secure data handling, and clean off-boarding procedures.',
+      'We only use the access we need and remove it when we’re done. NDA available.',
   },
 ];
 
@@ -308,14 +307,14 @@ export const privacyContent = {
   title: 'Privacy & Data Protection',
   sections: [
     {
-      title: 'Canada-First Compliance',
+      title: 'Privacy & Data',
       content:
-        "We follow the Personal Information Protection and Electronic Documents Act (PIPEDA) and Alberta's Personal Information Protection Act (PIPA). Nondisclosure agreements (NDAs) on request. No training on your private data. Least-privilege access with an off-boarding plan.",
+        'We keep your private data private. We only access what we need and remove access when we’re done. NDA available.',
     },
     {
-      title: 'Service Area & Contracts',
+      title: 'Service Area & Agreements',
       content:
-        'Service Area: Calgary • Airdrie • Cochrane • Okotoks (remote available) Contracts: Statement of Work (SOW) with acceptance criteria; change orders for expanded scope.',
+        'Service Area: Calgary • Airdrie • Cochrane • Okotoks (remote available)\n\nAgreements: Simple written plan with what we’ll deliver; changes agreed in writing.',
     },
   ],
 };
@@ -325,9 +324,9 @@ export const schemaOrgData = {
   localBusiness: {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
-    name: 'Nexus AI',
+    name: 'Prairie Signal',
     description:
-      'Calgary AI services for small and mid-sized businesses (SMBs) including AI Assistant Setup, Automation Audit + Pilot, and Analytics Quickstart.',
+      'Practical AI help for Calgary small businesses. Plain English, fast setup, and privacy‑minded.',
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Calgary',
@@ -336,9 +335,9 @@ export const schemaOrgData = {
     },
     areaServed: ['Calgary', 'Airdrie', 'Cochrane', 'Okotoks'],
     serviceType: [
-      'AI Assistant Setup',
-      'Automation Audit + Pilot',
-      'Analytics Quickstart',
+      'AI Advisory',
+      'Training & Literacy',
+      'No‑Code Configuration',
     ],
   },
   faqPage: {
@@ -351,8 +350,8 @@ export const schemaOrgData = {
 
 // ROI Calculator Configuration
 export const roiCalculatorConfig = {
-  title: 'ROI Calculator',
-  description: 'Estimate your potential savings with AI automation',
+  title: 'Savings Calculator',
+  description: 'Estimate your potential savings with simple automation',
   inputs: [
     {
       label: 'Hours saved per week',
@@ -384,10 +383,10 @@ export const roiCalculatorConfig = {
 
 // Lead Magnet Configuration
 export const leadMagnetConfig = {
-  title: 'AI Pilot Readiness Checklist',
-  subtitle: 'Calgary small and mid-sized businesses (SMBs)',
+  title: 'AI Readiness Checklist (10‑point)',
+  subtitle: 'For Calgary small and mid-sized businesses (SMBs)',
   description:
-    'Get your free 10-point checklist to assess if your business is ready for AI automation.',
+    'Free checklist to assess if your team is ready for a safe, useful pilot.',
   benefits: [
     'Identify quick wins for AI implementation',
     'Understand data readiness requirements',
@@ -395,7 +394,7 @@ export const leadMagnetConfig = {
     'Get implementation timeline estimates',
   ],
   emailPlaceholder: 'Enter your email address',
-  buttonText: 'Get Free Checklist',
+  buttonText: 'Get the Checklist',
   privacyText: 'We respect your privacy. Unsubscribe at any time.',
 };
 
@@ -403,6 +402,6 @@ export const leadMagnetConfig = {
 export const footerContent = {
   serviceArea: 'Calgary • Airdrie • Cochrane • Okotoks (remote available)',
   privacy:
-    "We follow the Personal Information Protection and Electronic Documents Act (PIPEDA) and Alberta's Personal Information Protection Act (PIPA). Nondisclosure agreements (NDAs) available. We don't train models on your private data.",
-  contracts: 'SOW with acceptance criteria; change orders for expanded scope.',
+    "We keep your private data private and only access what we need. NDA available. We don't use your private data to train AI.",
+  contracts: 'Simple plan with what we’ll deliver; changes agreed in writing.',
 };

@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'Security | Nexus AI',
+  title: 'Security | Prairie Signal',
   description:
     'Overview of security practices: least-privilege access, auditability, hosting options, and data handling.',
 };
@@ -53,7 +53,7 @@ export default function SecurityPage() {
             </ul>
             <p className="text-sm text-muted mt-4">
               See also our{' '}
-              <a className="text-primary hover:underline" href="/privacy">
+              <a className="link" href="/privacy">
                 Privacy Policy
               </a>
               .

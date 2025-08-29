@@ -11,7 +11,7 @@ type IconProps = {
 
 export function Icon({
   name,
-  size = 24,
+  size = 28,
   className,
   title,
   ...rest
@@ -25,10 +25,18 @@ export function Icon({
     return null;
   }
 
+  const hasTextSizeClass =
+    typeof className === 'string' &&
+    /\btext-(\[[^\]]+\]|xs|sm|base|lg|xl|[2-9]xl)\b/.test(className);
+
+  // If a Tailwind text-* size is provided, make the SVG scale with font-size (1em).
+  const finalWidth: number | string = hasTextSizeClass ? '1em' : size;
+  const finalHeight: number | string = hasTextSizeClass ? '1em' : size;
+
   return (
     <Cmp
-      width={size}
-      height={size}
+      width={finalWidth}
+      height={finalHeight}
       className={cn(
         'inline-block align-middle text-[color:var(--icon,inherit)] fill-current',
         className

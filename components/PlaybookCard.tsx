@@ -62,7 +62,7 @@ export function PlaybookCard({ playbook, index }: PlaybookCardProps) {
             </span>
             <div className="flex-grow">
               <div className="text-sm font-semibold text-ink uppercase tracking-wide mb-2">
-                Target Outcome (30 days)
+                Target Outcome
               </div>
               <ul
                 className="text-sm md:text-base text-muted space-y-2"

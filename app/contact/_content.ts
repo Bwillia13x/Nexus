@@ -5,19 +5,19 @@
 export const CONTACT_CONTENT = {
   hero: {
     eyebrow: 'Calgary SMB?',
-    title: 'Book a 30-minute discovery call',
+    title: 'Book a discovery call',
     subtitle:
-      "We'll identify a focused pilot we can ship in about 30 days — assistant, automation, or analytics — with clear safety rules.",
+      'Tell us what you want to improve. We will suggest a simple first step that works with your current tools—no jargon.',
     badges: [
-      { icon: '⚡', text: 'Quick Response' },
-      { icon: '🎯', text: 'Custom Solutions' },
-      { icon: '🔒', text: 'Strong Security' },
+      { icon: '⚡', text: 'Quick response' },
+      { icon: '🎯', text: 'Plain English' },
+      { icon: '🔒', text: 'Privacy‑minded' },
     ],
   },
   form: {
     title: 'Get Started',
     subtitle:
-      "Tell us what you need. We'll recommend a small, practical AI project we can ship in about 30 days.",
+      'Tell us what you need. We will recommend a small, practical first step with clear “done” criteria.',
     fields: {
       fullName: {
         label: 'Full Name',
@@ -105,10 +105,10 @@ export const CONTACT_CONTENT = {
     whyChoose: {
       title: 'Why Choose Us?',
       items: [
-        'Founder-led builds with clear accountability',
-        'Calgary-first, privacy-aware approach (PIPEDA/PIPA)',
-        'Fixed-scope pilots with measurable outcomes',
-        'Plain-English docs and handoff',
+        'Founder-led work with clear accountability',
+        'Privacy‑minded and Calgary‑based',
+        'Fixed‑price, small projects',
+        'Plain‑English how‑to and handoff',
       ],
     },
     responseTime: {
@@ -122,7 +122,7 @@ export const CONTACT_CONTENT = {
     security: {
       title: 'Your Data is Safe',
       content:
-        'We use least-privilege access, keep your private data private, and follow PIPEDA (federal) and PIPA (Alberta). Non-disclosure agreement (NDA) available on request. We do not train on your data.',
+        'We keep your private data private and only access what we need. NDA available. We do not use your data to train AI.',
     },
   },
   success: {
@@ -133,8 +133,8 @@ export const CONTACT_CONTENT = {
         href: '/book',
       },
       seePilots: {
-        text: 'See pilot menu',
-        href: '/services#services',
+        text: 'Get playbooks & templates',
+        href: '/playbooks',
       },
     },
   },

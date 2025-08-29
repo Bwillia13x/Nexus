@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Thanks for Your Interest — Nexus AI',
+  title: 'Thanks for Your Interest — Prairie Signal',
   description:
     "Thanks for reaching out! We'll get back to you the same business day. Here's what happens next and how you can prepare.",
   robots: 'noindex,nofollow', // Don't index thank you pages
@@ -43,8 +43,8 @@ export default function ThankYouPage() {
           </h1>
 
           <p className="text-xl md:text-2xl text-muted-foreground mb-12 leading-relaxed">
-            We'll get back to you the same business day with a 30-minute
-            discovery call.
+            We'll get back to you the same business day with next steps and a
+            link to book a discovery call.
           </p>
 
           {/* Next Steps Card */}
@@ -79,8 +79,8 @@ export default function ThankYouPage() {
                     Discovery Call
                   </h3>
                   <p className="text-muted-foreground text-sm">
-                    We'll discuss your goals, challenges, and identify a focused
-                    AI pilot we can ship in ~30 days.
+                    We'll discuss your goals, constraints, and identify a
+                    vendor‑neutral, no‑code pilot your team can own.
                   </p>
                 </div>
               </div>
@@ -136,11 +136,11 @@ export default function ThankYouPage() {
               <span>←</span>
             </Link>
             <Link
-              href="/cases"
+              href="/playbooks"
               className="btn-secondary inline-flex items-center gap-2"
             >
-              <span>Explore Pilot Examples</span>
-              <span>📋</span>
+              <span>Get Playbooks & Templates</span>
+              <span>📚</span>
             </Link>
           </div>
 
@@ -149,10 +149,10 @@ export default function ThankYouPage() {
             <p>
               Questions? Reply to the confirmation email or reach out at{' '}
               <a
-                href="mailto:hello@nexusai.com"
-                className="text-primary underline hover:underline"
+                href={`mailto:${process.env.NEXT_PUBLIC_BUSINESS_EMAIL || 'hello@example.com'}`}
+                className="link"
               >
-                hello@nexusai.com
+                {process.env.NEXT_PUBLIC_BUSINESS_EMAIL || 'hello@example.com'}
               </a>
             </p>
           </div>

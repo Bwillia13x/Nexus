@@ -148,7 +148,7 @@ export async function POST(req: Request) {
     // Dispatch based on configuration
     const dispatchPromises = [];
 
-    if (env.RESEND_API_KEY && env.CONTACT_TO_EMAIL) {
+    if (env.RESEND_API_KEY && env.TO_EMAIL) {
       dispatchPromises.push(
         sendLeadEmail(inquiry).catch(error => {
           console.error('Email dispatch failed:', error);

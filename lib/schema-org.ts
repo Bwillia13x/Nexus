@@ -1,11 +1,16 @@
 import { services, faqs, schemaOrgData } from './services-content';
+import { getBrandName, getAbsoluteLogoUrl } from '@/lib/brand';
 
 // Generate LocalBusiness structured data
 export function generateLocalBusinessSchema() {
+  const brandName = getBrandName();
   return {
     ...schemaOrgData.localBusiness,
-    url: 'https://nexus-ai.com/services',
-    priceRange: '$5k–$14k',
+    name: brandName,
+    url:
+      (process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000') +
+      '/services',
+    priceRange: '$$',
     paymentAccepted: 'Cash, Credit Card',
     currenciesAccepted: 'CAD',
   };
@@ -30,6 +35,7 @@ export function generateFAQPageSchema() {
 
 // Generate Product structured data for each service
 export function generateProductSchemas() {
+  const brandName = getBrandName();
   return services.map(service => ({
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -37,21 +43,15 @@ export function generateProductSchemas() {
     description: service.summary,
     brand: {
       '@type': 'Brand',
-      name: 'Nexus AI',
+      name: brandName,
     },
     offers: {
       '@type': 'Offer',
       priceCurrency: 'CAD',
-      price: service.pricing.replace(/[^\d–]/g, ''),
-      priceValidUntil: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000)
-        .toISOString()
-        .split('T')[0],
+      price: '0',
+      description: service.timeline,
       availability: 'https://schema.org/InStock',
-      validFrom: new Date().toISOString().split('T')[0],
-      seller: {
-        '@type': 'Organization',
-        name: 'Nexus AI',
-      },
+      seller: { '@type': 'Organization', name: brandName },
     },
     category: 'AI Services',
     areaServed: ['Calgary', 'Airdrie', 'Cochrane', 'Okotoks'],
@@ -60,6 +60,7 @@ export function generateProductSchemas() {
 
 // Generate Service structured data
 export function generateServiceSchemas() {
+  const brandName = getBrandName();
   return services.map(service => ({
     '@context': 'https://schema.org',
     '@type': 'Service',
@@ -67,29 +68,26 @@ export function generateServiceSchemas() {
     description: service.summary,
     provider: {
       '@type': 'LocalBusiness',
-      name: 'Nexus AI',
+      name: brandName,
     },
     areaServed: ['Calgary', 'Airdrie', 'Cochrane', 'Okotoks'],
     serviceType: service.title,
-    offers: {
-      '@type': 'Offer',
-      priceCurrency: 'CAD',
-      price: service.pricing.replace(/[^\d–]/g, ''),
-      description: `${service.timeline} timeline`,
-    },
   }));
 }
 
 // Generate Organization structured data
 export function generateOrganizationSchema() {
+  const site = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+  const brandName = getBrandName();
+  const logoAbs = getAbsoluteLogoUrl(site);
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'Nexus AI',
-    url: 'https://nexus-ai.com',
-    logo: 'https://nexus-ai.com/images/Nexus_Logo.png',
+    name: brandName,
+    url: site,
+    logo: logoAbs,
     description:
-      'Calgary AI services for SMBs including AI Assistant Setup, Automation Audit + Pilot, and Analytics Quickstart.',
+      'Practical AI help for Calgary small businesses. Plain English and privacy‑minded.',
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Calgary',
@@ -121,23 +119,25 @@ export function generateOrganizationSchema() {
 
 // Generate WebPage structured data
 export function generateWebPageSchema() {
+  const site2 = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+  const brandName = getBrandName();
   return {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    name: 'Calgary AI Services for SMBs',
+    name: 'AI Services for Small Businesses',
     description:
-      'Fast, practical AI integrations—AI Assistant Setup, Automation Audit + Pilot, and Analytics Quickstart. Fixed-scope, measurable outcomes, Calgary-ready privacy.',
-    url: 'https://nexus-ai.com/services',
+      'Practical AI that works with what you already use. Fast, safe, and in plain English.',
+    url: site2 + '/services',
     isPartOf: {
       '@type': 'WebSite',
-      name: 'Nexus AI',
-      url: 'https://nexus-ai.com',
+      name: brandName,
+      url: site2,
     },
     about: {
       '@type': 'Organization',
-      name: 'Nexus AI',
+      name: brandName,
     },
-    mainEntity: [...generateProductSchemas(), ...generateServiceSchemas()],
+    mainEntity: [...generateServiceSchemas()],
   };
 }
 
@@ -155,23 +155,26 @@ export function generateAllStructuredData() {
 
 // Generate ContactPage structured data
 export function generateContactPageSchema() {
+  const brandName = getBrandName();
   return {
     '@context': 'https://schema.org',
     '@type': 'ContactPage',
-    name: 'Contact Nexus AI - Calgary AI Consultants',
+    name: `Contact ${brandName} - Calgary AI Advisory`,
     description:
-      'Book a 30-minute discovery call to identify a focused AI pilot for your Calgary SMB. AI assistant, automation, or analytics - with clear safety rules.',
-    url: 'https://nexus-ai.com/contact',
+      'Book a call to talk through a simple first step that works with your current tools.',
+    url:
+      (process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000') +
+      '/contact',
     isPartOf: {
       '@type': 'WebSite',
-      name: 'Nexus AI',
-      url: 'https://nexus-ai.com',
+      name: brandName,
+      url: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
     },
     mainEntity: {
       '@type': 'LocalBusiness',
-      name: 'Nexus AI',
+      name: brandName,
       description:
-        'Calgary AI services for SMBs including AI Assistant Setup, Automation Audit + Pilot, and Analytics Quickstart.',
+        'Practical AI help for Calgary small businesses. Plain English and privacy‑minded.',
       address: {
         '@type': 'PostalAddress',
         addressLocality: 'Calgary',
@@ -179,7 +182,7 @@ export function generateContactPageSchema() {
         addressCountry: 'CA',
       },
       telephone: '+1-403-555-0123', // Replace with actual number
-      email: 'hello@nexusai.com',
+      email: process.env.NEXT_PUBLIC_BUSINESS_EMAIL || 'hello@example.com',
       areaServed: [
         { '@type': 'City', name: 'Calgary' },
         { '@type': 'City', name: 'Airdrie' },
@@ -189,38 +192,7 @@ export function generateContactPageSchema() {
       sameAs: [
         // Add social media URLs when available
       ],
-      hasOfferCatalog: {
-        '@type': 'OfferCatalog',
-        name: 'AI Services',
-        itemListElement: [
-          {
-            '@type': 'Offer',
-            itemOffered: {
-              '@type': 'Service',
-              name: 'AI Assistant Setup',
-              description:
-                'Custom AI assistant implementation with voice and chat capabilities.',
-            },
-          },
-          {
-            '@type': 'Offer',
-            itemOffered: {
-              '@type': 'Service',
-              name: 'Automation Audit + Pilot',
-              description:
-                'Process automation assessment and implementation pilot.',
-            },
-          },
-          {
-            '@type': 'Offer',
-            itemOffered: {
-              '@type': 'Service',
-              name: 'Analytics Quickstart',
-              description: 'Data analytics setup and dashboard implementation.',
-            },
-          },
-        ],
-      },
+      hasOfferCatalog: undefined,
     },
   };
 }

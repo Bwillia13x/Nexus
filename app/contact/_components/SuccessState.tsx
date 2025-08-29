@@ -29,7 +29,11 @@ export function SuccessState({ onBookCall, onSeePilots }: SuccessStateProps) {
   };
 
   const handleSeePilots = () => {
-    trackCtaClick('see_pilots_success', 'See pilot menu', '/contact');
+    trackCtaClick(
+      'see_playbooks_success',
+      'Get playbooks & templates',
+      '/contact'
+    );
     if (onSeePilots) {
       onSeePilots();
     } else {
@@ -77,7 +81,7 @@ export function SuccessState({ onBookCall, onSeePilots }: SuccessStateProps) {
         <button
           onClick={handleSeePilots}
           className="btn-secondary flex-1 sm:flex-initial"
-          aria-label="View pilot menu options"
+          aria-label="Browse playbooks and templates"
         >
           <span className="flex items-center gap-2">
             🎯 {CONTACT_CONTENT.success.buttons.seePilots.text}
@@ -87,14 +91,11 @@ export function SuccessState({ onBookCall, onSeePilots }: SuccessStateProps) {
 
       {/* Additional Info */}
       <p className="mt-6 text-sm text-muted">
-        Or check out our{' '}
-        <a
-          href="/services#services"
-          className="font-medium underline underline-offset-2 hover:text-primary transition-colors"
-        >
-          pilot menu
-        </a>{' '}
-        to see what others are building.
+        Or browse our{' '}
+        <a href="/playbooks" className="link font-medium">
+          playbooks & templates
+        </a>
+        .
       </p>
     </div>
   );

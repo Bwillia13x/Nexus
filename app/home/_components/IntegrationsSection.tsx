@@ -24,7 +24,7 @@ export default function IntegrationsSection() {
             {sectionContent.integrations.title}
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4">
-            Native integrations with the tools your Calgary team already uses
+            Works with the tools your team already uses
           </p>
         </div>
 

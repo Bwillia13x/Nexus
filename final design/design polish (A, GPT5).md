@@ -1,4 +1,4 @@
-# Nexus AI — UI Accessibility & Design Polish
+# PrairieSignal — UI Accessibility & Design Polish
 
 Date: 2025-08-25
 

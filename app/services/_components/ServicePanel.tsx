@@ -101,7 +101,7 @@ export default function ServicePanel({ service }: ServicePanelProps) {
           {/* CTA Button */}
           <div className="mt-12 text-center">
             <Link href={service.ctaHref} className="btn-primary">
-              Start this project →
+              Book discovery call →
             </Link>
           </div>
         </div>

@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { homeContent } from '@/app/_content/home';
+import { getBrandName, getLogoSrc } from '@/lib/brand';
 
 function HeroCTAs() {
   const handlePrimaryCtaClick = () => {
@@ -40,13 +41,14 @@ function HeroCTAs() {
         className="btn-outline text-base sm:text-lg px-8 py-4 min-w-[200px] sm:min-w-[240px] justify-center"
         onClick={handleSecondaryCtaClick}
       >
-        See 30-day pilot menu
+        Get the AI Readiness Checklist
       </Link>
     </div>
   );
 }
 
 export function Hero() {
+  const brandName = getBrandName();
   return (
     <section
       className="relative flex min-h-[90vh] items-center justify-center section pt-12 pb-20"
@@ -55,14 +57,21 @@ export function Hero() {
       <div className="container-wide max-w-4xl text-center">
         {/* Logo at the top with better spacing */}
         <div className="flex justify-center mb-8 md:mb-12">
-          <Image
-            src="/images/Nexus_Logo.png"
-            alt="Nexus AI Logo"
-            width={400}
-            height={160}
-            className="h-28 md:h-36 lg:h-40 w-auto"
-            priority
-          />
+          {(() => {
+            const logoSrc = getLogoSrc();
+            return (
+              <div className="relative h-28 w-[300px] md:h-36 md:w-[380px] lg:h-40 lg:w-[440px] mx-auto">
+                <Image
+                  src={logoSrc}
+                  alt={`${brandName} Logo`}
+                  fill
+                  className="object-contain"
+                  priority
+                  sizes="(min-width:1024px) 440px, (min-width:768px) 380px, 300px"
+                />
+              </div>
+            );
+          })()}
         </div>
 
         {/* Main headline with improved spacing */}

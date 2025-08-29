@@ -22,9 +22,9 @@ import {
 } from './_content';
 
 export const metadata = {
-  title: 'AI Services for Calgary SMBs | Nexus AI',
+  title: 'AI Services | Prairie Signal',
   description:
-    'Productized offerings for Calgary small and mid-sized businesses: AI Assistant Setup, Automation Audit + Pilot, and Analytics Quickstart.',
+    'Plain‑English AI help for small businesses: quick overview, readiness check, tool choice, and small pilot setup. Works with what you already use.',
 };
 
 export default function ServicesPage() {
@@ -94,7 +94,7 @@ export default function ServicesPage() {
               {faqContent.map((faq, index) => (
                 <div
                   key={index}
-                  className="card-glass group hover:shadow-xl transition-all duration-300"
+                  className="card-glass group transition-all duration-300"
                 >
                   <div className="flex items-start gap-4">
                     <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mt-1">
@@ -198,13 +198,13 @@ export default function ServicesPage() {
 
         {/* P2 Components Section */}
         <div className="max-w-6xl mx-auto mb-20 space-y-20">
-          {/* ROI Calculator */}
+          {/* Savings Calculator */}
           <section aria-labelledby="roi-calculator" className="py-16 md:py-24">
             <h2
               id="roi-calculator"
               className="text-3xl md:text-4xl font-bold text-center mb-12"
             >
-              ROI Calculator
+              Savings Calculator
             </h2>
             <Suspense
               fallback={

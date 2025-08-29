@@ -11,13 +11,13 @@ export async function sendLeadEmail(
     utmCount?: number;
   }
 ): Promise<void> {
-  if (!env.RESEND_API_KEY || !env.CONTACT_TO_EMAIL) {
+  if (!env.RESEND_API_KEY || !env.TO_EMAIL) {
     throw new Error('Email not configured');
   }
 
   const resend = new Resend(env.RESEND_API_KEY);
 
-  const subject = `New Nexus AI inquiry — ${inquiry.fullName} (${inquiry.company || 'N/A'}) — ${inquiry.industry}`;
+  const subject = `New Prairie Signal inquiry — ${inquiry.fullName} (${inquiry.company || 'N/A'}) — ${inquiry.industry}`;
   const body = `
 NEW INQUIRY RECEIVED
 ===================
@@ -64,8 +64,8 @@ This inquiry was processed with enhanced anti-spam measures and analytics tracki
   `.trim();
 
   await resend.emails.send({
-    from: 'noreply@nexusai.com',
-    to: env.CONTACT_TO_EMAIL,
+    from: env.FROM_EMAIL || 'noreply@noreply.invalid',
+    to: env.TO_EMAIL,
     subject,
     text: body,
   });

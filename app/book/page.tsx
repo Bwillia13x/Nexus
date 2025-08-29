@@ -2,9 +2,9 @@ import Link from 'next/link';
 import { env } from '@/lib/env';
 
 export const metadata = {
-  title: 'Book a Call | Nexus AI',
+  title: 'Book a Call | Prairie Signal',
   description:
-    'Schedule a 30-minute discovery call to discuss your AI pilot needs.',
+    'Schedule a discovery call to assess readiness and scope a vendor‑neutral, no‑code pilot.',
 };
 
 export default function BookPage() {
@@ -29,11 +29,11 @@ export default function BookPage() {
         <div className="container-wide text-center">
           <div className="max-w-2xl mx-auto">
             <h1 className="text-5xl md:text-6xl font-bold mb-6 gradient-title">
-              Book Your 30-Minute Discovery Call
+              Book Your Discovery Call
             </h1>
             <p className="text-xl text-muted mb-8">
-              Let's discuss your AI pilot needs and identify the perfect
-              solution for your business.
+              Let’s assess readiness, align guardrails, and identify a no‑code
+              pilot your team can own.
             </p>
 
             {schedulerUrl ? (

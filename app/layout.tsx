@@ -3,10 +3,12 @@ import type { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { Nav } from '@/components/Nav';
+import { Canonical } from '@/components/Canonical';
 import { Footer } from '@/components/Footer';
 import { Analytics } from '@/components/Analytics';
 import { ToastProvider } from '@/components/ToastProvider';
 import { PerformanceMonitor } from '@/components/PerformanceMonitor';
+import { getBrandName, getAbsoluteLogoUrl } from '@/lib/brand';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -14,10 +16,12 @@ const inter = Inter({
   variable: '--font-sans',
 });
 
+const brandName = getBrandName();
+const siteOrigin = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 export const metadata: Metadata = {
-  title: 'Nexus AI — Calgary AI Consulting for SMBs',
+  title: `${brandName} — Calgary AI Consulting for SMBs`,
   description:
-    'Solo AI-integration consultancy helping Calgary SMBs automate workflows, deploy AI assistants, and unlock insights.',
+    'Practical AI help for Calgary small businesses. We set up useful tools that work with what you already use—fast, safe, and in plain English.',
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
   ),
@@ -25,29 +29,37 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: '/',
-    siteName: 'Nexus AI',
-    title: 'Nexus AI — Calgary AI Consulting for SMBs',
+    siteName: brandName,
+    title: `${brandName} — Calgary AI Consulting for SMBs`,
     description:
-      'Solo AI-integration consultancy helping Calgary SMBs automate workflows, deploy AI assistants, and unlock insights.',
+      'Practical AI that works with what you already use. Fast, safe, and in plain English.',
     images: [
       {
         url: '/og.svg',
         width: 1200,
         height: 630,
-        alt: 'Nexus AI',
+        alt: brandName,
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Nexus AI — Calgary AI Consulting for SMBs',
+    title: `${brandName} — Calgary AI Consulting for SMBs`,
     description:
-      'Solo AI-integration consultancy helping Calgary SMBs automate workflows, deploy AI assistants, and unlock insights.',
+      'Practical AI for Calgary small businesses — in plain English.',
     images: ['/og.svg'],
   },
-  alternates: {
-    canonical: '/',
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
   },
+  manifest: '/manifest.webmanifest',
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
@@ -55,6 +67,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en" className={inter.variable}>
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <Canonical />
         <script
           type="application/ld+json"
           // Build LocalBusiness JSON-LD from environment variables. Undefined fields are omitted by JSON.stringify.
@@ -62,13 +75,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'LocalBusiness',
-              name: process.env.NEXT_PUBLIC_BUSINESS_NAME || 'Nexus AI',
-              url: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
+              name: brandName,
+              url: siteOrigin,
               image: process.env.NEXT_PUBLIC_BUSINESS_IMAGE,
-              logo: process.env.NEXT_PUBLIC_BUSINESS_LOGO,
+              logo: getAbsoluteLogoUrl(siteOrigin),
               telephone: process.env.NEXT_PUBLIC_BUSINESS_TELEPHONE,
               description:
-                'Solo AI-integration consultancy helping Calgary businesses automate workflows, deploy assistants, and ship dashboards—safely and measurably.',
+                'Practical AI help for Calgary small businesses. Plain English, fast setup, and privacy‑minded.',
               address: {
                 '@type': 'PostalAddress',
                 streetAddress: process.env.NEXT_PUBLIC_BUSINESS_STREET,
@@ -97,12 +110,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                   name: 'Okotoks',
                 },
               ],
-              serviceType: [
-                'AI Consulting',
-                'Automation',
-                'Business Intelligence',
-                'Workflow Optimization',
-              ],
+              serviceType: ['AI Advisory', 'Training', 'No‑Code Configuration'],
               priceRange: '$$',
               sameAs: [
                 process.env.NEXT_PUBLIC_LINKEDIN_URL,
@@ -122,34 +130,34 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               mainEntity: [
                 {
                   '@type': 'Question',
-                  name: 'Will my data be used to train AI?',
+                  name: 'Will you use our data to train AI?',
                   acceptedAnswer: {
                     '@type': 'Answer',
-                    text: 'No—private data stays private; usage limited to your project.',
+                    text: 'No. Your private data stays private; we only use it to help your project.',
                   },
                 },
                 {
                   '@type': 'Question',
-                  name: 'Cloud vs on-prem?',
+                  name: 'Where does it run?',
                   acceptedAnswer: {
                     '@type': 'Answer',
-                    text: 'Default cloud; on-prem or VPC by request.',
+                    text: 'Cloud by default; running on your own systems is possible if needed.',
                   },
                 },
                 {
                   '@type': 'Question',
-                  name: 'Which models/tools do you use?',
+                  name: 'Which tools do you use?',
                   acceptedAnswer: {
                     '@type': 'Answer',
-                    text: 'We pick per-use-case (OpenAI/Groq/Anthropic/etc.) with clear cost + latency trade-offs.',
+                    text: 'We pick tools that fit your needs and budget. We are not tied to any one vendor.',
                   },
                 },
                 {
                   '@type': 'Question',
-                  name: 'How do we measure ROI?',
+                  name: 'How do we know it’s working?',
                   acceptedAnswer: {
                     '@type': 'Answer',
-                    text: 'Time saved, error rate, ticket deflection, response time, SLA. We agree metrics up front.',
+                    text: 'Simple signs: time saved, fewer mistakes, faster replies, and adoption. We agree these up front.',
                   },
                 },
                 {
@@ -157,7 +165,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                   name: 'Security & access?',
                   acceptedAnswer: {
                     '@type': 'Answer',
-                    text: 'Least-privilege, audit trails, secrets management, off-boarding plan.',
+                    text: 'We only use the access we need and remove it when we’re done. NDA available.',
                   },
                 },
                 {
@@ -165,15 +173,15 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                   name: 'What happens after the pilot?',
                   acceptedAnswer: {
                     '@type': 'Answer',
-                    text: 'Handoff or care plan; your choice.',
+                    text: 'Easy instructions for your team; optional light support.',
                   },
                 },
                 {
                   '@type': 'Question',
-                  name: 'Contracting?',
+                  name: 'Agreements?',
                   acceptedAnswer: {
                     '@type': 'Answer',
-                    text: 'SOW with acceptance criteria; change-orders if scope expands.',
+                    text: 'Simple written plan with what we’ll deliver; changes agreed in writing.',
                   },
                 },
               ],

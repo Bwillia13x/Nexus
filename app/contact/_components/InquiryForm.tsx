@@ -13,7 +13,7 @@ import {
   trackRoiParamsAttached,
 } from '@/lib/analytics';
 
-const AUTOSAVE_KEY = 'nexusai:inquiry:v1';
+const AUTOSAVE_KEY = 'prairiesignal:inquiry:v1';
 
 interface InquiryFormProps {
   onSuccess?: () => void;
@@ -221,10 +221,7 @@ export function InquiryForm({ onSuccess }: InquiryFormProps) {
                   </p>
                 </div>
               </div>
-              <button
-                onClick={clearRoiParams}
-                className="text-xs text-muted hover:text-primary transition-colors underline underline-offset-2"
-              >
+              <button onClick={clearRoiParams} className="link text-xs">
                 {CONTACT_CONTENT.roi.clear}
               </button>
             </div>

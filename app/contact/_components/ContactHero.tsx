@@ -69,7 +69,9 @@ export function ContactHero() {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <button
-              onClick={() => handleCtaClick('book_call')}
+              onClick={() => {
+                handleCtaClick('book_call');
+              }}
               className="btn-primary group"
               aria-label="Book a discovery call"
             >
@@ -87,17 +89,17 @@ export function ContactHero() {
             </button>
 
             <button
-              onClick={() => handleCtaClick('badge_menu')}
+              onClick={() => handleCtaClick('browse_playbooks')}
               className="btn-secondary"
-              aria-label="View pilot menu options"
+              aria-label="Browse playbooks and templates"
             >
               <span className="flex items-center gap-2">
                 <MaybeIcon
-                  emoji="🎯"
+                  emoji="📚"
                   className="text-lg"
-                  title="View Pilot Menu"
+                  title="Browse Playbooks"
                 />
-                View Pilot Menu
+                Browse Playbooks
               </span>
             </button>
           </div>

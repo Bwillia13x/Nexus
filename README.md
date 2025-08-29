@@ -1,6 +1,6 @@
-# Nexus AI Frontend
+# PrairieSignal Frontend
 
-A modern, professional Next.js 15 application for Nexus AI - a Calgary-based AI consulting business. Features a beautiful eggshell palette with liquid-glass morphism design, comprehensive service offerings, and professional contact management.
+A modern, professional Next.js 15 application for PrairieSignal — a Calgary-based AI consulting business. Features a beautiful eggshell palette with liquid-glass morphism design, comprehensive service offerings, and professional contact management.
 
 ## ✨ Features
 
@@ -23,7 +23,7 @@ A modern, professional Next.js 15 application for Nexus AI - a Calgary-based AI 
 ```bash
 # Clone the repository
 git clone <your-repo-url>
-cd Nexus
+cd PrairieSignal
 
 # Install dependencies
 npm install
@@ -36,7 +36,7 @@ cp env.example .env.local
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open https://prairiesignal.ca (Production) or http://localhost:3000 (local).
 
 ## ⚙️ Environment Configuration
 
@@ -44,27 +44,27 @@ Copy `env.example` to `.env.local` and configure:
 
 ```bash
 # Required for production
-NEXT_PUBLIC_SITE_URL=https://yourdomain.com
+NEXT_PUBLIC_SITE_URL=https://prairiesignal.ca
 RESEND_API_KEY=your_resend_api_key
 FROM_EMAIL=noreply@yourdomain.com
 TO_EMAIL=contact@yourdomain.com
 
 # Business information
-NEXT_PUBLIC_BUSINESS_NAME=Nexus AI
+NEXT_PUBLIC_BUSINESS_NAME=PrairieSignal
 NEXT_PUBLIC_BUSINESS_TELEPHONE=+1-403-XXX-XXXX
 NEXT_PUBLIC_BUSINESS_STREET=123 Main Street
 NEXT_PUBLIC_BUSINESS_POSTAL=T2P 1J9
 
 # Social media links
-NEXT_PUBLIC_LINKEDIN_URL=https://linkedin.com/company/nexus-ai
-NEXT_PUBLIC_X_URL=https://x.com/nexus_ai
-NEXT_PUBLIC_GITHUB_URL=https://github.com/nexus-ai
+NEXT_PUBLIC_LINKEDIN_URL=https://linkedin.com/company/prairiesignal
+NEXT_PUBLIC_X_URL=https://x.com/prairiesignal
+NEXT_PUBLIC_GITHUB_URL=https://github.com/prairiesignal
 ```
 
 ## 🏗️ Project Structure
 
 ```
-Nexus/
+PrairieSignal/
 ├── app/                    # Next.js App Router pages
 │   ├── page.tsx           # Homepage
 │   ├── services/          # Services page
@@ -227,7 +227,7 @@ Ensure all required environment variables are set in your deployment platform.
 
 ## 📄 License
 
-This project is proprietary to Nexus AI. All rights reserved.
+This project is proprietary to PrairieSignal. All rights reserved.
 
 ## 🆘 Support
 
@@ -239,4 +239,4 @@ For support or questions:
 
 ---
 
-**Built with ❤️ by Nexus AI Team**
+**Built with ❤️ by PrairieSignal**

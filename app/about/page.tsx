@@ -15,7 +15,7 @@ import { Speaking } from './_components/Speaking';
 import { EndCTA } from './_components/EndCTA';
 
 export const metadata = {
-  title: 'About Drew | Calgary AI Consultant — Nexus AI',
+  title: 'About Drew | Calgary AI Consultant — Prairie Signal',
   description:
     'Solo AI-integration consultancy for Calgary SMBs. Fast, safe, measurable outcomes for assistants, automations, and analytics.',
 };

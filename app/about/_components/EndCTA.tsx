@@ -7,11 +7,11 @@ export function EndCTA() {
         <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-secondary/5 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         <div className="relative z-10">
           <h2 className="text-4xl font-bold mb-6">
-            Calgary SMBs: Ready to Pilot AI?
+            Calgary SMBs: Ready to get started?
           </h2>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-7">
-            Book a 30-minute intro. We'll identify a small, high-impact pilot we
-            can ship in ~30 days.
+            Book a discovery call. We’ll assess readiness, align guardrails, and
+            pick a small, no‑code pilot your team can own.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8">
             <Link
@@ -24,7 +24,7 @@ export function EndCTA() {
               href="/services"
               className="btn-secondary shadow-elev hover:shadow-elev-lg min-w-[200px] sm:min-w-[240px] text-base sm:text-lg"
             >
-              See services
+              See advisory
             </Link>
           </div>
           <div className="mt-8 pt-8 border-t border-border/50">

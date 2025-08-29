@@ -1,5 +1,5 @@
 /**
- * Analytics tracking utility for Nexus AI
+ * Analytics tracking utility for PrairieSignal
  * Provides a safe wrapper around dataLayer for GA4/GTM events
  */
 
@@ -13,7 +13,10 @@ export type AnalyticsEvent =
   | 'cta_click'
   | 'inquiry_submit_succeeded'
   | 'inquiry_submit_failed'
-  | 'roi_params_attached';
+  | 'roi_params_attached'
+  | 'download_click'
+  | 'workshop_signup'
+  | 'schedule_click';
 
 export interface AnalyticsEventData {
   [key: string]: any;
@@ -57,6 +60,37 @@ export function trackCtaClick(
     cta_id: ctaId,
     cta_text: ctaText,
     location: location || window.location.pathname,
+  });
+}
+
+/**
+ * Track a resource download click
+ */
+export function trackDownloadClick(resource: string, href: string): void {
+  track('download_click', {
+    resource,
+    href,
+    location: typeof window !== 'undefined' ? window.location.pathname : '',
+  });
+}
+
+/**
+ * Track workshop signup interest
+ */
+export function trackWorkshopSignup(kind: 'workshop' | 'clinic'): void {
+  track('workshop_signup', {
+    kind,
+    location: typeof window !== 'undefined' ? window.location.pathname : '',
+  });
+}
+
+/**
+ * Track schedule/book a call clicks
+ */
+export function trackScheduleClick(source: string): void {
+  track('schedule_click', {
+    source,
+    location: typeof window !== 'undefined' ? window.location.pathname : '',
   });
 }
 

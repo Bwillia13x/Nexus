@@ -1,13 +1,16 @@
 import { homeContent } from '@/app/_content/home';
+import { getBrandName } from '@/lib/brand';
+
+const brandName = getBrandName();
 
 // Helper to generate LocalBusiness schema
 export const generateLocalBusinessSchema = () => ({
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
-  name: 'Nexus AI',
+  name: brandName,
   description:
-    'Solo AI-integration consultancy helping Calgary businesses automate workflows, deploy assistants, and ship dashboards—safely and measurably.',
-  url: 'https://nexus-ai.com',
+    'Practical AI help for Calgary small businesses. Plain English, fast setup, and privacy‑minded.',
+  url: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Calgary',
@@ -21,23 +24,20 @@ export const generateLocalBusinessSchema = () => ({
     { '@type': 'City', name: 'Okotoks' },
   ],
   telephone: '+1-403-555-0123',
-  email: 'hello@nexusai.com',
-  sameAs: [
-    // Add social media URLs when available
-  ],
+  email: process.env.NEXT_PUBLIC_BUSINESS_EMAIL || 'hello@example.com',
 });
 
-// Helper to generate Service schemas for the three main services
+// Helper to generate Service schemas
 export const generateServiceSchemas = () => [
   {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    name: 'AI Assistant Setup',
+    name: 'AI Overview for Leaders',
     description:
-      'Branded assistant with safe access to your knowledge and tools; safety rules first.',
+      'Plain‑English overview of what AI can do for your business and a 30‑day action sketch.',
     provider: {
       '@type': 'LocalBusiness',
-      name: 'Nexus AI',
+      name: brandName,
     },
     areaServed: [
       { '@type': 'City', name: 'Calgary' },
@@ -45,17 +45,17 @@ export const generateServiceSchemas = () => [
       { '@type': 'City', name: 'Cochrane' },
       { '@type': 'City', name: 'Okotoks' },
     ],
-    serviceType: 'AI Assistant Implementation',
+    serviceType: 'AI Advisory',
   },
   {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    name: 'Automation Audit + Pilot',
+    name: 'AI Readiness Check',
     description:
-      'Identify high-leverage bottlenecks and ship a fixed-scope pilot that saves hours.',
+      'Map of tools and processes with quick wins and a simple comparison.',
     provider: {
       '@type': 'LocalBusiness',
-      name: 'Nexus AI',
+      name: brandName,
     },
     areaServed: [
       { '@type': 'City', name: 'Calgary' },
@@ -63,17 +63,17 @@ export const generateServiceSchemas = () => [
       { '@type': 'City', name: 'Cochrane' },
       { '@type': 'City', name: 'Okotoks' },
     ],
-    serviceType: 'Process Automation',
+    serviceType: 'AI Advisory',
   },
   {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    name: 'Analytics Quickstart',
+    name: 'Pilot Setup',
     description:
-      "Connect your data and ship a small set of dashboards that answer operators' questions.",
+      'Set up one or two helpful workflows with a simple rollback plan.',
     provider: {
       '@type': 'LocalBusiness',
-      name: 'Nexus AI',
+      name: brandName,
     },
     areaServed: [
       { '@type': 'City', name: 'Calgary' },
@@ -81,7 +81,7 @@ export const generateServiceSchemas = () => [
       { '@type': 'City', name: 'Cochrane' },
       { '@type': 'City', name: 'Okotoks' },
     ],
-    serviceType: 'Data Analytics',
+    serviceType: 'No‑Code Configuration',
   },
 ];
 

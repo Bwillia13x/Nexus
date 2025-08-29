@@ -1,21 +1,30 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { getBrandName, getLogoSrc } from '@/lib/brand';
 
 export default function NotFound() {
+  const brandName = getBrandName();
   return (
     <div className="min-h-screen flex items-center justify-center section">
       <div className="container-wide text-center">
         <div className="mb-8">
           {/* Logo at the top */}
           <div className="flex justify-center mb-6">
-            <Image
-              src="/images/Nexus_Logo.png"
-              alt="Nexus AI Logo"
-              width={180}
-              height={70}
-              className="h-14 w-auto"
-              priority
-            />
+            {(() => {
+              const logoSrc = getLogoSrc();
+              return (
+                <div className="relative h-14 w-[180px]">
+                  <Image
+                    src={logoSrc}
+                    alt={`${brandName} Logo`}
+                    fill
+                    className="object-contain"
+                    priority
+                    sizes="180px"
+                  />
+                </div>
+              );
+            })()}
           </div>
 
           <h1 className="text-8xl md:text-9xl font-bold gradient-title mb-4">

@@ -22,8 +22,8 @@ export interface EngagementStep {
 export const hero = {
   title: 'About Drew — Calgary AI Consultant',
   subtitle:
-    'Solo AI integration for Calgary SMBs. I help teams ship assistants, automations, and dashboards—fast, safe, measurable.',
-  badges: ['Calgary, AB', 'SMB-focused', 'Founder-led builds'],
+    'Plain‑English AI help for Calgary businesses — set up so your team can own it.',
+  badges: ['Calgary, AB', 'SMB-focused', 'Vendor‑neutral'],
 };
 
 // Intro Sections
@@ -31,27 +31,27 @@ export const intro = {
   whoIAm:
     "I'm Drew—finance-trained builder. I help Calgary businesses automate support, streamline operations, and surface the numbers that matter. Bias: small, measurable pilots your team can own after handoff.",
   howIWork:
-    'Start small. Define success. Ship a pilot in ~30 days. Measure ticket deflection, time saved, and adoption. Keep humans in the loop with clear safety rules. Document everything so you can run it without me.',
+    'Start small. Define success in simple terms. Set up quick wins with safe defaults. Keep humans in the loop. Leave easy instructions so you can run it without me.',
 };
 
 // Background Content
 export const background = {
-  main: 'Calgary-based solo consultancy for high-impact, fixed-scope AI integrations—assistants, automations, analytics—for SMBs. Vendor-neutral, privacy-first, optimized for fast time-to-value and measured outcomes.',
+  main: 'Calgary-based solo consultancy focused on small, practical AI projects your team can own. Privacy‑minded and optimized for fast time‑to‑value.',
   bullets: [
-    'Finance first: quantify ROI—hours saved, errors, cycle time.',
-    'Builder mindset: configure, integrate, ship—not just presentations.',
-    "Plain English docs and an owner's manual at handoff.",
+    'Practical first: hours saved, fewer mistakes, faster replies.',
+    'Builder mindset: configure, enable, ship—not just presentations.',
+    'Plain English how‑to at handoff.',
   ],
 };
 
 // Measurement Card
 export const measurementCard = {
-  title: 'What We Measure (Targets)',
+  title: 'How We Check Progress',
   items: [
-    'Ticket deflection (%)',
-    'Response time (P50/P95)',
-    'Hours saved/week, error rate (automation)',
-    'Time to answer, adoption (analytics)',
+    'Fewer repeat questions',
+    'Faster replies',
+    'Hours saved each week',
+    'People actually use it',
   ],
   footnote:
     'Targets are planning baselines for new pilots—not prior client results.',
@@ -60,8 +60,8 @@ export const measurementCard = {
 // Principles
 export const principles: Principle[] = [
   {
-    title: 'Start Small, Ship Fast',
-    text: 'Prove value with a focused 30-day pilot, then scale.',
+    title: 'Start Small, No‑Code First',
+    text: 'Prove value with a focused, no‑code pilot; then decide what to scale.',
     icon: '🚀',
   },
   {
@@ -70,13 +70,13 @@ export const principles: Principle[] = [
     icon: '🤝',
   },
   {
-    title: 'Privacy-First (PIPEDA/PIPA)',
-    text: 'Least-privilege access, non-disclosure agreement (NDA) on request, no training on your private data.',
+    title: 'Privacy‑Minded',
+    text: 'Only the access we need, NDA available, no training on your private data.',
     icon: '🔒',
   },
   {
-    title: 'Measure Outcomes',
-    text: 'Agree metrics upfront; instrument before build.',
+    title: 'Check Results',
+    text: 'Agree simple signs up front; keep it honest and clear.',
     icon: '⚡',
   },
   {
@@ -99,34 +99,35 @@ export const principles: Principle[] = [
 // Founder Snapshot
 export const founderSnapshot = [
   'B.Comm (Finance, Distinction; GPA 3.9–4.0 — last 90 units).',
-  'Background in alternatives/private equity (PE) analysis; rigor around return on investment (ROI) and risk.',
-  'Builds: AI-assisted analytics, operations automations, return on investment (ROI) dashboards.',
-  'Focus: Calgary SMBs; fixed-scope pilots; measurable outcomes.',
+  'Background in alternatives/private equity (PE) analysis; strong focus on outcomes and risk.',
+  'Builds: AI‑assisted analytics, operations automations, simple dashboards.',
+  'Focus: Calgary SMBs; fixed‑scope pilots; practical results.',
 ];
 
 // Engagement Model
 export const engagementSteps: EngagementStep[] = [
   {
     step: 1,
-    title: 'Discover',
-    description: 'Free, 30 minutes — goals, constraints, tools.',
+    title: 'Brief & Discover',
+    description:
+      'Free 30 minutes — goals, constraints, tools, and privacy posture.',
   },
   {
     step: 2,
-    title: 'Scope',
+    title: 'Simple Plan',
     description:
-      '2–3 days — statement of work (SOW) with metrics and acceptance criteria.',
+      '2–3 days — short plan with price, timeline, and what “done” means.',
   },
   {
     step: 3,
-    title: 'Build',
-    description: 'Fixed time frame, weekly check-ins; sandbox link.',
+    title: 'Configure',
+    description:
+      'No‑code setup, weekly check‑ins; safe defaults and fallbacks.',
   },
   {
     step: 4,
-    title: 'Pilot & Measure',
-    description:
-      'Track key performance indicators (KPIs); adjust safety rules.',
+    title: 'Make Sure It Works',
+    description: 'Check results; adjust safety rules; prepare rollback.',
   },
   {
     step: 5,
@@ -137,7 +138,7 @@ export const engagementSteps: EngagementStep[] = [
 
 // Data & Security
 export const trust = {
-  privacy: 'Aligned with PIPEDA/PIPA. NDA on request.',
+  privacy: 'Privacy‑minded. NDA on request.',
   dataUse: 'No training on your private data.',
   access: 'Least-privilege access, audit logs, off-boarding plan.',
   hosting: 'Cloud by default; VPC or on-premises available.',
@@ -151,7 +152,7 @@ export const faq: FAQ[] = [
   },
   {
     q: 'What tools/models do you use?',
-    a: 'Chosen per use case with cost/speed trade-offs; documented in the SOW.',
+    a: 'We choose tools that fit your needs and budget. We are not tied to any one vendor.',
   },
   {
     q: 'Do you do long-term support?',
@@ -159,16 +160,16 @@ export const faq: FAQ[] = [
   },
   {
     q: 'Is pricing fixed?',
-    a: 'Yes for pilots. Larger builds are re-scoped after pilot results.',
+    a: 'Yes for pilots. Larger builds are re‑scoped after pilot results.',
   },
 ];
 
 // Bottom CTA
 export const cta = {
-  title: 'Calgary SMBs: Ready to Pilot AI?',
-  text: "Book a 30-minute intro. We'll pick a small, high-impact pilot to ship in ~30 days.",
+  title: 'Calgary SMBs: Ready to get started?',
+  text: 'Book a discovery call. Tell us what you want to improve and we’ll suggest a simple first step.',
   primary: { label: 'Book discovery call', href: '/contact' },
-  secondary: { label: 'See services', href: '/services' },
+  secondary: { label: 'See advisory', href: '/services' },
   note: 'Based in Calgary. Remote-friendly.',
 };
 

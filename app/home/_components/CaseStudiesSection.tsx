@@ -74,7 +74,7 @@ function PilotCard({ pilot, index }: PilotCardProps) {
             </span>
             <div className="flex-grow">
               <div className="text-sm font-semibold text-ink uppercase tracking-wide mb-2">
-                Target Outcome (30 days)
+                Target Outcome
               </div>
               <ul
                 className="text-sm md:text-base text-muted-foreground space-y-2"
@@ -152,8 +152,7 @@ export default function CaseStudiesSection() {
             {pilotsContent.title}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-4">
-            Fixed-scope pilots that deliver measurable results without months of
-            commitment
+            Small projects that make a difference fast—no long contracts
           </p>
           <p className="text-xs text-muted-foreground italic max-w-2xl mx-auto">
             {pilotsContent.footnote}
@@ -169,8 +168,8 @@ export default function CaseStudiesSection() {
 
         {/* CTA section */}
         <div className="text-center">
-          <Link href="/services#services" className="btn-primary text-lg">
-            See pilot scope & pricing <span>→</span>
+          <Link href="/playbooks" className="btn-primary text-lg">
+            Get playbooks & templates <span>→</span>
           </Link>
         </div>
       </div>

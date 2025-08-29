@@ -1,12 +1,14 @@
 import Image from 'next/image';
+import { getBrandName, getLogoSrc } from '@/lib/brand';
 
 export function Footer() {
+  const brandName = getBrandName();
   const year = new Date().getFullYear();
   const xUrl =
     process.env.NEXT_PUBLIC_X_URL || process.env.NEXT_PUBLIC_TWITTER_URL;
   const linkedinUrl = process.env.NEXT_PUBLIC_LINKEDIN_URL;
   const githubUrl = process.env.NEXT_PUBLIC_GITHUB_URL;
-  const businessName = process.env.NEXT_PUBLIC_BUSINESS_NAME || 'Nexus AI';
+  const businessName = brandName;
   const businessPhone = process.env.NEXT_PUBLIC_BUSINESS_TELEPHONE;
   const businessStreet = process.env.NEXT_PUBLIC_BUSINESS_STREET;
   const locality = process.env.NEXT_PUBLIC_BUSINESS_LOCALITY || 'Calgary';
@@ -25,14 +27,21 @@ export function Footer() {
       <div className="max-w-4xl mx-auto text-center relative z-10">
         <div className="mb-8">
           <div className="flex justify-center mb-4">
-            <Image
-              src="/images/Nexus_Logo.png"
-              alt="Nexus AI Logo"
-              width={160}
-              height={60}
-              className="h-12 w-auto group-hover:scale-105 transition-transform duration-300"
-              priority
-            />
+            {(() => {
+              const logoSrc = getLogoSrc();
+              return (
+                <div className="relative h-12 w-[160px] group-hover:scale-105 transition-transform duration-300">
+                  <Image
+                    src={logoSrc}
+                    alt={`${brandName} Logo`}
+                    fill
+                    className="object-contain"
+                    priority
+                    sizes="160px"
+                  />
+                </div>
+              );
+            })()}
           </div>
 
           {/* NAP Information */}
@@ -68,7 +77,8 @@ export function Footer() {
           </div>
 
           <p className="text-muted mb-4 max-w-md mx-auto leading-relaxed group-hover:scale-105 transition-transform duration-300 delay-100">
-            © {year} Nexus AI. Crafting the future of intelligent solutions.
+            © {year} Prairie Signal. Crafting the future of intelligent
+            solutions.
           </p>
 
           {/* No Data Training Statement */}

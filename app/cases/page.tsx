@@ -11,7 +11,7 @@ import {
 } from './content';
 
 export const metadata = {
-  title: 'Pilot Playbooks & Example Outcomes — Nexus AI',
+  title: 'Pilot Playbooks & Example Outcomes — Prairie Signal',
   description:
     "Fixed-scope pilots you can run in 30 days—what we build, how we measure, and the artifacts you'll receive. Calgary AI services for SMBs.",
 };
@@ -60,7 +60,7 @@ export default function CasesIndexPage() {
               <Link
                 key={index}
                 href={cta.href}
-                className={`inline-flex items-center gap-3 px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 ${
+                className={`inline-flex items-center gap-3 px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 ${
                   cta.primary
                     ? 'bg-gradient-to-r from-primary to-secondary text-white'
                     : 'bg-glass backdrop-blur-lg border border-glass-border text-ink hover:bg-glass-hover'
@@ -84,7 +84,7 @@ export default function CasesIndexPage() {
             {playbooks.map((playbook, index) => (
               <div key={playbook.id} className="relative">
                 {/* Playbook Card */}
-                <div className="p-8 md:p-12 rounded-4xl border border-glass-border bg-glass backdrop-blur-lg shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                <div className="p-8 md:p-12 rounded-4xl border border-glass-border bg-glass backdrop-blur-lg shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
                   {/* Header Section */}
                   <div className="flex flex-col lg:flex-row lg:items-start gap-8 mb-12">
                     <div className="flex items-center gap-6">
@@ -242,7 +242,7 @@ export default function CasesIndexPage() {
               <a
                 key={index}
                 href={artifact.href}
-                className="p-6 rounded-xl bg-glass backdrop-blur-lg border border-glass-border shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 text-center"
+                className="p-6 rounded-xl bg-glass backdrop-blur-lg border border-glass-border shadow-lg hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 text-center"
               >
                 <div className="w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-white text-xl">📄</span>
@@ -296,7 +296,7 @@ export default function CasesIndexPage() {
       {/* Founding Cohort */}
       <section className="relative py-20 md:py-28">
         <div className="mx-auto max-w-4xl px-4 sm:px-6">
-          <div className="card-glass text-center group hover:shadow-xl transition-all duration-300">
+          <div className="card-glass text-center group transition-all duration-300">
             <div className="mb-6">
               <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center">
                 <span className="text-2xl">🚀</span>

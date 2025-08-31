@@ -6,12 +6,17 @@ export function SchedulerEmbed({ url }: { url: string }) {
   const [loaded, setLoaded] = React.useState(false);
 
   return (
-    <div className="w-full max-w-4xl mx-auto">
+    <div className="w-full max-w-4xl mx-auto" aria-busy={!loaded}>
       {!loaded && (
         <div
           className="h-[600px] w-full rounded-xl border border-glass-border bg-white/60 animate-pulse"
           aria-hidden="true"
         />
+      )}
+      {!loaded && (
+        <div aria-live="polite" className="sr-only">
+          Loading scheduler…
+        </div>
       )}
       <iframe
         src={url}

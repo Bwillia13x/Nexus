@@ -21,6 +21,7 @@ export default function HomeHero() {
     <section
       className="relative flex min-h-[90vh] items-center justify-center py-20 md:py-28"
       id="top"
+      aria-labelledby="home-hero-title"
     >
       {/* Background gradient */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-primary/10 via-transparent to-secondary/5" />
@@ -44,12 +45,15 @@ export default function HomeHero() {
           </div>
 
           {/* Main headline */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-6 md:mb-8 gradient-title-animated px-4">
+          <h1
+            id="home-hero-title"
+            className="text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-6 md:mb-8 gradient-title-animated px-4 text-balance"
+          >
             {heroContent.title}
           </h1>
 
           {/* Subtitle */}
-          <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground mb-10 md:mb-12 max-w-3xl mx-auto leading-relaxed px-4">
+          <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground mb-10 md:mb-12 max-w-3xl mx-auto leading-relaxed px-4 text-pretty">
             {heroContent.subtitle}
           </p>
 

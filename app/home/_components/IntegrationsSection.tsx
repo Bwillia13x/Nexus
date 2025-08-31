@@ -17,13 +17,20 @@ const tools = [
 
 export default function IntegrationsSection() {
   return (
-    <section id="integrations" className="py-16 md:py-24 cv-auto">
+    <section
+      id="integrations"
+      className="py-16 md:py-24 cv-auto"
+      aria-labelledby="integrations-title"
+    >
       <div className="mx-auto max-w-container px-4">
         <div className="text-center mb-16 md:mb-20">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 md:mb-8 gradient-title-animated">
+          <h2
+            id="integrations-title"
+            className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 md:mb-8 gradient-title-animated text-balance"
+          >
             {sectionContent.integrations.title}
           </h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4 text-pretty">
             Works with the tools your team already uses
           </p>
         </div>
@@ -45,7 +52,7 @@ export default function IntegrationsSection() {
         </div>
 
         <div className="text-center mt-12 md:mt-16">
-          <p className="text-base text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base text-muted-foreground max-w-2xl mx-auto text-pretty">
             Don't see your tool? We integrate with 50+ platforms via API or
             webhook.
           </p>

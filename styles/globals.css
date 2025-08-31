@@ -254,14 +254,6 @@ textarea:focus-visible {
     @apply px-4 py-2 bg-glass rounded-full border border-glass-border backdrop-blur-md text-sm font-medium transition-all duration-200 hover:bg-glass-2;
   }
 
-  .section {
-    @apply py-20 md:py-24 lg:py-32 px-4;
-  }
-
-  .container-wide {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
-  }
-
   .container-narrow {
     @apply max-w-4xl mx-auto px-4 sm:px-6 lg:px-8;
   }

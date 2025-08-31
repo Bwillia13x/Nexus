@@ -135,6 +135,7 @@ export function ContactForm() {
             noValidate
             role="form"
             aria-label="Contact form"
+            aria-busy={isSubmitting}
           >
             <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             <div className="relative z-10">
@@ -537,6 +538,10 @@ export function ContactForm() {
               </div>
 
               <div className="pt-4">
+                {/* Polite live region for submission status */}
+                <div aria-live="polite" className="sr-only">
+                  {isSubmitting ? 'Submitting your message…' : ''}
+                </div>
                 <LoadingButton
                   type="submit"
                   loading={isSubmitting}

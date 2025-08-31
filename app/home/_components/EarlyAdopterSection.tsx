@@ -2,7 +2,11 @@
 
 export default function EarlyAdopterSection() {
   return (
-    <section id="cta" className="py-8 cv-auto">
+    <section
+      id="cta"
+      className="py-8 cv-auto"
+      aria-labelledby="founding-cohort-title"
+    >
       <div className="mx-auto max-w-4xl px-4">
         <div className="relative overflow-hidden rounded-2xl border bg-gradient-to-r from-primary/10 via-secondary/5 to-primary/10 backdrop-blur-xl p-8 text-center group hover:scale-[1.02] transition-all duration-500">
           {/* Background gradient overlay */}
@@ -12,7 +16,10 @@ export default function EarlyAdopterSection() {
           <div className="relative z-10">
             <div className="flex items-center justify-center gap-2 mb-3">
               <span className="text-2xl">🚀</span>
-              <h3 className="text-xl font-bold bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text">
+              <h3
+                id="founding-cohort-title"
+                className="text-xl font-bold bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text text-balance"
+              >
                 Founding Cohort
               </h3>
               <span className="text-xs px-2 py-1 bg-primary/20 text-primary rounded-full font-medium">
@@ -20,7 +27,7 @@ export default function EarlyAdopterSection() {
               </span>
             </div>
 
-            <p className="text-muted-foreground mb-4 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-muted-foreground mb-4 max-w-2xl mx-auto leading-relaxed text-pretty">
               <span className="font-semibold text-ink">
                 3 pilot slots/month
               </span>{' '}

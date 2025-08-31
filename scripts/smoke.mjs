@@ -155,7 +155,17 @@ async function run() {
   await check('GET /cases/automation-pilot-ops', () =>
     get200('/cases/automation-pilot-ops')
   );
-  await check('GET /book', () => get200('/book'));
+  // /book may redirect permanently to /schedule; accept 3xx with correct Location
+  await check('GET /book', async () => {
+    const res = await fetch(BASE + '/book', { redirect: 'manual' });
+    if (res.ok) return;
+    if (res.status >= 300 && res.status < 400) {
+      const loc = res.headers.get('location') || res.headers.get('Location') || '';
+      // Accept absolute or relative redirects to /schedule
+      if (loc.endsWith('/schedule')) return;
+    }
+    throw new Error(`/book -> ${res.status}`);
+  });
   await check('GET /thank-you', () => get200('/thank-you'));
 
   // Auto-discovered routes from sitemap

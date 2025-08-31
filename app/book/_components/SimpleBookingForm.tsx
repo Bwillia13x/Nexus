@@ -116,7 +116,11 @@ export function SimpleBookingForm() {
         </div>
       ) : null}
 
-      <form onSubmit={onSubmit} noValidate aria-busy={submitting || undefined}>
+      <form
+        onSubmit={onSubmit}
+        noValidate
+        aria-busy={submitting ? 'true' : undefined}
+      >
         {/* Honeypot */}
         <div className="hidden" aria-hidden="true">
           <label htmlFor="hp" className="sr-only">

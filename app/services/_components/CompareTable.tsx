@@ -4,9 +4,16 @@ import { compareTableData } from '../_content';
 
 export default function CompareTable() {
   return (
-    <section id="compare" className="py-16 md:py-24">
+    <section
+      id="compare"
+      className="py-16 md:py-24"
+      aria-labelledby="compare-services-heading"
+    >
       <div className="mx-auto max-w-container px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+        <h2
+          id="compare-services-heading"
+          className="text-3xl md:text-4xl font-bold text-center mb-12 text-balance text-pretty"
+        >
           Compare Services
         </h2>
 
@@ -21,7 +28,7 @@ export default function CompareTable() {
                     scope="col"
                     className="sticky left-0 bg-glass-3 backdrop-blur z-10 p-4 text-left font-semibold min-w-[200px]"
                   >
-                    {/* Empty header for row labels */}
+                    <span className="sr-only">Feature</span>
                   </th>
                   {compareTableData.columns.map((col, index) => (
                     <th

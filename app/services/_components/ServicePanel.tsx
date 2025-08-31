@@ -11,7 +11,12 @@ interface ServicePanelProps {
 
 export default function ServicePanel({ service }: ServicePanelProps) {
   return (
-    <section id={service.id} className="py-16 md:py-24">
+    <section
+      id={service.id}
+      className="py-16 md:py-24"
+      role="region"
+      aria-labelledby={`${service.id}-heading`}
+    >
       <div className="mx-auto max-w-container px-4">
         <div className="card-glass glass-liquid p-6 md:p-8">
           {/* Header Section */}
@@ -20,7 +25,10 @@ export default function ServicePanel({ service }: ServicePanelProps) {
               <div className="w-12 h-12 flex items-center justify-center text-3xl rounded-xl bg-gradient-to-r from-primary to-secondary text-white shadow-lg">
                 <MaybeIcon emoji="🤖" title={service.title} />
               </div>
-              <h2 className="text-2xl md:text-3xl font-bold">
+              <h2
+                id={`${service.id}-heading`}
+                className="text-2xl md:text-3xl font-bold text-balance text-pretty"
+              >
                 {service.title}
               </h2>
             </div>
@@ -100,7 +108,11 @@ export default function ServicePanel({ service }: ServicePanelProps) {
 
           {/* CTA Button */}
           <div className="mt-12 text-center">
-            <Link href={service.ctaHref} className="btn-primary">
+            <Link
+              href={service.ctaHref}
+              className="btn-primary"
+              aria-label={`Book discovery call for ${service.title}`}
+            >
               Book discovery call →
             </Link>
           </div>

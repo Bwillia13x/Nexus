@@ -4,18 +4,21 @@ import { processSteps } from '../_content';
 
 export default function ProcessSteps() {
   return (
-    <section className="py-16 md:py-24">
+    <section className="py-16 md:py-24" aria-labelledby="how-we-work-heading">
       <div className="mx-auto max-w-container px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+        <h2
+          id="how-we-work-heading"
+          className="text-3xl md:text-4xl font-bold text-center mb-12 text-balance text-pretty"
+        >
           How We Work (Services Edition)
         </h2>
 
         {/* Responsive grid: 5 columns on ≥lg, 2x3 grid on md, stacked on sm */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 md:gap-8">
+        <ol className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 md:gap-8">
           {processSteps.map(step => (
-            <div
+            <li
               key={step.number}
-              className="group relative card-glass glass-liquid"
+              className="group relative card-glass glass-liquid list-none"
             >
               {/* Circular number chip */}
               <div className="w-16 h-16 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl shadow-lg">
@@ -27,9 +30,9 @@ export default function ProcessSteps() {
               <p className="text-muted text-sm text-center leading-relaxed">
                 {step.description}
               </p>
-            </div>
+            </li>
           ))}
-        </div>
+        </ol>
       </div>
     </section>
   );

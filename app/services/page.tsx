@@ -72,13 +72,20 @@ export default function ServicesPage() {
         <CompareTable />
 
         {/* FAQ Section */}
-        <section id="faq" className="py-20 md:py-28">
+        <section
+          id="faq"
+          className="py-20 md:py-28"
+          aria-labelledby="faq-heading"
+        >
           <div className="mx-auto max-w-4xl px-4 sm:px-6">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 gradient-title">
+              <h2
+                id="faq-heading"
+                className="text-4xl md:text-5xl font-bold mb-6 gradient-title text-balance text-pretty"
+              >
                 Frequently Asked Questions
               </h2>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-pretty">
                 Everything you need to know about our AI services and process
               </p>
             </div>
@@ -111,37 +118,50 @@ export default function ServicesPage() {
         </section>
 
         {/* Integrations Section */}
-        <section className="py-20 md:py-28">
+        <section
+          className="py-20 md:py-28"
+          aria-labelledby="integrations-heading"
+        >
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 gradient-title">
+              <h2
+                id="integrations-heading"
+                className="text-4xl md:text-5xl font-bold mb-6 gradient-title text-balance text-pretty"
+              >
                 Integrations We Support
               </h2>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-pretty">
                 Connect with your existing tools and workflows seamlessly
               </p>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 items-center">
+            <ul
+              className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 items-center"
+              role="list"
+            >
               {integrations.slice(0, -1).map((integration, index) => (
-                <div
+                <li
                   key={index}
                   className="card-elevated group hover:shadow-lg transition-all duration-300 flex items-center justify-center"
+                  role="listitem"
                 >
                   <span className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors duration-200">
                     {integration.name}
                   </span>
-                </div>
+                </li>
               ))}
 
-              <div className="card-elevated col-span-2 md:col-span-4 lg:col-span-6 mt-4 group">
+              <li
+                className="card-elevated col-span-2 md:col-span-4 lg:col-span-6 mt-4 group"
+                role="listitem"
+              >
                 <div className="text-center">
                   <span className="text-muted-foreground group-hover:text-primary transition-colors duration-200">
                     + Many more connectors available
                   </span>
                 </div>
-              </div>
-            </div>
+              </li>
+            </ul>
           </div>
         </section>
 
@@ -161,10 +181,13 @@ export default function ServicesPage() {
         </div>
 
         {/* Privacy & Compliance Section */}
-        <section className="py-16 md:py-24">
+        <section className="py-16 md:py-24" aria-labelledby="privacy-heading">
           <div className="mx-auto max-w-4xl px-4">
             <div className="card-glass glass-liquid p-8">
-              <h2 className="text-3xl font-bold mb-8 text-center">
+              <h2
+                id="privacy-heading"
+                className="text-3xl font-bold mb-8 text-center text-balance text-pretty"
+              >
                 Privacy & Data Protection
               </h2>
               <div className="grid md:grid-cols-2 gap-8">
@@ -172,7 +195,7 @@ export default function ServicesPage() {
                   <h3 className="text-xl font-semibold mb-4">
                     {privacyContent.leftColumn.title}
                   </h3>
-                  <p className="text-muted leading-relaxed">
+                  <p className="text-muted leading-relaxed text-pretty">
                     {privacyContent.leftColumn.content}
                   </p>
                 </div>
@@ -180,7 +203,7 @@ export default function ServicesPage() {
                   <h3 className="text-xl font-semibold mb-4">
                     {privacyContent.rightColumn.title}
                   </h3>
-                  <p className="text-muted leading-relaxed">
+                  <p className="text-muted leading-relaxed text-pretty">
                     {privacyContent.rightColumn.content}
                   </p>
                 </div>
@@ -195,13 +218,19 @@ export default function ServicesPage() {
           <section aria-labelledby="roi-calculator" className="py-16 md:py-24">
             <h2
               id="roi-calculator"
-              className="text-3xl md:text-4xl font-bold text-center mb-12"
+              className="text-3xl md:text-4xl font-bold text-center mb-12 text-balance text-pretty"
             >
               Savings Calculator
             </h2>
             <Suspense
               fallback={
-                <div className="text-center p-8">Loading calculator...</div>
+                <div
+                  className="text-center p-8"
+                  role="status"
+                  aria-live="polite"
+                >
+                  Loading calculator...
+                </div>
               }
             >
               <ROICalculator />
@@ -212,7 +241,7 @@ export default function ServicesPage() {
           <section aria-labelledby="lead-magnet" className="py-16 md:py-24">
             <h2
               id="lead-magnet"
-              className="text-3xl md:text-4xl font-bold text-center mb-12"
+              className="text-3xl md:text-4xl font-bold text-center mb-12 text-balance text-pretty"
             >
               Free AI Readiness Assessment
             </h2>

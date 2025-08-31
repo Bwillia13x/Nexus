@@ -1,4 +1,5 @@
 'use client';
+
 import { useState } from 'react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import type { Resolver } from 'react-hook-form';
@@ -8,6 +9,7 @@ import toast from 'react-hot-toast';
 import { LoadingButton } from './Loading';
 import { inquirySchema, InquiryPayload } from '@/lib/validation/contact';
 import { CONTACT_CONTENT } from '@/app/contact/_content';
+import Link from 'next/link';
 
 type ContactFormData = InquiryPayload;
 
@@ -102,30 +104,9 @@ export function ContactForm() {
   const isFormValid = isValid;
 
   return (
-    <section id="contact" className="section">
+    <section className="section">
       <div className="container-wide">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 gradient-title-animated">
-            Begin Your AI Transformation
-          </h2>
-          <p className="text-xl text-muted max-w-2xl mx-auto mb-8">
-            Let’s craft your intelligent future together. Share your vision and
-            we'll help bring it to life with cutting-edge AI solutions.
-          </p>
-          <div className="flex justify-center gap-4 flex-wrap">
-            <div className="chip">
-              <span className="text-sm font-medium">⚡ Quick Response</span>
-            </div>
-            <div className="chip">
-              <span className="text-sm font-medium">🎯 Custom Solutions</span>
-            </div>
-            <div className="chip">
-              <span className="text-sm font-medium">
-                🔒 Enterprise Security
-              </span>
-            </div>
-          </div>
-        </div>
+        {/* Header removed; simplified for homepage (parent section supplies title/intro) */}
 
         <div className="grid lg:grid-cols-5 gap-8">
           {/* Contact Form */}
@@ -135,7 +116,7 @@ export function ContactForm() {
             noValidate
             role="form"
             aria-label="Contact form"
-            aria-busy={isSubmitting}
+            aria-busy={isSubmitting ? 'true' : undefined}
           >
             <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             <div className="relative z-10">
@@ -566,76 +547,63 @@ export function ContactForm() {
                 >
                   We'll respond the same business day
                 </p>
+                <p className="mt-3 text-xs text-center text-muted">
+                  Prefer to book a call?{' '}
+                  <Link href="/schedule" className="link">
+                    Open scheduler →
+                  </Link>
+                </p>
               </div>
             </div>
           </form>
 
-          {/* Contact Info Sidebar */}
-          <div className="lg:col-span-2 space-y-6">
-            <div className="card-glass">
-              <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-                <span className="text-2xl">💡</span>
-                Why Choose Us?
+          {/* Contact Info Sidebar (consolidated) */}
+          <div className="lg:col-span-2">
+            <div className="card-glass p-6">
+              <h3 className="text-xl font-bold mb-3 flex items-center gap-2">
+                <span className="text-2xl">📞</span>
+                Prefer to book a call?
               </h3>
-              <ul className="space-y-3 text-sm text-muted">
-                <li className="flex items-start gap-3">
-                  <span className="text-primary mt-0.5">✅</span>
-                  <span>Founder-led builds with clear accountability</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-primary mt-0.5">✅</span>
-                  <span>
-                    Calgary-first, privacy-aware approach (PIPEDA/PIPA)
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-primary mt-0.5">✅</span>
-                  <span>Fixed-scope pilots with measurable outcomes</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-primary mt-0.5">✅</span>
-                  <span>Plain-English docs and handoff</span>
-                </li>
-              </ul>
-            </div>
-
-            <div className="card-glass">
-              <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-                <span className="text-2xl">⏱️</span>
-                Response Time
-              </h3>
-              <div className="space-y-3">
-                <div className="flex justify-between items-center p-3 rounded-xl bg-primary/10">
-                  <span className="font-medium">Email</span>
-                  <span className="text-sm text-primary font-semibold">
-                    Same business day
-                  </span>
-                </div>
-                <div className="flex justify-between items-center p-3 rounded-xl bg-secondary/10">
-                  <span className="font-medium">Phone</span>
-                  <span className="text-sm text-secondary font-semibold">
-                    By appointment
-                  </span>
-                </div>
-                <div className="flex justify-between items-center p-3 rounded-xl bg-primary/10">
-                  <span className="font-medium">Consultation</span>
-                  <span className="text-sm text-primary font-semibold">
-                    Within 48 hours
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div className="card-glass">
-              <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-                <span className="text-2xl">🔐</span>
-                Your Data is Safe
-              </h3>
-              <p className="text-sm text-muted leading-relaxed">
-                We design for least-privilege access, keep your private data
-                private, and follow PIPEDA/PIPA norms. NDAs on request. No
-                training on your data.
+              <p className="text-sm text-muted mb-4">
+                Schedule a 15–30 min intro. Same business day response.
               </p>
+              <div className="mb-6">
+                <Link
+                  href="/schedule"
+                  className="btn-secondary w-full text-center"
+                >
+                  Open scheduler
+                </Link>
+              </div>
+              <div className="space-y-3">
+                <h4 className="text-sm font-semibold text-ink/80">
+                  What to expect
+                </h4>
+                <ul className="space-y-2 text-sm text-muted">
+                  <li className="flex items-start gap-3">
+                    <span className="text-primary mt-0.5">✅</span>
+                    <span>Founder-led builds with clear accountability</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-primary mt-0.5">✅</span>
+                    <span>
+                      Calgary-first, privacy-aware approach (PIPEDA/PIPA)
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-primary mt-0.5">✅</span>
+                    <span>Fixed-scope pilots with measurable outcomes</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-primary mt-0.5">✅</span>
+                    <span>Plain-English docs and handoff</span>
+                  </li>
+                </ul>
+                <p className="text-xs text-muted mt-4">
+                  We follow PIPEDA and Alberta's PIPA norms. NDA on request. We
+                  do not train models on your private data.
+                </p>
+              </div>
             </div>
           </div>
         </div>

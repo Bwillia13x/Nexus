@@ -160,7 +160,8 @@ async function run() {
     const res = await fetch(BASE + '/book', { redirect: 'manual' });
     if (res.ok) return;
     if (res.status >= 300 && res.status < 400) {
-      const loc = res.headers.get('location') || res.headers.get('Location') || '';
+      const loc =
+        res.headers.get('location') || res.headers.get('Location') || '';
       // Accept absolute or relative redirects to /schedule
       if (loc.endsWith('/schedule')) return;
     }
@@ -190,7 +191,8 @@ async function run() {
   // Security headers present on root
   await check('Security headers on /', async () => {
     const res = await fetch(BASE + '/', { redirect: 'manual' });
-    const header = name => res.headers.get(name) || res.headers.get(name.toLowerCase());
+    const header = name =>
+      res.headers.get(name) || res.headers.get(name.toLowerCase());
     const csp = header('content-security-policy');
     if (!csp || !/default-src 'self'/.test(csp)) {
       throw new Error('CSP missing or default-src \u0027self\u0027 not found');
@@ -209,10 +211,12 @@ async function run() {
     } catch {
       res = await fetch(BASE + '/api/contact');
     }
-    const header = name => res.headers.get(name) || res.headers.get(name.toLowerCase());
+    const header = name =>
+      res.headers.get(name) || res.headers.get(name.toLowerCase());
     const acao = header('access-control-allow-origin');
     if (!acao) throw new Error('Access-Control-Allow-Origin missing');
-    if (acao.trim() === '*') throw new Error('Access-Control-Allow-Origin must not be *');
+    if (acao.trim() === '*')
+      throw new Error('Access-Control-Allow-Origin must not be *');
   });
 
   await check('POST /api/contact (honeypot)', async () => {

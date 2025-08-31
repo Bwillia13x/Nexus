@@ -13,7 +13,7 @@ import {
 export const metadata = {
   title: 'Pilot Playbooks & Example Outcomes — Prairie Signal',
   description:
-    "Fixed-scope pilots you can run in 30 days—what we build, how we measure, and the artifacts you'll receive. Calgary AI services for SMBs.",
+    "Fixed-scope pilots you can run in 30 days—what we build, how we measure, and the artifacts you'll receive. Calgary AI services for small businesses.",
 };
 
 export default function CasesIndexPage() {

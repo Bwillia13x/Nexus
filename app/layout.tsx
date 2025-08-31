@@ -8,7 +8,10 @@ import { Footer } from '@/components/Footer';
 import { Analytics } from '@/components/Analytics';
 import { ToastProvider } from '@/components/ToastProvider';
 import { PerformanceMonitor } from '@/components/PerformanceMonitor';
-import { getBrandName, getAbsoluteLogoUrl } from '@/lib/brand';
+import { getBrandName, getAbsoluteLogoUrl, getLogoSrc } from '@/lib/brand';
+import { ShortInquiryProvider } from '@/components/short-inquiry/ShortInquiryProvider';
+import { ShortInquiryModal } from '@/components/short-inquiry/ShortInquiryModal';
+import { MobileStickyCTA } from '@/components/MobileStickyCTA';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -18,8 +21,16 @@ const inter = Inter({
 
 const brandName = getBrandName();
 const siteOrigin = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+const logoSrc = getLogoSrc();
+const schedulerUrl = process.env.NEXT_PUBLIC_SCHEDULER_URL || '';
+let schedulerOrigin: string | null = null;
+try {
+  schedulerOrigin = schedulerUrl ? new URL(schedulerUrl).origin : null;
+} catch {
+  schedulerOrigin = null;
+}
 export const metadata: Metadata = {
-  title: `${brandName} — Calgary AI Consulting for SMBs`,
+  title: `${brandName} — Calgary AI Consulting for small businesses`,
   description:
     'Practical AI help for Calgary small businesses. We set up useful tools that work with what you already use—fast, safe, and in plain English.',
   metadataBase: new URL(
@@ -30,7 +41,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: '/',
     siteName: brandName,
-    title: `${brandName} — Calgary AI Consulting for SMBs`,
+    title: `${brandName} — Calgary AI Consulting for small businesses`,
     description:
       'Practical AI that works with what you already use. Fast, safe, and in plain English.',
     images: [
@@ -44,7 +55,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${brandName} — Calgary AI Consulting for SMBs`,
+    title: `${brandName} — Calgary AI Consulting for small businesses`,
     description:
       'Practical AI for Calgary small businesses — in plain English.',
     images: ['/og.svg'],
@@ -67,6 +78,41 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en" className={inter.variable}>
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        {/* Preload brand logo for faster nav paint */}
+        <link rel="preload" as="image" href={logoSrc} />
+        {/* Preconnect/dns-prefetch for analytics */}
+        <link
+          rel="preconnect"
+          href="https://www.googletagmanager.com"
+          crossOrigin="anonymous"
+        />
+        <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+        <link
+          rel="preconnect"
+          href="https://www.google-analytics.com"
+          crossOrigin="anonymous"
+        />
+        <link rel="dns-prefetch" href="//www.google-analytics.com" />
+        <link
+          rel="preconnect"
+          href="https://plausible.io"
+          crossOrigin="anonymous"
+        />
+        <link rel="dns-prefetch" href="//plausible.io" />
+        {/* Optional preconnect for scheduler host if configured */}
+        {schedulerOrigin ? (
+          <>
+            <link
+              rel="preconnect"
+              href={schedulerOrigin}
+              crossOrigin="anonymous"
+            />
+            <link
+              rel="dns-prefetch"
+              href={`//${new URL(schedulerOrigin).host}`}
+            />
+          </>
+        ) : null}
         <Canonical />
         <script
           type="application/ld+json"
@@ -121,88 +167,28 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             }),
           }}
         />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'FAQPage',
-              mainEntity: [
-                {
-                  '@type': 'Question',
-                  name: 'Will you use our data to train AI?',
-                  acceptedAnswer: {
-                    '@type': 'Answer',
-                    text: 'No. Your private data stays private; we only use it to help your project.',
-                  },
-                },
-                {
-                  '@type': 'Question',
-                  name: 'Where does it run?',
-                  acceptedAnswer: {
-                    '@type': 'Answer',
-                    text: 'Cloud by default; running on your own systems is possible if needed.',
-                  },
-                },
-                {
-                  '@type': 'Question',
-                  name: 'Which tools do you use?',
-                  acceptedAnswer: {
-                    '@type': 'Answer',
-                    text: 'We pick tools that fit your needs and budget. We are not tied to any one vendor.',
-                  },
-                },
-                {
-                  '@type': 'Question',
-                  name: 'How do we know it’s working?',
-                  acceptedAnswer: {
-                    '@type': 'Answer',
-                    text: 'Simple signs: time saved, fewer mistakes, faster replies, and adoption. We agree these up front.',
-                  },
-                },
-                {
-                  '@type': 'Question',
-                  name: 'Security & access?',
-                  acceptedAnswer: {
-                    '@type': 'Answer',
-                    text: 'We only use the access we need and remove it when we’re done. NDA available.',
-                  },
-                },
-                {
-                  '@type': 'Question',
-                  name: 'What happens after the pilot?',
-                  acceptedAnswer: {
-                    '@type': 'Answer',
-                    text: 'Easy instructions for your team; optional light support.',
-                  },
-                },
-                {
-                  '@type': 'Question',
-                  name: 'Agreements?',
-                  acceptedAnswer: {
-                    '@type': 'Answer',
-                    text: 'Simple written plan with what we’ll deliver; changes agreed in writing.',
-                  },
-                },
-              ],
-            }),
-          }}
-        />
+        {/** FAQPage JSON-LD moved to page-level to avoid duplication. */}
       </head>
       <body className="relative antialiased font-sans">
-        <a href="#main-content" className="skip-link">
-          Skip to main content
-        </a>
-        <Nav />
-        <main id="main-content" className="pt-32">
-          {children}
-        </main>
-        <Footer />
-        <Analytics />
-        {process.env.NEXT_PUBLIC_ENABLE_TOASTS === '1' ? (
-          <ToastProvider />
-        ) : null}
-        {process.env.NODE_ENV === 'development' ? <PerformanceMonitor /> : null}
+        <ShortInquiryProvider>
+          <a href="#main-content" className="skip-link">
+            Skip to main content
+          </a>
+          <Nav />
+          <main id="main-content" className="pt-32 pb-24 md:pb-0">
+            {children}
+          </main>
+          <Footer />
+          <MobileStickyCTA />
+          <Analytics />
+          {process.env.NEXT_PUBLIC_ENABLE_TOASTS === '1' ? (
+            <ToastProvider />
+          ) : null}
+          {process.env.NODE_ENV === 'development' ? (
+            <PerformanceMonitor />
+          ) : null}
+          <ShortInquiryModal />
+        </ShortInquiryProvider>
       </body>
     </html>
   );

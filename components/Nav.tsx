@@ -4,17 +4,20 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { getBrandName, getLogoSrc } from '@/lib/brand';
-import { trackScheduleClick } from '@/lib/analytics';
+import { trackScheduleClick, trackCtaClick } from '@/lib/analytics';
+import { useShortInquiry } from '@/components/short-inquiry/ShortInquiryProvider';
 
 export function Nav() {
   const brandName = getBrandName();
   const pathname = usePathname();
+  const { open } = useShortInquiry();
   const isActive = (href: string) =>
     href === '/' ? pathname === '/' : pathname.startsWith(href);
 
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement | null>(null);
+  const menuRef = useRef<HTMLDivElement | null>(null);
   const firstMobileLinkRef = useRef<HTMLAnchorElement | null>(null);
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -34,15 +37,25 @@ export function Nav() {
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, []);
-  // Prevent background scroll when mobile menu is open
+  // Prevent background scroll and inert the page when mobile menu is open
   useEffect(() => {
-    if (menuOpen) {
-      const prev = document.body.style.overflow;
-      document.body.style.overflow = 'hidden';
-      return () => {
-        document.body.style.overflow = prev;
-      };
-    }
+    if (!menuOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    const toInert: HTMLElement[] = [];
+    const main = document.getElementById('main-content');
+    if (main) toInert.push(main);
+    const footer = document.querySelector('footer');
+    if (footer) toInert.push(footer as HTMLElement);
+    const sticky = document.getElementById('mobile-sticky-cta');
+    if (sticky) toInert.push(sticky);
+    toInert.forEach(el => el.setAttribute('inert', ''));
+
+    return () => {
+      document.body.style.overflow = prev;
+      toInert.forEach(el => el.removeAttribute('inert'));
+    };
   }, [menuOpen]);
   // Basic focus management: focus first link on open, return focus to toggle on close
   useEffect(() => {
@@ -52,6 +65,33 @@ export function Nav() {
       menuButtonRef.current?.focus();
     }
   }, [menuOpen]);
+
+  // Trap focus inside the mobile menu when open (Tab/Shift+Tab)
+  const handleMenuTrapFocus = (e: React.KeyboardEvent) => {
+    if (!menuOpen || e.key !== 'Tab') return;
+    const root = menuRef.current;
+    if (!root) return;
+    const selector = [
+      'a[href]',
+      'button:not([disabled])',
+      'textarea:not([disabled])',
+      'input:not([disabled])',
+      'select:not([disabled])',
+      '[tabindex]:not([tabindex="-1"])',
+    ].join(',');
+    const nodes = Array.from(root.querySelectorAll<HTMLElement>(selector));
+    if (!nodes.length) return;
+    const first = nodes[0];
+    const last = nodes[nodes.length - 1];
+    const active = document.activeElement as HTMLElement | null;
+    if (!e.shiftKey && active === last) {
+      e.preventDefault();
+      first.focus();
+    } else if (e.shiftKey && active === first) {
+      e.preventDefault();
+      last.focus();
+    }
+  };
 
   // Derived classes for cleaner template strings
   const bgClass = scrolled
@@ -169,19 +209,30 @@ export function Nav() {
         {/* Spacer pushes CTA to the right on desktop */}
         <div className="hidden md:block flex-1" />
 
+        <button
+          type="button"
+          className="btn-outline hidden md:inline-flex text-sm font-semibold relative z-10 hover:scale-105 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell shrink-0 whitespace-nowrap px-4 py-2"
+          onClick={() => {
+            trackCtaClick('quick_inquiry_click', 'Quick inquiry', 'nav');
+            open();
+          }}
+        >
+          Quick inquiry
+        </button>
+
         <Link
-          href="/contact"
+          href="/schedule"
           className="btn-primary hidden md:inline-flex text-sm font-semibold relative z-10 hover:scale-105 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell shrink-0 whitespace-nowrap px-4 py-2 sm:px-6 sm:py-3"
           onClick={() => trackScheduleClick('nav')}
         >
-          Book a call
+          Book a discovery call
         </Link>
 
         {/* Mobile menu toggle */}
         <button
           type="button"
           ref={menuButtonRef}
-          className="btn-outline md:hidden relative z-10 p-2 rounded-full"
+          className="btn-outline md:hidden relative z-10 h-11 w-11 p-0 rounded-full"
           aria-controls="mobile-menu"
           aria-expanded={menuOpen}
           aria-haspopup="dialog"
@@ -237,6 +288,9 @@ export function Nav() {
             className="fixed z-40 left-4 right-4 top-24 border border-glass-border rounded-2xl bg-glass-2 backdrop-blur-xl shadow-elev-lg md:hidden transition-all duration-200 ease-out"
             role="dialog"
             aria-modal={true}
+            ref={menuRef}
+            tabIndex={-1}
+            onKeyDown={handleMenuTrapFocus}
           >
             <ul className="flex flex-col p-2 text-sm">
               <li>
@@ -252,15 +306,32 @@ export function Nav() {
                 </Link>
               </li>
               <li className="px-2 pt-1 pb-2">
+                <button
+                  type="button"
+                  className="btn-outline w-full justify-center px-4 py-2"
+                  onClick={() => {
+                    trackCtaClick(
+                      'quick_inquiry_click',
+                      'Quick inquiry',
+                      'nav'
+                    );
+                    open();
+                    setMenuOpen(false);
+                  }}
+                >
+                  Quick inquiry
+                </button>
+              </li>
+              <li className="px-2 pb-2">
                 <Link
-                  href="/contact"
+                  href="/schedule"
                   className="btn-primary w-full justify-center px-4 py-2"
                   onClick={() => {
                     trackScheduleClick('nav');
                     setMenuOpen(false);
                   }}
                 >
-                  Book a call
+                  Book a discovery call
                 </Link>
               </li>
               <li>

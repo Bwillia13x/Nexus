@@ -80,6 +80,6 @@ export const aboutContent: AboutContent = {
     title: 'Upcoming: AI in Bridgeland',
     venue: 'Bridgeland Community Association',
     meta: ['Date TBD', 'Bridgeland Community Association'],
-    copy: 'Discussion on practical AI adoption for Calgary SMBs, covering pilot strategies, how to check results, and local implementation considerations.',
+    copy: 'Discussion on practical AI adoption for Calgary small businesses, covering pilot strategies, how to check results, and local implementation considerations.',
   },
 };

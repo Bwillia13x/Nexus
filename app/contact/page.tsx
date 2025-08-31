@@ -33,8 +33,7 @@ export const metadata = {
 };
 
 export default function ContactPage() {
-  const businessEmail =
-    process.env.NEXT_PUBLIC_BUSINESS_EMAIL || 'hello@example.com';
+  const businessEmail = process.env.NEXT_PUBLIC_BUSINESS_EMAIL;
 
   const contactPageSchema = generateContactPageSchema();
 
@@ -47,15 +46,12 @@ export default function ContactPage() {
         )}
       />
       <main className="relative min-h-screen">
-        {/* Unified Background System */}
-        <div className="fixed inset-0 -z-10 overflow-hidden">
-          {/* Primary background orb - top left */}
-          <div className="absolute -top-32 -left-32 w-[800px] h-[800px] rounded-full bg-gradient-to-br from-primary/20 via-primary/15 via-secondary/10 to-transparent filter blur-3xl animate-pulse" />
-
-          {/* Secondary background orb - bottom right */}
-          <div className="absolute -bottom-32 -right-32 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-secondary/20 via-secondary/15 via-primary/10 to-transparent filter blur-3xl animate-pulse" />
-
-          {/* Wave background overlay */}
+        {/* Unified Page Background */}
+        <div className="page-background">
+          <div className="primary-orb" />
+          <div className="secondary-orb" />
+          <div className="accent-orb" />
+          <div className="ambient-vignette" />
           <div className="wave-layer" aria-hidden="true" />
         </div>
 
@@ -78,13 +74,18 @@ export default function ContactPage() {
         {/* Minimal follow-up info */}
         <section className="py-12">
           <div className="mx-auto max-w-[1120px] px-4 sm:px-6 text-center text-sm text-muted">
-            <p className="mb-2">
-              Prefer email? Reach me at{' '}
-              <a href={`mailto:${businessEmail}`} className="link font-medium">
-                {businessEmail}
-              </a>
-              .
-            </p>
+            {businessEmail ? (
+              <p className="mb-2">
+                Prefer email? Reach me at{' '}
+                <a
+                  href={`mailto:${businessEmail}`}
+                  className="link font-medium"
+                >
+                  {businessEmail}
+                </a>
+                .
+              </p>
+            ) : null}
             <p className="text-xs">{CONTACT_CONTENT.privacy.note}</p>
           </div>
         </section>

@@ -53,20 +53,13 @@ export default function ServicesPage() {
           Skip to services
         </a>
 
-        {/* Unified Background System */}
-        <div className="fixed inset-0 -z-10 overflow-hidden ambient-orbs">
-          {/* Primary background orb - top left */}
-          <div className="ambient-orb absolute -top-40 -left-40 w-[780px] h-[780px] rounded-full bg-gradient-to-br from-primary/20 via-primary/10 via-secondary/5 to-transparent blur-3xl" />
-
-          {/* Secondary background orb - bottom right */}
-          <div className="ambient-orb ambient-orb--slow absolute -bottom-40 -right-40 w-[620px] h-[620px] rounded-full bg-gradient-to-br from-secondary/20 via-secondary/10 via-primary/5 to-transparent blur-3xl" />
-
-          {/* Tertiary orb for added depth */}
-          <div className="ambient-orb absolute top-1/2 left-1/2 w-[400px] h-[400px] rounded-full bg-gradient-to-br from-primary/10 via-transparent to-secondary/5 blur-2xl opacity-60" />
-
-          {/* Vignette overlay for contrast */}
-          <div className="wave-layer" aria-hidden="true" />
+        {/* Unified Page Background */}
+        <div className="page-background">
+          <div className="primary-orb" />
+          <div className="secondary-orb" />
+          <div className="accent-orb" />
           <div className="ambient-vignette" />
+          <div className="wave-layer" aria-hidden="true" />
         </div>
 
         {/* Service Hero */}

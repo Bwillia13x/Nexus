@@ -164,6 +164,11 @@ export function ContactForm() {
                     id="fullName"
                     type="text"
                     autoComplete="name"
+                    inputMode="text"
+                    autoCapitalize="words"
+                    spellCheck={false}
+                    enterKeyHint="next"
+                    required
                     className={`w-full px-4 py-4 rounded-xl border bg-white/50 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200 ${
                       errors.fullName
                         ? 'border-red-300 focus:ring-red-500 bg-red-50/50'
@@ -199,6 +204,12 @@ export function ContactForm() {
                     id="email"
                     type="email"
                     autoComplete="email"
+                    inputMode="email"
+                    autoCapitalize="none"
+                    autoCorrect="off"
+                    spellCheck={false}
+                    enterKeyHint="next"
+                    required
                     className={`w-full px-4 py-4 rounded-xl border bg-white/50 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200 ${
                       errors.email
                         ? 'border-red-300 focus:ring-red-500 bg-red-50/50'
@@ -231,6 +242,10 @@ export function ContactForm() {
                     id="company"
                     type="text"
                     autoComplete="organization"
+                    inputMode="text"
+                    autoCapitalize="words"
+                    spellCheck={false}
+                    enterKeyHint="next"
                     className="w-full px-4 py-4 rounded-xl border border-glass-border bg-white/50 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary hover:border-primary/30 transition-all duration-200"
                     placeholder="Your company name"
                   />
@@ -489,6 +504,11 @@ export function ContactForm() {
                     {...register('vision')}
                     id="vision"
                     rows={5}
+                    inputMode="text"
+                    autoCapitalize="sentences"
+                    spellCheck={true}
+                    enterKeyHint="send"
+                    required
                     className={`w-full px-4 py-4 rounded-xl border bg-white/50 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200 resize-none ${
                       errors.vision
                         ? 'border-red-300 focus:ring-red-500 bg-red-50/50'

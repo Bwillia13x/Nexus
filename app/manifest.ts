@@ -8,7 +8,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name,
     short_name,
     description:
-      'Calgary AI consulting for SMBs — assistants, automation, analytics.',
+      'Calgary AI consulting for small businesses — assistants, automation, analytics.',
     start_url: '/',
     display: 'standalone',
     background_color: '#F7F5EE',

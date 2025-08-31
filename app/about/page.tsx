@@ -17,7 +17,7 @@ import { EndCTA } from './_components/EndCTA';
 export const metadata = {
   title: 'About Drew | Calgary AI Consultant — Prairie Signal',
   description:
-    'Solo AI-integration consultancy for Calgary SMBs. Fast, safe, measurable outcomes for assistants, automations, and analytics.',
+    'Solo AI-integration consultancy for Calgary small businesses. Fast, safe, measurable outcomes for assistants, automations, and analytics.',
 };
 
 export default function AboutPage() {
@@ -32,21 +32,13 @@ export default function AboutPage() {
       />
 
       <main className="relative min-h-screen">
-        {/* Unified Background System */}
-        <div className="fixed inset-0 -z-10 overflow-hidden ambient-orbs">
-          {/* Primary background orb - top left */}
-          <div className="ambient-orb absolute -top-32 -left-32 w-[800px] h-[800px] rounded-full bg-gradient-to-br from-primary/20 via-primary/15 via-secondary/10 to-transparent blur-3xl" />
-
-          {/* Secondary background orb - bottom right */}
-          <div className="ambient-orb ambient-orb--slow absolute -bottom-32 -right-32 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-secondary/20 via-secondary/15 via-primary/10 to-transparent blur-3xl" />
-
-          {/* Tertiary orb for added depth */}
-          <div className="ambient-orb absolute top-1/2 left-1/2 w-[400px] h-[400px] rounded-full bg-gradient-to-br from-primary/10 via-transparent to-secondary/5 blur-2xl opacity-60" />
-
-          {/* Wave background overlay */}
-          <div className="wave-layer" aria-hidden="true" />
-          {/* Vignette overlay for contrast */}
+        {/* Unified Page Background */}
+        <div className="page-background">
+          <div className="primary-orb" />
+          <div className="secondary-orb" />
+          <div className="accent-orb" />
           <div className="ambient-vignette" />
+          <div className="wave-layer" aria-hidden="true" />
         </div>
 
         {/* Hero Section */}
@@ -57,12 +49,18 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-[1fr,280px] gap-8">
             <div>
               {/* Overview Section */}
-              <section id="overview" className="py-16 md:py-24 lg:py-28">
+              <section
+                id="overview"
+                className="py-16 md:py-24 lg:py-28 cv-auto"
+              >
                 <IdentityCards who={c.whoIAm} how={c.howIWork} />
               </section>
 
               {/* Background Section */}
-              <section id="background" className="py-16 md:py-24 lg:py-28">
+              <section
+                id="background"
+                className="py-16 md:py-24 lg:py-28 cv-auto"
+              >
                 <BackgroundAndMetrics
                   background={c.background}
                   metrics={c.metrics}
@@ -70,42 +68,54 @@ export default function AboutPage() {
               </section>
 
               {/* Principles Section */}
-              <section id="principles" className="py-16 md:py-24 lg:py-28">
+              <section
+                id="principles"
+                className="py-16 md:py-24 lg:py-28 cv-auto"
+              >
                 <PrinciplesGrid items={c.principles} />
               </section>
 
               {/* Founder Section */}
-              <section id="founder" className="py-16 md:py-24 lg:py-28">
+              <section id="founder" className="py-16 md:py-24 lg:py-28 cv-auto">
                 <FounderSnapshot bullets={c.founderSnapshot} />
               </section>
 
               {/* Process Section */}
-              <section id="process" className="py-16 md:py-24 lg:py-28">
+              <section id="process" className="py-16 md:py-24 lg:py-28 cv-auto">
                 <EngagementTimeline steps={c.process} />
               </section>
 
               {/* Security Section */}
-              <section id="security" className="py-16 md:py-24 lg:py-28">
+              <section
+                id="security"
+                className="py-16 md:py-24 lg:py-28 cv-auto"
+              >
                 <SecurityPanel items={c.security.items} />
               </section>
 
               {/* FAQ Section */}
-              <section id="faq" className="py-16 md:py-24 lg:py-28">
+              <section id="faq" className="py-16 md:py-24 lg:py-28 cv-auto">
                 <FAQ items={c.faq} />
               </section>
 
               {/* Resources Section */}
-              <section id="resources" className="py-16 md:py-24 lg:py-28">
+              <section
+                id="resources"
+                className="py-16 md:py-24 lg:py-28 cv-auto"
+              >
                 <ResourcesDownloads items={c.resources} />
               </section>
 
               {/* Media Section */}
-              <section id="media" className="py-16 md:py-24 lg:py-28">
+              <section id="media" className="py-16 md:py-24 lg:py-28 cv-auto">
                 <MediaKit items={c.media} />
               </section>
 
               {/* Speaking Section */}
-              <section id="speaking" className="py-16 md:py-24 lg:py-28">
+              <section
+                id="speaking"
+                className="py-16 md:py-24 lg:py-28 cv-auto"
+              >
                 <Speaking talks={c.speaking} />
               </section>
 

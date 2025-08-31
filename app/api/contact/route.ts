@@ -145,6 +145,21 @@ export async function POST(req: Request) {
       return NextResponse.json({ ok: true }, { status: 200 });
     }
 
+    // Respect CONTACT_DISABLE_EMAIL for CI/smoke/dev runs to avoid outbound dispatch
+    {
+      const flag = String(env.CONTACT_DISABLE_EMAIL || '').toLowerCase();
+      if (flag === '1' || flag === 'true' || flag === 'yes') {
+        console.log(
+          'CONTACT_DISABLE_EMAIL active; skipping external dispatch for inquiry',
+          {
+            ip,
+            email: inquiry.email,
+          }
+        );
+        return NextResponse.json({ ok: true });
+      }
+    }
+
     // Dispatch based on configuration
     const dispatchPromises = [];
 

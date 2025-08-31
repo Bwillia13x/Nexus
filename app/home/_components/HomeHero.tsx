@@ -4,10 +4,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { heroContent } from '../_content';
 import { trackCtaClick } from '@/lib/analytics';
-import { getBrandName } from '@/lib/brand';
+import { getBrandName, getLogoSrc } from '@/lib/brand';
 
 export default function HomeHero() {
   const brandName = getBrandName();
+  const logoSrc = getLogoSrc();
   const handlePrimaryCtaClick = () => {
     trackCtaClick('hero_primary', heroContent.primaryCta.label, '/');
   };
@@ -32,7 +33,7 @@ export default function HomeHero() {
           <div className="flex justify-center mb-8 md:mb-12">
             <div className="relative h-48 w-[400px] md:h-64 md:w-[520px] lg:h-80 lg:w-[640px] mx-auto">
               <Image
-                src="/images/slate_prairiesignal_logo(withtext).png"
+                src={logoSrc}
                 alt={`${brandName} Logo`}
                 fill
                 className="object-contain"

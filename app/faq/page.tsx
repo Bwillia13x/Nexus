@@ -34,10 +34,13 @@ const faqs = [
 export default function FAQPage() {
   return (
     <div className="min-h-screen relative">
-      <div className="fixed inset-0 -z-10 overflow-hidden ambient-orbs">
-        <div className="ambient-orb absolute -top-40 -left-40 w-[780px] h-[780px] rounded-full bg-gradient-to-br from-primary/20 via-primary/10 via-secondary/5 to-transparent blur-3xl" />
-        <div className="ambient-orb ambient-orb--slow absolute -bottom-40 -right-40 w-[620px] h-[620px] rounded-full bg-gradient-to-br from-secondary/20 via-secondary/10 via-primary/5 to-transparent blur-3xl" />
+      {/* Unified Page Background */}
+      <div className="page-background">
+        <div className="primary-orb" />
+        <div className="secondary-orb" />
+        <div className="accent-orb" />
         <div className="ambient-vignette" />
+        <div className="wave-layer" aria-hidden="true" />
       </div>
 
       <section className="py-20 md:py-28">

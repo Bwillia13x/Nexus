@@ -95,7 +95,7 @@ export default function HowItWorksSection() {
   };
 
   return (
-    <section id="how-it-works" className="py-16 md:py-24">
+    <section id="how-it-works" className="py-16 md:py-24 cv-auto">
       <div className="container-wide">
         {/* Section header */}
         <div className="text-center mb-12">

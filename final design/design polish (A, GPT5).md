@@ -29,6 +29,10 @@ We completed a round of UI and accessibility refinements across the About page [
     - Added `aria-live="polite"` status to announce current step for screen readers.
   - Container remains a scroll-snap carousel with `no-scrollbar` and `fade-x-edges` for clean visuals.
 
+- Performance & Data Use
+  - Introduced `cv-auto` (content-visibility) on below-the-fold sections to defer rendering; add `.cv-off` to opt out where intrinsic sizing would be unpredictable.
+  - Added `@media (prefers-reduced-data: reduce)` to disable wave/mesh overlays, further reduce orb intensity, soften glass glare, and disable shimmer-like effects.
+
 - Build & QA
   - Lint: clean.
   - Type-check: clean.
@@ -60,6 +64,9 @@ We completed a round of UI and accessibility refinements across the About page [
 
 - Containers
   - `container-wide`: wider desktop layout used on key sections.
+- Rendering hints
+  - `cv-auto`: opt‑in content‑visibility for offscreen sections with `contain-intrinsic-size` to avoid layout shifts.
+  - `cv-off`: explicit opt‑out when a section must render immediately.
 - Cards & Surfaces
   - `card-glass`: rounded-3xl, blurred, glass surface with hover elevation.
   - `card-elevated`: tighter radius with softer shadow.
@@ -73,6 +80,7 @@ We completed a round of UI and accessibility refinements across the About page [
 - Decorative
   - `hero-mesh`: ambient gradient overlays for hero sections.
   - `hairline`: subtle separators using `--glass-border`.
+  - `prefers-reduced-data`: disables heavy decorations and shimmer; reduces blur/glare.
 
 ### Component Conventions
 

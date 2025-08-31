@@ -4,7 +4,7 @@
 
 export const CONTACT_CONTENT = {
   hero: {
-    eyebrow: 'Calgary SMB?',
+    eyebrow: 'Calgary small business?',
     title: 'Book a discovery call',
     subtitle:
       'Tell us what you want to improve. We will suggest a simple first step that works with your current tools—no jargon.',

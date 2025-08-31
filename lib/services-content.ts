@@ -384,7 +384,7 @@ export const roiCalculatorConfig = {
 // Lead Magnet Configuration
 export const leadMagnetConfig = {
   title: 'AI Readiness Checklist (10‑point)',
-  subtitle: 'For Calgary small and mid-sized businesses (SMBs)',
+  subtitle: 'For Calgary small and mid-sized businesses',
   description:
     'Free checklist to assess if your team is ready for a safe, useful pilot.',
   benefits: [

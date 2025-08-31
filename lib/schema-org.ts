@@ -144,7 +144,6 @@ export function generateWebPageSchema() {
 // Generate all structured data for the services page
 export function generateAllStructuredData() {
   return [
-    generateLocalBusinessSchema(),
     generateOrganizationSchema(),
     generateFAQPageSchema(),
     generateWebPageSchema(),
@@ -161,7 +160,7 @@ export function generateContactPageSchema() {
     '@type': 'ContactPage',
     name: `Contact ${brandName} - Calgary AI Advisory`,
     description:
-      'Book a call to talk through a simple first step that works with your current tools.',
+      'Book a discovery call to talk through a simple first step that works with your current tools.',
     url:
       (process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000') +
       '/contact',
@@ -181,8 +180,8 @@ export function generateContactPageSchema() {
         addressRegion: 'AB',
         addressCountry: 'CA',
       },
-      telephone: '+1-403-555-0123', // Replace with actual number
-      email: process.env.NEXT_PUBLIC_BUSINESS_EMAIL || 'hello@example.com',
+      telephone: process.env.NEXT_PUBLIC_BUSINESS_TELEPHONE,
+      email: process.env.NEXT_PUBLIC_BUSINESS_EMAIL,
       areaServed: [
         { '@type': 'City', name: 'Calgary' },
         { '@type': 'City', name: 'Airdrie' },

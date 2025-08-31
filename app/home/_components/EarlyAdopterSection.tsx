@@ -2,7 +2,7 @@
 
 export default function EarlyAdopterSection() {
   return (
-    <section id="cta" className="py-8">
+    <section id="cta" className="py-8 cv-auto">
       <div className="mx-auto max-w-4xl px-4">
         <div className="relative overflow-hidden rounded-2xl border bg-gradient-to-r from-primary/10 via-secondary/5 to-primary/10 backdrop-blur-xl p-8 text-center group hover:scale-[1.02] transition-all duration-500">
           {/* Background gradient overlay */}
@@ -24,7 +24,8 @@ export default function EarlyAdopterSection() {
               <span className="font-semibold text-ink">
                 3 pilot slots/month
               </span>{' '}
-              for Calgary SMBs. Fixed scope, fixed price, and priority support.
+              for Calgary small businesses. Fixed scope, fixed price, and
+              priority support.
             </p>
 
             <div className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">

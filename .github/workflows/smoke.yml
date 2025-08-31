@@ -33,7 +33,7 @@ jobs:
           cat > .env.local <<'ENV'
           NEXT_PUBLIC_SITE_URL=http://localhost:3000
           NEXT_PUBLIC_BUSINESS_NAME=PrairieSignal
-          NEXT_PUBLIC_BUSINESS_LOGO=/images/_prairie_signal_logo.png
+          NEXT_PUBLIC_BUSINESS_LOGO=/images/PRAIRIESIGNALLOGO.png
           CONTACT_DISABLE_EMAIL=true
           ENV
 

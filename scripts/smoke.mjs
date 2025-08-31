@@ -177,6 +177,34 @@ async function run() {
     }
   }
 
+  // Security headers present on root
+  await check('Security headers on /', async () => {
+    const res = await fetch(BASE + '/', { redirect: 'manual' });
+    const header = name => res.headers.get(name) || res.headers.get(name.toLowerCase());
+    const csp = header('content-security-policy');
+    if (!csp || !/default-src 'self'/.test(csp)) {
+      throw new Error('CSP missing or default-src \u0027self\u0027 not found');
+    }
+    const corp = header('cross-origin-resource-policy');
+    if (!corp) throw new Error('Cross-Origin-Resource-Policy missing');
+    const xfo = header('x-frame-options');
+    if (!xfo) throw new Error('X-Frame-Options missing');
+  });
+
+  // API CORS present and not wildcard
+  await check('API CORS headers on /api/contact', async () => {
+    let res;
+    try {
+      res = await fetch(BASE + '/api/contact', { method: 'OPTIONS' });
+    } catch {
+      res = await fetch(BASE + '/api/contact');
+    }
+    const header = name => res.headers.get(name) || res.headers.get(name.toLowerCase());
+    const acao = header('access-control-allow-origin');
+    if (!acao) throw new Error('Access-Control-Allow-Origin missing');
+    if (acao.trim() === '*') throw new Error('Access-Control-Allow-Origin must not be *');
+  });
+
   await check('POST /api/contact (honeypot)', async () => {
     const res = await fetch(BASE + '/api/contact', {
       method: 'POST',

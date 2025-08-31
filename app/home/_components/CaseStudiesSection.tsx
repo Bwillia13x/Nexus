@@ -145,7 +145,7 @@ function PilotCard({ pilot, index }: PilotCardProps) {
 
 export default function CaseStudiesSection() {
   return (
-    <section id="pilots" className="py-16 md:py-24">
+    <section id="pilots" className="py-16 md:py-24 cv-auto">
       <div className="mx-auto max-w-container px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">

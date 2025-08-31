@@ -23,7 +23,7 @@ export const hero = {
   title: 'About Drew — Calgary AI Consultant',
   subtitle:
     'Plain‑English AI help for Calgary businesses — set up so your team can own it.',
-  badges: ['Calgary, AB', 'SMB-focused', 'Vendor‑neutral'],
+  badges: ['Calgary, AB', 'Small-business-focused', 'Vendor‑neutral'],
 };
 
 // Intro Sections
@@ -101,7 +101,7 @@ export const founderSnapshot = [
   'B.Comm (Finance, Distinction; GPA 3.9–4.0 — last 90 units).',
   'Background in alternatives/private equity (PE) analysis; strong focus on outcomes and risk.',
   'Builds: AI‑assisted analytics, operations automations, simple dashboards.',
-  'Focus: Calgary SMBs; fixed‑scope pilots; practical results.',
+  'Focus: Calgary small businesses; fixed‑scope pilots; practical results.',
 ];
 
 // Engagement Model
@@ -166,7 +166,7 @@ export const faq: FAQ[] = [
 
 // Bottom CTA
 export const cta = {
-  title: 'Calgary SMBs: Ready to get started?',
+  title: 'Calgary small businesses: Ready to get started?',
   text: 'Book a discovery call. Tell us what you want to improve and we’ll suggest a simple first step.',
   primary: { label: 'Book discovery call', href: '/contact' },
   secondary: { label: 'See advisory', href: '/services' },

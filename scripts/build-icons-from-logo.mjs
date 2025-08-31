@@ -4,12 +4,7 @@ import path from 'node:path';
 import sharp from 'sharp';
 
 const root = process.cwd();
-const src = path.join(
-  root,
-  'public',
-  'images',
-  'slate_prairiesignal_logo(notext).png'
-);
+const src = path.join(root, 'public', 'images', 'PRAIRIESIGNALLOGO.png');
 
 const outDir = path.join(root, 'public');
 const targets = [

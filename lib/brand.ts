@@ -9,7 +9,7 @@ export function getBrandName() {
 // - If nothing set, default to our bundled logo.
 export function getLogoSrc(): string {
   const raw = (process.env.NEXT_PUBLIC_BUSINESS_LOGO || '').trim();
-  const defaultPath = '/images/slate_prairiesignal_logo(notext).png';
+  const defaultPath = '/images/PRAIRIESIGNALLOGO.png';
   if (!raw) return defaultPath;
   if (/^https?:\/\//i.test(raw)) return raw; // absolute remote URL
   // Validate it looks like an image filename

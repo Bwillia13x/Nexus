@@ -1,5 +1,6 @@
 import { Suspense } from 'react';
-import ROICalculator from '@/components/ROICalculator';
+import dynamic from 'next/dynamic';
+const ROICalculator = dynamic(() => import('@/components/ROICalculator'));
 
 // Import new home components
 import HomeHero from './home/_components/HomeHero';
@@ -16,7 +17,6 @@ import SecuritySection from './home/_components/SecuritySection';
 
 // Import schema generators
 import {
-  generateLocalBusinessSchema,
   generateServiceSchemas,
   generateFAQPageSchema,
   generateStructuredDataScript,
@@ -47,19 +47,12 @@ export const metadata = {
 };
 
 export default function HomePage() {
-  const localBusinessSchema = generateLocalBusinessSchema();
   const serviceSchemas = generateServiceSchemas();
   const faqPageSchema = generateFAQPageSchema();
 
   return (
     <>
       {/* Schema.org JSON-LD structured data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={generateStructuredDataScript(
-          localBusinessSchema
-        )}
-      />
       {serviceSchemas.map((schema, index) => (
         <script
           key={index}
@@ -73,16 +66,13 @@ export default function HomePage() {
       />
 
       <div className="relative min-h-screen">
-        {/* Unified Background System */}
-        <div className="fixed inset-0 -z-10 overflow-hidden ambient-orbs">
-          {/* Primary background orb - top left */}
-          <div className="ambient-orb absolute -top-48 -left-48 w-[920px] h-[920px] rounded-full bg-gradient-to-br from-primary/30 via-primary/15 to-transparent" />
-          {/* Secondary background orb - bottom right */}
-          <div className="ambient-orb ambient-orb--slow absolute -bottom-48 -right-48 w-[780px] h-[780px] rounded-full bg-gradient-to-br from-secondary/30 via-secondary/15 to-transparent" />
-          {/* Tertiary orb - center top */}
-          <div className="ambient-orb absolute top-24 left-1/2 -translate-x-1/2 w-[560px] h-[560px] rounded-full bg-gradient-to-b from-primary/20 via-secondary/20 to-transparent opacity-90" />
-          {/* Vignette overlay for contrast */}
+        {/* Unified Page Background */}
+        <div className="page-background">
+          <div className="primary-orb" />
+          <div className="secondary-orb" />
+          <div className="accent-orb" />
           <div className="ambient-vignette" />
+          <div className="wave-layer" aria-hidden="true" />
         </div>
 
         {/* Home Hero */}
@@ -110,7 +100,7 @@ export default function HomePage() {
         <FAQSection />
 
         {/* ROI Calculator */}
-        <section id="roi" className="py-16 md:py-24">
+        <section id="roi" className="py-16 md:py-24 cv-auto">
           <div className="mx-auto max-w-4xl px-4">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">

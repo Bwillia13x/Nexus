@@ -94,7 +94,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="btn-primary"
               >
-                Book a call <span className="ml-2">→</span>
+                Book a discovery call <span className="ml-2">→</span>
               </a>
             </div>
           ) : null}

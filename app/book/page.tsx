@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { env } from '@/lib/env';
+import { SchedulerEmbed } from './_components/SchedulerEmbed';
 
 export const metadata = {
   title: 'Book a Call | Prairie Signal',
@@ -12,15 +13,12 @@ export default function BookPage() {
 
   return (
     <div className="min-h-screen relative">
-      {/* Unified Background System */}
-      <div className="fixed inset-0 -z-10 overflow-hidden">
-        {/* Primary background orb - top left */}
-        <div className="absolute -top-32 -left-32 w-[800px] h-[800px] rounded-full bg-gradient-to-br from-primary/20 via-primary/15 via-secondary/10 to-transparent filter blur-3xl animate-pulse" />
-
-        {/* Secondary background orb - bottom right */}
-        <div className="absolute -bottom-32 -right-32 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-secondary/20 via-secondary/15 via-primary/10 to-transparent filter blur-3xl animate-pulse" />
-
-        {/* Wave background overlay */}
+      {/* Unified Page Background */}
+      <div className="page-background">
+        <div className="primary-orb" />
+        <div className="secondary-orb" />
+        <div className="accent-orb" />
+        <div className="ambient-vignette" />
         <div className="wave-layer" aria-hidden="true" />
       </div>
 
@@ -37,14 +35,7 @@ export default function BookPage() {
             </p>
 
             {schedulerUrl ? (
-              <div className="w-full max-w-4xl mx-auto">
-                <iframe
-                  src={schedulerUrl}
-                  className="w-full h-[600px] border border-glass-border rounded-xl bg-white/50 backdrop-blur-sm"
-                  title="Schedule a call"
-                  loading="lazy"
-                />
-              </div>
+              <SchedulerEmbed url={schedulerUrl} />
             ) : (
               <div className="card-glass max-w-md mx-auto text-center p-8">
                 <h2 className="text-2xl font-bold mb-4">

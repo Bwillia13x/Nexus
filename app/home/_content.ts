@@ -40,9 +40,9 @@ export interface CTAData {
 
 // Hero content
 export const heroContent = {
-  title: 'We help you integrate the latest AI to grow your business',
+  title: 'Practical AI for Calgary small businesses—fast, safe, no heavy IT.',
   subtitle:
-    'We set up practical AI tools that work with what you already use—fast, safe, and in plain English. No jargon. No big IT projects.',
+    'We design small, high-ROI automations using the tools you already use. Fixed-scope pilots, plain-English docs, and PIPEDA/PIPA-aware setup.',
   primaryCta: {
     label: 'Book a discovery call',
     href: '/contact?intent=discovery',
@@ -56,18 +56,18 @@ export const heroContent = {
 // Services content
 export const servicesContent = {
   title: 'What We Do',
-  subtitle: 'Simple, practical AI help—no heavy tech.',
+  subtitle: 'Simple, practical AI—no heavy tech.',
   items: [
     {
-      title: 'Set Up an AI Helper',
+      title: 'Launch a Customer/Staff AI Helper',
       text: 'Add a friendly chat assistant for customers or staff.',
     },
     {
-      title: 'Automate Repetitive Work',
+      title: 'Automate Weekly Reports & Follow-ups',
       text: 'Save time on routine tasks like reports, follow‑ups, and data entry.',
     },
     {
-      title: 'Clear, Simple Dashboards',
+      title: 'Get a One-Look KPI Dashboard',
       text: 'See your key numbers in one place so you can act quickly.',
     },
   ] as ServiceItem[],
@@ -90,7 +90,7 @@ export const pilotsContent = {
         'See usage in a simple report',
       ],
       cta: {
-        label: 'Start Assistant Pilot',
+        label: 'Start AI Helper Pilot (2–3 wks)',
         href: '/contact?pilot=assistant',
       },
     },
@@ -106,7 +106,7 @@ export const pilotsContent = {
         'Short how‑to guide',
       ],
       cta: {
-        label: 'Start Operations Pilot',
+        label: 'Start Operations Pilot (2–3 wks)',
         href: '/contact?pilot=ops',
       },
     },
@@ -124,7 +124,7 @@ export const pilotsContent = {
         'Starter dashboards that are easy to edit',
       ],
       cta: {
-        label: 'Start Analytics Pilot',
+        label: 'Start KPI Dashboard Pilot (2–3 wks)',
         href: '/contact?pilot=analytics',
       },
     },
@@ -206,6 +206,11 @@ export const faqContent: FAQItem[] = [
       'We pick tools that fit your needs and budget. We are not tied to any one vendor.',
   },
   {
+    question: 'What if we don’t have clean data?',
+    answer:
+      'We start with narrow, high-quality sources and add basic checks. Most pilots work with what you already have.',
+  },
+  {
     question: 'How do we know it’s working?',
     answer:
       'We agree on simple signs of progress, like time saved and faster replies.',
@@ -244,10 +249,11 @@ export const sectionContent = {
 // Security & Trust content for Home
 export const securityContent = {
   items: [
-    'Your private data stays private.',
-    'We only access what we need.',
-    'Clear off‑boarding and access removal.',
-    'Cloud by default; can run on your systems if needed.',
+    'Your data stays private.',
+    'Least-privilege access; we only access what we need.',
+    'Clear off-boarding and access removal.',
+    'Cloud by default; can run on your systems when needed.',
+    'DPA & confidentiality on request.',
   ],
 };
 

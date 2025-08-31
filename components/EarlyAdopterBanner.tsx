@@ -23,8 +23,8 @@ export function EarlyAdopterBanner() {
                 <span className="font-semibold text-ink">
                   3 pilot slots/month
                 </span>{' '}
-                for Calgary SMBs. Fixed scope, fixed price, and priority
-                support.
+                for Calgary small businesses. Fixed scope, fixed price, and
+                priority support.
               </p>
 
               <div className="flex flex-wrap justify-center gap-4 text-sm text-muted">
@@ -45,10 +45,7 @@ export function EarlyAdopterBanner() {
 
             {/* Decorative elements */}
             <div className="absolute top-4 left-4 w-8 h-8 rounded-full bg-gradient-to-r from-primary/20 to-secondary/20 animate-pulse" />
-            <div
-              className="absolute bottom-4 right-4 w-6 h-6 rounded-full bg-gradient-to-r from-secondary/20 to-primary/20 animate-pulse"
-              style={{ animationDelay: '1s' }}
-            />
+            <div className="absolute bottom-4 right-4 w-6 h-6 rounded-full bg-gradient-to-r from-secondary/20 to-primary/20 animate-pulse [animation-delay:1s]" />
           </div>
         </div>
       </div>

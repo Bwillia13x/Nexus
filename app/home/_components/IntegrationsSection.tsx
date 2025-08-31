@@ -17,7 +17,7 @@ const tools = [
 
 export default function IntegrationsSection() {
   return (
-    <section id="integrations" className="py-16 md:py-24">
+    <section id="integrations" className="py-16 md:py-24 cv-auto">
       <div className="mx-auto max-w-container px-4">
         <div className="text-center mb-16 md:mb-20">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 md:mb-8 gradient-title-animated">

@@ -14,6 +14,8 @@ const csp = [
   "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://plausible.io",
   "style-src 'self' 'unsafe-inline'",
   "connect-src 'self' https://plausible.io https://www.google-analytics.com",
+  // Allow embedding of external schedulers (e.g., Cal.com/Calendly) via HTTPS iframes
+  "frame-src 'self' https:",
   "frame-ancestors 'self'",
 ].join('; ');
 
@@ -28,6 +30,15 @@ const nextConfig = {
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     // Add image sizes for responsive images
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+  },
+  async redirects() {
+    return [
+      {
+        source: '/book',
+        destination: '/schedule',
+        permanent: true,
+      },
+    ];
   },
   // Remove deprecated swcMinify option
   // Fix lockfile warning

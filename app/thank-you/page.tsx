@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import ActionButtons from './ActionButtons';
 
 export const metadata = {
   title: 'Thanks for Your Interest — Prairie Signal',
@@ -127,35 +127,22 @@ export default function ThankYouPage() {
           </div>
 
           {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link
-              href="/"
-              className="btn-primary inline-flex items-center gap-2"
-            >
-              <span>Return to Home</span>
-              <span>←</span>
-            </Link>
-            <Link
-              href="/playbooks"
-              className="btn-secondary inline-flex items-center gap-2"
-            >
-              <span>Get Playbooks & Templates</span>
-              <span>📚</span>
-            </Link>
-          </div>
+          <ActionButtons />
 
           {/* Additional Info */}
-          <div className="mt-12 text-sm text-muted-foreground">
-            <p>
-              Questions? Reply to the confirmation email or reach out at{' '}
-              <a
-                href={`mailto:${process.env.NEXT_PUBLIC_BUSINESS_EMAIL || 'hello@example.com'}`}
-                className="link"
-              >
-                {process.env.NEXT_PUBLIC_BUSINESS_EMAIL || 'hello@example.com'}
-              </a>
-            </p>
-          </div>
+          {process.env.NEXT_PUBLIC_BUSINESS_EMAIL ? (
+            <div className="mt-12 text-sm text-muted-foreground">
+              <p>
+                Questions? Reply to the confirmation email or reach out at{' '}
+                <a
+                  href={`mailto:${process.env.NEXT_PUBLIC_BUSINESS_EMAIL}`}
+                  className="link"
+                >
+                  {process.env.NEXT_PUBLIC_BUSINESS_EMAIL}
+                </a>
+              </p>
+            </div>
+          ) : null}
         </div>
       </section>
     </div>

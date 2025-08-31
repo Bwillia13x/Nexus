@@ -44,7 +44,7 @@ export function AboutHero({ hero }: AboutHeroProps) {
                   href="/contact?intent=discovery"
                   className="btn-primary shadow-elev hover:shadow-elev-lg min-w-[200px] sm:min-w-[240px] text-base sm:text-lg"
                 >
-                  Book a call <span className="ml-2">→</span>
+                  Book a discovery call <span className="ml-2">→</span>
                 </Link>
                 <Link
                   href="/services"

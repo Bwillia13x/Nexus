@@ -1,6 +1,6 @@
-import Link from 'next/link';
 import { env } from '@/lib/env';
 import { SchedulerEmbed } from './_components/SchedulerEmbed';
+import { SimpleBookingForm } from './_components/SimpleBookingForm';
 
 export const metadata = {
   title: 'Book a Call | Prairie Signal',
@@ -37,18 +37,7 @@ export default function BookPage() {
             {schedulerUrl ? (
               <SchedulerEmbed url={schedulerUrl} />
             ) : (
-              <div className="card-glass max-w-md mx-auto text-center p-8">
-                <h2 className="text-2xl font-bold mb-4">
-                  Scheduler Coming Soon
-                </h2>
-                <p className="text-muted mb-6">
-                  Our scheduling system is being set up. Please contact us
-                  directly to book a call.
-                </p>
-                <Link href="/contact" className="btn-primary">
-                  Contact Us Instead
-                </Link>
-              </div>
+              <SimpleBookingForm />
             )}
           </div>
         </div>

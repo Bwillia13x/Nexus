@@ -3,5 +3,6 @@ module.exports = {
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
   generateRobotsTxt: true,
   outDir: 'public',
-  exclude: ['/book'],
+  // Exclude legacy alias; canonical page is /book
+  exclude: ['/schedule'],
 };

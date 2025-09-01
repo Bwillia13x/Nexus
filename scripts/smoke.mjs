@@ -155,17 +155,19 @@ async function run() {
   await check('GET /cases/automation-pilot-ops', () =>
     get200('/cases/automation-pilot-ops')
   );
-  // /book may redirect permanently to /schedule; accept 3xx with correct Location
+  // /book is canonical and should render OK
   await check('GET /book', async () => {
     const res = await fetch(BASE + '/book', { redirect: 'manual' });
-    if (res.ok) return;
-    if (res.status >= 300 && res.status < 400) {
-      const loc =
-        res.headers.get('location') || res.headers.get('Location') || '';
-      // Accept absolute or relative redirects to /schedule
-      if (loc.endsWith('/schedule')) return;
+    if (!res.ok) throw new Error(`/book -> ${res.status}`);
+  });
+  // Legacy /schedule should redirect to /book
+  await check('GET /schedule redirects', async () => {
+    const res = await fetch(BASE + '/schedule', { redirect: 'manual' });
+    if (res.status < 300 || res.status >= 400) {
+      throw new Error(`/schedule did not redirect (${res.status})`);
     }
-    throw new Error(`/book -> ${res.status}`);
+    const loc = res.headers.get('location') || res.headers.get('Location') || '';
+    if (!loc.endsWith('/book')) throw new Error(`/schedule redirect -> ${loc}`);
   });
   await check('GET /thank-you', () => get200('/thank-you'));
 
@@ -181,6 +183,7 @@ async function run() {
     '/cases/automation-pilot-ops',
     '/book',
     '/thank-you',
+    '/schedule',
   ]);
   for (const p of discovered) {
     if (!seeded.has(p)) {

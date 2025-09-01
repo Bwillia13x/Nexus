@@ -87,7 +87,7 @@ export function MobileStickyCTA() {
             Quick inquiry
           </button>
           <Link
-            href="/schedule"
+            href="/book"
             onClick={handleBook}
             className="flex-1 btn-primary rounded-full px-4 py-2 text-sm font-semibold text-center"
           >

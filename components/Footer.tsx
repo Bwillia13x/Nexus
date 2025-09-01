@@ -16,6 +16,7 @@ export function Footer() {
   const postal = process.env.NEXT_PUBLIC_BUSINESS_POSTAL;
   const country = process.env.NEXT_PUBLIC_BUSINESS_COUNTRY || 'Canada';
   const bookingUrl = process.env.NEXT_PUBLIC_BOOKING_URL;
+  const schedulerUrl = process.env.NEXT_PUBLIC_SCHEDULER_URL;
   const linkProps = (url?: string) =>
     url
       ? { href: url, target: '_blank', rel: 'noopener noreferrer' }
@@ -86,7 +87,14 @@ export function Footer() {
             🔒 We never use your private data to train AI models.
           </p>
 
-          {bookingUrl ? (
+          {/* Prefer in-site booking page if scheduler is configured; otherwise allow external booking URL */}
+          {schedulerUrl ? (
+            <div className="mt-6">
+              <a href="/book" className="btn-primary">
+                Book a discovery call <span className="ml-2">→</span>
+              </a>
+            </div>
+          ) : bookingUrl ? (
             <div className="mt-6">
               <a
                 href={bookingUrl}

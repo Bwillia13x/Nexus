@@ -549,7 +549,7 @@ export function ContactForm() {
                 </p>
                 <p className="mt-3 text-xs text-center text-muted">
                   Prefer to book a call?{' '}
-                  <Link href="/schedule" className="link">
+                  <Link href="/book" className="link">
                     Open scheduler →
                   </Link>
                 </p>
@@ -568,10 +568,7 @@ export function ContactForm() {
                 Schedule a 15–30 min intro. Same business day response.
               </p>
               <div className="mb-6">
-                <Link
-                  href="/schedule"
-                  className="btn-secondary w-full text-center"
-                >
+                <Link href="/book" className="btn-secondary w-full text-center">
                   Open scheduler
                 </Link>
               </div>

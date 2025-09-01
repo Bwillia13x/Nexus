@@ -221,7 +221,7 @@ export function Nav() {
         </button>
 
         <Link
-          href="/schedule"
+          href="/book"
           className="btn-primary hidden md:inline-flex text-sm font-semibold relative z-10 hover:scale-105 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell shrink-0 whitespace-nowrap px-4 py-2 sm:px-6 sm:py-3"
           onClick={() => trackScheduleClick('nav')}
         >
@@ -324,7 +324,7 @@ export function Nav() {
               </li>
               <li className="px-2 pb-2">
                 <Link
-                  href="/schedule"
+                  href="/book"
                   className="btn-primary w-full justify-center px-4 py-2"
                   onClick={() => {
                     trackScheduleClick('nav');

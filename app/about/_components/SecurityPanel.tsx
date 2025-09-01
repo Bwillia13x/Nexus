@@ -9,13 +9,15 @@ interface SecurityPanelProps {
 export function SecurityPanel({ items }: SecurityPanelProps) {
   return (
     <Card className="p-8 max-w-4xl mx-auto" variant="glass">
-      <h2 className="text-3xl font-bold mb-8 text-center">Data & Security</h2>
+      <h2 id="security-heading" className="text-3xl font-bold mb-8 text-center">
+        Data & Security
+      </h2>
 
-      <div className="space-y-6">
+      <ul role="list" aria-labelledby="security-heading" className="space-y-6">
         {items.map((item, index) => {
           const icons = ['🔒', '🛡️', '☁️'];
           return (
-            <div key={index} className="flex items-start gap-4">
+            <li key={index} className="flex items-start gap-4">
               <div
                 className="w-8 h-8 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center text-white font-bold text-sm"
                 aria-hidden="true"
@@ -25,10 +27,10 @@ export function SecurityPanel({ items }: SecurityPanelProps) {
               <div className="flex-1">
                 <p className="text-muted-foreground leading-7">{item}</p>
               </div>
-            </div>
+            </li>
           );
         })}
-      </div>
+      </ul>
 
       {/* Optional security/privacy links */}
       <div className="mt-8 pt-6 border-t border-border/50">

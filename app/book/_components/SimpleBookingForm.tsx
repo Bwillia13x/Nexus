@@ -119,7 +119,7 @@ export function SimpleBookingForm() {
       <form
         onSubmit={onSubmit}
         noValidate
-        aria-busy={submitting ? 'true' : undefined}
+        {...(submitting ? { 'aria-busy': 'true' } : {})}
       >
         {/* Honeypot */}
         <div className="hidden" aria-hidden="true">
@@ -142,8 +142,9 @@ export function SimpleBookingForm() {
           value={email}
           onChange={e => setEmail(e.target.value)}
           onBlur={() => setTouched(true)}
-          aria-invalid={touched && !emailValid ? 'true' : undefined}
-          aria-describedby={touched && !emailValid ? 'email-error' : undefined}
+          {...(touched && !emailValid
+            ? { 'aria-invalid': true, 'aria-describedby': 'email-error' }
+            : {})}
           className={`w-full px-4 py-3 rounded-xl border bg-white/60 focus:outline-none focus:ring-2 focus:ring-primary/40 ${
             touched && !emailValid
               ? 'border-red-300 focus:ring-red-500 bg-red-50/50'

@@ -1,45 +1,12 @@
 import Link from 'next/link';
 import LeadMagnet from '@/components/LeadMagnet';
+import { hero, resources, checklist } from './_content';
 
 export const metadata = {
   title: 'Playbooks & Templates | Prairie Signal',
   description:
     'Download simple resources: AI Readiness Checklist, Tool Comparison Sheet, Prompting Guide, Automation How‑To, and Savings Starter Sheet.',
 };
-
-const resources = [
-  {
-    title: 'AI Readiness Checklist (10‑point)',
-    desc: 'Are we ready for a safe, useful pilot? Assess data, tools, and guardrails.',
-    cta: { label: 'Get the checklist', href: '#checklist' },
-  },
-  {
-    title: 'Tool Comparison Sheet',
-    desc: 'Side‑by‑side compare (cost/speed/limits) for your short‑listed tools.',
-    cta: {
-      label: 'Download CSV',
-      href: '/downloads/tool-selection-matrix.csv',
-    },
-  },
-  {
-    title: 'Prompting Guide',
-    desc: 'Helpful patterns and do’s/don’ts you can adapt.',
-    cta: { label: 'Download PDF', href: '/downloads/prompting-playbook.pdf' },
-  },
-  {
-    title: 'Automation How‑To Starter',
-    desc: 'Template to document your setup with a simple rollback plan.',
-    cta: {
-      label: 'Download DOCX',
-      href: '/downloads/no-code-sop-starter.docx',
-    },
-  },
-  {
-    title: 'Savings Starter Sheet',
-    desc: 'Baseline time saved and fewer mistakes to track progress.',
-    cta: { label: 'Download CSV', href: '/downloads/metrics-roi-starter.csv' },
-  },
-];
 
 export default function PlaybooksPage() {
   return (
@@ -54,40 +21,86 @@ export default function PlaybooksPage() {
       </div>
 
       {/* Hero */}
-      <section className="relative py-20 md:py-28">
+      <section
+        className="relative py-20 md:py-28"
+        aria-labelledby="playbooks-hero-title"
+      >
         <div className="mx-auto max-w-4xl px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight gradient-title">
-            Playbooks & Templates
+          <h1
+            id="playbooks-hero-title"
+            className="text-4xl md:text-6xl font-extrabold tracking-tight gradient-title text-balance"
+          >
+            {hero.title}
           </h1>
-          <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
-            Simple downloads your team can use today: checklists, guides, and
-            comparison sheets.
+          <p className="mt-4 text-muted-foreground max-w-2xl mx-auto text-pretty">
+            {hero.subtitle}
           </p>
+          {hero.badges && hero.badges.length > 0 ? (
+            <nav aria-label="Highlights" className="mt-5 flex justify-center">
+              <ul
+                role="list"
+                className="flex flex-wrap items-center justify-center gap-2"
+              >
+                {hero.badges.map((b, i) => (
+                  <li key={i}>
+                    <span className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs text-foreground/80 shadow-sm">
+                      {b}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          ) : null}
         </div>
       </section>
 
       {/* Resources grid */}
-      <section className="py-8 md:py-12">
+      <section className="py-8 md:py-12" aria-labelledby="resources-title">
         <div className="mx-auto max-w-5xl px-4 grid gap-6 md:grid-cols-2">
-          {resources.map((r, i) => (
-            <div key={i} className="card-glass glass-liquid p-6 flex flex-col">
-              <h2 className="text-xl font-bold mb-2">{r.title}</h2>
-              <p className="text-muted mb-4">{r.desc}</p>
+          <header className="sr-only">
+            <h2 id="resources-title">Downloads</h2>
+          </header>
+          {resources.map(r => (
+            <article
+              key={r.id}
+              className="card-glass glass-liquid p-6 flex flex-col"
+              aria-labelledby={`${r.id}-title`}
+            >
+              <header>
+                <h3 id={`${r.id}-title`} className="text-xl font-bold mb-2">
+                  {r.title}
+                </h3>
+              </header>
+              <p className="text-muted mb-4">{r.description}</p>
               <div className="mt-auto">
-                <Link href={r.cta.href} className="btn-primary">
-                  {r.cta.label} <span className="ml-1">→</span>
+                <Link
+                  href={r.cta.href}
+                  className="btn-primary"
+                  aria-label={r.cta.label.replace(/→/g, '').trim()}
+                >
+                  {r.cta.label}{' '}
+                  <span className="ml-1" aria-hidden="true">
+                    →
+                  </span>
                 </Link>
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </section>
 
       {/* Checklist capture */}
-      <section id="checklist" className="py-12 md:py-16">
+      <section
+        id={checklist.id}
+        className="py-12 md:py-16"
+        aria-labelledby="checklist-title"
+      >
         <div className="mx-auto max-w-4xl px-4">
-          <h2 className="text-3xl font-bold text-center mb-8">
-            AI Readiness Checklist
+          <h2
+            id="checklist-title"
+            className="text-3xl font-bold text-center mb-8"
+          >
+            {checklist.title}
           </h2>
           <LeadMagnet />
         </div>

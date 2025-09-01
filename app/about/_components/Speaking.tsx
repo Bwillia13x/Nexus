@@ -29,7 +29,10 @@ export function Speaking({ talks }: SpeakingProps) {
             🎤
           </div>
           <div className="flex-1">
-            <h3 className="text-2xl font-bold text-foreground mb-1">
+            <h3
+              id="talk-heading"
+              className="text-2xl font-bold text-foreground mb-1"
+            >
               {talks.title}
             </h3>
             <p className="text-muted-foreground">{talks.venue}</p>
@@ -38,16 +41,20 @@ export function Speaking({ talks }: SpeakingProps) {
 
         <p className="text-muted-foreground mb-6 leading-7">{talks.copy}</p>
 
-        <div className="text-sm text-muted-foreground/70 space-y-1">
+        <ul
+          role="list"
+          aria-labelledby="talk-heading"
+          className="text-sm text-muted-foreground/70 space-y-1"
+        >
           {talks.meta.map((meta, index) => (
-            <div key={index} className="flex items-center gap-2">
+            <li key={index} className="flex items-center gap-2">
               <span className="text-lg" aria-hidden="true">
                 {index === 0 ? '📅' : '📍'}
               </span>
               <span>{meta}</span>
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </Card>
     </div>
   );

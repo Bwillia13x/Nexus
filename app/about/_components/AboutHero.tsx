@@ -10,7 +10,7 @@ interface AboutHeroProps {
 
 export function AboutHero({ hero }: AboutHeroProps) {
   return (
-    <section className="relative">
+    <section className="relative" aria-labelledby="about-hero-title">
       {/* Background gradient + mesh overlay */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-primary/10 via-transparent to-secondary/5" />
       <div className="absolute inset-0 -z-10 hero-mesh" />
@@ -19,7 +19,10 @@ export function AboutHero({ hero }: AboutHeroProps) {
         <div className="mx-auto max-w-container px-4 sm:px-6">
           <div className="text-center">
             {/* H1 - LCP element */}
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-6 md:mb-8 gradient-title">
+            <h1
+              id="about-hero-title"
+              className="text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-6 md:mb-8 gradient-title"
+            >
               {hero.title}
             </h1>
 
@@ -29,13 +32,18 @@ export function AboutHero({ hero }: AboutHeroProps) {
             </p>
 
             {/* Badge row */}
-            <div className="flex justify-center gap-3 mb-12 flex-wrap">
+            <ul
+              className="flex justify-center gap-3 mb-12 flex-wrap"
+              role="list"
+            >
               {hero.badges.map((badge, index) => (
-                <div key={index} className="chip">
-                  <span className="text-sm font-medium">{badge}</span>
-                </div>
+                <li key={index}>
+                  <div className="chip">
+                    <span className="text-sm font-medium">{badge}</span>
+                  </div>
+                </li>
               ))}
-            </div>
+            </ul>
 
             {/* CTAs */}
             <div className="mb-12 md:mb-16">

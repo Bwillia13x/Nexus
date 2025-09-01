@@ -14,6 +14,9 @@ interface IdentityCardsProps {
 export function IdentityCards({ who, how }: IdentityCardsProps) {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <h2 id="overview-heading" className="sr-only">
+        Overview
+      </h2>
       {/* Who I Am Card */}
       <Card className="p-8" variant="glass">
         <div className="flex items-start gap-4">

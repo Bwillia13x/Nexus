@@ -214,7 +214,7 @@ export function ShortInquiryModal() {
         <form
           className="mt-4 space-y-3"
           onSubmit={onSubmit}
-          aria-busy={submitting ? 'true' : undefined}
+          {...(submitting ? { 'aria-busy': 'true' } : {})}
         >
           <div>
             <label htmlFor="qi-name" className="block text-sm font-medium">
@@ -298,7 +298,7 @@ export function ShortInquiryModal() {
             <button
               type="submit"
               disabled={submitting}
-              aria-disabled={submitting ? 'true' : undefined}
+              {...(submitting ? { 'aria-disabled': 'true' } : {})}
               className="btn-primary px-4 py-2 rounded-full font-semibold disabled:opacity-60"
             >
               {submitting ? 'Sending…' : 'Send'}

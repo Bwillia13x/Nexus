@@ -23,12 +23,12 @@ export function BackgroundAndMetrics({
 
       {/* Metrics card */}
       <Card className="p-8" variant="elevated">
-        <h3 className="text-2xl font-bold mb-6">
+        <h3 id="metrics-heading" className="text-2xl font-bold mb-6">
           What We Measure in Pilots (Targets)
         </h3>
-        <div className="space-y-4">
+        <ul className="space-y-4" role="list" aria-labelledby="metrics-heading">
           {metrics.map((metric, index) => (
-            <div key={index} className="flex items-start gap-3">
+            <li key={index} className="flex items-start gap-3">
               <div
                 className="w-8 h-8 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center text-white font-bold text-sm"
                 aria-hidden="true"
@@ -38,9 +38,9 @@ export function BackgroundAndMetrics({
               <div>
                 <div className="font-semibold">{metric}</div>
               </div>
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
         <p className="text-xs text-muted-foreground/70 mt-6 italic">
           Targets are planning baselines for new pilots—not prior client
           results.

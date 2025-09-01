@@ -31,14 +31,23 @@ export function MediaKit({ items }: MediaKitProps) {
 
   return (
     <Card className="p-8 max-w-4xl mx-auto" variant="glass">
-      <h2 className="text-3xl font-bold mb-6 text-center">{items.title}</h2>
+      <h2
+        id="media-kit-heading"
+        className="text-3xl font-bold mb-6 text-center"
+      >
+        {items.title}
+      </h2>
       <p className="text-muted-foreground mb-8 text-center leading-7">
         {items.note}
       </p>
 
-      <div className="grid md:grid-cols-3 gap-6 mb-8">
+      <ul
+        role="list"
+        aria-labelledby="media-kit-heading"
+        className="grid md:grid-cols-3 gap-6 mb-8"
+      >
         {mediaItems.map((item, index) => (
-          <div key={index} className="text-center">
+          <li key={index} className="text-center">
             <div className="w-20 h-20 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center mx-auto mb-4">
               <span className="text-white text-2xl" aria-hidden="true">
                 {item.icon}
@@ -48,9 +57,9 @@ export function MediaKit({ items }: MediaKitProps) {
             <p className="text-sm text-muted-foreground leading-6">
               {item.description}
             </p>
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
 
       <div className="text-center">
         <Link

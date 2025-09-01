@@ -1,0 +1,32 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F7F5EE;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#EEEADD;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="text" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#101114;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#101114;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <circle cx="220" cy="140" r="90" fill="url(#text)" opacity="0.08"/>
+  <circle cx="980" cy="500" r="110" fill="url(#text)" opacity="0.08"/>
+
+  <g transform="translate(100, 200)">
+    <text x="0" y="0" font-family="system-ui, -apple-system, sans-serif" font-size="64" font-weight="800" fill="url(#text)">
+      About Prairie Signal
+    </text>
+    <text x="0" y="72" font-family="system-ui, -apple-system, sans-serif" font-size="30" fill="#6E7280" font-weight="600">
+      Calgary AI consulting for small businesses
+    </text>
+    <text x="0" y="116" font-family="system-ui, -apple-system, sans-serif" font-size="24" fill="#6E7280" font-weight="400">
+      Practical, safe, measurable outcomes
+    </text>
+  </g>
+
+  <rect x="100" y="550" width="1000" height="4" fill="url(#text)" rx="2"/>
+</svg>
+

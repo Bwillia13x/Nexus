@@ -5,6 +5,7 @@ import { CONTACT_CONTENT } from './_content';
 import {
   generateContactPageSchema,
   generateStructuredDataScript,
+  generateBreadcrumbList,
 } from '@/lib/schema-org';
 
 export const metadata = {
@@ -23,12 +24,14 @@ export const metadata = {
       '/contact',
     siteName: 'Prairie Signal',
     type: 'website',
+    images: ['/og-contact.svg'],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Contact Prairie Signal - Calgary AI Consultants',
     description:
       'Book a discovery call to talk through a simple, practical first step.',
+    images: ['/og-contact.svg'],
   },
 };
 
@@ -36,6 +39,11 @@ export default function ContactPage() {
   const businessEmail = process.env.NEXT_PUBLIC_BUSINESS_EMAIL;
 
   const contactPageSchema = generateContactPageSchema();
+  const site = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+  const breadcrumbs = generateBreadcrumbList([
+    { name: 'Home', url: site + '/' },
+    { name: 'Contact', url: site + '/contact' },
+  ]);
 
   return (
     <>
@@ -44,6 +52,10 @@ export default function ContactPage() {
         dangerouslySetInnerHTML={generateStructuredDataScript(
           contactPageSchema
         )}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={generateStructuredDataScript(breadcrumbs)}
       />
       <main className="relative min-h-screen">
         {/* Unified Page Background */}

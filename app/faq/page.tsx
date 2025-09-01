@@ -1,10 +1,14 @@
+import FAQPageClient from './FAQPageClient';
+
 export const metadata = {
   title: 'FAQ | Prairie Signal',
   description:
     'Answers about costs, data safety, tool choice, what’s included, and how we check results.',
 };
 
-const faqs = [
+type FAQ = { q: string; a: string };
+
+const faqs: FAQ[] = [
   {
     q: 'What do you actually do?',
     a: 'We set up and connect useful AI tools so they work with what you already use. We do not build big custom systems or use your data to train AI.',
@@ -48,19 +52,12 @@ export default function FAQPage() {
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight gradient-title text-center mb-6">
             Frequently Asked Questions
           </h1>
-          <p className="text-muted-foreground text-center mb-10">
+          <p className="text-muted-foreground text-center mb-8">
             Costs, safety, tool choice, what’s included, and how we check
             results.
           </p>
 
-          <div className="space-y-4">
-            {faqs.map((item, i) => (
-              <div key={i} className="card-glass glass-liquid p-6">
-                <h2 className="text-xl font-semibold mb-2">{item.q}</h2>
-                <p className="text-muted leading-relaxed">{item.a}</p>
-              </div>
-            ))}
-          </div>
+          <FAQPageClient items={faqs} />
         </div>
       </section>
     </div>

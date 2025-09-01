@@ -23,6 +23,7 @@ module.exports = {
       boxShadow: {
         elev: '0 12px 32px rgba(0,0,0,.08)',
         'elev-lg': '0 30px 70px rgba(0,0,0,.10)',
+        'elev-xl': '0 42px 90px rgba(0,0,0,.12)',
       },
       colors: {
         ink: 'var(--ink)',

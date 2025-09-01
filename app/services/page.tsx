@@ -20,15 +20,36 @@ import {
   integrations,
   privacyContent,
 } from './_content';
+import FAQAccordion from './_components/FAQAccordion';
+import { generateBreadcrumbList } from '@/lib/schema-org';
 
 export const metadata = {
   title: 'AI Services | Prairie Signal',
   description:
     'Plain‑English AI help for small businesses: quick overview, readiness check, tool choice, and small pilot setup. Works with what you already use.',
+  openGraph: {
+    title: 'AI Services | Prairie Signal',
+    description:
+      'Plain‑English AI help for small businesses: overview, readiness, tool choice, and pilot setup.',
+    images: ['/og-services.svg'],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'AI Services | Prairie Signal',
+    description:
+      'Plain‑English AI help for small businesses: overview, readiness, tool choice, and pilot setup.',
+    images: ['/og-services.svg'],
+  },
 };
 
 export default function ServicesPage() {
   const structuredData = generateAllStructuredData();
+  const site = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+  const breadcrumbs = generateBreadcrumbList([
+    { name: 'Home', url: site + '/' },
+    { name: 'Services', url: site + '/services' },
+  ]);
 
   return (
     <>
@@ -36,6 +57,10 @@ export default function ServicesPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={generateStructuredDataScript(structuredData)}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={generateStructuredDataScript(breadcrumbs)}
       />
 
       <div className="min-h-screen relative">
@@ -90,30 +115,7 @@ export default function ServicesPage() {
               </p>
             </div>
 
-            <div className="space-y-4">
-              {faqContent.map((faq, index) => (
-                <div
-                  key={index}
-                  className="card-glass group transition-all duration-300"
-                >
-                  <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mt-1">
-                      <span className="text-primary font-semibold text-sm">
-                        {index + 1}
-                      </span>
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-xl font-semibold mb-3 text-foreground group-hover:text-primary transition-colors duration-200">
-                        {faq.question}
-                      </h3>
-                      <p className="text-muted-foreground leading-relaxed">
-                        {faq.answer}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <FAQAccordion items={faqContent} />
           </div>
         </section>
 

@@ -1,5 +1,9 @@
 import { aboutContent as c } from './_content';
 import { generateLocalBusinessSchema } from '@/lib/schema';
+import {
+  generateBreadcrumbList,
+  generateStructuredDataScript,
+} from '@/lib/schema-org';
 import { PageToc } from './_components/PageToc';
 import { AboutHero } from './_components/AboutHero';
 import { IdentityCards } from './_components/IdentityCards';
@@ -18,9 +22,28 @@ export const metadata = {
   title: 'About Drew | Calgary AI Consultant — Prairie Signal',
   description:
     'Solo AI-integration consultancy for Calgary small businesses. Fast, safe, measurable outcomes for assistants, automations, and analytics.',
+  openGraph: {
+    title: 'About Prairie Signal — Calgary AI Consultant',
+    description:
+      'Solo AI-integration consultancy for Calgary small businesses. Practical, safe, measurable outcomes.',
+    images: ['/og-about.svg'],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About Prairie Signal — Calgary AI Consultant',
+    description:
+      'Solo AI-integration consultancy for Calgary small businesses. Practical, safe, measurable outcomes.',
+    images: ['/og-about.svg'],
+  },
 };
 
 export default function AboutPage() {
+  const site = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+  const breadcrumbs = generateBreadcrumbList([
+    { name: 'Home', url: site + '/' },
+    { name: 'About', url: site + '/about' },
+  ]);
   return (
     <>
       {/* Structured Data */}
@@ -29,6 +52,10 @@ export default function AboutPage() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(generateLocalBusinessSchema(), null, 2),
         }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={generateStructuredDataScript(breadcrumbs)}
       />
 
       <main className="relative min-h-screen">

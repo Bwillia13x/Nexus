@@ -21,6 +21,7 @@ import {
   generateFAQPageSchema,
   generateStructuredDataScript,
 } from '@/lib/schema';
+import { generateBreadcrumbList } from '@/lib/schema-org';
 
 export const metadata = {
   title:
@@ -49,6 +50,10 @@ export const metadata = {
 export default function HomePage() {
   const serviceSchemas = generateServiceSchemas();
   const faqPageSchema = generateFAQPageSchema();
+  const site = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+  const breadcrumbs = generateBreadcrumbList([
+    { name: 'Home', url: site + '/' },
+  ]);
 
   return (
     <>
@@ -63,6 +68,10 @@ export default function HomePage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={generateStructuredDataScript(faqPageSchema)}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={generateStructuredDataScript(breadcrumbs)}
       />
 
       <div className="relative min-h-screen">

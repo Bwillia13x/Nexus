@@ -157,7 +157,7 @@ export function PageToc({ sections }: PageTocProps) {
               onKeyDown={e => handleKeyNav(e, i)}
               onFocus={() => setFocusIndex(i)}
               tabIndex={focusIndex === i ? 0 : -1}
-              className={`whitespace-nowrap px-3 py-1 rounded-full text-sm transition-all duration-200 ${
+              className={`whitespace-nowrap px-4 py-2 min-h-[44px] rounded-full text-sm transition-all duration-200 ${
                 activeSection === section.toLowerCase()
                   ? 'bg-primary text-primary-foreground'
                   : 'text-muted-foreground hover:text-foreground'

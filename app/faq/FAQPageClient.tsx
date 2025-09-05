@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
+import Image from 'next/image';
 
 type FAQ = { q: string; a: string };
 
@@ -78,6 +79,14 @@ export default function FAQPageClient({ items }: { items: FAQ[] }) {
           const panelId = `faq-panel-${i}`;
           const buttonId = `faq-button-${i}`;
           const qAnchor = `q-${i + 1}`;
+          const iconByIndex: Record<number, string> = {
+            0: '/icons/faq/q-what-we-do_wrench-gear-chat.png',
+            1: '/icons/faq/q-vendor-neutral_network-triangle.png',
+            2: '/icons/faq/q-privacy_security-shield.png',
+            3: '/icons/faq/q-metrics_chart-check.png',
+            4: '/icons/faq/q-included_clipboard-check.png',
+            5: '/icons/faq/q-pricing_calculator-tag.png',
+          };
           return (
             <div
               key={i}
@@ -97,12 +106,21 @@ export default function FAQPageClient({ items }: { items: FAQ[] }) {
                   onClick={() => toggle(i)}
                 >
                   <div className="flex items-start gap-3">
-                    <span
-                      className={`mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full border border-glass-border text-sm transition-transform ${isOpen ? 'rotate-90' : ''}`}
-                      aria-hidden
-                    >
-                      ➤
-                    </span>
+                    {iconByIndex[i] ? (
+                      <Image
+                        src={iconByIndex[i]}
+                        alt=""
+                        width={24}
+                        height={24}
+                      />
+                    ) : (
+                      <span
+                        className={`mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full border border-glass-border text-sm transition-transform ${isOpen ? 'rotate-90' : ''}`}
+                        aria-hidden
+                      >
+                        ➤
+                      </span>
+                    )}
                     <span className="text-base md:text-lg font-semibold">
                       {item.q}
                     </span>

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Card } from './Card';
 
 interface MediaKitItem {
@@ -13,17 +14,17 @@ interface MediaKitProps {
 export function MediaKit({ items }: MediaKitProps) {
   const mediaItems = [
     {
-      icon: '📸',
+      icon: '/icons/about/hero/profile-hex-spark.png',
       title: 'Headshot',
       description: 'High-resolution photo for media use',
     },
     {
-      icon: '📝',
+      icon: '/icons/playbooks/cards/prompting-guide_chat-wand.png',
       title: 'Short Bio',
       description: '250-word professional summary',
     },
     {
-      icon: '🏷️',
+      icon: '/icons/playbooks/hero/playbooks-download.png',
       title: 'Brand Assets',
       description: 'Logo, colors, and brand guidelines',
     },
@@ -48,10 +49,8 @@ export function MediaKit({ items }: MediaKitProps) {
       >
         {mediaItems.map((item, index) => (
           <li key={index} className="text-center">
-            <div className="w-20 h-20 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-white text-2xl" aria-hidden="true">
-                {item.icon}
-              </span>
+            <div className="w-20 h-20 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center mx-auto mb-4 overflow-hidden">
+              <Image src={item.icon} alt="" width={40} height={40} />
             </div>
             <h3 className="font-semibold mb-2">{item.title}</h3>
             <p className="text-sm text-muted-foreground leading-6">

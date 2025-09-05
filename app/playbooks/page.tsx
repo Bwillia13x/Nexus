@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import LeadMagnet from '@/components/LeadMagnet';
 import { hero, resources, checklist } from './_content';
 
@@ -26,6 +27,14 @@ export default function PlaybooksPage() {
         aria-labelledby="playbooks-hero-title"
       >
         <div className="mx-auto max-w-4xl px-4 text-center">
+          <div className="flex justify-center mb-6">
+            <Image
+              src="/icons/playbooks/hero/playbooks-download.png"
+              alt="Playbooks"
+              width={72}
+              height={72}
+            />
+          </div>
           <h1
             id="playbooks-hero-title"
             className="text-4xl md:text-6xl font-extrabold tracking-tight gradient-title text-balance"
@@ -67,6 +76,26 @@ export default function PlaybooksPage() {
               aria-labelledby={`${r.id}-title`}
             >
               <header>
+                {(() => {
+                  const map: Record<string, string> = {
+                    'ai-readiness-checklist':
+                      '/icons/playbooks/cards/readiness-checklist_clipboard-shield.png',
+                    'tool-comparison-sheet':
+                      '/icons/playbooks/cards/tool-comparison_grid-shield.png',
+                    'prompting-guide':
+                      '/icons/playbooks/cards/prompting-guide_chat-wand.png',
+                    'automation-howto-starter':
+                      '/icons/playbooks/cards/automation-howto_doc-gear-arrow.png',
+                    'savings-starter-sheet':
+                      '/icons/playbooks/cards/savings-starter_calculator-trend.png',
+                  };
+                  const icon = map[r.id];
+                  return icon ? (
+                    <div className="mb-3">
+                      <Image src={icon} alt="" width={40} height={40} />
+                    </div>
+                  ) : null;
+                })()}
                 <h3 id={`${r.id}-title`} className="text-xl font-bold mb-2">
                   {r.title}
                 </h3>

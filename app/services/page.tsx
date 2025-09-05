@@ -6,6 +6,15 @@ import {
 } from '@/lib/schema-org';
 import ROICalculator from '@/components/ROICalculator';
 import LeadMagnet from '@/components/LeadMagnet';
+import { MaybeIcon } from '@/components/ui/MaybeIcon';
+
+const CANONICAL_TOOL_BY_NAME: Record<string, string> = {
+  Google: 'Google Workspace',
+  Microsoft: 'Microsoft 365',
+  Zapier: 'Zapier/Make',
+  'Make.com': 'Zapier/Make',
+};
+import Image from 'next/image';
 
 // Import new components
 import ServiceHero from './_components/ServiceHero';
@@ -141,17 +150,22 @@ export default function ServicesPage() {
               className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 items-center"
               role="list"
             >
-              {integrations.slice(0, -1).map((integration, index) => (
-                <li
-                  key={index}
-                  className="card-elevated group hover:shadow-lg transition-all duration-300 flex items-center justify-center"
-                  role="listitem"
-                >
-                  <span className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors duration-200">
-                    {integration.name}
-                  </span>
-                </li>
-              ))}
+              {integrations.slice(0, -1).map((integration, index) => {
+                const tool =
+                  CANONICAL_TOOL_BY_NAME[integration.name] || integration.name;
+                return (
+                  <li
+                    key={index}
+                    className="card-elevated group hover:shadow-lg transition-all duration-300 flex items-center justify-center"
+                    role="listitem"
+                  >
+                    <span className="inline-flex items-center gap-2 text-sm font-semibold text-foreground group-hover:text-primary transition-colors duration-200">
+                      <MaybeIcon tool={tool} size={18} />
+                      {integration.name}
+                    </span>
+                  </li>
+                );
+              })}
 
               <li
                 className="card-elevated col-span-2 md:col-span-4 lg:col-span-6 mt-4 group"
@@ -186,6 +200,14 @@ export default function ServicesPage() {
         <section className="py-16 md:py-24" aria-labelledby="privacy-heading">
           <div className="mx-auto max-w-4xl px-4">
             <div className="card-glass glass-liquid p-8">
+              <div className="flex justify-center mb-4">
+                <Image
+                  src="/icons/services/privacy.png"
+                  alt="Privacy"
+                  width={56}
+                  height={56}
+                />
+              </div>
               <h2
                 id="privacy-heading"
                 className="text-3xl font-bold mb-8 text-center text-balance text-pretty"

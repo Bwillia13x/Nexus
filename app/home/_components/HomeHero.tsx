@@ -57,6 +57,20 @@ export default function HomeHero() {
             {heroContent.subtitle}
           </p>
 
+          {/* Location badge */}
+          <div
+            className="flex items-center justify-center gap-2 text-muted-foreground mb-6"
+            aria-label="Location"
+          >
+            <Image
+              src="/icons/hero/calgary-pin.png"
+              alt="Calgary location"
+              width={24}
+              height={24}
+            />
+            <span className="text-sm font-medium">Calgary, AB</span>
+          </div>
+
           {/* CTA buttons */}
           <div className="mb-12 md:mb-16">
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
@@ -65,6 +79,13 @@ export default function HomeHero() {
                 className="btn-primary shadow-elev hover:shadow-elev-lg min-w-[200px] sm:min-w-[240px] text-base sm:text-lg"
                 onClick={handlePrimaryCtaClick}
               >
+                <Image
+                  src="/icons/cta/book-call_alt-calendar-check.png"
+                  alt="Book a call"
+                  width={24}
+                  height={24}
+                  className="mr-2 inline-block"
+                />
                 {heroContent.primaryCta.label}
                 <span className="ml-2">→</span>
               </Link>

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface AboutHeroProps {
   hero: {
@@ -18,6 +19,15 @@ export function AboutHero({ hero }: AboutHeroProps) {
       <div className="relative z-10 py-16 md:py-24 lg:py-28">
         <div className="mx-auto max-w-container px-4 sm:px-6">
           <div className="text-center">
+            {/* Small hero illustration */}
+            <div className="flex justify-center mb-6">
+              <Image
+                src="/icons/about/hero/profile-hex-spark.png"
+                alt="About"
+                width={72}
+                height={72}
+              />
+            </div>
             {/* H1 - LCP element */}
             <h1
               id="about-hero-title"
@@ -52,6 +62,13 @@ export function AboutHero({ hero }: AboutHeroProps) {
                   href="/contact?intent=discovery"
                   className="btn-primary shadow-elev hover:shadow-elev-lg min-w-[200px] sm:min-w-[240px] text-base sm:text-lg"
                 >
+                  <Image
+                    src="/icons/cta/book-call_alt-calendar-check.png"
+                    alt="Book a call"
+                    width={24}
+                    height={24}
+                    className="mr-2 inline-block"
+                  />
                   Book a discovery call <span className="ml-2">→</span>
                 </Link>
                 <Link

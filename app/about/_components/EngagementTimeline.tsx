@@ -1,6 +1,15 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
+
+const TIMELINE_ICON_MAP: Record<string, string> = {
+  'Brief & Discover': '/icons/services/step-quick-chat.png',
+  'Simple Plan': '',
+  Configure: '/icons/services/step-setup.png',
+  'Make Sure It Works': '/icons/services/step-verify.png',
+  'Handoff or Care Plan': '/icons/services/step-train-handoff.png',
+};
 import { Card } from './Card';
 
 interface ProcessStep {
@@ -186,8 +195,17 @@ export function EngagementTimeline({ steps }: EngagementTimelineProps) {
               >
                 {/* Step header */}
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="w-14 h-14 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center text-white font-bold text-lg shadow-lg">
-                    {step.step}
+                  <div className="w-14 h-14 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center text-white font-bold text-lg shadow-lg overflow-hidden">
+                    {TIMELINE_ICON_MAP[step.title] ? (
+                      <Image
+                        src={TIMELINE_ICON_MAP[step.title]}
+                        alt=""
+                        width={28}
+                        height={28}
+                      />
+                    ) : (
+                      <span>{step.step}</span>
+                    )}
                   </div>
                   <div>
                     <h3

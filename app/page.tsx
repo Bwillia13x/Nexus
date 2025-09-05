@@ -1,9 +1,11 @@
 import { Suspense } from 'react';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 const ROICalculator = dynamic(() => import('@/components/ROICalculator'));
 
 // Import new home components
 import HomeHero from './home/_components/HomeHero';
+import QuickLinks from './home/_components/QuickLinks';
 import ServicesGrid from './home/_components/ServicesGrid';
 import CaseStudiesSection from './home/_components/CaseStudiesSection';
 import HowItWorksSection from './home/_components/HowItWorksSection';
@@ -87,6 +89,9 @@ export default function HomePage() {
         {/* Home Hero */}
         <HomeHero />
 
+        {/* Quick Links (Case Studies, FAQ) */}
+        <QuickLinks />
+
         {/* Trust Bar */}
         <TrustBar />
 
@@ -112,8 +117,14 @@ export default function HomePage() {
         <section id="roi" className="py-16 md:py-24 cv-auto">
           <div className="mx-auto max-w-4xl px-4">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Savings Calculator
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 flex items-center justify-center gap-2">
+                <Image
+                  src="/icons/cta/roi-calculator.png"
+                  alt="ROI calculator"
+                  width={24}
+                  height={24}
+                />
+                <span>Savings Calculator</span>
               </h2>
               <p className="text-xs text-muted-foreground italic max-w-2xl mx-auto">
                 *Estimates only — real results vary.*

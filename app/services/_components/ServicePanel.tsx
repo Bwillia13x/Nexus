@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { ServiceData } from '../_content';
 import { List, Card } from './helpers';
+import Image from 'next/image';
 import { MaybeIcon } from '@/components/ui/MaybeIcon';
 
 interface ServicePanelProps {
@@ -10,6 +11,12 @@ interface ServicePanelProps {
 }
 
 export default function ServicePanel({ service }: ServicePanelProps) {
+  const iconMap: Record<string, string> = {
+    'executive-briefing': '/icons/services/ai-overview.png',
+    'readiness-audit': '/icons/services/readiness-check.png',
+    'tool-selection': '/icons/services/tool-selection.png',
+    'no-code-pilot': '/icons/services/pilot-setup.png',
+  };
   return (
     <section
       id={service.id}
@@ -22,8 +29,15 @@ export default function ServicePanel({ service }: ServicePanelProps) {
           {/* Header Section */}
           <header className="max-w-3xl">
             <div className="flex items-center gap-4 mb-4">
-              <div className="w-12 h-12 flex items-center justify-center text-3xl rounded-xl bg-gradient-to-r from-primary to-secondary text-white shadow-lg">
-                <MaybeIcon emoji="🤖" title={service.title} />
+              <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-gradient-to-r from-primary to-secondary text-white shadow-lg overflow-hidden">
+                {iconMap[service.id] ? (
+                  <Image
+                    src={iconMap[service.id]}
+                    alt=""
+                    width={36}
+                    height={36}
+                  />
+                ) : null}
               </div>
               <h2
                 id={`${service.id}-heading`}

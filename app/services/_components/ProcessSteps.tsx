@@ -1,8 +1,15 @@
 'use client';
 
 import { processSteps } from '../_content';
+import Image from 'next/image';
 
 export default function ProcessSteps() {
+  const iconMap: Record<string, string> = {
+    'Quick Chat': '/icons/services/step-quick-chat.png',
+    'Set Up': '/icons/services/step-setup.png',
+    'Teach & Handoff': '/icons/services/step-train-handoff.png',
+    'Make Sure It Works': '/icons/services/step-verify.png',
+  };
   return (
     <section className="py-16 md:py-24" aria-labelledby="how-we-work-heading">
       <div className="mx-auto max-w-container px-4">
@@ -20,10 +27,21 @@ export default function ProcessSteps() {
               key={step.number}
               className="group relative card-glass glass-liquid list-none"
             >
-              {/* Circular number chip */}
-              <div className="w-16 h-16 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl shadow-lg">
-                {step.number}
-              </div>
+              {/* Step icon or number */}
+              {iconMap[step.title] ? (
+                <div className="w-16 h-16 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center mx-auto mb-4 text-white shadow-lg overflow-hidden">
+                  <Image
+                    src={iconMap[step.title]}
+                    alt=""
+                    width={32}
+                    height={32}
+                  />
+                </div>
+              ) : (
+                <div className="w-16 h-16 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl shadow-lg">
+                  {step.number}
+                </div>
+              )}
 
               {/* Title and description */}
               <h3 className="font-semibold mb-2 text-center">{step.title}</h3>

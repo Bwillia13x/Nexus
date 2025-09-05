@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { trainingHero, offerings, playbooksBlock } from './_content';
 
 export const metadata = {
@@ -26,6 +27,14 @@ export default function TrainingPage() {
         aria-describedby="training-hero-subtitle"
       >
         <div className="mx-auto max-w-4xl px-4 text-center">
+          <div className="flex justify-center mb-6">
+            <Image
+              src="/icons/training/hero/book-bulb.png"
+              alt="Training"
+              width={72}
+              height={72}
+            />
+          </div>
           <h1
             id="training-hero-heading"
             className="text-4xl md:text-6xl font-extrabold tracking-tight gradient-title text-balance text-pretty"
@@ -41,11 +50,29 @@ export default function TrainingPage() {
 
           {trainingHero.badges?.length ? (
             <div className="mt-5 flex flex-wrap justify-center gap-2">
-              {trainingHero.badges.map(badge => (
-                <span key={badge} className="chip">
-                  {badge}
-                </span>
-              ))}
+              {trainingHero.badges.map(badge => {
+                const key = badge.toLowerCase().replace(/[^a-z]/g, '');
+                const iconMap: Record<string, string> = {
+                  plainenglish:
+                    '/icons/training/badges/plain-english_speech-check.png',
+                  safebydefault:
+                    '/icons/training/badges/safe-by-default_shield-check.png',
+                  rolebased:
+                    '/icons/training/badges/role-based_briefcase-user.png',
+                };
+                const icon = iconMap[key];
+                return (
+                  <span
+                    key={badge}
+                    className="chip inline-flex items-center gap-2"
+                  >
+                    {icon ? (
+                      <Image src={icon} alt="" width={16} height={16} />
+                    ) : null}
+                    {badge}
+                  </span>
+                );
+              })}
             </div>
           ) : null}
         </div>

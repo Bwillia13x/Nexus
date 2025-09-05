@@ -1,7 +1,7 @@
 'use client';
 
 import { servicesContent } from '../_content';
-import { MaybeIcon } from '@/components/ui/MaybeIcon';
+import Image from 'next/image';
 
 export default function ServicesGrid() {
   return (
@@ -35,17 +35,21 @@ export default function ServicesGrid() {
             >
               {/* Service icon */}
               <div className="w-14 h-14 mb-6 flex items-center justify-center rounded-2xl bg-gradient-to-r from-primary to-secondary text-white text-3xl shadow-lg">
-                <MaybeIcon
-                  canonical={
+                {(() => {
+                  const src =
                     index === 0
-                      ? 'assistant-bot'
+                      ? '/icons/services/deploy-assistant.png'
                       : index === 1
-                        ? 'automation-gearflow'
-                        : 'analytics-bars'
-                  }
-                  title={service.title}
-                  size={28}
-                />
+                        ? '/icons/services/automate-reporting.png'
+                        : '/icons/services/build-dashboards.png';
+                  const alt =
+                    index === 0
+                      ? 'Deploy assistant'
+                      : index === 1
+                        ? 'Automate reporting'
+                        : 'Build dashboards';
+                  return <Image src={src} alt={alt} width={32} height={32} />;
+                })()}
               </div>
 
               {/* Service title */}

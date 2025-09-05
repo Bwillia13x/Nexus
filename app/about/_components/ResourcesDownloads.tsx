@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Card } from './Card';
 
 interface Resource {
@@ -40,10 +41,16 @@ export function ResourcesDownloads({ items }: ResourcesDownloadsProps) {
               rel="noopener noreferrer"
             >
               <Card className="p-8 text-center h-full" variant="glass">
-                <div className="w-16 h-16 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <span className="text-white text-2xl" aria-hidden="true">
-                    📄
-                  </span>
+                <div className="w-16 h-16 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 overflow-hidden">
+                  {(() => {
+                    const isChecklist = /readiness|checklist/i.test(
+                      resource.title
+                    );
+                    const icon = isChecklist
+                      ? '/icons/playbooks/cards/readiness-checklist_clipboard-shield.png'
+                      : '/icons/nav/case-studies.png';
+                    return <Image src={icon} alt="" width={28} height={28} />;
+                  })()}
                 </div>
                 <h3 className="text-2xl font-bold mb-4">{resource.title}</h3>
                 <p className="text-muted-foreground mb-6 leading-6">

@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import SpriteIcon from '@/components/ui/SpriteIcon';
 import { heroContent } from '../_content';
 import { trackCtaClick } from '@/lib/analytics';
 import { getBrandName, getLogoSrc } from '@/lib/brand';
@@ -62,12 +63,7 @@ export default function HomeHero() {
             className="flex items-center justify-center gap-2 text-muted-foreground mb-6"
             aria-label="Location"
           >
-            <Image
-              src="/icons-svg/hero/calgary-pin.svg"
-              alt="Calgary location"
-              width={24}
-              height={24}
-            />
+            <SpriteIcon name="ps--hero--calgary-pin" size={24} />
             <span className="text-sm font-medium">Calgary, AB</span>
           </div>
 
@@ -79,11 +75,9 @@ export default function HomeHero() {
                 className="btn-primary shadow-elev hover:shadow-elev-lg min-w-[200px] sm:min-w-[240px] text-base sm:text-lg"
                 onClick={handlePrimaryCtaClick}
               >
-                <Image
-                  src="/icons-svg/cta/book-call_alt-calendar-check.svg"
-                  alt="Book a call"
-                  width={24}
-                  height={24}
+                <SpriteIcon
+                  name="ps--cta--book-call_alt-calendar-check"
+                  size={24}
                   className="mr-2 inline-block"
                 />
                 {heroContent.primaryCta.label}

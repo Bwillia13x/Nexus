@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import SpriteIcon from '@/components/ui/SpriteIcon';
 
 export default function QuickLinks() {
   return (
@@ -20,12 +21,7 @@ export default function QuickLinks() {
               className="group block rounded-xl border border-glass-border bg-glass p-4 shadow-elev hover:shadow-elev-lg transition-all focus-ring"
             >
               <div className="flex items-center gap-3">
-                <Image
-                  src="/icons-svg/nav/case-studies.svg"
-                  alt="Case studies"
-                  width={32}
-                  height={32}
-                />
+                <SpriteIcon name="ps--nav--case-studies" size={32} />
                 <span className="font-medium">Case studies</span>
               </div>
             </Link>
@@ -36,12 +32,7 @@ export default function QuickLinks() {
               className="group block rounded-xl border border-glass-border bg-glass p-4 shadow-elev hover:shadow-elev-lg transition-all focus-ring"
             >
               <div className="flex items-center gap-3">
-                <Image
-                  src="/icons-svg/nav/faq.svg"
-                  alt="FAQ"
-                  width={32}
-                  height={32}
-                />
+                <SpriteIcon name="ps--nav--faq" size={32} />
                 <span className="font-medium">FAQ</span>
               </div>
             </Link>

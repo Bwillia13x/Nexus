@@ -2,6 +2,7 @@
 
 import { servicesContent } from '../_content';
 import Image from 'next/image';
+import SpriteIcon from '@/components/ui/SpriteIcon';
 
 export default function ServicesGrid() {
   return (
@@ -36,19 +37,13 @@ export default function ServicesGrid() {
               {/* Service icon */}
               <div className="w-14 h-14 mb-6 flex items-center justify-center rounded-2xl bg-gradient-to-r from-primary to-secondary text-white text-3xl shadow-lg">
                 {(() => {
-                  const src =
+                  const name =
                     index === 0
-                      ? '/icons-svg/services/deploy-assistant.svg'
+                      ? 'ps--services--deploy-assistant'
                       : index === 1
-                        ? '/icons-svg/services/automate-reporting.svg'
-                        : '/icons-svg/services/build-dashboards.svg';
-                  const alt =
-                    index === 0
-                      ? 'Deploy assistant'
-                      : index === 1
-                        ? 'Automate reporting'
-                        : 'Build dashboards';
-                  return <Image src={src} alt={alt} width={32} height={32} />;
+                        ? 'ps--services--automate-reporting'
+                        : 'ps--services--build-dashboards';
+                  return <SpriteIcon name={name} size={32} />;
                 })()}
               </div>
 

@@ -8,9 +8,9 @@ interface SecurityPanelProps {
 
 export function SecurityPanel({ items }: SecurityPanelProps) {
   const icons: string[] = [
-    '/icons/about/security/privacy_lock-badge.png', // Privacy
-    '/icons/about/security/least-privilege_shield-check.png', // Least privilege
-    '/icons/about/security/data-guard_shield-database.png', // Hosting / data guard
+    '/icons-svg/about/security/privacy_lock-badge.svg',
+    '/icons-svg/about/security/least-privilege_shield-check.svg',
+    '/icons-svg/about/security/data-guard_shield-database.svg',
   ];
   return (
     <Card className="p-8 max-w-4xl mx-auto" variant="glass">

@@ -21,7 +21,7 @@ export default function QuickLinks() {
             >
               <div className="flex items-center gap-3">
                 <Image
-                  src="/icons/nav/case-studies.png"
+                  src="/icons-svg/nav/case-studies.svg"
                   alt="Case studies"
                   width={32}
                   height={32}
@@ -37,7 +37,7 @@ export default function QuickLinks() {
             >
               <div className="flex items-center gap-3">
                 <Image
-                  src="/icons/nav/faq.png"
+                  src="/icons-svg/nav/faq.svg"
                   alt="FAQ"
                   width={32}
                   height={32}

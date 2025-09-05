@@ -4,11 +4,11 @@ import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
 const TIMELINE_ICON_MAP: Record<string, string> = {
-  'Brief & Discover': '/icons/services/step-quick-chat.png',
+  'Brief & Discover': '/icons-svg/services/step-quick-chat.svg',
   'Simple Plan': '',
-  Configure: '/icons/services/step-setup.png',
-  'Make Sure It Works': '/icons/services/step-verify.png',
-  'Handoff or Care Plan': '/icons/services/step-train-handoff.png',
+  Configure: '/icons-svg/services/step-setup.svg',
+  'Make Sure It Works': '/icons-svg/services/step-verify.svg',
+  'Handoff or Care Plan': '/icons-svg/services/step-train-handoff.svg',
 };
 import { Card } from './Card';
 

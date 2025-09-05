@@ -12,20 +12,28 @@ interface PrinciplesGridProps {
   items: Principle[];
 }
 
+function getIconForTitle(title: string): string | undefined {
+  switch (title) {
+    case 'Start Small, No‑Code First':
+      return '/icons-svg/about/principles/start-small_rocket-tile.svg';
+    case 'Human-in-the-Loop':
+      return '/icons-svg/about/principles/human-in-loop_chat-heart.svg';
+    case 'Privacy‑Minded':
+      return '/icons-svg/about/security/privacy_lock-badge.svg';
+    case 'Vendor-Neutral':
+      return '/icons-svg/about/principles/vendor-neutral_network-triangle-shield.svg';
+    case 'Ship Weekly':
+      return '/icons-svg/about/principles/ship-weekly_calendar-rocket.svg';
+    case 'Teach Your Team':
+      return '/icons-svg/about/principles/teach-your-team_calendar-check.svg';
+    case 'Check Results':
+      return '/icons-svg/about/principles/check-results_chart-loupe-check.svg';
+    default:
+      return undefined;
+  }
+}
+
 export function PrinciplesGrid({ items }: PrinciplesGridProps) {
-  const iconMap: Record<string, string> = {
-    'Start Small, No‑Code First':
-      '/icons/about/principles/start-small_rocket-tile.png',
-    'Human-in-the-Loop': '/icons/about/principles/human-in-loop_chat-heart.png',
-    'Privacy‑Minded': '/icons/about/security/privacy_lock-badge.png',
-    'Vendor-Neutral':
-      '/icons/about/principles/vendor-neutral_network-triangle-shield.png',
-    'Ship Weekly': '/icons/about/principles/ship-weekly_calendar-rocket.png',
-    'Teach Your Team':
-      '/icons/about/principles/teach-your-team_calendar-check.png',
-    'Check Results':
-      '/icons/about/principles/check-results_chart-loupe-check.png',
-  };
   return (
     <div className="space-y-8">
       <div className="text-center">
@@ -49,9 +57,9 @@ export function PrinciplesGrid({ items }: PrinciplesGridProps) {
           <li key={index} className="list-none">
             <Card className="p-6 text-center" variant="glass">
               <div className="mb-4 flex justify-center">
-                {iconMap[principle.title] ? (
+                {getIconForTitle(principle.title) ? (
                   <Image
-                    src={iconMap[principle.title]}
+                    src={getIconForTitle(principle.title)!}
                     alt={principle.title}
                     width={48}
                     height={48}

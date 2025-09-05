@@ -5,10 +5,10 @@ import Image from 'next/image';
 
 export default function ProcessSteps() {
   const iconMap: Record<string, string> = {
-    'Quick Chat': '/icons/services/step-quick-chat.png',
-    'Set Up': '/icons/services/step-setup.png',
-    'Teach & Handoff': '/icons/services/step-train-handoff.png',
-    'Make Sure It Works': '/icons/services/step-verify.png',
+    'Quick Chat': '/icons-svg/services/step-quick-chat.svg',
+    'Set Up': '/icons-svg/services/step-setup.svg',
+    'Teach & Handoff': '/icons-svg/services/step-train-handoff.svg',
+    'Make Sure It Works': '/icons-svg/services/step-verify.svg',
   };
   return (
     <section className="py-16 md:py-24" aria-labelledby="how-we-work-heading">

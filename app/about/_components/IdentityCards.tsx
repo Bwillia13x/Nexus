@@ -23,7 +23,7 @@ export function IdentityCards({ who, how }: IdentityCardsProps) {
         <div className="flex items-start gap-4">
           <div className="shrink-0" aria-hidden="true">
             <Image
-              src="/icons/about/cards/who-i-am_person-chat.png"
+              src="/icons-svg/about/cards/who-i-am_person-chat.svg"
               alt="Who I Am"
               width={48}
               height={48}
@@ -41,7 +41,7 @@ export function IdentityCards({ who, how }: IdentityCardsProps) {
         <div className="flex items-start gap-4">
           <div className="shrink-0" aria-hidden="true">
             <Image
-              src="/icons/about/cards/how-i-work_clipboard-chat-check.png"
+              src="/icons-svg/about/cards/how-i-work_clipboard-chat-check.svg"
               alt="How I Work"
               width={48}
               height={48}

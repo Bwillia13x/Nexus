@@ -14,17 +14,17 @@ interface MediaKitProps {
 export function MediaKit({ items }: MediaKitProps) {
   const mediaItems = [
     {
-      icon: '/icons/about/hero/profile-hex-spark.png',
+      icon: '/icons-svg/about/hero/profile-hex-spark.svg',
       title: 'Headshot',
       description: 'High-resolution photo for media use',
     },
     {
-      icon: '/icons/playbooks/cards/prompting-guide_chat-wand.png',
+      icon: '/icons-svg/playbooks/cards/prompting-guide_chat-wand.svg',
       title: 'Short Bio',
       description: '250-word professional summary',
     },
     {
-      icon: '/icons/playbooks/hero/playbooks-download.png',
+      icon: '/icons-svg/playbooks/hero/playbooks-download.svg',
       title: 'Brand Assets',
       description: 'Logo, colors, and brand guidelines',
     },

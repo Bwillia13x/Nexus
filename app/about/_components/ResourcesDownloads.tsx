@@ -47,8 +47,8 @@ export function ResourcesDownloads({ items }: ResourcesDownloadsProps) {
                       resource.title
                     );
                     const icon = isChecklist
-                      ? '/icons/playbooks/cards/readiness-checklist_clipboard-shield.png'
-                      : '/icons/nav/case-studies.png';
+                      ? '/icons-svg/playbooks/cards/readiness-checklist_clipboard-shield.svg'
+                      : '/icons-svg/nav/case-studies.svg';
                     return <Image src={icon} alt="" width={28} height={28} />;
                   })()}
                 </div>

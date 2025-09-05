@@ -21,7 +21,7 @@ export function FounderSnapshot({ bullets }: FounderSnapshotProps) {
                 aria-hidden="true"
               >
                 <Image
-                  src="/icons/faq/q-included_clipboard-check.png"
+                  src="/icons-svg/faq/q-included_clipboard-check.svg"
                   alt=""
                   width={14}
                   height={14}

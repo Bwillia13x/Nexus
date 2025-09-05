@@ -79,15 +79,15 @@ export default function PlaybooksPage() {
                 {(() => {
                   const map: Record<string, string> = {
                     'ai-readiness-checklist':
-                      '/icons/playbooks/cards/readiness-checklist_clipboard-shield.png',
+                      '/icons-svg/playbooks/cards/readiness-checklist_clipboard-shield.svg',
                     'tool-comparison-sheet':
-                      '/icons/playbooks/cards/tool-comparison_grid-shield.png',
+                      '/icons-svg/playbooks/cards/tool-comparison_grid-shield.svg',
                     'prompting-guide':
-                      '/icons/playbooks/cards/prompting-guide_chat-wand.png',
+                      '/icons-svg/playbooks/cards/prompting-guide_chat-wand.svg',
                     'automation-howto-starter':
-                      '/icons/playbooks/cards/automation-howto_doc-gear-arrow.png',
+                      '/icons-svg/playbooks/cards/automation-howto_doc-gear-arrow.svg',
                     'savings-starter-sheet':
-                      '/icons/playbooks/cards/savings-starter_calculator-trend.png',
+                      '/icons-svg/playbooks/cards/savings-starter_calculator-trend.svg',
                   };
                   const icon = map[r.id];
                   return icon ? (

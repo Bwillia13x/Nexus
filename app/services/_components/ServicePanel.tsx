@@ -12,10 +12,10 @@ interface ServicePanelProps {
 
 export default function ServicePanel({ service }: ServicePanelProps) {
   const iconMap: Record<string, string> = {
-    'executive-briefing': '/icons/services/ai-overview.png',
-    'readiness-audit': '/icons/services/readiness-check.png',
-    'tool-selection': '/icons/services/tool-selection.png',
-    'no-code-pilot': '/icons/services/pilot-setup.png',
+    'executive-briefing': '/icons-svg/services/ai-overview.svg',
+    'readiness-audit': '/icons-svg/services/readiness-check.svg',
+    'tool-selection': '/icons-svg/services/tool-selection.svg',
+    'no-code-pilot': '/icons-svg/services/pilot-setup.svg',
   };
   return (
     <section

@@ -80,12 +80,12 @@ export default function FAQPageClient({ items }: { items: FAQ[] }) {
           const buttonId = `faq-button-${i}`;
           const qAnchor = `q-${i + 1}`;
           const iconByIndex: Record<number, string> = {
-            0: '/icons/faq/q-what-we-do_wrench-gear-chat.png',
-            1: '/icons/faq/q-vendor-neutral_network-triangle.png',
-            2: '/icons/faq/q-privacy_security-shield.png',
-            3: '/icons/faq/q-metrics_chart-check.png',
-            4: '/icons/faq/q-included_clipboard-check.png',
-            5: '/icons/faq/q-pricing_calculator-tag.png',
+            0: '/icons-svg/faq/q-what-we-do_wrench-gear-chat.svg',
+            1: '/icons-svg/faq/q-vendor-neutral_network-triangle.svg',
+            2: '/icons-svg/faq/q-privacy_security-shield.svg',
+            3: '/icons-svg/faq/q-metrics_chart-check.svg',
+            4: '/icons-svg/faq/q-included_clipboard-check.svg',
+            5: '/icons-svg/faq/q-pricing_calculator-tag.svg',
           };
           return (
             <div

@@ -54,11 +54,11 @@ export default function TrainingPage() {
                 const key = badge.toLowerCase().replace(/[^a-z]/g, '');
                 const iconMap: Record<string, string> = {
                   plainenglish:
-                    '/icons/training/badges/plain-english_speech-check.png',
+                    '/icons-svg/training/badges/plain-english_speech-check.svg',
                   safebydefault:
-                    '/icons/training/badges/safe-by-default_shield-check.png',
+                    '/icons-svg/training/badges/safe-by-default_shield-check.svg',
                   rolebased:
-                    '/icons/training/badges/role-based_briefcase-user.png',
+                    '/icons-svg/training/badges/role-based_briefcase-user.svg',
                 };
                 const icon = iconMap[key];
                 return (

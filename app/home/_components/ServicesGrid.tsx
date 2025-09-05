@@ -38,10 +38,10 @@ export default function ServicesGrid() {
                 {(() => {
                   const src =
                     index === 0
-                      ? '/icons/services/deploy-assistant.png'
+                      ? '/icons-svg/services/deploy-assistant.svg'
                       : index === 1
-                        ? '/icons/services/automate-reporting.png'
-                        : '/icons/services/build-dashboards.png';
+                        ? '/icons-svg/services/automate-reporting.svg'
+                        : '/icons-svg/services/build-dashboards.svg';
                   const alt =
                     index === 0
                       ? 'Deploy assistant'

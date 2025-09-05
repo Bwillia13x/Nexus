@@ -22,7 +22,7 @@ export function AboutHero({ hero }: AboutHeroProps) {
             {/* Small hero illustration */}
             <div className="flex justify-center mb-6">
               <Image
-                src="/icons/about/hero/profile-hex-spark.png"
+                src="/icons-svg/about/hero/profile-hex-spark.svg"
                 alt="About"
                 width={72}
                 height={72}
@@ -63,7 +63,7 @@ export function AboutHero({ hero }: AboutHeroProps) {
                   className="btn-primary shadow-elev hover:shadow-elev-lg min-w-[200px] sm:min-w-[240px] text-base sm:text-lg"
                 >
                   <Image
-                    src="/icons/cta/book-call_alt-calendar-check.png"
+                    src="/icons-svg/cta/book-call_alt-calendar-check.svg"
                     alt="Book a call"
                     width={24}
                     height={24}

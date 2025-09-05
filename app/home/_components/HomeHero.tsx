@@ -63,7 +63,7 @@ export default function HomeHero() {
             aria-label="Location"
           >
             <Image
-              src="/icons/hero/calgary-pin.png"
+              src="/icons-svg/hero/calgary-pin.svg"
               alt="Calgary location"
               width={24}
               height={24}
@@ -80,7 +80,7 @@ export default function HomeHero() {
                 onClick={handlePrimaryCtaClick}
               >
                 <Image
-                  src="/icons/cta/book-call_alt-calendar-check.png"
+                  src="/icons-svg/cta/book-call_alt-calendar-check.svg"
                   alt="Book a call"
                   width={24}
                   height={24}

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import SpriteIcon from '@/components/ui/SpriteIcon';
 import { trainingHero, offerings, playbooksBlock } from './_content';
 
 export const metadata = {
@@ -28,12 +29,7 @@ export default function TrainingPage() {
       >
         <div className="mx-auto max-w-4xl px-4 text-center">
           <div className="flex justify-center mb-6">
-            <Image
-              src="/icons/training/hero/book-bulb.png"
-              alt="Training"
-              width={72}
-              height={72}
-            />
+            <SpriteIcon name="ps--training--hero--book-bulb" size={72} />
           </div>
           <h1
             id="training-hero-heading"
@@ -67,7 +63,14 @@ export default function TrainingPage() {
                     className="chip inline-flex items-center gap-2"
                   >
                     {icon ? (
-                      <Image src={icon} alt="" width={16} height={16} />
+                      <SpriteIcon
+                        name={`ps--${icon
+                          .replace(/^\/icons-svg\//, '')
+                          .replace(/\.svg$/, '')
+                          .split('/')
+                          .join('--')}`}
+                        size={16}
+                      />
                     ) : null}
                     {badge}
                   </span>

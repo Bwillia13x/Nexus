@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import SpriteIcon from '@/components/ui/SpriteIcon';
 import { Card } from './Card';
 
 interface MediaKitItem {
@@ -50,7 +51,14 @@ export function MediaKit({ items }: MediaKitProps) {
         {mediaItems.map((item, index) => (
           <li key={index} className="text-center">
             <div className="w-20 h-20 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center mx-auto mb-4 overflow-hidden">
-              <Image src={item.icon} alt="" width={40} height={40} />
+              <SpriteIcon
+                name={`ps--${item.icon
+                  .replace(/^\/icons-svg\//, '')
+                  .replace(/\.svg$/, '')
+                  .split('/')
+                  .join('--')}`}
+                size={40}
+              />
             </div>
             <h3 className="font-semibold mb-2">{item.title}</h3>
             <p className="text-sm text-muted-foreground leading-6">

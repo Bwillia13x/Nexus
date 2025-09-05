@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Card } from './Card';
 import Image from 'next/image';
+import SpriteIcon from '@/components/ui/SpriteIcon';
 
 interface SecurityPanelProps {
   items: string[];
@@ -25,11 +26,13 @@ export function SecurityPanel({ items }: SecurityPanelProps) {
               className="w-8 h-8 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center text-white font-bold text-sm overflow-hidden"
               aria-hidden="true"
             >
-              <Image
-                src={icons[index] || icons[0]}
-                alt=""
-                width={20}
-                height={20}
+              <SpriteIcon
+                name={`ps--${(icons[index] || icons[0])
+                  .replace(/^\/icons-svg\//, '')
+                  .replace(/\.svg$/, '')
+                  .split('/')
+                  .join('--')}`}
+                size={20}
               />
             </div>
             <div className="flex-1">

@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "postbuild": "next-sitemap",
+    "postbuild": "node scripts/build_svg_sprite.mjs && next-sitemap",
     "start": "next start",
     "lint": "eslint --max-warnings=0 --ext .js,.jsx,.ts,.tsx .",
     "lint:fix": "eslint --fix --ext .js,.jsx,.ts,.tsx .",
@@ -22,6 +22,8 @@
     "icons:react": "svgr --icon --typescript --no-index --replace-attr-values \"#000=currentColor,#000000=currentColor\" --out-dir components/icons -- icons/svg",
     "icons:index": "node scripts/build-icons-index.mjs",
     "icons:build": "npm run icons:vectorize && npm run icons:opt && npm run icons:react && npm run icons:index",
+    "icons:trace-public": "node scripts/trace_public_icons.mjs",
+    "icons:sprite": "node scripts/build_svg_sprite.mjs",
     "icons:from-logo": "node scripts/build-icons-from-logo.mjs"
   },
   "dependencies": {

@@ -1,5 +1,6 @@
 import { Card } from './Card';
 import Image from 'next/image';
+import SpriteIcon from '@/components/ui/SpriteIcon';
 
 interface FounderSnapshotProps {
   bullets: string[];
@@ -20,11 +21,9 @@ export function FounderSnapshot({ bullets }: FounderSnapshotProps) {
                 className="w-6 h-6 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center mt-0.5 overflow-hidden"
                 aria-hidden="true"
               >
-                <Image
-                  src="/icons-svg/faq/q-included_clipboard-check.svg"
-                  alt=""
-                  width={14}
-                  height={14}
+                <SpriteIcon
+                  name="ps--faq--q-included_clipboard-check"
+                  size={14}
                 />
               </div>
               <dd className="text-lg text-muted-foreground leading-7 flex-1">

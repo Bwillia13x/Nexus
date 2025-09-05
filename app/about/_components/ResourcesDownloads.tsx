@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import SpriteIcon from '@/components/ui/SpriteIcon';
 import { Card } from './Card';
 
 interface Resource {
@@ -49,7 +50,12 @@ export function ResourcesDownloads({ items }: ResourcesDownloadsProps) {
                     const icon = isChecklist
                       ? '/icons-svg/playbooks/cards/readiness-checklist_clipboard-shield.svg'
                       : '/icons-svg/nav/case-studies.svg';
-                    return <Image src={icon} alt="" width={28} height={28} />;
+                    const name = `ps--${icon
+                      .replace(/^\/icons-svg\//, '')
+                      .replace(/\.svg$/, '')
+                      .split('/')
+                      .join('--')}`;
+                    return <SpriteIcon name={name} size={28} />;
                   })()}
                 </div>
                 <h3 className="text-2xl font-bold mb-4">{resource.title}</h3>

@@ -1,5 +1,6 @@
 import { Card } from './Card';
 import Image from 'next/image';
+import SpriteIcon from '@/components/ui/SpriteIcon';
 
 interface IdentityCardsProps {
   who: {
@@ -22,11 +23,9 @@ export function IdentityCards({ who, how }: IdentityCardsProps) {
       <Card className="p-8" variant="glass">
         <div className="flex items-start gap-4">
           <div className="shrink-0" aria-hidden="true">
-            <Image
-              src="/icons-svg/about/cards/who-i-am_person-chat.svg"
-              alt="Who I Am"
-              width={48}
-              height={48}
+            <SpriteIcon
+              name="ps--about--cards--who-i-am_person-chat"
+              size={48}
             />
           </div>
           <div className="flex-1">
@@ -40,11 +39,9 @@ export function IdentityCards({ who, how }: IdentityCardsProps) {
       <Card className="p-8" variant="glass">
         <div className="flex items-start gap-4">
           <div className="shrink-0" aria-hidden="true">
-            <Image
-              src="/icons-svg/about/cards/how-i-work_clipboard-chat-check.svg"
-              alt="How I Work"
-              width={48}
-              height={48}
+            <SpriteIcon
+              name="ps--about--cards--how-i-work_clipboard-chat-check"
+              size={48}
             />
           </div>
           <div className="flex-1">

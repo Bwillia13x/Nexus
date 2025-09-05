@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { ServiceData } from '../_content';
 import { List, Card } from './helpers';
 import Image from 'next/image';
+import SpriteIcon from '@/components/ui/SpriteIcon';
 import { MaybeIcon } from '@/components/ui/MaybeIcon';
 
 interface ServicePanelProps {
@@ -31,11 +32,13 @@ export default function ServicePanel({ service }: ServicePanelProps) {
             <div className="flex items-center gap-4 mb-4">
               <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-gradient-to-r from-primary to-secondary text-white shadow-lg overflow-hidden">
                 {iconMap[service.id] ? (
-                  <Image
-                    src={iconMap[service.id]}
-                    alt=""
-                    width={36}
-                    height={36}
+                  <SpriteIcon
+                    name={`ps--${iconMap[service.id]
+                      .replace(/^\/icons-svg\//, '')
+                      .replace(/\.svg$/, '')
+                      .split('/')
+                      .join('--')}`}
+                    size={36}
                   />
                 ) : null}
               </div>

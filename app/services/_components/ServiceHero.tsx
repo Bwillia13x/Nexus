@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { heroContent } from '../_content';
+import SpriteIcon from '@/components/ui/SpriteIcon';
 import Image from 'next/image';
 
 export default function ServiceHero() {
@@ -43,11 +44,9 @@ export default function ServiceHero() {
         {/* CTA buttons */}
         <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
           <Link href={heroContent.primaryCta.href} className="btn-primary">
-            <Image
-              src="/icons/cta/book-call_alt-calendar-check.png"
-              alt="Book a call"
-              width={24}
-              height={24}
+            <SpriteIcon
+              name="ps--cta--book-call_alt-calendar-check"
+              size={24}
               className="mr-2 inline-block"
             />
             {heroContent.primaryCta.text}

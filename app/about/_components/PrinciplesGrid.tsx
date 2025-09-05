@@ -1,6 +1,7 @@
 import { Card } from './Card';
 import { MaybeIcon } from '@/components/ui/MaybeIcon';
 import Image from 'next/image';
+import SpriteIcon from '@/components/ui/SpriteIcon';
 
 interface Principle {
   icon: string;
@@ -58,11 +59,14 @@ export function PrinciplesGrid({ items }: PrinciplesGridProps) {
             <Card className="p-6 text-center" variant="glass">
               <div className="mb-4 flex justify-center">
                 {getIconForTitle(principle.title) ? (
-                  <Image
-                    src={getIconForTitle(principle.title)!}
-                    alt={principle.title}
-                    width={48}
-                    height={48}
+                  <SpriteIcon
+                    name={`ps--${getIconForTitle(principle.title)!
+                      .replace(/^\/icons-svg\//, '')
+                      .replace(/\.svg$/, '')
+                      .split('/')
+                      .join('--')}`}
+                    size={48}
+                    title={principle.title}
                   />
                 ) : (
                   <MaybeIcon

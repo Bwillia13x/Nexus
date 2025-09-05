@@ -2,6 +2,7 @@
 
 import { processSteps } from '../_content';
 import Image from 'next/image';
+import SpriteIcon from '@/components/ui/SpriteIcon';
 
 export default function ProcessSteps() {
   const iconMap: Record<string, string> = {
@@ -30,11 +31,13 @@ export default function ProcessSteps() {
               {/* Step icon or number */}
               {iconMap[step.title] ? (
                 <div className="w-16 h-16 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center mx-auto mb-4 text-white shadow-lg overflow-hidden">
-                  <Image
-                    src={iconMap[step.title]}
-                    alt=""
-                    width={32}
-                    height={32}
+                  <SpriteIcon
+                    name={`ps--${iconMap[step.title]
+                      .replace(/^\/icons-svg\//, '')
+                      .replace(/\.svg$/, '')
+                      .split('/')
+                      .join('--')}`}
+                    size={32}
                   />
                 </div>
               ) : (

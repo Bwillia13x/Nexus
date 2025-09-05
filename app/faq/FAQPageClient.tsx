@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import Image from 'next/image';
+import SpriteIcon from '@/components/ui/SpriteIcon';
 
 type FAQ = { q: string; a: string };
 
@@ -107,11 +108,13 @@ export default function FAQPageClient({ items }: { items: FAQ[] }) {
                 >
                   <div className="flex items-start gap-3">
                     {iconByIndex[i] ? (
-                      <Image
-                        src={iconByIndex[i]}
-                        alt=""
-                        width={24}
-                        height={24}
+                      <SpriteIcon
+                        name={`ps--${iconByIndex[i]
+                          .replace(/^\/icons-svg\//, '')
+                          .replace(/\.svg$/, '')
+                          .split('/')
+                          .join('--')}`}
+                        size={24}
                       />
                     ) : (
                       <span

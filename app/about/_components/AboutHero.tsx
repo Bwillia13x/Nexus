@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import SpriteIcon from '@/components/ui/SpriteIcon';
 
 interface AboutHeroProps {
   hero: {
@@ -21,12 +22,7 @@ export function AboutHero({ hero }: AboutHeroProps) {
           <div className="text-center">
             {/* Small hero illustration */}
             <div className="flex justify-center mb-6">
-              <Image
-                src="/icons-svg/about/hero/profile-hex-spark.svg"
-                alt="About"
-                width={72}
-                height={72}
-              />
+              <SpriteIcon name="ps--about--hero--profile-hex-spark" size={72} />
             </div>
             {/* H1 - LCP element */}
             <h1
@@ -62,11 +58,9 @@ export function AboutHero({ hero }: AboutHeroProps) {
                   href="/contact?intent=discovery"
                   className="btn-primary shadow-elev hover:shadow-elev-lg min-w-[200px] sm:min-w-[240px] text-base sm:text-lg"
                 >
-                  <Image
-                    src="/icons-svg/cta/book-call_alt-calendar-check.svg"
-                    alt="Book a call"
-                    width={24}
-                    height={24}
+                  <SpriteIcon
+                    name="ps--cta--book-call_alt-calendar-check"
+                    size={24}
                     className="mr-2 inline-block"
                   />
                   Book a discovery call <span className="ml-2">→</span>

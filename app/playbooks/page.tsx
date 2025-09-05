@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import SpriteIcon from '@/components/ui/SpriteIcon';
 import LeadMagnet from '@/components/LeadMagnet';
 import { hero, resources, checklist } from './_content';
 
@@ -28,11 +29,9 @@ export default function PlaybooksPage() {
       >
         <div className="mx-auto max-w-4xl px-4 text-center">
           <div className="flex justify-center mb-6">
-            <Image
-              src="/icons/playbooks/hero/playbooks-download.png"
-              alt="Playbooks"
-              width={72}
-              height={72}
+            <SpriteIcon
+              name="ps--playbooks--hero--playbooks-download"
+              size={72}
             />
           </div>
           <h1
@@ -92,7 +91,14 @@ export default function PlaybooksPage() {
                   const icon = map[r.id];
                   return icon ? (
                     <div className="mb-3">
-                      <Image src={icon} alt="" width={40} height={40} />
+                      <SpriteIcon
+                        name={`ps--${icon
+                          .replace(/^\/icons-svg\//, '')
+                          .replace(/\.svg$/, '')
+                          .split('/')
+                          .join('--')}`}
+                        size={40}
+                      />
                     </div>
                   ) : null;
                 })()}

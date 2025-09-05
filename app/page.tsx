@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
+import SpriteIcon from '@/components/ui/SpriteIcon';
 const ROICalculator = dynamic(() => import('@/components/ROICalculator'));
 
 // Import new home components
@@ -118,12 +119,7 @@ export default function HomePage() {
           <div className="mx-auto max-w-4xl px-4">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 flex items-center justify-center gap-2">
-                <Image
-                  src="/icons/cta/roi-calculator.png"
-                  alt="ROI calculator"
-                  width={24}
-                  height={24}
-                />
+                <SpriteIcon name="ps--cta--roi-calculator" size={24} />
                 <span>Savings Calculator</span>
               </h2>
               <p className="text-xs text-muted-foreground italic max-w-2xl mx-auto">

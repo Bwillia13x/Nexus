@@ -1,5 +1,6 @@
 import FAQPageClient from './FAQPageClient';
 import Image from 'next/image';
+import SpriteIcon from '@/components/ui/SpriteIcon';
 
 export const metadata = {
   title: 'FAQ | Prairie Signal',
@@ -51,12 +52,7 @@ export default function FAQPage() {
       <section className="py-20 md:py-28">
         <div className="mx-auto max-w-4xl px-4">
           <div className="flex justify-center mb-6">
-            <Image
-              src="/icons/faq/faq-hero_info-bubble.png"
-              alt="FAQ"
-              width={64}
-              height={64}
-            />
+            <SpriteIcon name="ps--faq--faq-hero_info-bubble" size={64} />
           </div>
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight gradient-title text-center mb-6">
             Frequently Asked Questions

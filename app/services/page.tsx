@@ -15,6 +15,7 @@ const CANONICAL_TOOL_BY_NAME: Record<string, string> = {
   'Make.com': 'Zapier/Make',
 };
 import Image from 'next/image';
+import SpriteIcon from '@/components/ui/SpriteIcon';
 
 // Import new components
 import ServiceHero from './_components/ServiceHero';
@@ -201,12 +202,7 @@ export default function ServicesPage() {
           <div className="mx-auto max-w-4xl px-4">
             <div className="card-glass glass-liquid p-8">
               <div className="flex justify-center mb-4">
-                <Image
-                  src="/icons/services/privacy.png"
-                  alt="Privacy"
-                  width={56}
-                  height={56}
-                />
+                <SpriteIcon name="ps--services--privacy" size={56} />
               </div>
               <h2
                 id="privacy-heading"

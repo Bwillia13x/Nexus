@@ -33,16 +33,9 @@ export default function PlaybooksPage() {
             <div className="eyebrow mb-2" aria-hidden="true">
               AI Playbooks
             </div>
-            <div className="flex justify-center mb-6">
-              <SpriteIcon
-                name="ps--playbooks--hero--playbooks-download"
-                size={72}
-                sprite="hero"
-              />
-            </div>
             <h1
               id="playbooks-hero-title"
-              className="text-4xl md:text-6xl font-extrabold tracking-tight gradient-title text-balance"
+              className="text-4xl md:text-6xl font-extrabold tracking-tight gradient-title text-balance text-pretty"
             >
               {hero.title}
             </h1>

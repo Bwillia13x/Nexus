@@ -1,6 +1,4 @@
 import FAQPageClient from './FAQPageClient';
-import Image from 'next/image';
-import SpriteIcon from '@/components/ui/SpriteIcon';
 import FeatureStrip from '@/components/FeatureStrip';
 import CTABox from '@/components/CTABox';
 
@@ -57,11 +55,11 @@ export default function FAQPage() {
             <div className="eyebrow mb-2" aria-hidden="true">
               Frequently Asked Questions
             </div>
-            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight gradient-title text-center mb-3">
+            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight gradient-title text-balance text-pretty">
               Common questions
               <span className="sr-only"> about AI for business</span>
             </h1>
-            <p className="text-muted-foreground text-center">
+            <p className="mt-4 text-muted-foreground max-w-2xl mx-auto text-pretty">
               Everything you need to know about implementing practical AI
               solutions for your Calgary small business.
             </p>

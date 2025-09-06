@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import SpriteIcon from '@/components/ui/SpriteIcon';
 
 interface AboutHeroProps {
@@ -12,30 +11,33 @@ interface AboutHeroProps {
 
 export function AboutHero({ hero }: AboutHeroProps) {
   return (
-    <section className="relative" aria-labelledby="about-hero-title">
+    <section
+      className="relative py-20 md:py-28"
+      aria-labelledby="about-hero-title"
+    >
       {/* Background gradient + mesh overlay */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-primary/10 via-transparent to-secondary/5" />
       <div className="absolute inset-0 -z-10 hero-mesh" />
 
-      <div className="relative z-10 py-16 md:py-24 lg:py-28">
-        <div className="mx-auto max-w-container px-4 sm:px-6">
-          <div className="text-center">
+      <div className="relative z-10">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6">
+          <div className="card-hero hero-reveal text-center">
             {/* H1 - LCP element */}
             <h1
               id="about-hero-title"
-              className="text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-6 md:mb-8 gradient-title"
+              className="text-4xl md:text-6xl font-extrabold tracking-tight gradient-title text-balance text-pretty"
             >
               {hero.title}
             </h1>
 
             {/* Subtitle */}
-            <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground mb-10 md:mb-12 max-w-3xl mx-auto leading-relaxed">
+            <p className="mt-4 text-muted-foreground max-w-2xl mx-auto text-pretty">
               {hero.subtitle}
             </p>
 
             {/* Badge row */}
             <ul
-              className="flex justify-center gap-3 mb-12 flex-wrap"
+              className="mt-5 flex flex-wrap justify-center gap-2"
               role="list"
             >
               {hero.badges.map((badge, index) => (
@@ -48,7 +50,7 @@ export function AboutHero({ hero }: AboutHeroProps) {
             </ul>
 
             {/* CTAs */}
-            <div className="mb-12 md:mb-16">
+            <div className="mt-8">
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
                 <Link
                   href="/contact?intent=discovery"

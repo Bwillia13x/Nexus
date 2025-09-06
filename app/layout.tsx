@@ -78,8 +78,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en" className={inter.variable}>
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        {/* Preload brand logo for faster nav paint */}
-        <link rel="preload" as="image" href={logoSrc} />
+        {/* Logo is optimized via next/image; avoid preloading raw asset to prevent duplicate fetch */}
         {/* Preconnect/dns-prefetch for analytics */}
         <link
           rel="preconnect"

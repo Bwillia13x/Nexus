@@ -1,6 +1,8 @@
 import FAQPageClient from './FAQPageClient';
 import Image from 'next/image';
 import SpriteIcon from '@/components/ui/SpriteIcon';
+import FeatureStrip from '@/components/FeatureStrip';
+import CTABox from '@/components/CTABox';
 
 export const metadata = {
   title: 'FAQ | Prairie Signal',
@@ -51,18 +53,39 @@ export default function FAQPage() {
 
       <section className="py-20 md:py-28">
         <div className="mx-auto max-w-4xl px-4">
-          <div className="flex justify-center mb-6">
-            <SpriteIcon name="ps--faq--faq-hero_info-bubble" size={64} />
+          <div className="card-hero hero-reveal text-center">
+            <div className="eyebrow mb-2" aria-hidden="true">
+              Frequently Asked Questions
+            </div>
+            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight gradient-title text-center mb-3">
+              Common questions
+              <span className="sr-only"> about AI for business</span>
+            </h1>
+            <p className="text-muted-foreground text-center">
+              Everything you need to know about implementing practical AI
+              solutions for your Calgary small business.
+            </p>
           </div>
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight gradient-title text-center mb-6">
-            Frequently Asked Questions
-          </h1>
-          <p className="text-muted-foreground text-center mb-8">
-            Costs, safety, tool choice, what’s included, and how we check
-            results.
-          </p>
 
-          <FAQPageClient items={faqs} />
+          <FeatureStrip
+            ariaLabel="FAQ Highlights"
+            items={[
+              { title: '2–3 Week', caption: 'Implementation' },
+              { title: 'PIPEDA/PIPA', caption: 'Compliant' },
+              { title: 'Plain English', caption: 'Training' },
+              { title: 'Fixed Scope', caption: 'Pricing' },
+            ]}
+          />
+
+          <div className="mt-10">
+            <FAQPageClient items={faqs} />
+          </div>
+        </div>
+      </section>
+
+      <section className="py-12 md:py-16">
+        <div className="mx-auto max-w-4xl px-4">
+          <CTABox />
         </div>
       </section>
     </div>

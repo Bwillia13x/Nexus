@@ -20,10 +20,6 @@ export function AboutHero({ hero }: AboutHeroProps) {
       <div className="relative z-10 py-16 md:py-24 lg:py-28">
         <div className="mx-auto max-w-container px-4 sm:px-6">
           <div className="text-center">
-            {/* Small hero illustration */}
-            <div className="flex justify-center mb-6">
-              <SpriteIcon name="ps--about--hero--profile-hex-spark" size={72} />
-            </div>
             {/* H1 - LCP element */}
             <h1
               id="about-hero-title"

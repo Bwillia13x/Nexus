@@ -30,7 +30,9 @@ async function main() {
   }
 
   const entries = await fs.promises.readdir(SRC_DIR, { withFileTypes: true });
-  const finalDirs = entries.filter(e => e.isDirectory() && e.name.startsWith('final_'));
+  const finalDirs = entries.filter(
+    e => e.isDirectory() && e.name.startsWith('final_')
+  );
 
   let copied = 0;
   for (const dir of finalDirs) {
@@ -65,4 +67,3 @@ main().catch(err => {
   console.error(err);
   process.exit(1);
 });
-

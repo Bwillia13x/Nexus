@@ -4,7 +4,8 @@ import path from 'node:path';
 
 const ROOT = process.cwd();
 const SRC_ROOT = path.join(ROOT, 'public', 'icons-svg');
-const OUT_FILE = path.join(ROOT, 'public', 'icons-sprite.svg');
+const OUT_UI = path.join(ROOT, 'public', 'icons-sprite-ui.svg');
+const OUT_HERO = path.join(ROOT, 'public', 'icons-sprite-hero.svg');
 
 async function* walk(dir) {
   const entries = await fs.readdir(dir, { withFileTypes: true });
@@ -34,16 +35,20 @@ function extractSvgParts(svg) {
     : widthMatch && heightMatch
       ? `0 0 ${parseFloat(widthMatch[1]) || 24} ${parseFloat(heightMatch[1]) || 24}`
       : '0 0 24 24';
-  // Normalize fills to currentColor
   const normalized = inner
     .replace(/fill="#000000"/gi, 'fill="currentColor"')
     .replace(/fill="#000"/gi, 'fill="currentColor"');
   return { viewBox, content: normalized };
 }
 
-async function main() {
+function isHeroLike(rel) {
+  const s = rel.toLowerCase();
+  return s.includes('/hero/') || s.includes('hero') || s.includes('privacy');
+}
+
+async function buildSprite(files, outFile) {
   const symbols = [];
-  for await (const file of walk(SRC_ROOT)) {
+  for (const file of files) {
     const rel = path.relative(SRC_ROOT, file);
     const id = idFromRel(rel);
     const raw = await fs.readFile(file, 'utf8');
@@ -51,9 +56,21 @@ async function main() {
     symbols.push(`<symbol id="${id}" viewBox="${viewBox}">${content}</symbol>`);
   }
   const sprite = `<?xml version="1.0" encoding="UTF-8"?>\n<svg xmlns="http://www.w3.org/2000/svg" style="display:none">\n${symbols.join('\n')}\n</svg>\n`;
-  await fs.writeFile(OUT_FILE, sprite);
+  await fs.writeFile(outFile, sprite);
+}
+
+async function main() {
+  const all = [];
+  for await (const file of walk(SRC_ROOT)) all.push(file);
+  const hero = all.filter(f => isHeroLike(path.relative(SRC_ROOT, f)));
+  const ui = all.filter(f => !hero.includes(f));
+  await buildSprite(ui, OUT_UI);
+  await buildSprite(hero, OUT_HERO);
   console.log(
-    `Wrote ${path.relative(ROOT, OUT_FILE)} with ${symbols.length} symbols`
+    `Wrote ${path.relative(ROOT, OUT_UI)} (${ui.length} symbols) and ${path.relative(
+      ROOT,
+      OUT_HERO
+    )} (${hero.length} symbols)`
   );
 }
 

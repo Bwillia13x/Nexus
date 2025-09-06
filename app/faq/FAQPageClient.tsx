@@ -58,7 +58,7 @@ export default function FAQPageClient({ items }: { items: FAQ[] }) {
           type="button"
           className="btn-outline px-4 py-2 rounded-full text-sm"
           onClick={() => setAll(!allOpen)}
-          aria-pressed={allOpen}
+          {...(allOpen ? { 'aria-pressed': 'true' } : {})}
         >
           {allOpen ? 'Collapse all' : 'Expand all'}
         </button>
@@ -88,6 +88,14 @@ export default function FAQPageClient({ items }: { items: FAQ[] }) {
             4: '/icons-svg/faq/q-included_clipboard-check.svg',
             5: '/icons-svg/faq/q-pricing_calculator-tag.svg',
           };
+          const spriteByIndex: Record<number, string> = {
+            0: 'ps--faq--q-what-we-do_wrench-gear-chat',
+            1: 'ps--faq--q-vendor-neutral_network-triangle',
+            2: 'ps--faq--q-privacy_security-shield',
+            3: 'ps--faq--q-metrics_chart-check',
+            4: 'ps--faq--q-included_clipboard-check',
+            5: 'ps--faq--q-pricing_calculator-tag',
+          };
           return (
             <div
               key={i}
@@ -102,20 +110,34 @@ export default function FAQPageClient({ items }: { items: FAQ[] }) {
                   id={buttonId}
                   type="button"
                   className="flex-1 text-left px-5 py-4 md:px-6 md:py-5 focus-ring"
-                  aria-expanded={isOpen}
+                  {...(isOpen ? { 'aria-expanded': 'true' } : {})}
                   aria-controls={panelId}
                   onClick={() => toggle(i)}
                 >
                   <div className="flex items-start gap-3">
-                    {iconByIndex[i] ? (
+                    {spriteByIndex[i] ? (
                       <SpriteIcon
-                        name={`ps--${iconByIndex[i]
-                          .replace(/^\/icons-svg\//, '')
-                          .replace(/\.svg$/, '')
-                          .split('/')
-                          .join('--')}`}
+                        name={spriteByIndex[i]}
                         size={24}
+                        className="text-primary"
+                        sprite={i === 2 ? 'hero' : 'ui'}
+                        aria-hidden="true"
                       />
+                    ) : iconByIndex[i] ? (
+                      (() => {
+                        const png = iconByIndex[i]
+                          .replace('/icons-svg', '/icons')
+                          .replace(/\.svg$/, '.png');
+                        return (
+                          <Image
+                            src={png}
+                            alt=""
+                            width={24}
+                            height={24}
+                            className="object-contain"
+                          />
+                        );
+                      })()
                     ) : (
                       <span
                         className={`mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full border border-glass-border text-sm transition-transform ${isOpen ? 'rotate-90' : ''}`}

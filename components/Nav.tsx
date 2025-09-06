@@ -137,11 +137,11 @@ export function Nav() {
         </Link>
 
         {/* Desktop links centered between logo and CTA */}
-        <ul className="hidden md:flex gap-6 md:gap-8 text-sm relative z-10 ml-1 sm:ml-2">
+        <ul className="hidden md:flex items-center gap-6 md:gap-8 text-sm relative z-10 ml-1 sm:ml-2">
           <li>
             <Link
               href="/services"
-              className="px-3 py-1.5 rounded-full hover:scale-105 hover:-translate-y-0.5 transition-all duration-300 font-medium hover:text-primary group/link relative overflow-hidden nav-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell"
+              className="px-3 py-1.5 rounded-full hover:scale-105 hover:-translate-y-0.5 transition-all duration-300 font-medium leading-none hover:text-primary group/link relative overflow-hidden nav-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell"
               data-active={isActive('/services')}
               aria-current={isActive('/services') ? 'page' : undefined}
             >
@@ -152,7 +152,7 @@ export function Nav() {
           <li>
             <Link
               href="/training"
-              className="px-3 py-1.5 rounded-full hover:scale-105 hover:-translate-y-0.5 transition-all duration-300 font-medium hover:text-primary group/link relative overflow-hidden nav-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell"
+              className="px-3 py-1.5 rounded-full hover:scale-105 hover:-translate-y-0.5 transition-all duration-300 font-medium leading-none hover:text-primary group/link relative overflow-hidden nav-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell"
               data-active={isActive('/training')}
               aria-current={isActive('/training') ? 'page' : undefined}
             >
@@ -163,7 +163,7 @@ export function Nav() {
           <li>
             <Link
               href="/playbooks"
-              className="px-3 py-1.5 rounded-full hover:scale-105 hover:-translate-y-0.5 transition-all duration-300 font-medium hover:text-primary group/link relative overflow-hidden nav-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell"
+              className="px-3 py-1.5 rounded-full hover:scale-105 hover:-translate-y-0.5 transition-all duration-300 font-medium leading-none hover:text-primary group/link relative overflow-hidden nav-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell"
               data-active={isActive('/playbooks')}
               aria-current={isActive('/playbooks') ? 'page' : undefined}
             >
@@ -174,7 +174,7 @@ export function Nav() {
           <li>
             <Link
               href="/faq"
-              className="px-3 py-1.5 rounded-full hover:scale-105 hover:-translate-y-0.5 transition-all duration-300 font-medium hover:text-primary group/link relative overflow-hidden nav-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell"
+              className="px-3 py-1.5 rounded-full hover:scale-105 hover:-translate-y-0.5 transition-all duration-300 font-medium leading-none hover:text-primary group/link relative overflow-hidden nav-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell"
               data-active={isActive('/faq')}
               aria-current={isActive('/faq') ? 'page' : undefined}
             >
@@ -185,7 +185,7 @@ export function Nav() {
           <li>
             <Link
               href="/about"
-              className="px-3 py-1.5 rounded-full hover:scale-105 hover:-translate-y-0.5 transition-all duration-300 font-medium hover:text-primary group/link relative overflow-hidden nav-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell"
+              className="px-3 py-1.5 rounded-full hover:scale-105 hover:-translate-y-0.5 transition-all duration-300 font-medium leading-none hover:text-primary group/link relative overflow-hidden nav-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell"
               data-active={isActive('/about')}
               aria-current={isActive('/about') ? 'page' : undefined}
             >
@@ -196,7 +196,7 @@ export function Nav() {
           <li>
             <Link
               href="/contact"
-              className="px-3 py-1.5 rounded-full hover:scale-105 hover:-translate-y-0.5 transition-all duration-300 font-medium hover:text-primary group/link relative overflow-hidden nav-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell"
+              className="px-3 py-1.5 rounded-full hover:scale-105 hover:-translate-y-0.5 transition-all duration-300 font-medium leading-none hover:text-primary group/link relative overflow-hidden nav-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell"
               data-active={isActive('/contact')}
               aria-current={isActive('/contact') ? 'page' : undefined}
             >
@@ -234,7 +234,7 @@ export function Nav() {
           ref={menuButtonRef}
           className="btn-outline md:hidden relative z-10 h-11 w-11 p-0 rounded-full"
           aria-controls="mobile-menu"
-          aria-expanded={menuOpen}
+          {...(menuOpen ? { 'aria-expanded': 'true' } : {})}
           aria-haspopup="dialog"
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           onClick={() => setMenuOpen(v => !v)}
@@ -287,7 +287,7 @@ export function Nav() {
             id="mobile-menu"
             className="fixed z-40 left-4 right-4 top-24 border border-glass-border rounded-2xl bg-glass-2 backdrop-blur-xl shadow-elev-lg md:hidden transition-all duration-200 ease-out"
             role="dialog"
-            aria-modal={true}
+            aria-modal="true"
             ref={menuRef}
             tabIndex={-1}
             onKeyDown={handleMenuTrapFocus}

@@ -7,6 +7,8 @@ import {
 import ROICalculator from '@/components/ROICalculator';
 import LeadMagnet from '@/components/LeadMagnet';
 import { MaybeIcon } from '@/components/ui/MaybeIcon';
+import FeatureStrip from '@/components/FeatureStrip';
+import CTABox from '@/components/CTABox';
 
 const CANONICAL_TOOL_BY_NAME: Record<string, string> = {
   Google: 'Google Workspace',
@@ -100,6 +102,19 @@ export default function ServicesPage() {
         {/* Service Hero */}
         <ServiceHero />
 
+        {/* Feature strip */}
+        <div className="mx-auto max-w-container px-4">
+          <FeatureStrip
+            ariaLabel="Service Highlights"
+            items={[
+              { title: '2–3 Week', caption: 'Implementation' },
+              { title: 'PIPEDA/PIPA', caption: 'Compliant' },
+              { title: 'Plain English', caption: 'Training' },
+              { title: 'Fixed Scope', caption: 'Pricing' },
+            ]}
+          />
+        </div>
+
         {/* Process Steps */}
         <ProcessSteps />
 
@@ -126,6 +141,13 @@ export default function ServicesPage() {
             </div>
 
             <FAQAccordion items={faqContent} />
+          </div>
+        </section>
+
+        {/* CTA box */}
+        <section className="py-12 md:py-16">
+          <div className="mx-auto max-w-4xl px-4">
+            <CTABox />
           </div>
         </section>
 
@@ -202,7 +224,11 @@ export default function ServicesPage() {
           <div className="mx-auto max-w-4xl px-4">
             <div className="card-glass glass-liquid p-8">
               <div className="flex justify-center mb-4">
-                <SpriteIcon name="ps--services--privacy" size={56} />
+                <SpriteIcon
+                  name="ps--services--privacy"
+                  size={56}
+                  sprite="hero"
+                />
               </div>
               <h2
                 id="privacy-heading"

@@ -1,6 +1,5 @@
 import { Card } from './Card';
 import { MaybeIcon } from '@/components/ui/MaybeIcon';
-import Image from 'next/image';
 import SpriteIcon from '@/components/ui/SpriteIcon';
 
 interface Principle {
@@ -13,22 +12,22 @@ interface PrinciplesGridProps {
   items: Principle[];
 }
 
-function getIconForTitle(title: string): string | undefined {
+function getSpriteIdForTitle(title: string): string | undefined {
   switch (title) {
     case 'Start Small, No‑Code First':
-      return '/icons-svg/about/principles/start-small_rocket-tile.svg';
+      return 'ps--about--principles--start-small_rocket-tile';
     case 'Human-in-the-Loop':
-      return '/icons-svg/about/principles/human-in-loop_chat-heart.svg';
+      return 'ps--about--principles--human-in-loop_chat-heart';
     case 'Privacy‑Minded':
-      return '/icons-svg/about/security/privacy_lock-badge.svg';
+      return 'ps--about--security--data-guard_shield-database';
     case 'Vendor-Neutral':
-      return '/icons-svg/about/principles/vendor-neutral_network-triangle-shield.svg';
+      return 'ps--about--principles--vendor-neutral_network-triangle-shield';
     case 'Ship Weekly':
-      return '/icons-svg/about/principles/ship-weekly_calendar-rocket.svg';
+      return 'ps--about--principles--ship-weekly_calendar-rocket';
     case 'Teach Your Team':
-      return '/icons-svg/about/principles/teach-your-team_calendar-check.svg';
+      return 'ps--about--principles--teach-your-team_calendar-check';
     case 'Check Results':
-      return '/icons-svg/about/principles/check-results_chart-loupe-check.svg';
+      return 'ps--about--principles--check-results_chart-loupe-check';
     default:
       return undefined;
   }
@@ -58,14 +57,11 @@ export function PrinciplesGrid({ items }: PrinciplesGridProps) {
           <li key={index} className="list-none">
             <Card className="p-6 text-center" variant="glass">
               <div className="mb-4 flex justify-center">
-                {getIconForTitle(principle.title) ? (
+                {getSpriteIdForTitle(principle.title) ? (
                   <SpriteIcon
-                    name={`ps--${getIconForTitle(principle.title)!
-                      .replace(/^\/icons-svg\//, '')
-                      .replace(/\.svg$/, '')
-                      .split('/')
-                      .join('--')}`}
+                    name={getSpriteIdForTitle(principle.title)!}
                     size={48}
+                    className="text-primary"
                     title={principle.title}
                   />
                 ) : (

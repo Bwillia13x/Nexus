@@ -1,16 +1,7 @@
 'use client';
 
-import dynamic from 'next/dynamic';
 import { sectionContent } from '../_content';
-
-const LeadMagnet = dynamic(() => import('@/components/LeadMagnet'), {
-  ssr: false,
-  loading: () => (
-    <div className="text-center p-8" role="status" aria-live="polite">
-      Loading checklist...
-    </div>
-  ),
-});
+import LeadMagnet from '@/components/LeadMagnet';
 
 export default function LeadMagnetSection() {
   return (

@@ -1,8 +1,9 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import SpriteIcon from '@/components/ui/SpriteIcon';
 import LeadMagnet from '@/components/LeadMagnet';
 import { hero, resources, checklist } from './_content';
+import FeatureStrip from '@/components/FeatureStrip';
+import CTABox from '@/components/CTABox';
 
 export const metadata = {
   title: 'Playbooks & Templates | Prairie Signal',
@@ -27,38 +28,46 @@ export default function PlaybooksPage() {
         className="relative py-20 md:py-28"
         aria-labelledby="playbooks-hero-title"
       >
-        <div className="mx-auto max-w-4xl px-4 text-center">
-          <div className="flex justify-center mb-6">
-            <SpriteIcon
-              name="ps--playbooks--hero--playbooks-download"
-              size={72}
-            />
+        <div className="mx-auto max-w-4xl px-4">
+          <div className="card-hero hero-reveal text-center">
+            <div className="eyebrow mb-2" aria-hidden="true">
+              AI Playbooks
+            </div>
+            <div className="flex justify-center mb-6">
+              <SpriteIcon
+                name="ps--playbooks--hero--playbooks-download"
+                size={72}
+                sprite="hero"
+              />
+            </div>
+            <h1
+              id="playbooks-hero-title"
+              className="text-4xl md:text-6xl font-extrabold tracking-tight gradient-title text-balance"
+            >
+              {hero.title}
+            </h1>
+            <p className="mt-4 text-muted-foreground max-w-2xl mx-auto text-pretty">
+              {hero.subtitle}
+            </p>
+            {hero.badges && hero.badges.length > 0 ? (
+              <nav aria-label="Highlights" className="mt-5 flex justify-center">
+                <ul
+                  role="list"
+                  className="flex flex-wrap items-center justify-center gap-2"
+                >
+                  {hero.badges.map((b, i) => (
+                    <li key={i}>
+                      <span className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs text-foreground/80 shadow-sm">
+                        {b}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            ) : null}
           </div>
-          <h1
-            id="playbooks-hero-title"
-            className="text-4xl md:text-6xl font-extrabold tracking-tight gradient-title text-balance"
-          >
-            {hero.title}
-          </h1>
-          <p className="mt-4 text-muted-foreground max-w-2xl mx-auto text-pretty">
-            {hero.subtitle}
-          </p>
-          {hero.badges && hero.badges.length > 0 ? (
-            <nav aria-label="Highlights" className="mt-5 flex justify-center">
-              <ul
-                role="list"
-                className="flex flex-wrap items-center justify-center gap-2"
-              >
-                {hero.badges.map((b, i) => (
-                  <li key={i}>
-                    <span className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs text-foreground/80 shadow-sm">
-                      {b}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          ) : null}
+
+          <FeatureStrip ariaLabel="Playbooks Highlights" />
         </div>
       </section>
 
@@ -76,31 +85,30 @@ export default function PlaybooksPage() {
             >
               <header>
                 {(() => {
-                  const map: Record<string, string> = {
+                  const spriteMap: Record<string, string> = {
                     'ai-readiness-checklist':
-                      '/icons-svg/playbooks/cards/readiness-checklist_clipboard-shield.svg',
+                      'ps--playbooks--cards--readiness-checklist_clipboard-shield',
                     'tool-comparison-sheet':
-                      '/icons-svg/playbooks/cards/tool-comparison_grid-shield.svg',
+                      'ps--playbooks--cards--tool-comparison_grid-shield',
                     'prompting-guide':
-                      '/icons-svg/playbooks/cards/prompting-guide_chat-wand.svg',
+                      'ps--playbooks--cards--prompting-guide_chat-wand',
                     'automation-howto-starter':
-                      '/icons-svg/playbooks/cards/automation-howto_doc-gear-arrow.svg',
+                      'ps--playbooks--cards--automation-howto_doc-gear-arrow',
                     'savings-starter-sheet':
-                      '/icons-svg/playbooks/cards/savings-starter_calculator-trend.svg',
+                      'ps--playbooks--cards--savings-starter_calculator-trend',
                   };
-                  const icon = map[r.id];
-                  return icon ? (
+                  const sprite = spriteMap[r.id];
+                  if (!sprite) return null;
+                  return (
                     <div className="mb-3">
                       <SpriteIcon
-                        name={`ps--${icon
-                          .replace(/^\/icons-svg\//, '')
-                          .replace(/\.svg$/, '')
-                          .split('/')
-                          .join('--')}`}
+                        name={sprite}
                         size={40}
+                        className="text-primary"
+                        aria-hidden="true"
                       />
                     </div>
-                  ) : null;
+                  );
                 })()}
                 <h3 id={`${r.id}-title`} className="text-xl font-bold mb-2">
                   {r.title}
@@ -138,6 +146,13 @@ export default function PlaybooksPage() {
             {checklist.title}
           </h2>
           <LeadMagnet />
+        </div>
+      </section>
+
+      {/* CTA Box */}
+      <section className="py-12 md:py-16">
+        <div className="mx-auto max-w-4xl px-4">
+          <CTABox />
         </div>
       </section>
     </div>

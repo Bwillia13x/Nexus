@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import Image from 'next/image';
-import SpriteIcon from '@/components/ui/SpriteIcon';
 import { trainingHero, offerings, playbooksBlock } from './_content';
+import FeatureStrip from '@/components/FeatureStrip';
+import CTABox from '@/components/CTABox';
 
 export const metadata = {
   title: 'Training & AI Literacy | Prairie Signal',
@@ -27,57 +27,56 @@ export default function TrainingPage() {
         aria-labelledby="training-hero-heading"
         aria-describedby="training-hero-subtitle"
       >
-        <div className="mx-auto max-w-4xl px-4 text-center">
-          <div className="flex justify-center mb-6">
-            <SpriteIcon name="ps--training--hero--book-bulb" size={72} />
-          </div>
-          <h1
-            id="training-hero-heading"
-            className="text-4xl md:text-6xl font-extrabold tracking-tight gradient-title text-balance text-pretty"
-          >
-            {trainingHero.title}
-          </h1>
-          <p
-            id="training-hero-subtitle"
-            className="mt-4 text-muted-foreground max-w-2xl mx-auto text-pretty"
-          >
-            {trainingHero.subtitle}
-          </p>
-
-          {trainingHero.badges?.length ? (
-            <div className="mt-5 flex flex-wrap justify-center gap-2">
-              {trainingHero.badges.map(badge => {
-                const key = badge.toLowerCase().replace(/[^a-z]/g, '');
-                const iconMap: Record<string, string> = {
-                  plainenglish:
-                    '/icons-svg/training/badges/plain-english_speech-check.svg',
-                  safebydefault:
-                    '/icons-svg/training/badges/safe-by-default_shield-check.svg',
-                  rolebased:
-                    '/icons-svg/training/badges/role-based_briefcase-user.svg',
-                };
-                const icon = iconMap[key];
-                return (
-                  <span
-                    key={badge}
-                    className="chip inline-flex items-center gap-2"
-                  >
-                    {icon ? (
-                      <SpriteIcon
-                        name={`ps--${icon
-                          .replace(/^\/icons-svg\//, '')
-                          .replace(/\.svg$/, '')
-                          .split('/')
-                          .join('--')}`}
-                        size={16}
-                      />
-                    ) : null}
-                    {badge}
-                  </span>
-                );
-              })}
+        <div className="mx-auto max-w-4xl px-4">
+          <div className="card-hero hero-reveal text-center">
+            <div className="eyebrow mb-2" aria-hidden="true">
+              AI Training
             </div>
-          ) : null}
+            <h1
+              id="training-hero-heading"
+              className="text-4xl md:text-6xl font-extrabold tracking-tight gradient-title text-balance text-pretty"
+            >
+              {trainingHero.title}
+            </h1>
+            <p
+              id="training-hero-subtitle"
+              className="mt-4 text-muted-foreground max-w-2xl mx-auto text-pretty"
+            >
+              {trainingHero.subtitle}
+            </p>
+
+            {trainingHero.badges?.length ? (
+              <div className="mt-5 flex flex-wrap justify-center gap-2">
+                {trainingHero.badges.map(badge => {
+                  const key = badge.toLowerCase().replace(/[^a-z]/g, '');
+                  const emojiMap: Record<string, string> = {
+                    plainenglish: '✅',
+                    safebydefault: '🛡️',
+                    rolebased: '💼',
+                  };
+                  const emoji = emojiMap[key];
+                  return (
+                    <span
+                      key={badge}
+                      className="chip inline-flex items-center gap-2"
+                    >
+                      {emoji ? (
+                        <span
+                          aria-hidden="true"
+                          className="text-base leading-none"
+                        >
+                          {emoji}
+                        </span>
+                      ) : null}
+                      {badge}
+                    </span>
+                  );
+                })}
+              </div>
+            ) : null}
+          </div>
+
+          <FeatureStrip ariaLabel="Training Highlights" />
         </div>
       </section>
 
@@ -161,6 +160,13 @@ export default function TrainingPage() {
               </div>
             </article>
           </div>
+        </div>
+      </section>
+
+      {/* CTA Box */}
+      <section className="py-12 md:py-16">
+        <div className="mx-auto max-w-4xl px-4">
+          <CTABox />
         </div>
       </section>
     </div>

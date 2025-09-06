@@ -166,7 +166,8 @@ async function run() {
     if (res.status < 300 || res.status >= 400) {
       throw new Error(`/schedule did not redirect (${res.status})`);
     }
-    const loc = res.headers.get('location') || res.headers.get('Location') || '';
+    const loc =
+      res.headers.get('location') || res.headers.get('Location') || '';
     if (!loc.endsWith('/book')) throw new Error(`/schedule redirect -> ${loc}`);
   });
   await check('GET /thank-you', () => get200('/thank-you'));

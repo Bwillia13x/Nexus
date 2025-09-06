@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "postbuild": "node scripts/build_svg_sprite.mjs && next-sitemap",
+    "postbuild": "node scripts/build_svg_sprites.mjs && next-sitemap",
     "start": "next start",
     "lint": "eslint --max-warnings=0 --ext .js,.jsx,.ts,.tsx .",
     "lint:fix": "eslint --fix --ext .js,.jsx,.ts,.tsx .",

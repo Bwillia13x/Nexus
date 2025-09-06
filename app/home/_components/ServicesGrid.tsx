@@ -1,7 +1,6 @@
 'use client';
 
 import { servicesContent } from '../_content';
-import Image from 'next/image';
 import SpriteIcon from '@/components/ui/SpriteIcon';
 
 export default function ServicesGrid() {
@@ -35,7 +34,7 @@ export default function ServicesGrid() {
               role="listitem"
             >
               {/* Service icon */}
-              <div className="w-14 h-14 mb-6 flex items-center justify-center rounded-2xl bg-gradient-to-r from-primary to-secondary text-white text-3xl shadow-lg">
+              <div className="w-14 h-14 mb-6 flex items-center justify-center rounded-2xl bg-glass border border-glass-border text-3xl shadow-lg">
                 {(() => {
                   const name =
                     index === 0
@@ -43,7 +42,13 @@ export default function ServicesGrid() {
                       : index === 1
                         ? 'ps--services--automate-reporting'
                         : 'ps--services--build-dashboards';
-                  return <SpriteIcon name={name} size={32} />;
+                  return (
+                    <SpriteIcon
+                      name={name}
+                      size={32}
+                      className="text-primary"
+                    />
+                  );
                 })()}
               </div>
 

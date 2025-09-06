@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { getBrandName, getLogoSrc } from '@/lib/brand';
+import MotionToggle from '@/components/MotionToggle';
 
 export function Footer() {
   const brandName = getBrandName();
@@ -138,6 +139,9 @@ export function Footer() {
               ◐
             </span>
           </a>
+        </div>
+        <div className="mt-6 flex justify-center">
+          <MotionToggle />
         </div>
         <div className="mt-8 pt-8 border-t border-glass-border">
           <div className="flex flex-wrap justify-center gap-6 mb-4 text-xs text-muted">

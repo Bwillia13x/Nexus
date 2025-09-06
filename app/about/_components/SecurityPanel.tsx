@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { Card } from './Card';
-import Image from 'next/image';
 import SpriteIcon from '@/components/ui/SpriteIcon';
 
 interface SecurityPanelProps {
@@ -8,10 +7,11 @@ interface SecurityPanelProps {
 }
 
 export function SecurityPanel({ items }: SecurityPanelProps) {
-  const icons: string[] = [
-    '/icons-svg/about/security/privacy_lock-badge.svg',
-    '/icons-svg/about/security/least-privilege_shield-check.svg',
-    '/icons-svg/about/security/data-guard_shield-database.svg',
+  const spriteByIndex: string[] = [
+    // Use closest-match sprite ids available in the UI set
+    'ps--about--security--data-guard_shield-database',
+    'ps--about--security--least-privilege_shield-check',
+    'ps--about--security--data-guard_shield-database',
   ];
   return (
     <Card className="p-8 max-w-4xl mx-auto" variant="glass">
@@ -27,12 +27,10 @@ export function SecurityPanel({ items }: SecurityPanelProps) {
               aria-hidden="true"
             >
               <SpriteIcon
-                name={`ps--${(icons[index] || icons[0])
-                  .replace(/^\/icons-svg\//, '')
-                  .replace(/\.svg$/, '')
-                  .split('/')
-                  .join('--')}`}
-                size={20}
+                name={spriteByIndex[index] || spriteByIndex[0]}
+                size={18}
+                className="text-white"
+                aria-hidden="true"
               />
             </div>
             <div className="flex-1">

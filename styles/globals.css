@@ -22,6 +22,47 @@ body {
   .min-h-screen {
     min-height: 100dvh;
   }
+
+  /* Manual reduced motion toggle via data attribute */
+  html[data-reduce-motion='true'] {
+    scroll-behavior: auto !important;
+  }
+  html[data-reduce-motion='true'] .gradient-title-animated,
+  html[data-reduce-motion='true'] .ambient-orb,
+  html[data-reduce-motion='true'] .scroll-cue .icon,
+  html[data-reduce-motion='true'] .stagger-children > *,
+  html[data-reduce-motion='true'] .reveal-on-scroll,
+  html[data-reduce-motion='true'] .btn-primary,
+  html[data-reduce-motion='true'] .btn-secondary,
+  html[data-reduce-motion='true'] .btn-outline,
+  html[data-reduce-motion='true'] .card-glass,
+  html[data-reduce-motion='true'] .card-elevated,
+  html[data-reduce-motion='true'] input:focus,
+  html[data-reduce-motion='true'] select:focus,
+  html[data-reduce-motion='true'] textarea:focus {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+  html[data-reduce-motion='true'] .wave-layer {
+    animation: none !important;
+    opacity: 0.1 !important;
+  }
+  html[data-reduce-motion='true'] .ambient-orb,
+  html[data-reduce-motion='true'] .page-background .primary-orb,
+  html[data-reduce-motion='true'] .page-background .secondary-orb,
+  html[data-reduce-motion='true'] .page-background .accent-orb {
+    animation: none !important;
+    opacity: 0.2 !important;
+    filter: blur(24px) !important;
+  }
+  html[data-reduce-motion='true'] .glass-liquid {
+    -webkit-backdrop-filter: blur(8px) saturate(1) !important;
+    backdrop-filter: blur(8px) saturate(1) !important;
+  }
+  html[data-reduce-motion='true'] .glass-liquid::before {
+    opacity: 0.3 !important;
+  }
   .h-screen {
     height: 100dvh;
   }
@@ -214,12 +255,89 @@ textarea:focus-visible {
     @apply inline-flex items-center justify-center rounded-full text-ink hover:bg-glass transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell;
   }
 
+  /* Gradient icon tile utility for feature items */
+  .icon-tile {
+    @apply inline-flex items-center justify-center rounded-2xl text-white shadow-md transform-gpu;
+    width: 40px;
+    height: 40px;
+    background-image: linear-gradient(135deg, var(--primary), var(--secondary));
+    transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+  }
+
+  .icon-tile:hover {
+    transform: translateY(-2px);
+  }
+
+  .icon-tile:focus-visible {
+    outline: 2px solid theme('colors.primary');
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px theme('colors.primary/20');
+    transform: translateY(-2px);
+  }
+
+  /* Hero card alias to standardize hero wrappers */
+  .card-hero {
+    /* Expanded instead of @apply'ing custom classes to avoid PostCSS limitations */
+    @apply rounded-3xl border border-glass-border bg-glass backdrop-blur-xl shadow-lg transition-all transform-gpu p-8 md:p-10 hover:shadow-xl hover:-translate-y-0.5 hover:border-glass-border-hover;
+    transition-property: transform, box-shadow, border-color, opacity;
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    transition-duration: 200ms;
+    will-change: transform, box-shadow;
+    transform: translateZ(0);
+    position: relative;
+    background: linear-gradient(135deg, var(--glass-3), var(--glass));
+    -webkit-backdrop-filter: blur(var(--blur-xl)) saturate(1.1);
+    backdrop-filter: blur(var(--blur-xl)) saturate(1.1);
+    box-shadow: var(--shadow);
+  }
+
+  .card-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: radial-gradient(
+      120% 60% at 0% 0%,
+      rgba(255, 255, 255, 0.35),
+      transparent 60%
+    );
+    mix-blend-mode: screen;
+    opacity: 0.45;
+    transition: opacity var(--transition-base);
+  }
+
+  .card-hero:hover::before {
+    opacity: 0.7;
+  }
+
+  /* Subtle hero entrance; disabled by reduced-motion rules below */
+  .hero-reveal {
+    animation: fadeInScale 0.6s ease-out both;
+  }
+
+  /* Eyebrow label above headings */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-caption font-medium tracking-wide text-muted-foreground;
+  }
+
   .card-glass {
-    @apply p-6 md:p-8 rounded-3xl border border-glass-border bg-glass backdrop-blur-xl shadow-lg transition-all duration-500 hover:shadow-xl hover:-translate-y-0.5 hover:border-glass-border-hover;
+    @apply p-6 md:p-8 rounded-3xl border border-glass-border bg-glass backdrop-blur-xl shadow-lg transition-all duration-500 hover:shadow-xl hover:-translate-y-0.5 hover:border-glass-border-hover transform-gpu;
+    transition-property: transform, box-shadow, border-color, opacity;
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    transition-duration: 200ms;
+    will-change: transform, box-shadow;
+    transform: translateZ(0);
   }
 
   .card-elevated {
-    @apply p-6 md:p-8 rounded-2xl border border-glass-border bg-glass-2 backdrop-blur-xl shadow-md transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 hover:border-glass-border-hover;
+    @apply p-6 md:p-8 rounded-2xl border border-glass-border bg-glass-2 backdrop-blur-xl shadow-md transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 hover:border-glass-border-hover transform-gpu;
+    transition-property: transform, box-shadow, border-color, opacity;
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    transition-duration: 200ms;
+    will-change: transform, box-shadow;
+    transform: translateZ(0);
   }
 
   /* Liquid glass surface with subtle highlight */
@@ -251,7 +369,11 @@ textarea:focus-visible {
   }
 
   .chip {
-    @apply px-4 py-2 bg-glass rounded-full border border-glass-border backdrop-blur-md text-sm font-medium transition-all duration-200 hover:bg-glass-2;
+    @apply px-4 py-2 bg-glass rounded-full border border-glass-border backdrop-blur-md text-sm font-medium transition-all duration-200 hover:bg-glass-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell;
+    transition-property:
+      background-color, border-color, box-shadow, transform, opacity;
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, box-shadow;
   }
 
   .container-narrow {
@@ -941,7 +1063,10 @@ textarea:focus-visible {
 .reveal-on-scroll {
   opacity: 0;
   transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition:
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.6s ease-out;
+  will-change: transform, opacity;
 }
 
 .reveal-on-scroll.revealed {
@@ -1011,6 +1136,48 @@ textarea:focus {
   html {
     scroll-behavior: auto !important;
   }
+  .gradient-title-animated,
+  .ambient-orb,
+  .scroll-cue .icon,
+  .stagger-children > *,
+  .reveal-on-scroll,
+  .btn-primary,
+  .btn-secondary,
+  .btn-outline,
+  .card-glass,
+  .card-elevated,
+  input:focus,
+  select:focus,
+  textarea:focus {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+
+  /* Calm the wave overlay for reduced motion users */
+  .wave-layer {
+    animation: none !important;
+    opacity: 0.1 !important;
+  }
+
+  /* Additional calming reductions for reduced motion users */
+  .ambient-orb {
+    filter: none !important; /* cancel large blur */
+    opacity: 0.4 !important; /* soften intensity */
+  }
+
+  .glass-liquid {
+    -webkit-backdrop-filter: blur(8px) saturate(1) !important; /* lower blur */
+    backdrop-filter: blur(8px) saturate(1) !important;
+  }
+
+  .glass-liquid::before {
+    opacity: 0.3 !important; /* reduce highlight glare */
+  }
+}
+
+/* Manual reduced motion overrides */
+html[data-reduce-motion='true'] {
   .gradient-title-animated,
   .ambient-orb,
   .scroll-cue .icon,

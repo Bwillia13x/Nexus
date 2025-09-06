@@ -21,7 +21,11 @@ export default function QuickLinks() {
               className="group block rounded-xl border border-glass-border bg-glass p-4 shadow-elev hover:shadow-elev-lg transition-all focus-ring"
             >
               <div className="flex items-center gap-3">
-                <SpriteIcon name="ps--nav--case-studies" size={32} />
+                <SpriteIcon
+                  name="ps--nav--case-studies"
+                  size={32}
+                  className="text-primary"
+                />
                 <span className="font-medium">Case studies</span>
               </div>
             </Link>
@@ -32,7 +36,11 @@ export default function QuickLinks() {
               className="group block rounded-xl border border-glass-border bg-glass p-4 shadow-elev hover:shadow-elev-lg transition-all focus-ring"
             >
               <div className="flex items-center gap-3">
-                <SpriteIcon name="ps--nav--faq" size={32} />
+                <SpriteIcon
+                  name="ps--nav--faq"
+                  size={32}
+                  className="text-primary"
+                />
                 <span className="font-medium">FAQ</span>
               </div>
             </Link>

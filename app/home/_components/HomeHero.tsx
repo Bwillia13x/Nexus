@@ -63,7 +63,11 @@ export default function HomeHero() {
             className="flex items-center justify-center gap-2 text-muted-foreground mb-6"
             aria-label="Location"
           >
-            <SpriteIcon name="ps--hero--calgary-pin" size={24} />
+            <SpriteIcon
+              name="ps--hero--calgary-pin"
+              size={24}
+              className="text-primary"
+            />
             <span className="text-sm font-medium">Calgary, AB</span>
           </div>
 
@@ -78,7 +82,7 @@ export default function HomeHero() {
                 <SpriteIcon
                   name="ps--cta--book-call_alt-calendar-check"
                   size={24}
-                  className="mr-2 inline-block"
+                  className="mr-2 inline-block text-white"
                 />
                 {heroContent.primaryCta.label}
                 <span className="ml-2">→</span>

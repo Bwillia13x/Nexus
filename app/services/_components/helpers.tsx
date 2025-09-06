@@ -17,7 +17,10 @@ export function List({ title, items, icon = '✓', className = '' }: ListProps) 
         {items.map((item, idx) => (
           <li key={idx} className="flex items-start gap-3 text-muted">
             <div className="w-6 h-6 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center mt-0.5 flex-shrink-0">
-              <MaybeIcon emoji={icon} className="text-white text-xs" />
+              <MaybeIcon
+                emoji={icon}
+                className="text-white text-xs leading-none"
+              />
             </div>
             <span className="leading-relaxed">{item}</span>
           </li>

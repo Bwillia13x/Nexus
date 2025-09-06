@@ -3,8 +3,6 @@
 import Link from 'next/link';
 import { ServiceData } from '../_content';
 import { List, Card } from './helpers';
-import Image from 'next/image';
-import SpriteIcon from '@/components/ui/SpriteIcon';
 import { MaybeIcon } from '@/components/ui/MaybeIcon';
 
 interface ServicePanelProps {
@@ -12,11 +10,11 @@ interface ServicePanelProps {
 }
 
 export default function ServicePanel({ service }: ServicePanelProps) {
-  const iconMap: Record<string, string> = {
-    'executive-briefing': '/icons-svg/services/ai-overview.svg',
-    'readiness-audit': '/icons-svg/services/readiness-check.svg',
-    'tool-selection': '/icons-svg/services/tool-selection.svg',
-    'no-code-pilot': '/icons-svg/services/pilot-setup.svg',
+  const emojiByService: Record<string, string> = {
+    'executive-briefing': '📘',
+    'readiness-audit': '📝',
+    'tool-selection': '🧰',
+    'no-code-pilot': '🚀',
   };
   return (
     <section
@@ -31,16 +29,9 @@ export default function ServicePanel({ service }: ServicePanelProps) {
           <header className="max-w-3xl">
             <div className="flex items-center gap-4 mb-4">
               <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-gradient-to-r from-primary to-secondary text-white shadow-lg overflow-hidden">
-                {iconMap[service.id] ? (
-                  <SpriteIcon
-                    name={`ps--${iconMap[service.id]
-                      .replace(/^\/icons-svg\//, '')
-                      .replace(/\.svg$/, '')
-                      .split('/')
-                      .join('--')}`}
-                    size={36}
-                  />
-                ) : null}
+                <span aria-hidden="true" className="text-2xl leading-none">
+                  {emojiByService[service.id] || '📘'}
+                </span>
               </div>
               <h2
                 id={`${service.id}-heading`}
@@ -51,6 +42,22 @@ export default function ServicePanel({ service }: ServicePanelProps) {
             </div>
             <p className="text-muted-foreground mb-4">{service.blurb}</p>
             <p className="text-ink">{service.intro}</p>
+
+            {/* Quick metadata chips */}
+            <div className="mt-4 flex flex-wrap gap-2">
+              <span className="chip inline-flex items-center gap-2">
+                <span aria-hidden="true" className="leading-none">
+                  ⏱️
+                </span>
+                {service.timeline}
+              </span>
+              <span className="chip inline-flex items-center gap-2">
+                <span aria-hidden="true" className="leading-none">
+                  💰
+                </span>
+                {service.price}
+              </span>
+            </div>
           </header>
 
           {/* Success Metrics Section */}

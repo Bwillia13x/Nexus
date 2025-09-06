@@ -63,7 +63,7 @@ export default function FAQAccordion({ items }: FAQAccordionProps) {
           type="button"
           className="btn-outline px-4 py-2 rounded-full text-sm"
           onClick={() => setAll(!allOpen)}
-          aria-pressed={allOpen}
+          {...(allOpen ? { 'aria-pressed': 'true' } : {})}
         >
           {allOpen ? 'Collapse all' : 'Expand all'}
         </button>
@@ -94,7 +94,7 @@ export default function FAQAccordion({ items }: FAQAccordionProps) {
                   id={buttonId}
                   type="button"
                   className="flex-1 text-left px-5 py-4 md:px-6 md:py-5 focus-ring"
-                  aria-expanded={isOpen}
+                  {...(isOpen ? { 'aria-expanded': 'true' } : {})}
                   aria-controls={panelId}
                   onClick={() => toggle(i)}
                 >

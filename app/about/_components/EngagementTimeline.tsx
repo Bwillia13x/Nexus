@@ -1,16 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
-import SpriteIcon from '@/components/ui/SpriteIcon';
 
-const TIMELINE_ICON_MAP: Record<string, string> = {
-  'Brief & Discover': '/icons-svg/services/step-quick-chat.svg',
-  'Simple Plan': '',
-  Configure: '/icons-svg/services/step-setup.svg',
-  'Make Sure It Works': '/icons-svg/services/step-verify.svg',
-  'Handoff or Care Plan': '/icons-svg/services/step-train-handoff.svg',
-};
 import { Card } from './Card';
 
 interface ProcessStep {
@@ -197,18 +188,7 @@ export function EngagementTimeline({ steps }: EngagementTimelineProps) {
                 {/* Step header */}
                 <div className="flex items-center gap-4 mb-4">
                   <div className="w-14 h-14 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center text-white font-bold text-lg shadow-lg overflow-hidden">
-                    {TIMELINE_ICON_MAP[step.title] ? (
-                      <SpriteIcon
-                        name={`ps--${TIMELINE_ICON_MAP[step.title]
-                          .replace(/^\/icons-svg\//, '')
-                          .replace(/\.svg$/, '')
-                          .split('/')
-                          .join('--')}`}
-                        size={28}
-                      />
-                    ) : (
-                      <span>{step.step}</span>
-                    )}
+                    <span>{step.step}</span>
                   </div>
                   <div>
                     <h3

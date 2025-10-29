@@ -76,7 +76,15 @@ export default function TrainingPage() {
             ) : null}
           </div>
 
-          <FeatureStrip ariaLabel="Training Highlights" />
+          <FeatureStrip
+            ariaLabel="Training Highlights"
+            items={[
+              { title: 'Team Clinics', caption: 'Hands-on workshops' },
+              { title: 'Prompt Coaching', caption: 'Live examples' },
+              { title: 'Role Playbooks', caption: 'Scripts your team keeps' },
+              { title: 'On-site or Remote', caption: 'We fit your schedule' },
+            ]}
+          />
         </div>
       </section>
 

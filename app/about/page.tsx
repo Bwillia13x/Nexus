@@ -58,7 +58,7 @@ export default function AboutPage() {
         dangerouslySetInnerHTML={generateStructuredDataScript(breadcrumbs)}
       />
 
-      <main className="relative min-h-screen">
+      <div className="relative min-h-screen">
         {/* Unified Page Background */}
         <div className="page-background">
           <div className="primary-orb" />
@@ -170,7 +170,7 @@ export default function AboutPage() {
             />
           </div>
         </div>
-      </main>
+      </div>
     </>
   );
 }

@@ -68,10 +68,10 @@ export default function FAQPage() {
           <FeatureStrip
             ariaLabel="FAQ Highlights"
             items={[
-              { title: '2–3 Week', caption: 'Implementation' },
-              { title: 'PIPEDA/PIPA', caption: 'Compliant' },
-              { title: 'Plain English', caption: 'Training' },
-              { title: 'Fixed Scope', caption: 'Pricing' },
+              { title: 'Transparent Pricing', caption: 'Fixed scope offers' },
+              { title: 'No Data Training', caption: 'Your info stays private' },
+              { title: 'Tool Agnostic', caption: 'We match your stack' },
+              { title: 'Same-Day Reply', caption: 'Business-day responses' },
             ]}
           />
 

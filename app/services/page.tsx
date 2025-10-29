@@ -84,14 +84,14 @@ export default function ServicesPage() {
           Skip to main content
         </a>
         <a
-          href="#services"
+          href="#services-section"
           className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-32 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded-lg focus:shadow-lg"
         >
           Skip to services
         </a>
 
         {/* Unified Page Background */}
-        <div className="page-background">
+        <div className="page-background page-background--soft">
           <div className="primary-orb" />
           <div className="secondary-orb" />
           <div className="accent-orb" />
@@ -107,10 +107,10 @@ export default function ServicesPage() {
           <FeatureStrip
             ariaLabel="Service Highlights"
             items={[
-              { title: '2–3 Week', caption: 'Implementation' },
-              { title: 'PIPEDA/PIPA', caption: 'Compliant' },
-              { title: 'Plain English', caption: 'Training' },
-              { title: 'Fixed Scope', caption: 'Pricing' },
+              { title: 'Fast Readiness', caption: 'Calgary delivery' },
+              { title: 'Guardrails First', caption: 'PIPEDA-safe workflows' },
+              { title: 'Vendor Neutral', caption: 'We adopt your stack' },
+              { title: 'Measured Outcomes', caption: 'Scorecards + coaching' },
             ]}
           />
         </div>
@@ -205,13 +205,8 @@ export default function ServicesPage() {
         </section>
 
         {/* Service Panels */}
-        <div
-          id="main-content"
-          className="space-y-0"
-          role="main"
-          aria-label="AI Services"
-        >
-          <div id="services" className="sr-only" aria-hidden="true">
+        <div className="space-y-0" aria-label="AI Services">
+          <div id="services-section" className="sr-only" aria-hidden="true">
             Services Section
           </div>
           {servicesData.map(service => (

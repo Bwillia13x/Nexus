@@ -8,9 +8,9 @@ export const metadata = {
 
 export default function CaseAIAssistantCalgaryRetail() {
   const stats = [
-    { label: 'Faster Replies', value: '−78% response time' },
-    { label: 'Deflected Tickets', value: '62%' },
-    { label: 'Time to Value', value: '3 weeks' },
+    { label: 'Faster Replies', value: 'Faster response time' },
+    { label: 'Deflected Tickets', value: 'More handled by the assistant' },
+    { label: 'Time to Value', value: 'Fast' },
   ];
 
   return (

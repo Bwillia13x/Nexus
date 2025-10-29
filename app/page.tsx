@@ -10,7 +10,6 @@ import QuickLinks from './home/_components/QuickLinks';
 import ServicesGrid from './home/_components/ServicesGrid';
 import CaseStudiesSection from './home/_components/CaseStudiesSection';
 import HowItWorksSection from './home/_components/HowItWorksSection';
-import EarlyAdopterSection from './home/_components/EarlyAdopterSection';
 import FAQSection from './home/_components/FAQSection';
 import IntegrationsSection from './home/_components/IntegrationsSection';
 import LeadMagnetSection from './home/_components/LeadMagnetSection';
@@ -104,9 +103,6 @@ export default function HomePage() {
 
         {/* How It Works */}
         <HowItWorksSection />
-
-        {/* Early Adopter Banner */}
-        <EarlyAdopterSection />
 
         {/* Security & Data Handling */}
         <SecuritySection />

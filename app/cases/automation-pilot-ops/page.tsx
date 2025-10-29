@@ -8,9 +8,9 @@ export const metadata = {
 
 export default function CaseAutomationPilotOps() {
   const stats = [
-    { label: 'Hours Saved', value: '12+ hours/week' },
-    { label: 'Error Rate', value: '−90%' },
-    { label: 'Pilot Duration', value: '30 days' },
+    { label: 'Hours Saved', value: 'Hours saved each week' },
+    { label: 'Error Rate', value: 'Fewer errors' },
+    { label: 'Pilot Duration', value: 'Fast' },
   ];
 
   return (

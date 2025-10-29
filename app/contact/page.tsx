@@ -57,7 +57,7 @@ export default function ContactPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={generateStructuredDataScript(breadcrumbs)}
       />
-      <main className="relative min-h-screen">
+      <div className="relative min-h-screen">
         {/* Unified Page Background */}
         <div className="page-background">
           <div className="primary-orb" />
@@ -101,7 +101,7 @@ export default function ContactPage() {
             <p className="text-xs">{CONTACT_CONTENT.privacy.note}</p>
           </div>
         </section>
-      </main>
+      </div>
     </>
   );
 }

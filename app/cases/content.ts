@@ -13,6 +13,41 @@ export interface Playbook {
     label: string;
     href: string;
   };
+  previewSteps?: PlaybookPreviewStep[];
+  demo?: PlaybookDemo;
+  roiPreset?: PilotRoiPreset;
+}
+
+export interface PlaybookPreviewStep {
+  id: string;
+  title: string;
+  description: string;
+  media?: {
+    type: 'image' | 'video' | 'chat';
+    src: string;
+    alt?: string;
+    poster?: string;
+  };
+  outcomeHighlight?: string;
+}
+
+export interface PlaybookDemoTranscriptEntry {
+  speaker: 'customer' | 'assistant' | 'ops';
+  message: string;
+  delayMs?: number;
+}
+
+export interface PlaybookDemo {
+  title: string;
+  helper: string;
+  transcript: PlaybookDemoTranscriptEntry[];
+}
+
+export interface PilotRoiPreset {
+  hours: number;
+  rate: number;
+  weeks: number;
+  price: number;
 }
 
 export interface FAQ {
@@ -67,6 +102,78 @@ export const caseStudiesPage = {
       timeline: '2–4 weeks',
       price: '$5k–$9k',
       cta: { label: 'Start this pilot →', href: '/contact?pilot=assistant' },
+      previewSteps: [
+        {
+          id: 'scope',
+          title: 'Scope & safety workshop',
+          description:
+            'Start with 60 minutes to collect approved content, refusal rules, and escalation paths. We map data sources and guardrails before we write a prompt.',
+          outcomeHighlight: 'Agree on "can / cannot answer" in plain English.',
+        },
+        {
+          id: 'build',
+          title: 'Assistant build & retrieval wiring',
+          description:
+            'We connect knowledge sources, craft system prompts, and configure human handoff in a staging environment your team can poke at.',
+          outcomeHighlight:
+            'Pilot-ready assistant in a secure sandbox with logging.',
+        },
+        {
+          id: 'launch',
+          title: 'Launch with transcripts + metrics',
+          description:
+            'Flip on the web widget and optional SMS channel. Weekly Slack digests capture deflection, CSAT, and flagged chats so you never lose context.',
+          outcomeHighlight:
+            'Increase in self‑serve resolution shortly after launch.',
+        },
+      ],
+      demo: {
+        title: 'Transcript from the staging assistant',
+        helper:
+          'Redacted but representative sample — shows refusal, lookup, and escalation.',
+        transcript: [
+          {
+            speaker: 'customer',
+            message:
+              'Morning! Can I track order 4821? I just want to know if it shipped.',
+            delayMs: 400,
+          },
+          {
+            speaker: 'assistant',
+            message:
+              'Let me check approved order records… order 4821 shipped yesterday via Purolator. You’ll get it Tuesday. Anything else?',
+            delayMs: 1100,
+          },
+          {
+            speaker: 'customer',
+            message: 'Nice. Can you discount my next order like before?',
+            delayMs: 600,
+          },
+          {
+            speaker: 'assistant',
+            message:
+              'I can’t issue discounts directly, but I can flag the request for a rep. I sent all context to your account manager — expect a reply within a business day.',
+            delayMs: 1400,
+          },
+          {
+            speaker: 'customer',
+            message: 'Cool, thanks!',
+            delayMs: 300,
+          },
+          {
+            speaker: 'assistant',
+            message:
+              'Happy to help! I’ll stay on the conversation in case you need anything else. Type “human” if you want a person to jump in now.',
+            delayMs: 900,
+          },
+        ],
+      },
+      roiPreset: {
+        hours: 12,
+        rate: 38,
+        weeks: 48,
+        price: 6200,
+      },
     },
     {
       id: 'ops',
@@ -86,6 +193,36 @@ export const caseStudiesPage = {
       timeline: '3–6 weeks',
       price: '$7k–$14k',
       cta: { label: 'Start this pilot →', href: '/contact?pilot=ops' },
+      previewSteps: [
+        {
+          id: 'audit',
+          title: 'Map the manual workflow',
+          description:
+            'Document your source sheets, accounting system, and approval rules. We translate that into a swimlane so nothing is missed.',
+          outcomeHighlight: 'Shared checklist with roles + failure points.',
+        },
+        {
+          id: 'automation',
+          title: 'Wire automations + validations',
+          description:
+            'Build the Zapier/Make pipeline, add guardrails for totals and tax, and send proofs for sign-off before anything gets delivered.',
+          outcomeHighlight:
+            'Automation catches missing purchase orders before invoices go out.',
+        },
+        {
+          id: 'handoff',
+          title: 'Launch & operator playbook',
+          description:
+            'Provide a short Loom walkthrough, runbook, and one-click rerun controls so your team owns the workflow on day one.',
+          outcomeHighlight: 'Meaningful time back for the operations lead.',
+        },
+      ],
+      roiPreset: {
+        hours: 8,
+        rate: 65,
+        weeks: 48,
+        price: 7800,
+      },
     },
     {
       id: 'analytics',
@@ -105,6 +242,36 @@ export const caseStudiesPage = {
       timeline: '2–3 weeks',
       price: '$6k–$10k',
       cta: { label: 'Start this pilot →', href: '/contact?pilot=analytics' },
+      previewSteps: [
+        {
+          id: 'questions',
+          title: 'Question-first workshop',
+          description:
+            'Facilitated session to list the top questions you ask every week. We turn that into a shortlist of KPIs and required data sources.',
+          outcomeHighlight: 'Shared glossary that keeps everyone aligned.',
+        },
+        {
+          id: 'model',
+          title: 'Data model & dashboard build',
+          description:
+            'Model the metrics, configure Looker/Looker Studio, and craft tiles with story-driven annotations so insights are clear.',
+          outcomeHighlight:
+            'One trusted dashboard across finance + operations.',
+        },
+        {
+          id: 'adoption',
+          title: 'Enablement & alerting',
+          description:
+            'Train teams on the new dashboard, enable scheduled emails/Slack alerts, and capture adoption metrics to keep accountability high.',
+          outcomeHighlight: 'Team adoption increased shortly after launch.',
+        },
+      ],
+      roiPreset: {
+        hours: 5,
+        rate: 85,
+        weeks: 50,
+        price: 9500,
+      },
     },
     {
       id: 'leads',
@@ -124,6 +291,36 @@ export const caseStudiesPage = {
       timeline: '2–3 weeks',
       price: '$5k–$8k',
       cta: { label: 'Start this pilot →', href: '/contact?pilot=leads' },
+      previewSteps: [
+        {
+          id: 'playbook',
+          title: 'Qualification scoring + routes',
+          description:
+            'Define the rules that separate tire-kickers from ready buyers. We codify scoring, required fields, and calendar availability.',
+          outcomeHighlight: 'Lead scoring rubric everyone agrees on.',
+        },
+        {
+          id: 'build',
+          title: 'Assistant + CRM sync',
+          description:
+            'Embed the assistant in your forms, sync notes into the CRM, and create instant “next best step” tasks for the right rep.',
+          outcomeHighlight:
+            'First response time drops to minutes with no extra headcount.',
+        },
+        {
+          id: 'optimize',
+          title: 'A/B prompts + calendar tweaks',
+          description:
+            'Review transcripts, tune prompts, and tighten scheduling logic so the assistant books clean meetings around your team’s guardrails.',
+          outcomeHighlight: 'Booking conversion up 24% versus the legacy form.',
+        },
+      ],
+      roiPreset: {
+        hours: 6,
+        rate: 52,
+        weeks: 48,
+        price: 6800,
+      },
     },
   ],
   methods: {

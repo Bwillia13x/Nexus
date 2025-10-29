@@ -60,7 +60,18 @@ export default function PlaybooksPage() {
             ) : null}
           </div>
 
-          <FeatureStrip ariaLabel="Playbooks Highlights" />
+          <FeatureStrip
+            ariaLabel="Playbooks Highlights"
+            items={[
+              { title: 'Checklist First', caption: 'Sequenced prep steps' },
+              {
+                title: 'Template Library',
+                caption: 'Download, duplicate, edit',
+              },
+              { title: 'Prompt Examples', caption: 'Role-specific variations' },
+              { title: 'ROI Snapshot', caption: 'Savings calculator access' },
+            ]}
+          />
         </div>
       </section>
 

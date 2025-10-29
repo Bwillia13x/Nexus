@@ -49,6 +49,31 @@ export const homeContent = {
           label: 'Start Assistant Pilot',
           href: '/contact?pilot=assistant',
         },
+        highlight: {
+          eyebrow: 'Retail Ops • Calgary',
+          title:
+            'Customer support assistant deflects common tickets with branded answers',
+          summary:
+            'Ingested policies, product data, and past tickets to stand up a friendly web + SMS assistant with guardrails and clean human handoff.',
+          metricSummary:
+            'Quick win pilot with measurable ROI and an ops-ready handoff.',
+          metrics: [],
+          bulletPoints: [
+            'Assistant tuned on approved knowledge with refusal boundaries.',
+            'Slack + email alerts when a human needs to step in.',
+            'Weekly report tracks deflection, CSAT, and handoff rate.',
+          ],
+          caseLink: {
+            label: 'Read the pilot snapshot',
+            href: '/cases/ai-assistant-calgary-retail',
+          },
+        },
+        roiPreset: {
+          hours: 12,
+          rate: 38,
+          weeks: 48,
+          price: 6200,
+        },
       },
       {
         id: 'ops' as const,
@@ -62,6 +87,26 @@ export const homeContent = {
           'Short how‑to guide',
         ],
         cta: { label: 'Start Ops Pilot', href: '/contact?pilot=ops' },
+        highlight: {
+          eyebrow: 'Construction Supplier • Calgary',
+          title: 'Automated reporting trims manual prep each week',
+          summary:
+            'Google Sheets → QuickBooks pipeline that validates invoices, sends weekly digests, and flags issues before they ship.',
+          metricSummary:
+            'Owner time back, fewer missed invoices, clearer audit trail.',
+          metrics: [],
+          bulletPoints: [
+            'Checks PO, tax, and totals before anything is sent.',
+            'Slack digest hits every Monday at 8am with status + blockers.',
+            'Ownership guide covers edits, re-runs, and escalation path.',
+          ],
+        },
+        roiPreset: {
+          hours: 8,
+          rate: 65,
+          weeks: 48,
+          price: 7800,
+        },
       },
       {
         id: 'analytics' as const,
@@ -80,6 +125,26 @@ export const homeContent = {
         cta: {
           label: 'Start Analytics Pilot',
           href: '/contact?pilot=analytics',
+        },
+        highlight: {
+          eyebrow: 'Food Service • Western Canada',
+          title: 'Sales + ops dashboard unites multiple data sources in Looker',
+          summary:
+            'Pulled POS, inventory, and staffing data into a single view with alerting on stockouts and sales targets.',
+          metricSummary:
+            'One trusted source of truth so the GM team can act quickly.',
+          metrics: [],
+          bulletPoints: [
+            'Plain-language tiles and glossary everyone understands.',
+            'Email + Slack alerts when KPIs drift outside limits.',
+            'Self-serve filters for location, manager, and product lines.',
+          ],
+        },
+        roiPreset: {
+          hours: 5,
+          rate: 85,
+          weeks: 50,
+          price: 9500,
         },
       },
     ],

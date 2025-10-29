@@ -1,3 +1,5 @@
+import { getHeroProof, type HeroProof } from '@/lib/marketing';
+
 // Centralized content for Home page
 export interface ServiceItem {
   title: string;
@@ -11,6 +13,55 @@ export interface PilotItem {
   target: string[];
   scope: string[];
   cta: {
+    label: string;
+    href: string;
+  };
+  highlight?: PilotHighlight;
+  roiPreset?: PilotRoiPreset;
+}
+
+export interface PilotHighlight {
+  eyebrow: string;
+  title: string;
+  summary: string;
+  metricSummary?: string;
+  metrics: CaseHighlightMetric[];
+  bulletPoints: string[];
+  caseLink?: {
+    label: string;
+    href: string;
+  };
+}
+
+export interface PilotRoiPreset {
+  hours: number;
+  rate: number;
+  weeks: number;
+  price: number;
+}
+
+export interface HeroHighlight {
+  label: string;
+  helper?: string;
+}
+
+export interface CaseHighlightMetric {
+  label: string;
+  value: string;
+}
+
+export interface CaseHighlight {
+  eyebrow: string;
+  title: string;
+  summary: string;
+  metricSummary: string;
+  metrics: CaseHighlightMetric[];
+  bulletPoints: string[];
+  cta: {
+    label: string;
+    href: string;
+  };
+  caseLink: {
     label: string;
     href: string;
   };
@@ -40,9 +91,9 @@ export interface CTAData {
 
 // Hero content
 export const heroContent = {
-  title: 'Practical AI for Calgary small businesses—fast, safe, no heavy IT.',
+  title: 'Practical AI pilots for Calgary teams—fast, safe, zero jargon.',
   subtitle:
-    'We design small, high-ROI automations using the tools you already use. Fixed-scope pilots, plain-English docs, and PIPEDA/PIPA-aware setup.',
+    'Launch small, measurable automations that plug into your existing stack. Fixed price, privacy-compliant, and shipped in weeks, not quarters.',
   primaryCta: {
     label: 'Book a discovery call',
     href: '/contact?intent=discovery',
@@ -51,6 +102,19 @@ export const heroContent = {
     label: 'Get the AI Readiness Checklist',
     href: '/#readiness',
   },
+  highlights: [
+    {
+      label: 'Fast path to first result for most pilots',
+      helper: 'Ops, support, and analytics workflows',
+    },
+    {
+      label: 'Works with Google Workspace, Microsoft 365, and QuickBooks',
+    },
+    {
+      label: 'PIPEDA & PIPA aware setup with optional vendor agreements',
+    },
+  ] as HeroHighlight[],
+  proof: getHeroProof() as HeroProof | null,
 };
 
 // Services content
@@ -93,6 +157,30 @@ export const pilotsContent = {
         label: 'Start AI Helper Pilot (2–3 wks)',
         href: '/contact?pilot=assistant',
       },
+      highlight: {
+        eyebrow: 'Retail Ops • Calgary',
+        title: 'Assistant handles common chats with branded answers',
+        summary:
+          'Ingested policies, product data, and past tickets to stand up a friendly web + SMS assistant with guardrails and clean human handoff.',
+        metricSummary:
+          'Quick win pilot with measurable ROI and an ops-ready handoff.',
+        metrics: [],
+        bulletPoints: [
+          'Assistant tuned on approved knowledge with refusal boundaries.',
+          'Slack + email alerts when a human needs to step in.',
+          'Weekly report tracks deflection, CSAT, and handoff rate.',
+        ],
+        caseLink: {
+          label: 'Read the pilot snapshot',
+          href: '/cases/ai-assistant-calgary-retail',
+        },
+      },
+      roiPreset: {
+        hours: 12,
+        rate: 38,
+        weeks: 48,
+        price: 6200,
+      },
     },
     {
       id: 'ops' as const,
@@ -108,6 +196,26 @@ export const pilotsContent = {
       cta: {
         label: 'Start Operations Pilot (2–3 wks)',
         href: '/contact?pilot=ops',
+      },
+      highlight: {
+        eyebrow: 'Construction Supplier • Calgary',
+        title: 'Automated reporting trims manual prep each week',
+        summary:
+          'Google Sheets → QuickBooks pipeline that validates invoices, sends weekly digests, and flags issues before they ship.',
+        metricSummary:
+          'Owner time back, fewer missed invoices, clearer audit trail.',
+        metrics: [],
+        bulletPoints: [
+          'Checks PO, tax, and totals before anything is sent.',
+          'Slack digest hits every Monday at 8am with status + blockers.',
+          'Ownership guide covers edits, re-runs, and escalation path.',
+        ],
+      },
+      roiPreset: {
+        hours: 8,
+        rate: 65,
+        weeks: 48,
+        price: 7800,
       },
     },
     {
@@ -127,8 +235,52 @@ export const pilotsContent = {
         label: 'Start KPI Dashboard Pilot (2–3 wks)',
         href: '/contact?pilot=analytics',
       },
+      highlight: {
+        eyebrow: 'Food Service • Western Canada',
+        title: 'Sales + ops dashboard unites multiple data sources in Looker',
+        summary:
+          'Pulled POS, inventory, and staffing data into a single view with alerting on stockouts and sales targets.',
+        metricSummary:
+          'One trusted source of truth so the GM team can act quickly.',
+        metrics: [],
+        bulletPoints: [
+          'Plain-language tiles and glossary everyone understands.',
+          'Email + Slack alerts when KPIs drift outside limits.',
+          'Self-serve filters for location, manager, and product lines.',
+        ],
+      },
+      roiPreset: {
+        hours: 5,
+        rate: 85,
+        weeks: 50,
+        price: 9500,
+      },
     },
   ] as PilotItem[],
+};
+
+export const caseHighlight: CaseHighlight = {
+  eyebrow: 'Retail Ops • Calgary',
+  title:
+    'Customer support assistant deflects common tickets with branded answers',
+  summary:
+    'We ingested policies, product data, and past tickets to launch a branded assistant across web chat and SMS with escalation rules and analytics the team trusts.',
+  metricSummary:
+    'Quick win pilot with measurable ROI and an operations-ready handoff.',
+  metrics: [],
+  bulletPoints: [
+    'Assistant tuned on approved knowledge with refusal boundaries.',
+    'Ops dashboard shows deflection, CSAT, and handoff rate each week.',
+    'Escalations land in Slack with full transcript context for humans.',
+  ],
+  cta: {
+    label: 'Book a 30-minute discovery call',
+    href: '/contact?pilot=assistant',
+  },
+  caseLink: {
+    label: 'Read the full case study',
+    href: '/cases/ai-assistant-calgary-retail',
+  },
 };
 
 // How It Works content
@@ -259,9 +411,25 @@ export const securityContent = {
 
 export const trustBarContent = {
   items: [
-    { icon: '🔒', label: 'Privacy‑minded' },
-    { icon: '⚡', label: 'Fast setup' },
-    { icon: '✓', label: 'Works with your tools' },
-    { icon: '👥', label: 'Friendly support' },
+    {
+      type: 'logo' as const,
+      label: 'Chinook Rentals',
+      caption: 'Calgary operations pilot',
+    },
+    {
+      type: 'logo' as const,
+      label: 'Prairie Clinics',
+      caption: 'Healthcare intake workflow',
+    },
+    {
+      type: 'badge' as const,
+      label: 'PIPEDA & PIPA aware',
+      icon: '🔒',
+    },
+    {
+      type: 'badge' as const,
+      label: 'Resend Partner',
+      icon: '📧',
+    },
   ],
 };

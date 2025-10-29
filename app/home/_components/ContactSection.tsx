@@ -1,6 +1,6 @@
 'use client';
 
-import { ContactForm } from '@/components/ContactForm';
+import { SimpleContactForm } from '@/components/SimpleContactForm';
 
 export default function ContactSection() {
   return (
@@ -23,7 +23,7 @@ export default function ContactSection() {
           </p>
         </div>
 
-        <ContactForm />
+        <SimpleContactForm />
       </div>
     </section>
   );

@@ -38,6 +38,10 @@ npm run dev
 
 Open [prairiesignal.ca](https://prairiesignal.ca) (Production) or [http://localhost:3000](http://localhost:3000) (local).
 
+## 🤖 Contributor Guidelines
+
+Review [`AGENTS.md`](AGENTS.md) for repository-specific workflows, coding conventions, and pull request expectations before opening changes.
+
 ## ⚙️ Environment Configuration
 
 Copy `env.example` to `.env.local` and configure:

@@ -98,9 +98,12 @@ export function Nav() {
     ? 'bg-glass-2 shadow-elev-lg'
     : 'bg-glass shadow-elev';
   const padClass = scrolled
-    ? 'px-2.5 py-2 sm:px-4 sm:py-2.5'
-    : 'px-3 py-2.5 sm:px-6 sm:py-3';
-  const navClass = `fixed top-4 sm:top-5 left-1/2 -translate-x-1/2 z-50 border border-glass-border rounded-full flex items-center gap-4 sm:gap-6 md:gap-8 backdrop-blur-xl transition-all duration-500 group ${bgClass} hover:shadow-elev-lg max-w-[calc(100vw-1rem)] ${padClass}`;
+    ? 'px-3 py-2 sm:px-5 sm:py-2.5'
+    : 'px-4 py-3 sm:px-7 sm:py-3.5';
+  const logoSize = scrolled
+    ? 'h-8 w-[112px] sm:h-11 sm:w-[148px]'
+    : 'h-10 w-[128px] sm:h-14 sm:w-[188px]';
+  const navClass = `fixed top-4 sm:top-6 left-1/2 -translate-x-1/2 z-50 border border-glass-border rounded-full flex items-center backdrop-blur-xl transition-all duration-500 ease-out group ${bgClass} hover:shadow-elev-lg hover:border-glass-border-hover max-w-[calc(100vw-2rem)] ${padClass}`;
 
   return (
     <>
@@ -110,108 +113,119 @@ export function Nav() {
         className={navClass}
         data-scrolled={scrolled}
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-secondary/5 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/[0.03] via-secondary/[0.03] to-primary/[0.03] opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out rounded-full pointer-events-none" />
 
         <Link
           href="/"
-          className="relative z-10 group-hover:scale-105 transition-transform duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell rounded-full shrink-0"
+          className="relative z-10 group/logo transition-transform duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell rounded-full shrink-0"
         >
           {(() => {
             const logoSrc = getLogoSrc();
-            const logoBox = scrolled
-              ? 'relative h-8 w-[112px] sm:h-12 sm:w-[160px]'
-              : 'relative h-10 w-[120px] sm:h-14 sm:w-[180px]';
             return (
-              <div className={logoBox}>
+              <div
+                className={`relative ${logoSize} transition-all duration-500 ease-out group-hover/logo:scale-[1.02]`}
+              >
                 <Image
                   src={logoSrc}
                   alt={`${brandName} Logo`}
                   fill
-                  className="object-contain"
+                  className="object-contain transition-opacity duration-300"
                   priority
-                  sizes="(min-width: 640px) 160px, 112px"
+                  sizes="(min-width: 640px) 188px, 128px"
                 />
               </div>
             );
           })()}
         </Link>
 
-        {/* Desktop links centered between logo and CTA */}
-        <ul className="hidden md:flex items-center gap-6 md:gap-8 text-sm relative z-10 ml-1 sm:ml-2">
+        {/* Desktop links with precise optical spacing */}
+        <ul className="hidden md:flex items-center gap-1 lg:gap-2 text-[13px] lg:text-sm relative z-10 ml-2 lg:ml-4">
           <li>
             <Link
               href="/services"
-              className="px-3 py-1.5 rounded-full hover:scale-105 hover:-translate-y-0.5 transition-all duration-300 font-medium leading-none hover:text-primary group/link relative overflow-hidden nav-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell"
+              className="inline-flex items-center h-12 px-4 rounded-full transition-all duration-300 ease-out font-medium leading-none hover:text-primary-text group/link relative overflow-hidden nav-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell"
               data-active={isActive('/services')}
               aria-current={isActive('/services') ? 'page' : undefined}
             >
-              <span className="relative z-10">Services</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10 opacity-0 group-hover/link:opacity-100 transition-opacity duration-300 rounded-full" />
+              <span className="relative z-10 transition-transform duration-200 inline-block group-hover/link:-translate-y-[1px]">
+                Services
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-primary/5 opacity-0 group-hover/link:opacity-100 transition-opacity duration-400 ease-out rounded-full" />
             </Link>
           </li>
           <li>
             <Link
               href="/training"
-              className="px-3 py-1.5 rounded-full hover:scale-105 hover:-translate-y-0.5 transition-all duration-300 font-medium leading-none hover:text-primary group/link relative overflow-hidden nav-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell"
+              className="inline-flex items-center h-12 px-4 rounded-full transition-all duration-300 ease-out font-medium leading-none hover:text-primary-text group/link relative overflow-hidden nav-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell"
               data-active={isActive('/training')}
               aria-current={isActive('/training') ? 'page' : undefined}
             >
-              <span className="relative z-10">Training</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10 opacity-0 group-hover/link:opacity-100 transition-opacity duration-300 rounded-full" />
+              <span className="relative z-10 transition-transform duration-200 inline-block group-hover/link:-translate-y-[1px]">
+                Training
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-primary/5 opacity-0 group-hover/link:opacity-100 transition-opacity duration-400 ease-out rounded-full" />
             </Link>
           </li>
           <li>
             <Link
               href="/playbooks"
-              className="px-3 py-1.5 rounded-full hover:scale-105 hover:-translate-y-0.5 transition-all duration-300 font-medium leading-none hover:text-primary group/link relative overflow-hidden nav-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell"
+              className="inline-flex items-center h-12 px-4 rounded-full transition-all duration-300 ease-out font-medium leading-none hover:text-primary-text group/link relative overflow-hidden nav-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell"
               data-active={isActive('/playbooks')}
               aria-current={isActive('/playbooks') ? 'page' : undefined}
             >
-              <span className="relative z-10">Playbooks</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10 opacity-0 group-hover/link:opacity-100 transition-opacity duration-300 rounded-full" />
+              <span className="relative z-10 transition-transform duration-200 inline-block group-hover/link:-translate-y-[1px]">
+                Playbooks
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-primary/5 opacity-0 group-hover/link:opacity-100 transition-opacity duration-400 ease-out rounded-full" />
             </Link>
           </li>
           <li>
             <Link
               href="/faq"
-              className="px-3 py-1.5 rounded-full hover:scale-105 hover:-translate-y-0.5 transition-all duration-300 font-medium leading-none hover:text-primary group/link relative overflow-hidden nav-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell"
+              className="inline-flex items-center h-12 px-4 rounded-full transition-all duration-300 ease-out font-medium leading-none hover:text-primary-text group/link relative overflow-hidden nav-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell"
               data-active={isActive('/faq')}
               aria-current={isActive('/faq') ? 'page' : undefined}
             >
-              <span className="relative z-10">FAQ</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10 opacity-0 group-hover/link:opacity-100 transition-opacity duration-300 rounded-full" />
+              <span className="relative z-10 transition-transform duration-200 inline-block group-hover/link:-translate-y-[1px]">
+                FAQ
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-primary/5 opacity-0 group-hover/link:opacity-100 transition-opacity duration-400 ease-out rounded-full" />
             </Link>
           </li>
           <li>
             <Link
               href="/about"
-              className="px-3 py-1.5 rounded-full hover:scale-105 hover:-translate-y-0.5 transition-all duration-300 font-medium leading-none hover:text-primary group/link relative overflow-hidden nav-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell"
+              className="inline-flex items-center h-12 px-4 rounded-full transition-all duration-300 ease-out font-medium leading-none hover:text-primary-text group/link relative overflow-hidden nav-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell"
               data-active={isActive('/about')}
               aria-current={isActive('/about') ? 'page' : undefined}
             >
-              <span className="relative z-10">About</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10 opacity-0 group-hover/link:opacity-100 transition-opacity duration-300 rounded-full" />
+              <span className="relative z-10 transition-transform duration-200 inline-block group-hover/link:-translate-y-[1px]">
+                About
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-primary/5 opacity-0 group-hover/link:opacity-100 transition-opacity duration-400 ease-out rounded-full" />
             </Link>
           </li>
           <li>
             <Link
               href="/contact"
-              className="px-3 py-1.5 rounded-full hover:scale-105 hover:-translate-y-0.5 transition-all duration-300 font-medium leading-none hover:text-primary group/link relative overflow-hidden nav-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell"
+              className="inline-flex items-center h-12 px-4 rounded-full transition-all duration-300 ease-out font-medium leading-none hover:text-primary-text group/link relative overflow-hidden nav-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell"
               data-active={isActive('/contact')}
               aria-current={isActive('/contact') ? 'page' : undefined}
             >
-              <span className="relative z-10">Contact</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10 opacity-0 group-hover/link:opacity-100 transition-opacity duration-300 rounded-full" />
+              <span className="relative z-10 transition-transform duration-200 inline-block group-hover/link:-translate-y-[1px]">
+                Contact
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-primary/5 opacity-0 group-hover/link:opacity-100 transition-opacity duration-400 ease-out rounded-full" />
             </Link>
           </li>
         </ul>
 
-        {/* Spacer pushes CTA to the right on desktop */}
-        <div className="hidden md:block flex-1" />
+        {/* Precise spacer for optical balance */}
+        <div className="hidden md:block flex-1 min-w-[2rem]" />
 
         <button
           type="button"
-          className="btn-outline hidden md:inline-flex text-sm font-semibold relative z-10 hover:scale-105 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell shrink-0 whitespace-nowrap px-4 py-2"
+          className="btn-outline hidden md:inline-flex h-12 text-[13px] lg:text-sm font-semibold relative z-10 transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell shrink-0 whitespace-nowrap px-5 mr-2"
           onClick={() => {
             trackCtaClick('quick_inquiry_click', 'Quick inquiry', 'nav');
             open();
@@ -222,10 +236,10 @@ export function Nav() {
 
         <Link
           href="/book"
-          className="btn-primary hidden md:inline-flex text-sm font-semibold relative z-10 hover:scale-105 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell shrink-0 whitespace-nowrap px-4 py-2 sm:px-6 sm:py-3"
+          className="btn-primary hidden md:inline-flex h-12 text-[13px] lg:text-sm font-semibold relative z-10 transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell shrink-0 whitespace-nowrap px-5 lg:px-6"
           onClick={() => trackScheduleClick('nav')}
         >
-          Book a discovery call
+          Book a call
         </Link>
 
         {/* Mobile menu toggle */}
@@ -285,19 +299,19 @@ export function Nav() {
           />
           <div
             id="mobile-menu"
-            className="fixed z-40 left-4 right-4 top-24 border border-glass-border rounded-2xl bg-glass-2 backdrop-blur-xl shadow-elev-lg md:hidden transition-all duration-200 ease-out"
+            className="fixed z-40 left-4 right-4 top-[5.5rem] border border-glass-border rounded-2xl bg-glass-2 backdrop-blur-xl shadow-elev-lg md:hidden transition-all duration-300 ease-out"
             role="dialog"
             aria-modal="true"
             ref={menuRef}
             tabIndex={-1}
             onKeyDown={handleMenuTrapFocus}
           >
-            <ul className="flex flex-col p-2 text-sm">
+            <ul className="flex flex-col p-3 gap-1 text-sm">
               <li>
                 <Link
                   href="/services"
                   ref={firstMobileLinkRef}
-                  className="block px-4 py-3 rounded-xl font-medium nav-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell"
+                  className="block px-4 py-3.5 rounded-xl font-medium nav-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell transition-colors duration-200"
                   data-active={isActive('/services')}
                   aria-current={isActive('/services') ? 'page' : undefined}
                   onClick={() => setMenuOpen(false)}
@@ -337,7 +351,7 @@ export function Nav() {
               <li>
                 <Link
                   href="/training"
-                  className="block px-4 py-3 rounded-xl font-medium nav-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell"
+                  className="block px-4 py-3.5 rounded-xl font-medium nav-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell transition-colors duration-200"
                   data-active={isActive('/training')}
                   aria-current={isActive('/training') ? 'page' : undefined}
                   onClick={() => setMenuOpen(false)}
@@ -348,7 +362,7 @@ export function Nav() {
               <li>
                 <Link
                   href="/playbooks"
-                  className="block px-4 py-3 rounded-xl font-medium nav-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell"
+                  className="block px-4 py-3.5 rounded-xl font-medium nav-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell transition-colors duration-200"
                   data-active={isActive('/playbooks')}
                   aria-current={isActive('/playbooks') ? 'page' : undefined}
                   onClick={() => setMenuOpen(false)}
@@ -359,7 +373,7 @@ export function Nav() {
               <li>
                 <Link
                   href="/faq"
-                  className="block px-4 py-3 rounded-xl font-medium nav-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell"
+                  className="block px-4 py-3.5 rounded-xl font-medium nav-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell transition-colors duration-200"
                   data-active={isActive('/faq')}
                   aria-current={isActive('/faq') ? 'page' : undefined}
                   onClick={() => setMenuOpen(false)}
@@ -370,7 +384,7 @@ export function Nav() {
               <li>
                 <Link
                   href="/about"
-                  className="block px-4 py-3 rounded-xl font-medium nav-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell"
+                  className="block px-4 py-3.5 rounded-xl font-medium nav-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell transition-colors duration-200"
                   data-active={isActive('/about')}
                   aria-current={isActive('/about') ? 'page' : undefined}
                   onClick={() => setMenuOpen(false)}
@@ -381,7 +395,7 @@ export function Nav() {
               <li>
                 <Link
                   href="/contact"
-                  className="block px-4 py-3 rounded-xl font-medium nav-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell"
+                  className="block px-4 py-3.5 rounded-xl font-medium nav-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-eggshell transition-colors duration-200"
                   data-active={isActive('/contact')}
                   aria-current={isActive('/contact') ? 'page' : undefined}
                   onClick={() => setMenuOpen(false)}

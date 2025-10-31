@@ -4,10 +4,12 @@ export const metadata = {
     'Overview of security practices: least-privilege access, auditability, hosting options, and data handling.',
 };
 
+import PageBackground from '@/components/PageBackground';
+
 export default function SecurityPage() {
   return (
     <div className="relative min-h-screen py-16 md:py-24">
-      <div className="page-background-subtle" aria-hidden="true" />
+      <PageBackground variant="subtle" />
       <section className="relative">
         <div className="mx-auto max-w-3xl px-4">
           <h1 className="text-4xl font-bold mb-6">Security</h1>

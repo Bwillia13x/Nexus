@@ -5,13 +5,25 @@ const domainsEnv = (process.env.IMAGE_DOMAINS || '')
   .split(',')
   .map(d => d.trim())
   .filter(Boolean);
+const scriptSrc = [
+  "'self'",
+  "'unsafe-inline'",
+  'https://www.googletagmanager.com',
+  'https://plausible.io',
+];
+
+if (process.env.NODE_ENV !== 'production') {
+  // React Refresh in development requires eval. Keep disabled in production for security.
+  scriptSrc.push("'unsafe-eval'");
+}
+
 const csp = [
   "default-src 'self'",
   "base-uri 'self'",
   "font-src 'self' data:",
   "img-src 'self' data: https:",
   "object-src 'none'",
-  "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://plausible.io",
+  `script-src ${scriptSrc.join(' ')}`,
   "style-src 'self' 'unsafe-inline'",
   "connect-src 'self' https://plausible.io https://www.google-analytics.com",
   // Allow embedding of external schedulers (e.g., Cal.com/Calendly) via HTTPS iframes

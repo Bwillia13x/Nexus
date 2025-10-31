@@ -1,6 +1,7 @@
 import FAQPageClient from './FAQPageClient';
 import FeatureStrip from '@/components/FeatureStrip';
 import CTABox from '@/components/CTABox';
+import PageBackground from '@/components/PageBackground';
 
 export const metadata = {
   title: 'FAQ | Prairie Signal',
@@ -41,13 +42,7 @@ export default function FAQPage() {
   return (
     <div className="min-h-screen relative">
       {/* Unified Page Background */}
-      <div className="page-background">
-        <div className="primary-orb" />
-        <div className="secondary-orb" />
-        <div className="accent-orb" />
-        <div className="ambient-vignette" />
-        <div className="wave-layer" aria-hidden="true" />
-      </div>
+      <PageBackground />
 
       <section className="py-20 md:py-28">
         <div className="mx-auto max-w-4xl px-4">
@@ -55,7 +50,7 @@ export default function FAQPage() {
             <div className="eyebrow mb-2" aria-hidden="true">
               Frequently Asked Questions
             </div>
-            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight gradient-title text-balance text-pretty">
+            <h1 className="text-display gradient-title text-balance text-pretty">
               Common questions
               <span className="sr-only"> about AI for business</span>
             </h1>

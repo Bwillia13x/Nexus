@@ -40,6 +40,7 @@ export default function IntegrationsSection() {
             <div
               key={tool.name}
               className="card-glass glass-liquid hover:scale-105 transition-transform duration-300 group cursor-pointer h-full flex flex-col justify-center items-center"
+              data-reveal
             >
               <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
                 <MaybeIcon tool={tool.name} size={36} title={tool.name} />

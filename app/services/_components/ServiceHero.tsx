@@ -13,7 +13,7 @@ export default function ServiceHero() {
       aria-describedby="services-hero-subtitle"
     >
       {/* Background gradient */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
+      <div className="absolute inset-0 -z-10 bg-hero-gradient" />
 
       <div className="mx-auto max-w-container px-4">
         <div className="card-hero hero-reveal text-center">
@@ -23,7 +23,7 @@ export default function ServiceHero() {
           {/* Main heading */}
           <h1
             id="services-hero-heading"
-            className="text-4xl md:text-6xl font-extrabold tracking-tight gradient-title text-balance text-pretty"
+            className="text-display gradient-title text-balance text-pretty"
           >
             {heroContent.title}
           </h1>
@@ -47,7 +47,10 @@ export default function ServiceHero() {
 
           {/* CTA buttons */}
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href={heroContent.primaryCta.href} className="btn-primary">
+            <Link
+              href={heroContent.primaryCta.href}
+              className="btn-primary shadow-e3 hover:shadow-e4"
+            >
               <SpriteIcon
                 name="ps--cta--book-call_alt-calendar-check"
                 size={24}
@@ -55,7 +58,10 @@ export default function ServiceHero() {
               />
               {heroContent.primaryCta.text}
             </Link>
-            <Link href={heroContent.secondaryCta.href} className="btn-outline">
+            <Link
+              href={heroContent.secondaryCta.href}
+              className="btn-outline shadow-e3 hover:shadow-e4"
+            >
               {heroContent.secondaryCta.text}
             </Link>
           </div>

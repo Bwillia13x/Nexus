@@ -285,7 +285,7 @@ export default function ROICalculator() {
   const contactHref = `/contact?hours=${numericValues.hours}&rate=${numericValues.rate}&pilotPrice=${numericValues.price}&calcMonthly=${Math.round(metrics.monthly)}`;
 
   return (
-    <div className="p-8 rounded-2xl border border-glass-border bg-glass backdrop-blur-lg shadow-xl">
+    <div className="p-8 rounded-2xl border border-glass-border bg-glass backdrop-blur-lg shadow-e6">
       <div className="text-center mb-8 space-y-4">
         <h3 className="text-2xl font-bold text-ink">{homeContent.roi.title}</h3>
         <p className="text-muted">

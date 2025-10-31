@@ -188,7 +188,7 @@ export function ShortInquiryModal() {
 
       <div
         ref={panelRef}
-        className="relative z-10 w-[92vw] max-w-md rounded-2xl border border-glass-border bg-eggshell shadow-elev-xl p-5 sm:p-6"
+        className="relative z-10 w-[92vw] max-w-md rounded-2xl border border-glass-border bg-eggshell shadow-e6 p-5 sm:p-6"
       >
         <div className="flex items-start justify-between gap-4">
           <h2 id="short-inquiry-title" className="text-lg font-semibold">

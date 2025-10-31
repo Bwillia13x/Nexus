@@ -9,6 +9,7 @@ export default function ServicesGrid() {
       id="services"
       className="py-16 md:py-24 cv-auto"
       aria-labelledby="services-title"
+      data-reveal-once
     >
       <div className="mx-auto max-w-container px-4">
         <div className="text-center mb-12">
@@ -24,13 +25,14 @@ export default function ServicesGrid() {
         </div>
 
         <div
-          className="grid gap-6 md:gap-8 lg:gap-10 md:grid-cols-3"
+          className="grid gap-6 md:gap-8 lg:gap-10 md:grid-cols-3 stagger-children"
           role="list"
         >
           {servicesContent.items.map((service, index) => (
             <article
               key={service.title}
               className="card-glass glass-liquid h-full flex flex-col focus-within:ring-2 focus-within:ring-primary/30"
+              data-reveal
               role="listitem"
             >
               {/* Service icon */}

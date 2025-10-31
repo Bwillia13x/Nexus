@@ -55,7 +55,11 @@ export default function CaseStudiesSection() {
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
           <CaseHighlightCard viewModel={highlightViewModel} />
 
-          <div className="grid gap-6" role="list" aria-label="Pilot examples">
+          <ul
+            className="grid gap-6 stagger-children"
+            role="list"
+            aria-label="Pilot examples"
+          >
             {pilotsContent.items.map(pilot => (
               <PilotTile
                 key={pilot.id}
@@ -64,7 +68,7 @@ export default function CaseStudiesSection() {
                 onActivate={() => setActivePilotId(pilot.id)}
               />
             ))}
-          </div>
+          </ul>
         </div>
       </div>
     </section>
@@ -99,7 +103,10 @@ interface HighlightViewModel {
 function CaseHighlightCard({ viewModel }: { viewModel: HighlightViewModel }) {
   const hasMetrics = viewModel.metrics.length > 0;
   return (
-    <aside className="relative overflow-hidden rounded-3xl border border-glass-border bg-white/85 shadow-2xl backdrop-blur-xl p-6 md:p-10">
+    <aside
+      className="relative overflow-hidden rounded-3xl border border-glass-border bg-white/85 shadow-e6 backdrop-blur-xl p-6 md:p-10"
+      data-reveal
+    >
       <div
         className="absolute -top-24 -left-24 h-64 w-64 rounded-full bg-primary/10 blur-3xl"
         aria-hidden="true"
@@ -235,15 +242,15 @@ function PilotTile({
         : 'KPI Dashboards';
 
   return (
-    <article
-      role="listitem"
+    <li
       className={`card-glass glass-liquid h-full flex flex-col justify-between gap-6 p-6 md:p-7 focus-within:ring-2 focus-within:ring-primary/30 transition-all duration-300 ${
-        isActive ? 'border-primary/40 shadow-2xl' : ''
+        isActive ? 'border-primary/40 shadow-e6' : ''
       }`}
       data-active={isActive}
       onMouseEnter={onActivate}
       onTouchStart={onActivate}
       onFocusCapture={onActivate}
+      data-reveal
     >
       <div className="space-y-4">
         <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-semibold text-primary uppercase tracking-wide">
@@ -277,7 +284,7 @@ function PilotTile({
       >
         {pilot.cta.label} <span>→</span>
       </Link>
-    </article>
+    </li>
   );
 }
 

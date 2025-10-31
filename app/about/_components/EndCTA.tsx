@@ -6,7 +6,7 @@ export function EndCTA() {
       <div className="max-w-4xl mx-auto card-glass glass-liquid p-12 rounded-4xl relative overflow-hidden group hover:scale-[1.02] transition-all duration-500">
         <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-secondary/5 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         <div className="relative z-10">
-          <h2 className="text-4xl font-bold mb-6">
+          <h2 className="text-heading mb-6">
             Calgary small businesses: Ready to get started?
           </h2>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-7">
@@ -16,13 +16,13 @@ export function EndCTA() {
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8">
             <Link
               href="/contact?intent=discovery"
-              className="btn-primary shadow-elev hover:shadow-elev-lg min-w-[200px] sm:min-w-[240px] text-base sm:text-lg"
+              className="btn-primary shadow-e3 hover:shadow-e4 min-w-[200px] sm:min-w-[240px] text-base sm:text-lg"
             >
               Book a discovery call <span className="ml-2">→</span>
             </Link>
             <Link
               href="/services"
-              className="btn-secondary shadow-elev hover:shadow-elev-lg min-w-[200px] sm:min-w-[240px] text-base sm:text-lg"
+              className="btn-secondary shadow-e3 hover:shadow-e4 min-w-[200px] sm:min-w-[240px] text-base sm:text-lg"
             >
               See advisory
             </Link>

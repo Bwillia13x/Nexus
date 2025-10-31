@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import SpriteIcon from '@/components/ui/SpriteIcon';
 import LeadMagnet from '@/components/LeadMagnet';
+import PageBackground from '@/components/PageBackground';
 import { hero, resources, checklist } from './_content';
 import FeatureStrip from '@/components/FeatureStrip';
 import CTABox from '@/components/CTABox';
@@ -15,13 +16,7 @@ export default function PlaybooksPage() {
   return (
     <div className="min-h-screen relative">
       {/* Unified Page Background */}
-      <div className="page-background">
-        <div className="primary-orb" />
-        <div className="secondary-orb" />
-        <div className="accent-orb" />
-        <div className="ambient-vignette" />
-        <div className="wave-layer" aria-hidden="true" />
-      </div>
+      <PageBackground />
 
       {/* Hero */}
       <section
@@ -35,7 +30,7 @@ export default function PlaybooksPage() {
             </div>
             <h1
               id="playbooks-hero-title"
-              className="text-4xl md:text-6xl font-extrabold tracking-tight gradient-title text-balance text-pretty"
+              className="text-display gradient-title text-balance text-pretty"
             >
               {hero.title}
             </h1>

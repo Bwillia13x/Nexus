@@ -1,6 +1,7 @@
 import { env } from '@/lib/env';
 import { SchedulerEmbed } from './_components/SchedulerEmbed';
 import { SimpleBookingForm } from './_components/SimpleBookingForm';
+import PageBackground from '@/components/PageBackground';
 
 export const metadata = {
   title: 'Book a Call | Prairie Signal',
@@ -14,13 +15,7 @@ export default function BookPage() {
   return (
     <div className="min-h-screen relative">
       {/* Unified Page Background */}
-      <div className="page-background">
-        <div className="primary-orb" />
-        <div className="secondary-orb" />
-        <div className="accent-orb" />
-        <div className="ambient-vignette" />
-        <div className="wave-layer" aria-hidden="true" />
-      </div>
+      <PageBackground />
 
       {/* Hero Section */}
       <section className="section">

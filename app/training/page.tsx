@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { trainingHero, offerings, playbooksBlock } from './_content';
 import FeatureStrip from '@/components/FeatureStrip';
 import CTABox from '@/components/CTABox';
+import PageBackground from '@/components/PageBackground';
 
 export const metadata = {
   title: 'Training & AI Literacy | Prairie Signal',
@@ -13,13 +14,7 @@ export default function TrainingPage() {
   return (
     <div className="min-h-screen relative">
       {/* Unified Page Background */}
-      <div className="page-background">
-        <div className="primary-orb" />
-        <div className="secondary-orb" />
-        <div className="accent-orb" />
-        <div className="ambient-vignette" />
-        <div className="wave-layer" aria-hidden="true" />
-      </div>
+      <PageBackground />
 
       {/* Hero */}
       <section
@@ -34,7 +29,7 @@ export default function TrainingPage() {
             </div>
             <h1
               id="training-hero-heading"
-              className="text-4xl md:text-6xl font-extrabold tracking-tight gradient-title text-balance text-pretty"
+              className="text-display gradient-title text-balance text-pretty"
             >
               {trainingHero.title}
             </h1>

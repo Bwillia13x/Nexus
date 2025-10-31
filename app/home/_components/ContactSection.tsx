@@ -23,7 +23,9 @@ export default function ContactSection() {
           </p>
         </div>
 
-        <SimpleContactForm />
+        <div data-reveal>
+          <SimpleContactForm />
+        </div>
       </div>
     </section>
   );

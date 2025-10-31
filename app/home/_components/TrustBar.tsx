@@ -16,6 +16,7 @@ export default function TrustBar() {
                   <li
                     key={i}
                     className="inline-flex flex-col items-start justify-center rounded-xl border border-glass-border bg-white/80 px-4 py-3 text-left shadow-sm"
+                    data-reveal
                   >
                     <span className="text-[13px] font-semibold uppercase tracking-[0.18em] text-ink">
                       {item.label}
@@ -33,6 +34,7 @@ export default function TrustBar() {
                 <li
                   key={i}
                   className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1.5 text-sm font-medium text-primary"
+                  data-reveal
                 >
                   {item.icon ? (
                     <MaybeIcon

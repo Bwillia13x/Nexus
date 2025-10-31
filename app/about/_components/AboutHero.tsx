@@ -16,7 +16,7 @@ export function AboutHero({ hero }: AboutHeroProps) {
       aria-labelledby="about-hero-title"
     >
       {/* Background gradient + mesh overlay */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-primary/10 via-transparent to-secondary/5" />
+      <div className="absolute inset-0 -z-10 bg-hero-gradient" />
       <div className="absolute inset-0 -z-10 hero-mesh" />
 
       <div className="relative z-10">
@@ -25,7 +25,7 @@ export function AboutHero({ hero }: AboutHeroProps) {
             {/* H1 - LCP element */}
             <h1
               id="about-hero-title"
-              className="text-4xl md:text-6xl font-extrabold tracking-tight gradient-title text-balance text-pretty"
+              className="text-display gradient-title text-balance text-pretty"
             >
               {hero.title}
             </h1>
@@ -54,7 +54,7 @@ export function AboutHero({ hero }: AboutHeroProps) {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
                 <Link
                   href="/contact?intent=discovery"
-                  className="btn-primary shadow-elev hover:shadow-elev-lg min-w-[200px] sm:min-w-[240px] text-base sm:text-lg"
+                  className="btn-primary shadow-e3 hover:shadow-e4 min-w-[200px] sm:min-w-[240px] text-base sm:text-lg"
                 >
                   <SpriteIcon
                     name="ps--cta--book-call_alt-calendar-check"
@@ -65,7 +65,7 @@ export function AboutHero({ hero }: AboutHeroProps) {
                 </Link>
                 <Link
                   href="/services"
-                  className="btn-secondary shadow-elev hover:shadow-elev-lg min-w-[200px] sm:min-w-[240px] text-base sm:text-lg"
+                  className="btn-secondary shadow-e3 hover:shadow-e4 min-w-[200px] sm:min-w-[240px] text-base sm:text-lg"
                 >
                   See services
                 </Link>

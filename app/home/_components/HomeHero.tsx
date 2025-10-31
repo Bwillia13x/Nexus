@@ -46,8 +46,8 @@ export default function HomeHero() {
       id="top"
       aria-labelledby="home-hero-title"
     >
-      {/* Background gradient */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-primary/10 via-transparent to-secondary/5" />
+      {/* Background gradient using token */}
+      <div className="absolute inset-0 -z-10 bg-hero-gradient" />
       {/* Mesh overlay for subtle color fields */}
       <div className="absolute inset-0 -z-10 hero-mesh" />
 
@@ -73,7 +73,7 @@ export default function HomeHero() {
             <div className="space-y-6 text-left">
               <h1
                 id="home-hero-title"
-                className="text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.05] gradient-title-animated text-balance"
+                className="text-display gradient-title-animated text-balance"
               >
                 {heroContent.title}
               </h1>
@@ -131,7 +131,7 @@ export default function HomeHero() {
             <div className="flex flex-col sm:flex-row items-center sm:items-stretch gap-4 sm:gap-6">
               <Link
                 href={heroContent.primaryCta.href}
-                className="btn-primary shadow-elev hover:shadow-elev-lg min-w-[220px] text-base sm:text-lg"
+                className="btn-primary shadow-e3 hover:shadow-e4 min-w-[220px] text-base sm:text-lg"
                 onClick={handlePrimaryCtaClick}
               >
                 <SpriteIcon
@@ -144,7 +144,7 @@ export default function HomeHero() {
               </Link>
               <Link
                 href={heroContent.secondaryCta.href}
-                className="btn-secondary shadow-elev hover:shadow-elev-lg min-w-[220px] text-base sm:text-lg"
+                className="btn-secondary shadow-e3 hover:shadow-e4 min-w-[220px] text-base sm:text-lg"
                 onClick={handleSecondaryCtaClick}
               >
                 {heroContent.secondaryCta.label}
@@ -156,7 +156,7 @@ export default function HomeHero() {
                 {proofMetrics.map(metric => (
                   <div
                     key={metric.label}
-                    className="inline-flex min-w-[220px] flex-1 items-center justify-between gap-3 rounded-full border border-glass-border bg-white/70 px-4 py-2 text-sm shadow-sm backdrop-blur"
+                    className="inline-flex min-w-[220px] flex-1 items-center justify-between gap-3 rounded-full border border-glass-border bg-white/70 px-4 py-2 text-sm shadow-e1 backdrop-blur"
                   >
                     <div className="flex flex-col">
                       <span className="text-xs uppercase tracking-wide text-muted-foreground">
@@ -231,7 +231,7 @@ function FallbackShowcase({
   caseStudy,
 }: FallbackShowcaseProps) {
   return (
-    <div className="relative overflow-hidden rounded-3xl border border-glass-border bg-white/80 shadow-2xl backdrop-blur-xl p-6 sm:p-8">
+    <div className="relative overflow-hidden rounded-3xl border border-glass-border bg-white/80 shadow-e6 backdrop-blur-xl p-6 sm:p-8">
       <div
         className="absolute -top-32 -right-32 h-64 w-64 rounded-full bg-primary/20 blur-3xl"
         aria-hidden="true"
@@ -320,7 +320,7 @@ function MediaShowcase({ media, fallback }: MediaShowcaseProps) {
 
   if (media.type === 'video') {
     return (
-      <figure className="relative overflow-hidden rounded-3xl border border-glass-border bg-black shadow-2xl backdrop-blur-xl">
+      <figure className="relative overflow-hidden rounded-3xl border border-glass-border bg-black shadow-e6 backdrop-blur-xl">
         <video
           className="h-full w-full"
           src={media.src}
@@ -342,7 +342,7 @@ function MediaShowcase({ media, fallback }: MediaShowcaseProps) {
 
   if (media.type === 'image') {
     return (
-      <figure className="relative overflow-hidden rounded-3xl border border-glass-border bg-white/80 shadow-2xl backdrop-blur-xl">
+      <figure className="relative overflow-hidden rounded-3xl border border-glass-border bg-white/80 shadow-e6 backdrop-blur-xl">
         <Image
           src={media.src}
           alt={media.alt}

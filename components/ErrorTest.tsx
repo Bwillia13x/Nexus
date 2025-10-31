@@ -37,7 +37,7 @@ export function ErrorTest() {
   }
 
   return (
-    <div className="fixed bottom-4 right-4 z-50 bg-white/90 backdrop-blur-md border border-red-200 rounded-lg p-4 shadow-lg">
+    <div className="fixed bottom-4 right-4 z-50 bg-white/90 backdrop-blur-md border border-red-200 rounded-lg p-4 shadow-e4">
       <div className="flex items-center justify-between mb-3">
         <h4 className="text-sm font-medium text-red-600">
           Error Testing Tools

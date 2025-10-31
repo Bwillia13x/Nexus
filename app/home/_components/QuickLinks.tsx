@@ -15,10 +15,10 @@ export default function QuickLinks() {
           role="list"
           className="grid grid-cols-2 gap-3 sm:gap-4 md:max-w-2xl md:mx-auto"
         >
-          <li>
+          <li data-reveal>
             <Link
               href="/cases"
-              className="group block rounded-xl border border-glass-border bg-glass p-4 shadow-elev hover:shadow-elev-lg transition-all focus-ring"
+              className="group block rounded-xl border border-glass-border bg-glass p-4 shadow-e3 hover:shadow-e4 transition-all focus-ring"
             >
               <div className="flex items-center gap-3">
                 <SpriteIcon
@@ -30,10 +30,10 @@ export default function QuickLinks() {
               </div>
             </Link>
           </li>
-          <li>
+          <li data-reveal>
             <Link
               href="/faq"
-              className="group block rounded-xl border border-glass-border bg-glass p-4 shadow-elev hover:shadow-elev-lg transition-all focus-ring"
+              className="group block rounded-xl border border-glass-border bg-glass p-4 shadow-e3 hover:shadow-e4 transition-all focus-ring"
             >
               <div className="flex items-center gap-3">
                 <SpriteIcon

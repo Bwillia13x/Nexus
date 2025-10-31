@@ -2,8 +2,6 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-import { Card } from './Card';
-
 interface ProcessStep {
   step: number;
   title: string;
@@ -106,15 +104,15 @@ export function EngagementTimeline({ steps }: EngagementTimelineProps) {
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-12 max-w-6xl mx-auto">
       <div className="text-center">
         <h2
           id="engagement-heading"
-          className="text-3xl md:text-4xl font-bold mb-6"
+          className="text-4xl md:text-5xl font-bold mb-6 gradient-title"
         >
           Engagement Model
         </h2>
-        <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+        <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed">
           5-step process from discovery to handoff
         </p>
       </div>
@@ -135,27 +133,9 @@ export function EngagementTimeline({ steps }: EngagementTimelineProps) {
           Step {activeIndex + 1} of {steps.length}:{' '}
           <span>{steps[activeIndex]?.title}</span>
         </p>
-        {/* Connector line (desktop only) */}
-        <div
-          className="hidden md:block absolute inset-x-0 top-[64px] h-px bg-gradient-to-r from-glass-border/0 via-glass-border/70 to-glass-border/0"
-          aria-hidden="true"
-        />
-
-        {/* Step dots (desktop only) */}
-        <div
-          className="hidden md:grid absolute inset-x-0 top-[64px] grid-cols-5 pointer-events-none"
-          aria-hidden="true"
-        >
-          {steps.map((_, i) => (
-            <span
-              key={`dot-${i}`}
-              className="justify-self-center -translate-y-1.5 block w-3 h-3 rounded-full bg-glass-border shadow-[0_0_0_4px_rgba(255,255,255,0.6)]"
-            />
-          ))}
-        </div>
 
         <div
-          className="grid grid-cols-1 md:grid-cols-5 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 gap-x-8 md:gap-x-10 gap-y-6 auto-rows-fr items-stretch"
           role="list"
           aria-labelledby="engagement-heading"
           aria-describedby="timeline-instructions"
@@ -168,7 +148,7 @@ export function EngagementTimeline({ steps }: EngagementTimelineProps) {
                 stepRefs.current[index] = el;
               }}
               data-step={index}
-              className={`transition-all duration-500 focus-ring ${
+              className={`transition-all duration-500 focus-ring h-full ${
                 visibleSteps.includes(index)
                   ? 'opacity-100 translate-y-0'
                   : 'opacity-0 translate-y-8'
@@ -180,37 +160,42 @@ export function EngagementTimeline({ steps }: EngagementTimelineProps) {
               tabIndex={activeIndex === index ? 0 : -1}
               onFocus={() => setActiveIndex(index)}
             >
-              <Card
-                variant="glass"
-                className="card-glass glass-liquid h-full"
-                role="article"
-              >
-                {/* Step header */}
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-14 h-14 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center text-white font-bold text-lg shadow-lg overflow-hidden">
-                    <span>{step.step}</span>
+              <div className="card-glass bg-glass group h-full min-h-[260px] md:min-h-[300px] p-6 md:p-8 transition-transform md:hover:-translate-y-1">
+                <div className="flex items-start gap-8">
+                  {/* Step number badge */}
+                  <div className="flex-shrink-0">
+                    <div className="rounded-2xl ring-2 ring-transparent group-hover:ring-primary/40 ring-offset-2 ring-offset-white/60 transition-colors duration-300">
+                      <div className="icon-tile md:scale-110 group-hover:scale-125 group-hover:rotate-[-2deg] transition-all duration-300">
+                        <span className="text-2xl font-bold relative z-10">
+                          {step.step}
+                        </span>
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <h3
-                      id={`step-${index}-title`}
-                      className="font-semibold text-ink text-base md:text-lg"
+
+                  {/* Content */}
+                  <div className="flex-1 min-w-0">
+                    <div className="mb-3">
+                      <span className="inline-block text-xs font-semibold text-primary bg-primary/10 px-3 py-1.5 rounded-full mb-2">
+                        Step {step.step}
+                      </span>
+                      <h3
+                        id={`step-${index}-title`}
+                        className="font-bold text-2xl md:text-3xl text-ink leading-tight tracking-tight"
+                      >
+                        {step.title}
+                      </h3>
+                    </div>
+
+                    <p
+                      id={`step-${index}-desc`}
+                      className="text-muted-foreground text-lg leading-relaxed"
                     >
-                      {step.title}
-                    </h3>
-                    <span className="text-xs font-bold text-primary bg-primary/10 px-2.5 py-1 rounded-full">
-                      Step {step.step}
-                    </span>
+                      {step.blurb}
+                    </p>
                   </div>
                 </div>
-
-                {/* Blurb */}
-                <p
-                  id={`step-${index}-desc`}
-                  className="text-muted-foreground text-sm leading-6"
-                >
-                  {step.blurb}
-                </p>
-              </Card>
+              </div>
             </div>
           ))}
         </div>

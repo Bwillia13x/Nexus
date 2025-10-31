@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { Playbook } from '@/app/_content/home';
+import SpriteIcon from './ui/SpriteIcon';
 
 interface PlaybookCardProps {
   playbook: Playbook;
@@ -22,17 +23,35 @@ export function PlaybookCard({ playbook, index }: PlaybookCardProps) {
 
   return (
     <div
-      className="card-glass overflow-hidden p-0 group hover:scale-105 transition-all duration-300 motion-reduce:transform-none motion-reduce:transition-none h-full flex flex-col"
+      className="card-glass overflow-hidden p-0 group transition-all duration-300 motion-reduce:transform-none motion-reduce:transition-none h-full flex flex-col"
       role="article"
       aria-labelledby={`playbook-${playbook.id}-title`}
     >
-      <div className="h-36 md:h-40 bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-lg">
-        <div className="text-5xl md:text-6xl" aria-hidden="true">
-          {playbook.id === 'assistant'
-            ? '🤖'
-            : playbook.id === 'ops'
-              ? '⚙️'
-              : '📊'}
+      <div className="h-36 md:h-40 bg-gradient-to-br from-primary via-primary to-secondary flex items-center justify-center shadow-e5 relative overflow-hidden">
+        {/* Background pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage:
+                'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
+              backgroundSize: '24px 24px',
+            }}
+          />
+        </div>
+        {/* Icon */}
+        <div className="relative z-10 transform group-hover:scale-110 group-hover:rotate-[-3deg] transition-all duration-300">
+          <SpriteIcon
+            name={
+              playbook.id === 'assistant'
+                ? 'ps--services--deploy-assistant'
+                : playbook.id === 'ops'
+                  ? 'ps--services--automate-reporting'
+                  : 'ps--services--build-dashboards'
+            }
+            size={56}
+            className="text-white drop-shadow-lg"
+          />
         </div>
       </div>
       <div className="p-6 md:p-8 flex flex-col flex-grow">

@@ -6,7 +6,7 @@ export function SidebarCards() {
   return (
     <div className="space-y-6">
       {/* Why Choose Us Card */}
-      <div className="card-glass group transition-all duration-200 hover:shadow-elev-lg hover:ring-1 hover:ring-primary/10">
+      <div className="card-glass group transition-all duration-200 hover:shadow-e5 hover:ring-1 hover:ring-primary/10">
         <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
           <span className="text-2xl">💡</span>
           {CONTACT_CONTENT.sidebar.whyChoose.title}
@@ -22,7 +22,7 @@ export function SidebarCards() {
       </div>
 
       {/* Response Time Card */}
-      <div className="card-glass group transition-all duration-200 hover:shadow-elev-lg hover:ring-1 hover:ring-primary/10">
+      <div className="card-glass group transition-all duration-200 hover:shadow-e5 hover:ring-1 hover:ring-primary/10">
         <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
           <span className="text-2xl">⏱️</span>
           {CONTACT_CONTENT.sidebar.responseTime.title}
@@ -43,7 +43,7 @@ export function SidebarCards() {
       </div>
 
       {/* Security Card */}
-      <div className="card-glass group transition-all duration-200 hover:shadow-elev-lg hover:ring-1 hover:ring-primary/10">
+      <div className="card-glass group transition-all duration-200 hover:shadow-e5 hover:ring-1 hover:ring-primary/10">
         <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
           <span className="text-2xl">🔐</span>
           {CONTACT_CONTENT.sidebar.security.title}

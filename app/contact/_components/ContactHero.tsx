@@ -13,7 +13,7 @@ export function ContactHero() {
     <section className="relative py-20 md:py-24">
       {/* Gradient Background */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-primary/10 via-secondary/5 to-transparent" />
+        <div className="absolute inset-0 bg-hero-gradient" />
         <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-gradient-to-br from-primary/20 to-secondary/10 blur-3xl opacity-60" />
         <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-gradient-to-br from-secondary/20 to-primary/10 blur-3xl opacity-50" />
       </div>
@@ -28,7 +28,7 @@ export function ContactHero() {
           </div>
 
           {/* Main Heading */}
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 gradient-title">
+          <h1 className="text-display mb-6 gradient-title">
             {CONTACT_CONTENT.hero.title}
           </h1>
 
@@ -72,7 +72,7 @@ export function ContactHero() {
               onClick={() => {
                 handleCtaClick('book_call');
               }}
-              className="btn-primary group"
+              className="btn-primary group shadow-e3 hover:shadow-e4"
               aria-label="Book a discovery call"
             >
               <span className="flex items-center gap-2">
@@ -90,7 +90,7 @@ export function ContactHero() {
 
             <button
               onClick={() => handleCtaClick('browse_playbooks')}
-              className="btn-secondary"
+              className="btn-secondary shadow-e3 hover:shadow-e4"
               aria-label="Browse playbooks and templates"
             >
               <span className="flex items-center gap-2">

@@ -59,13 +59,12 @@ export function MobileStickyCTA() {
       className={`fixed inset-x-0 bottom-0 z-40 md:hidden pointer-events-none transition-all duration-300 ${
         isMounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
       }`}
-      aria-hidden={isMounted ? undefined : true}
     >
       <nav
         aria-label="Quick actions"
         className="pointer-events-auto mx-auto max-w-container px-4 pb-[calc(env(safe-area-inset-bottom)+.5rem)]"
       >
-        <div className="relative rounded-full border border-glass-border bg-white/90 supports-[backdrop-filter]:bg-white/60 backdrop-blur shadow-elev-lg flex gap-2 p-2">
+        <div className="relative rounded-full border border-glass-border bg-white/90 supports-[backdrop-filter]:bg-white/60 backdrop-blur shadow-e4 flex gap-2 p-2">
           <button
             type="button"
             className="absolute -top-3 -right-3 h-8 w-8 rounded-full bg-white/90 supports-[backdrop-filter]:bg-white/60 border border-glass-border shadow-sm flex items-center justify-center text-muted hover:text-ink focus-ring"

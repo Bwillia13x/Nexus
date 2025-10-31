@@ -12,14 +12,14 @@ export default function CompareTable() {
       <div className="mx-auto max-w-container px-4">
         <h2
           id="compare-services-heading"
-          className="text-3xl md:text-4xl font-bold text-center mb-12 text-balance text-pretty"
+          className="text-heading text-center mb-12 text-balance text-pretty"
         >
           Compare Services
         </h2>
 
         {/* Desktop table */}
         <div className="hidden md:block overflow-x-auto">
-          <div className="rounded-lg overflow-hidden min-w-full border border-glass-border bg-glass-2 backdrop-blur-xl shadow-elev">
+          <div className="rounded-lg overflow-hidden min-w-full border border-glass-border bg-glass-2 backdrop-blur-xl shadow-e3">
             <table className="w-full text-sm">
               <caption className="sr-only">{compareTableData.caption}</caption>
               <thead className="bg-gradient-to-r from-primary/10 to-primary/0">

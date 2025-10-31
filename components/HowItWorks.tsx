@@ -41,7 +41,7 @@ export function HowItWorks() {
               }`}
             >
               {/* Timeline dot */}
-              <div className="absolute left-8 md:left-1/2 md:transform md:-translate-x-1/2 w-4 h-4 rounded-full bg-gradient-to-r from-primary to-secondary border-4 border-eggshell shadow-lg z-10" />
+              <div className="absolute left-8 md:left-1/2 md:transform md:-translate-x-1/2 w-4 h-4 rounded-full bg-gradient-to-r from-primary to-secondary border-4 border-eggshell shadow-e5 z-10" />
 
               {/* Content card */}
               <div
@@ -49,12 +49,14 @@ export function HowItWorks() {
                   index % 2 === 0 ? 'md:pr-16' : 'md:pl-16'
                 }`}
               >
-                <div className="card-glass p-8 hover:scale-105 transition-all duration-300 group h-full">
+                <div className="card-glass p-8 transition-all duration-300 group h-full">
                   <div className="flex items-center gap-4 mb-6">
                     <div
-                      className={`w-14 h-14 rounded-2xl bg-gradient-to-r ${step.color} flex items-center justify-center text-white text-2xl shadow-lg group-hover:scale-110 transition-transform duration-300`}
+                      className={`icon-tile bg-gradient-to-r ${step.color} group-hover:scale-110 group-hover:rotate-[-3deg] transition-all duration-300`}
                     >
-                      {step.icon}
+                      <span className="text-2xl relative z-10">
+                        {step.icon}
+                      </span>
                     </div>
                     <div>
                       <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-2">
@@ -105,7 +107,7 @@ export function HowItWorks() {
 
       {/* Call to action */}
       <div className="mt-20 md:mt-24 text-center">
-        <div className="max-w-3xl mx-auto p-8 md:p-12 rounded-3xl border border-glass-border bg-glass backdrop-blur-xl shadow-xl">
+        <div className="max-w-3xl mx-auto p-8 md:p-12 rounded-3xl border border-glass-border bg-glass backdrop-blur-xl shadow-e6">
           <h3 className="text-2xl md:text-3xl font-bold mb-6">
             {homeContent.cta.title}
           </h3>

@@ -35,6 +35,20 @@
   --secondary-light: #b48cf7;
   --frost: rgba(255, 255, 255, 0.85);
 
+  /* Gradient tokens */
+  --gradient-hero: linear-gradient(
+    180deg,
+    rgba(111, 105, 246, 0.2) 0%,
+    rgba(160, 110, 246, 0.1) 40%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  --gradient-soft: linear-gradient(
+    135deg,
+    rgba(111, 105, 246, 0.08),
+    rgba(160, 110, 246, 0.08)
+  );
+  --gradient-accent: linear-gradient(135deg, var(--primary), var(--secondary));
+
   /* Accessible text variants (higher contrast) */
   --primary-text: #4338ca; /* indigo-700 */
   --secondary-text: #7c3aed; /* violet-600 */
@@ -145,6 +159,7 @@
   --ease-out: cubic-bezier(0, 0, 0.2, 1);
   --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
   --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --ease-entrance: cubic-bezier(0.16, 1, 0.3, 1);
 
   /* Legacy transition aliases */
   --transition-fast: var(--duration-fast) var(--ease-standard);

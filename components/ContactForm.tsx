@@ -527,7 +527,7 @@ export function ContactForm() {
                   type="submit"
                   loading={isSubmitting}
                   disabled={!isFormValid || isSubmitting}
-                  className="btn-primary w-full text-lg font-semibold disabled:hover:translate-y-0 disabled:hover:shadow-lg"
+                  className="btn-primary w-full text-lg font-semibold disabled:hover:translate-y-0 disabled:hover:shadow-e3"
                   aria-describedby="submit-button-help"
                 >
                   {isSubmitting ? (

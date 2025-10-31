@@ -21,7 +21,7 @@ export default function ProcessSteps() {
               className="group relative card-glass glass-liquid list-none"
             >
               {/* Step number */}
-              <div className="w-16 h-16 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl shadow-lg">
+              <div className="w-16 h-16 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl shadow-e5">
                 {step.number}
               </div>
 

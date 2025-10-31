@@ -12,6 +12,7 @@ import { getBrandName, getAbsoluteLogoUrl, getLogoSrc } from '@/lib/brand';
 import { ShortInquiryProvider } from '@/components/short-inquiry/ShortInquiryProvider';
 import { ShortInquiryModal } from '@/components/short-inquiry/ShortInquiryModal';
 import { MobileStickyCTA } from '@/components/MobileStickyCTA';
+import { ScrollReveal } from '@/components/ScrollReveal';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -177,6 +178,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <main id="main-content" className="pt-32 pb-24 md:pb-0">
             {children}
           </main>
+          <ScrollReveal />
           <Footer />
           <MobileStickyCTA />
           <Analytics />

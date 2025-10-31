@@ -9,6 +9,7 @@ import LeadMagnet from '@/components/LeadMagnet';
 import { MaybeIcon } from '@/components/ui/MaybeIcon';
 import FeatureStrip from '@/components/FeatureStrip';
 import CTABox from '@/components/CTABox';
+import PageBackground from '@/components/PageBackground';
 
 const CANONICAL_TOOL_BY_NAME: Record<string, string> = {
   Google: 'Google Workspace',
@@ -79,25 +80,19 @@ export default function ServicesPage() {
         {/* Skip Links for Accessibility */}
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded-lg focus:shadow-lg"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded-lg focus:shadow-e5"
         >
           Skip to main content
         </a>
         <a
           href="#services-section"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-32 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded-lg focus:shadow-lg"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-32 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded-lg focus:shadow-e5"
         >
           Skip to services
         </a>
 
         {/* Unified Page Background */}
-        <div className="page-background page-background--soft">
-          <div className="primary-orb" />
-          <div className="secondary-orb" />
-          <div className="accent-orb" />
-          <div className="ambient-vignette" />
-          <div className="wave-layer" aria-hidden="true" />
-        </div>
+        <PageBackground />
 
         {/* Service Hero */}
         <ServiceHero />
@@ -179,7 +174,7 @@ export default function ServicesPage() {
                 return (
                   <li
                     key={index}
-                    className="card-elevated group hover:shadow-lg transition-all duration-300 flex items-center justify-center"
+                    className="card-elevated group hover:shadow-e4 transition-all duration-300 flex items-center justify-center"
                     role="listitem"
                   >
                     <span className="inline-flex items-center gap-2 text-sm font-semibold text-foreground group-hover:text-primary transition-colors duration-200">

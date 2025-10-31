@@ -23,10 +23,10 @@ export default function CaseAIAssistantCalgaryRetail() {
         </div>
 
         <div className="max-w-5xl mx-auto text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-b from-black via-black/70 to-black/50 text-transparent bg-clip-text">
+          <h1 className="text-display font-bold mb-6 bg-gradient-to-b from-black via-black/70 to-black/50 text-transparent bg-clip-text">
             Calgary Retail: Artificial Intelligence (AI) Assistant
           </h1>
-          <p className="text-lg md:text-xl text-muted max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
             Deployed an assistant powered by Generative Pretrained Transformer
             (GPT) to handle frequently asked questions (FAQs), sizing, and order
             lookups across the website and text messaging (SMS). Includes safety
@@ -42,7 +42,7 @@ export default function CaseAIAssistantCalgaryRetail() {
                 <div className="text-2xl font-semibold bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text text-center">
                   {s.value}
                 </div>
-                <div className="text-xs uppercase tracking-wide text-muted text-center">
+                <div className="text-xs uppercase tracking-wide text-ink/70 text-center">
                   {s.label}
                 </div>
               </div>
@@ -57,7 +57,7 @@ export default function CaseAIAssistantCalgaryRetail() {
           <div className="grid md:grid-cols-2 gap-8">
             <div className="p-6 rounded-3xl border border-glass-border bg-glass backdrop-blur-xl">
               <h2 className="text-2xl font-bold mb-4">Client Context</h2>
-              <ul className="space-y-3 text-muted">
+              <ul className="space-y-3 text-muted-foreground">
                 <li>
                   • Direct-to-consumer (DTC) retailer with seasonal spikes and a
                   small support team
@@ -94,7 +94,7 @@ export default function CaseAIAssistantCalgaryRetail() {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="p-6 rounded-3xl border border-glass-border bg-glass backdrop-blur-xl">
               <h3 className="font-semibold mb-2">Stack & Integrations</h3>
-              <ul className="text-muted space-y-2">
+              <ul className="text-muted-foreground space-y-2">
                 <li>• Next.js widget and UI components</li>
                 <li>• Twilio for text messaging (SMS)</li>
                 <li>• OpenAI or Azure OpenAI</li>
@@ -103,7 +103,7 @@ export default function CaseAIAssistantCalgaryRetail() {
             </div>
             <div className="p-6 rounded-3xl border border-glass-border bg-glass backdrop-blur-xl">
               <h3 className="font-semibold mb-2">Access and Data Rules</h3>
-              <ul className="text-muted space-y-2">
+              <ul className="text-muted-foreground space-y-2">
                 <li>
                   • Redact personally identifiable information (PII) in logs
                 </li>
@@ -113,7 +113,7 @@ export default function CaseAIAssistantCalgaryRetail() {
             </div>
             <div className="p-6 rounded-3xl border border-glass-border bg-glass backdrop-blur-xl">
               <h3 className="font-semibold mb-2">Timeline</h3>
-              <ul className="text-muted space-y-2">
+              <ul className="text-muted-foreground space-y-2">
                 <li>• Week 1: ingest knowledge & prototype</li>
                 <li>• Week 2: channel rollout and safety rules</li>
                 <li>• Week 3: analytics + tuning</li>
@@ -124,7 +124,7 @@ export default function CaseAIAssistantCalgaryRetail() {
           <div className="text-center">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-white bg-gradient-to-r from-primary to-secondary shadow-lg hover:-translate-y-0.5 transition"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-white bg-gradient-to-r from-primary to-secondary shadow-e3 hover:shadow-e4 hover:-translate-y-0.5 transition"
             >
               Discuss an Artificial Intelligence (AI) Assistant for your team{' '}
               <span>→</span>

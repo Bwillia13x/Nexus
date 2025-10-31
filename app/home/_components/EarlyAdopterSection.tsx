@@ -8,7 +8,10 @@ export default function EarlyAdopterSection() {
       aria-labelledby="founding-cohort-title"
     >
       <div className="mx-auto max-w-4xl px-4">
-        <div className="relative overflow-hidden rounded-2xl border bg-gradient-to-r from-primary/10 via-secondary/5 to-primary/10 backdrop-blur-xl p-8 text-center group hover:scale-[1.02] transition-all duration-500">
+        <div
+          className="relative overflow-hidden rounded-2xl border bg-gradient-to-r from-primary/10 via-secondary/5 to-primary/10 backdrop-blur-xl p-8 text-center group hover:scale-[1.02] transition-all duration-500"
+          data-reveal
+        >
           {/* Background gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 

@@ -15,6 +15,7 @@ import IntegrationsSection from './home/_components/IntegrationsSection';
 import LeadMagnetSection from './home/_components/LeadMagnetSection';
 import ContactSection from './home/_components/ContactSection';
 import TrustBar from './home/_components/TrustBar';
+import PageBackground from '@/components/PageBackground';
 import SecuritySection from './home/_components/SecuritySection';
 
 // Import schema generators
@@ -78,13 +79,7 @@ export default function HomePage() {
 
       <div className="relative min-h-screen">
         {/* Unified Page Background */}
-        <div className="page-background">
-          <div className="primary-orb" />
-          <div className="secondary-orb" />
-          <div className="accent-orb" />
-          <div className="ambient-vignette" />
-          <div className="wave-layer" aria-hidden="true" />
-        </div>
+        <PageBackground />
 
         {/* Home Hero */}
         <HomeHero />

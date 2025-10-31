@@ -7,6 +7,7 @@ import {
   generateStructuredDataScript,
   generateBreadcrumbList,
 } from '@/lib/schema-org';
+import PageBackground from '@/components/PageBackground';
 
 export const metadata = {
   title: 'Contact Drew | Calgary AI Consultant — Prairie Signal',
@@ -59,13 +60,7 @@ export default function ContactPage() {
       />
       <div className="relative min-h-screen">
         {/* Unified Page Background */}
-        <div className="page-background">
-          <div className="primary-orb" />
-          <div className="secondary-orb" />
-          <div className="accent-orb" />
-          <div className="ambient-vignette" />
-          <div className="wave-layer" aria-hidden="true" />
-        </div>
+        <PageBackground />
 
         {/* Hero Section */}
         <ContactHero />

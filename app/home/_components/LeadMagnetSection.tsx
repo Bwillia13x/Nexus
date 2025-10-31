@@ -20,7 +20,9 @@ export default function LeadMagnetSection() {
           </h2>
         </div>
 
-        <LeadMagnet />
+        <div data-reveal>
+          <LeadMagnet />
+        </div>
       </div>
     </section>
   );

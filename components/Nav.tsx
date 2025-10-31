@@ -94,16 +94,14 @@ export function Nav() {
   };
 
   // Derived classes for cleaner template strings
-  const bgClass = scrolled
-    ? 'bg-glass-2 shadow-elev-lg'
-    : 'bg-glass shadow-elev';
+  const bgClass = scrolled ? 'bg-glass-2 shadow-e4' : 'bg-glass shadow-e3';
   const padClass = scrolled
     ? 'px-3 py-2 sm:px-5 sm:py-2.5'
     : 'px-4 py-3 sm:px-7 sm:py-3.5';
   const logoSize = scrolled
     ? 'h-8 w-[112px] sm:h-11 sm:w-[148px]'
     : 'h-10 w-[128px] sm:h-14 sm:w-[188px]';
-  const navClass = `fixed top-4 sm:top-6 left-1/2 -translate-x-1/2 z-50 border border-glass-border rounded-full flex items-center backdrop-blur-xl transition-all duration-500 ease-out group ${bgClass} hover:shadow-elev-lg hover:border-glass-border-hover max-w-[calc(100vw-2rem)] ${padClass}`;
+  const navClass = `fixed top-4 sm:top-6 left-1/2 -translate-x-1/2 z-50 border border-glass-border rounded-full flex items-center backdrop-blur-xl transition-all duration-500 ease-out group ${bgClass} hover:shadow-e5 hover:border-glass-border-hover max-w-[calc(100vw-2rem)] ${padClass}`;
 
   return (
     <>
@@ -299,7 +297,7 @@ export function Nav() {
           />
           <div
             id="mobile-menu"
-            className="fixed z-40 left-4 right-4 top-[5.5rem] border border-glass-border rounded-2xl bg-glass-2 backdrop-blur-xl shadow-elev-lg md:hidden transition-all duration-300 ease-out"
+            className="fixed z-40 left-4 right-4 top-[5.5rem] border border-glass-border rounded-2xl bg-glass-2 backdrop-blur-xl shadow-e4 md:hidden transition-all duration-300 ease-out"
             role="dialog"
             aria-modal="true"
             ref={menuRef}

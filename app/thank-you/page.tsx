@@ -1,4 +1,5 @@
 import ActionButtons from './ActionButtons';
+import PageBackground from '@/components/PageBackground';
 
 export const metadata = {
   title: 'Thanks for Your Interest — Prairie Signal',
@@ -11,34 +12,20 @@ export default function ThankYouPage() {
   return (
     <div className="min-h-screen relative">
       {/* Unified Background System */}
-      <div className="fixed inset-0 -z-10 overflow-hidden ambient-orbs">
-        {/* Primary background orb - top left */}
-        <div className="ambient-orb absolute -top-32 -left-32 w-[800px] h-[800px] rounded-full bg-gradient-to-br from-primary/20 via-primary/15 via-secondary/10 to-transparent blur-3xl" />
-
-        {/* Secondary background orb - bottom right */}
-        <div className="ambient-orb ambient-orb--slow absolute -bottom-32 -right-32 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-secondary/20 via-secondary/15 via-primary/10 to-transparent blur-3xl" />
-
-        {/* Success orb in center */}
-        <div className="ambient-orb absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] rounded-full bg-gradient-to-br from-success/20 via-primary/10 to-secondary/5 blur-2xl opacity-60" />
-
-        {/* Wave background overlay */}
-        <div className="wave-layer" aria-hidden="true" />
-        {/* Vignette overlay for contrast */}
-        <div className="ambient-vignette" />
-      </div>
+      <PageBackground />
 
       {/* Hero Section */}
       <section className="relative flex min-h-screen items-center justify-center py-20 md:py-28">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 text-center">
           {/* Success Icon */}
           <div className="mb-8">
-            <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-r from-success to-primary flex items-center justify-center shadow-2xl">
+            <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-r from-success to-primary flex items-center justify-center shadow-e6">
               <span className="text-4xl">✅</span>
             </div>
           </div>
 
           {/* Main Heading */}
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 gradient-title">
+          <h1 className="text-display mb-6 gradient-title">
             Thanks for reaching out!
           </h1>
 

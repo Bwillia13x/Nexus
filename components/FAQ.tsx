@@ -37,7 +37,7 @@ export function FAQ() {
       </div>
 
       <div className="mt-16 md:mt-20 text-center">
-        <div className="max-w-3xl mx-auto p-8 md:p-12 rounded-3xl border border-glass-border bg-glass backdrop-blur-xl shadow-xl">
+        <div className="max-w-3xl mx-auto p-8 md:p-12 rounded-3xl border border-glass-border bg-glass backdrop-blur-xl shadow-e6">
           <h3 className="text-2xl md:text-3xl font-bold mb-6">
             Still have questions?
           </h3>

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import AssistantDemo from '@/components/AssistantDemo';
 import RoiPrefillLink from '@/components/RoiPrefillLink';
+import PageBackground from '@/components/PageBackground';
 import {
   hero,
   playbooks,
@@ -24,26 +25,12 @@ export default function CasesIndexPage() {
   return (
     <div className="min-h-screen relative">
       {/* Unified Background System */}
-      <div className="fixed inset-0 -z-10 overflow-hidden ambient-orbs">
-        {/* Primary background orb - top left */}
-        <div className="ambient-orb absolute -top-40 -left-40 w-[780px] h-[780px] rounded-full bg-gradient-to-br from-primary/20 via-primary/10 via-secondary/5 to-transparent blur-3xl" />
-
-        {/* Secondary background orb - bottom right */}
-        <div className="ambient-orb ambient-orb--slow absolute -bottom-40 -right-40 w-[620px] h-[620px] rounded-full bg-gradient-to-br from-secondary/20 via-secondary/10 via-primary/5 to-transparent blur-3xl" />
-
-        {/* Tertiary orb for added depth */}
-        <div className="ambient-orb absolute top-1/3 right-1/4 w-[300px] h-[300px] rounded-full bg-gradient-to-br from-primary/15 via-transparent to-secondary/8 blur-2xl opacity-60" />
-
-        {/* Wave background overlay */}
-        <div className="wave-layer" aria-hidden="true" />
-        {/* Vignette overlay for contrast */}
-        <div className="ambient-vignette" />
-      </div>
+      <PageBackground />
 
       {/* Hero Section */}
       <section className="relative py-24 px-4 overflow-hidden">
         <div className="text-center mb-20">
-          <h1 className="text-5xl md:text-7xl font-bold mb-10 gradient-title-animated">
+          <h1 className="text-display font-bold mb-10 gradient-title-animated">
             {hero.title}
           </h1>
           <p className="max-w-3xl mx-auto text-lg md:text-xl text-muted leading-relaxed mb-8">
@@ -64,7 +51,7 @@ export default function CasesIndexPage() {
               <Link
                 key={index}
                 href={cta.href}
-                className={`inline-flex items-center gap-3 px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 ${
+                className={`inline-flex items-center gap-3 px-8 py-4 rounded-full font-semibold shadow-e3 hover:shadow-e4 transition-all duration-300 hover:-translate-y-0.5 ${
                   cta.primary
                     ? 'bg-gradient-to-r from-primary to-secondary text-white'
                     : 'bg-glass backdrop-blur-lg border border-glass-border text-ink hover:bg-glass-hover'

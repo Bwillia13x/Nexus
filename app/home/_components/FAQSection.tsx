@@ -19,11 +19,12 @@ export default function FAQSection() {
           </h2>
         </div>
 
-        <div className="space-y-6" role="list">
+        <div className="space-y-6 stagger-children" role="list">
           {faqContent.map((faq, index) => (
             <div
               key={index}
               className="card-glass glass-liquid transition-all duration-300"
+              data-reveal
               role="listitem"
               aria-labelledby={`faq-q-${index}`}
             >

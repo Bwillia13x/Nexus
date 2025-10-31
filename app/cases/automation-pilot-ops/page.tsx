@@ -23,10 +23,10 @@ export default function CaseAutomationPilotOps() {
         </div>
 
         <div className="max-w-5xl mx-auto text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-b from-black via-black/70 to-black/50 text-transparent bg-clip-text">
+          <h1 className="text-display font-bold mb-6 bg-gradient-to-b from-black via-black/70 to-black/50 text-transparent bg-clip-text">
             Operations: Automation Pilot
           </h1>
-          <p className="text-lg md:text-xl text-muted max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
             Identified bottlenecks and automated weekly reporting and invoicing
             across tools. Kept human approvals, with monitoring and a rollback
             process.
@@ -41,7 +41,7 @@ export default function CaseAutomationPilotOps() {
                 <div className="text-2xl font-semibold bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text text-center">
                   {s.value}
                 </div>
-                <div className="text-xs uppercase tracking-wide text-muted text-center">
+                <div className="text-xs uppercase tracking-wide text-ink/70 text-center">
                   {s.label}
                 </div>
               </div>
@@ -54,9 +54,11 @@ export default function CaseAutomationPilotOps() {
       <section className="py-12 px-4">
         <div className="max-w-5xl mx-auto space-y-12">
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="p-6 rounded-3xl border border-glass-border bg-glass backdrop-blur-xl">
-              <h2 className="text-2xl font-bold mb-4">Audit Findings</h2>
-              <ul className="space-y-3 text-muted">
+            <div className="p-6 rounded-3xl border border-glass-border bg-glass backdrop-blur-xl text-ink">
+              <h2 className="text-2xl font-bold mb-4 text-ink">
+                Audit Findings
+              </h2>
+              <ul className="space-y-3 text-muted-foreground">
                 <li>
                   • Manual comma-separated values (CSV) exports for finance and
                   reporting
@@ -68,9 +70,9 @@ export default function CaseAutomationPilotOps() {
                 <li>• Ad hoc spreadsheets with inconsistent formulas</li>
               </ul>
             </div>
-            <div className="p-6 rounded-3xl border border-glass-border bg-glass backdrop-blur-xl">
-              <h2 className="text-2xl font-bold mb-4">Pilot Scope</h2>
-              <ul className="space-y-3 text-muted">
+            <div className="p-6 rounded-3xl border border-glass-border bg-glass backdrop-blur-xl text-ink">
+              <h2 className="text-2xl font-bold mb-4 text-ink">Pilot Scope</h2>
+              <ul className="space-y-3 text-muted-foreground">
                 <li>
                   • Automated weekly key performance indicator (KPI) report with
                   anomaly flags
@@ -82,26 +84,30 @@ export default function CaseAutomationPilotOps() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="p-6 rounded-3xl border border-glass-border bg-glass backdrop-blur-xl">
-              <h3 className="font-semibold mb-2">Stack & Integrations</h3>
-              <ul className="text-muted space-y-2">
+            <div className="p-6 rounded-3xl border border-glass-border bg-glass backdrop-blur-xl text-ink">
+              <h3 className="font-semibold mb-2 text-ink">
+                Stack & Integrations
+              </h3>
+              <ul className="text-muted-foreground space-y-2">
                 <li>• Google Sheets and BigQuery</li>
                 <li>• QuickBooks or Xero</li>
                 <li>• Slack for approvals</li>
                 <li>• Zapier or Make.com automations</li>
               </ul>
             </div>
-            <div className="p-6 rounded-3xl border border-glass-border bg-glass backdrop-blur-xl">
-              <h3 className="font-semibold mb-2">Access and Data Rules</h3>
-              <ul className="text-muted space-y-2">
+            <div className="p-6 rounded-3xl border border-glass-border bg-glass backdrop-blur-xl text-ink">
+              <h3 className="font-semibold mb-2 text-ink">
+                Access and Data Rules
+              </h3>
+              <ul className="text-muted-foreground space-y-2">
                 <li>• Repeat-safe jobs and audit logs</li>
                 <li>• Access controls with least-privilege access</li>
                 <li>• Monitoring and fallback procedures</li>
               </ul>
             </div>
-            <div className="p-6 rounded-3xl border border-glass-border bg-glass backdrop-blur-xl">
-              <h3 className="font-semibold mb-2">Timeline</h3>
-              <ul className="text-muted space-y-2">
+            <div className="p-6 rounded-3xl border border-glass-border bg-glass backdrop-blur-xl text-ink">
+              <h3 className="font-semibold mb-2 text-ink">Timeline</h3>
+              <ul className="text-muted-foreground space-y-2">
                 <li>• Week 1: mapping and scoring</li>
                 <li>• Week 2–3: pilot build and approvals</li>
                 <li>• Week 4: monitoring and training</li>
@@ -112,7 +118,7 @@ export default function CaseAutomationPilotOps() {
           <div className="text-center">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-white bg-gradient-to-r from-primary to-secondary shadow-lg hover:-translate-y-0.5 transition"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-white bg-gradient-to-r from-primary to-secondary shadow-e3 hover:shadow-e4 hover:-translate-y-0.5 transition"
             >
               Explore an Operations Automation Pilot <span>→</span>
             </Link>
